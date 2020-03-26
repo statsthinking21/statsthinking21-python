@@ -1,0 +1,26 @@
+{
+  "title": "Python companion to Statistical Thinking for the 21st Century",
+  "description": "<p>This is a companion to the main statistical text, which provides an introduction to how to accomplish statistical computations using Python.</p>",
+  "contributors": [
+    {
+      "affiliation": "Department of Psychology, Stanford University",
+      "name": "Poldrack, Russell A.",
+      "orcid": "0000-0001-6755-0259"
+    }
+  ],
+  "keywords": [
+    "statistics",
+    "Python",
+    "data science",
+    "preprocessing"
+  ],
+  "license": "CC-BY-NC",
+  "related_identifiers": [
+    {
+      "identifier": "https://statsthinking21.org",
+      "relation": "documents",
+      "scheme": "url"
+    }
+  ],
+  "upload_type": "book"
+}
