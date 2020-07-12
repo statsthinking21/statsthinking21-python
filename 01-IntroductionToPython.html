@@ -1,0 +1,1538 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Introduction to Python &#8212; Python Compantion to Statistical Thinking in the 21st Century</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link href="_static/css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="_static/sphinx-book-theme.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/jupyter-sphinx.css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/sphinx-book-theme.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/mystnb.js"></script>
+    <script src="_static/sphinx-book-theme.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Preface {-}" href="index.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="index.html">
+  
+  
+  <h1 class="site-logo" id="site-title">Python Compantion to Statistical Thinking in the 21st Century</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  
+  <ul class="nav sidenav_l1">
+  <li class="active">
+    <a href="">Introduction to Python</a>
+  </li>
+</ul>
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/01-IntroductionToPython.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+    </div>
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+<div class="tocsection onthispage pt-5 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
+
+<nav id="bd-toc-nav">
+    <ul class="nav section-nav flex-column">
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#why-programming-is-hard-to-learn" class="nav-link">Why programming is hard to learn</a><ul class="nav section-nav flex-column">
+                
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#use-the-web" class="nav-link">Use the web</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h3">
+            <a href="#rubber-duck-debugging" class="nav-link">Rubber duck debugging</a>
+        </li>
+    
+            </ul>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#getting-access-to-python" class="nav-link">Getting access to Python</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#getting-started-with-python" class="nav-link">Getting started with Python</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#variables" class="nav-link">Variables</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#libraries" class="nav-link">Libraries</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#functions" class="nav-link">Functions</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#arrays" class="nav-link">Arrays</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#math-with-vectors-and-matrices" class="nav-link">Math with vectors and matrices</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#dictionaries" class="nav-link">Dictionaries</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#data-frames" class="nav-link">Data Frames</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#working-with-data-files" class="nav-link">1.10 Working with data files</a>
+        </li>
+    
+    </ul>
+</nav>
+
+
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="introduction-to-python">
+<h1>Introduction to Python<a class="headerlink" href="#introduction-to-python" title="Permalink to this headline">¶</a></h1>
+<p><em>Contributors</em>: John Butler, Russell Poldrack</p>
+<p>In this chapter we will give you an overview of the basic features of the Python programming language.  This introduction won’t make you an ace programmer — only practice will do that. However, it will give you an introduction to some of the most important features of the language.</p>
+<div class="section" id="why-programming-is-hard-to-learn">
+<h2>Why programming is hard to learn<a class="headerlink" href="#why-programming-is-hard-to-learn" title="Permalink to this headline">¶</a></h2>
+<p>Programming a computer is a skill, just like playing a musical instrument or speaking a second language. And just like those skills, it takes a lot of work to get good at it — the only way to acquire a skill is through practice.  There is nothing special or magical about people who are experts, other than the quality and quantity of their experience! However, not all practice is equally effective.  A large amount of psychological research has shown that practice needs to be <em>deliberate</em>, meaning that it focuses on developing the specific skills that one needs to perform the skill, at a level that is always pushing one’s ability.</p>
+<p>If you have never programmed before, then it’s going to seem hard, just as it would seem hard for a native English speaker to start speaking Mandarin.  However, just as a beginning guitarist needs to learn to play their scales, we will teach you how to perform the basics of programming, which you can then use to do more powerful things.</p>
+<p>One of the most important aspects of computer programming is that you can try things to your heart’s content; the worst thing that can happen is that the program will crash.  Trying new things and making mistakes is one of the keys to learning.</p>
+<p>The hardest part of programming is figuring out why something didn’t work, which we call <em>debugging</em>.  In programming, things are going to go wrong in ways that are often confusing and opaque. Every programmer has a story about spending hours trying to figure out why something didn’t work, only to realize that the problem was completely obvious in hindsight.  The more practice you get, the better you will get at figuring out how to fix these errors.  But there are a few strategies that can be helpful.</p>
+<div class="section" id="use-the-web">
+<h3>Use the web<a class="headerlink" href="#use-the-web" title="Permalink to this headline">¶</a></h3>
+<p>In particular, you should take advantage of the fact that there are millions of people programming in Python around the world, so nearly any error message you see has already been seen by someone else.  Whenever I experience an error that I don’t understand, the first thing that I do is to copy and paste the error message into a search engine. Often this will provide several pages discussing the problem and the ways that people have solved it.</p>
+</div>
+<div class="section" id="rubber-duck-debugging">
+<h3>Rubber duck debugging<a class="headerlink" href="#rubber-duck-debugging" title="Permalink to this headline">¶</a></h3>
+<p>The idea behind <em>rubber duck debugging</em> is to pretend that you are trying to explain what your code is doing to an inanimate object, like a rubber duck.  Often, the process of explaning it aloud is enough to help you find the problem.</p>
+</div>
+</div>
+<div class="section" id="getting-access-to-python">
+<h2>Getting access to Python<a class="headerlink" href="#getting-access-to-python" title="Permalink to this headline">¶</a></h2>
+<p>If you want to try out Python without having to install it on your own computer (or if you have a computer that doesn’t support it, such as a Chromebook), the best way to try it out is using a web platform that supports <em>notebooks</em>, which are documents that allow you to combine text and code; this book was actually written using such notebooks.  Two good options are <a class="reference external" href="https://colab.research.google.com/">Google Colab</a> and <a class="reference external" href="https://www.kaggle.com/kernels">Kaggle Kernels</a>.  <strong>TBD: MAKE ALL CHAPTERS AVAILABLE ON BOTH</strong></p>
+<p>If you do want to install it on your own computer, we recommend installing the <a class="reference external" href="https://www.anaconda.com/products/individual">Anaconda</a> software package, which will provide you with Python as well as many related packages.</p>
+</div>
+<div class="section" id="getting-started-with-python">
+<h2>Getting started with Python<a class="headerlink" href="#getting-started-with-python" title="Permalink to this headline">¶</a></h2>
+<p>When we work with Python, we can do this at the command line in a terminal or (as we will do) using a <em>Jupyter notebook</em>.
+Notebooks are composed of <em>cells</em>, each of which can contain either Python code or text.</p>
+<p>Jupyter notebooks use a special kind of text known as <a class="reference external" href="https://daringfireball.net/projects/markdown/syntax">Markdown</a>, which allows formatting (such as headings or text styles like bold and italics).  If you were to double-click on this cell in Jupyter, you would be able to edit the text. Once you are done editing, hit the <strong>Run</strong> button (the triangular arrow button above), or press Shift+Enter, and the text will be shown normally.</p>
+<p>The following cell is a <strong>code</strong> cell, which we use for Python code. Code cells are denoted in Jupyter by shading in gray.  In a code cell, we type Python commands. When we hit the <strong>Run</strong> button (the triangular arrow button above), or press Shift+Enter, our commands will run and a result will print out in an output cell.</p>
+<p>One difference between a code cell and a Markdown cell is that the code cell has a number to its left surrounded by square brackets. If you type a command into the cell and then run it, the result will appear below, with the same number to its left.</p>
+<p>In the simplest case, if we just type in a number, the cell will simply respond with that number. In the code cell below, we have typed the number 3. Click on the cell to edit or run the code again (Shift+Enter).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">3</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>3
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s try something a bit more complicated:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">3</span> <span class="o">+</span> <span class="mi">4</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>7
+</pre></div>
+</div>
+</div>
+</div>
+<p>Python spits out the answer to whatever you type in, as long as it can figure it out.</p>
+<p>Now let’s try typing in a word:</p>
+<p><code class="docutils literal notranslate"><span class="pre">hello</span></code></p>
+<p>This would result in the following output:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span>                                 <span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">)</span>
+ <span class="ow">in</span> 
+<span class="o">----&gt;</span> <span class="mi">1</span> <span class="n">hello</span>
+
+<span class="ne">NameError</span><span class="p">:</span> <span class="n">name</span> <span class="s1">&#39;hello&#39;</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">defined</span>
+</pre></div>
+</div>
+<p>What? Why did this happen? When Python encounters a letter or word, it assumes that it is referring to the <em>name of a variable</em> — think of X from high school algebra. We will return to variables in a little while, but if we want Python to print out the word hello then we need to contain it in quotation marks (single or double, it doesn’t matter), telling Python that it is a character string.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;hello&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>&#39;hello&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>There are many types of variables in Python. You have already seen two examples: integers (like the number 3) and character strings (like the word “hello”). Another important one is real numbers, which are the most common kind of numbers that we will deal with in statistics, which span the entire number line including the spaces in between the integers. For example:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span> <span class="o">/</span> <span class="mi">6</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>0.16666666666666666
+</pre></div>
+</div>
+</div>
+</div>
+<p>By default, Python uses floating-point numbers, which provide a high level of precision. In many cases, however, you may want to round floating-point outputs to two or three decimal places, which can be done with the <code class="docutils literal notranslate"><span class="pre">round()</span></code> function.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">round</span><span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>0.167
+</pre></div>
+</div>
+</div>
+</div>
+<p>Another kind of variable is known as a logical variable, because it is based on the idea from logic that a statement can be either True or False.</p>
+<p>To determine whether a statement is true or not, we use logical operators. You are already familiar with some of these, like the greater-than (<code class="docutils literal notranslate"><span class="pre">&gt;</span></code>) and less-than (<code class="docutils literal notranslate"><span class="pre">&lt;</span></code>) operators.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span> <span class="o">&lt;</span> <span class="mi">3</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">2</span> <span class="o">&gt;</span> <span class="mi">4</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>False
+</pre></div>
+</div>
+</div>
+</div>
+<p>Often we want to know whether two numbers are equal or not equal to one another. There are special operators in python to do this: <code class="docutils literal notranslate"><span class="pre">==</span></code> for equals, and <code class="docutils literal notranslate"><span class="pre">!=</span></code> for not-equals:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">3</span> <span class="o">==</span> <span class="mi">3</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">4</span> <span class="o">!=</span> <span class="mi">4</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>False
+</pre></div>
+</div>
+</div>
+</div>
+<p>One very important thing to know is that Python treats <em>True</em> the same as the number one, and <em>False</em> the same as the number zero.  To see this, let’s test whether <code class="docutils literal notranslate"><span class="pre">True</span></code> is equal to the number one:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kc">True</span> <span class="o">==</span> <span class="mi">1</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+<p>This will become important later on, when we work with probabilities.</p>
+</div>
+<div class="section" id="variables">
+<h2>Variables<a class="headerlink" href="#variables" title="Permalink to this headline">¶</a></h2>
+<p>A variable is a symbol that stands for another value (just like “X” in algebra). We can create a variable by assigning a value to it using the <code class="docutils literal notranslate"><span class="pre">=</span></code> operator. If we then type the name of the variable, Python will print out its value — as long as that variable name is the last entry in the cell.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="n">x</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>4
+</pre></div>
+</div>
+</div>
+</div>
+<p>The variable now stands for the value that it contains, so we can perform operations on it and get the same answer as if we used the value itself.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">+</span> <span class="mi">3</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>7
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">==</span> <span class="mi">5</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>False
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can change the value of a variable by simply assigning a new value to it.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">x</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>5
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="libraries">
+<h2>Libraries<a class="headerlink" href="#libraries" title="Permalink to this headline">¶</a></h2>
+<p>Although Python has many useful features, many of the features we will need are not contained in the primary Python library but instead come from open source libraries that have been developed by various members of the python community.</p>
+<p>Two packages that we will use extensively are <a class="reference external" href="https://numpy.org/">NumPy</a> and <a class="reference external" href="https://pandas.pydata.org/">Pandas</a>. These libraries are part of the <a class="reference external" href="https://www.scipy.org/">SciPy</a> stack, a group of Python libraries used for scientific computing.</p>
+<p>In Python, to work with a library, we first have to <em>import</em> it and specify how we are going to call on the functions of that library (functions will be explained in more detail below).</p>
+<p>Here is how we will import NumPy:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now, when we call on a NumPy function, we will use the prefix ``np```. This will be made clearer below.</p>
+<p>We also import pandas, specifying ``pd``` as the prefix:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>  <span class="c1">## RP: pd is more common abbreviation</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>After importing a library, you can now access all of its features using the specified prefix. If you want to learn more about a library’s features, you can find them using the <code class="docutils literal notranslate"><span class="pre">help()</span></code> function:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">help</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>Help on built-in function zeros in module numpy:
+
+zeros(...)
+    zeros(shape, dtype=float, order=&#39;C&#39;)
+    
+    Return a new array of given shape and type, filled with zeros.
+    
+    Parameters
+    ----------
+    shape : int or tuple of ints
+        Shape of the new array, e.g., ``(2, 3)`` or ``2``.
+    dtype : data-type, optional
+        The desired data-type for the array, e.g., `numpy.int8`.  Default is
+        `numpy.float64`.
+    order : {&#39;C&#39;, &#39;F&#39;}, optional, default: &#39;C&#39;
+        Whether to store multi-dimensional data in row-major
+        (C-style) or column-major (Fortran-style) order in
+        memory.
+    
+    Returns
+    -------
+    out : ndarray
+        Array of zeros with the given shape, dtype, and order.
+    
+    See Also
+    --------
+    zeros_like : Return an array of zeros with shape and type of input.
+    empty : Return a new uninitialized array.
+    ones : Return a new array setting values to one.
+    full : Return a new array of given shape filled with value.
+    
+    Examples
+    --------
+    &gt;&gt;&gt; np.zeros(5)
+    array([ 0.,  0.,  0.,  0.,  0.])
+    
+    &gt;&gt;&gt; np.zeros((5,), dtype=int)
+    array([0, 0, 0, 0, 0])
+    
+    &gt;&gt;&gt; np.zeros((2, 1))
+    array([[ 0.],
+           [ 0.]])
+    
+    &gt;&gt;&gt; s = (2,2)
+    &gt;&gt;&gt; np.zeros(s)
+    array([[ 0.,  0.],
+           [ 0.,  0.]])
+    
+    &gt;&gt;&gt; np.zeros((2,), dtype=[(&#39;x&#39;, &#39;i4&#39;), (&#39;y&#39;, &#39;i4&#39;)]) # custom dtype
+    array([(0, 0), (0, 0)],
+          dtype=[(&#39;x&#39;, &#39;&lt;i4&#39;), (&#39;y&#39;, &#39;&lt;i4&#39;)])
+
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="functions">
+<h2>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h2>
+<p>A function is an operator that takes some input and gives an output based on the input. For example, let’s say that we have a number, and we want to determine its absolute value. NumPy has a function called <code class="docutils literal notranslate"><span class="pre">abs()</span></code> that takes in a number and outputs its absolute value:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="o">-</span><span class="mi">3</span>
+<span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>3
+</pre></div>
+</div>
+</div>
+</div>
+<p>Most functions take an input like the <code class="docutils literal notranslate"><span class="pre">np.abs()</span></code> function (which we call an argument), but some also have special keywords that can be used to change how the function works. For example, the <code class="docutils literal notranslate"><span class="pre">np.random.normal()</span></code> function generates random numbers from a normal distribution (which we will learn more about later). Have a look at the help page for this function by typing <code class="docutils literal notranslate"><span class="pre">help(np.random.normal)</span></code> in the console, which will cause a help page to appear below. The first section of the help page for the <code class="docutils literal notranslate"><span class="pre">np.random.normal()</span></code> function shows the following:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>normal(...) method of numpy.random.mtrand.RandomState instance
+normal(loc=0.0, scale=1.0, size=None)
+
+Draw random samples from a normal (Gaussian) distribution.
+
+The probability density function of the normal distribution, first
+derived by De Moivre and 200 years later by both Gauss and Laplace
+independently [2]_, is often called the bell curve because of
+its characteristic shape (see the example below).
+
+The normal distributions occurs often in nature.  For example, it
+describes the commonly occurring distribution of samples influenced
+by a large number of tiny, random disturbances, each with its own
+unique distribution [2]_.
+
+Parameters
+----------
+loc : float or array_like of floats
+    Mean (&quot;centre&quot;) of the distribution.
+scale : float or array_like of floats
+    Standard deviation (spread or &quot;width&quot;) of the distribution. Must be
+    non-negative.
+size : int or tuple of ints, optional
+    Output shape.  If the given shape is, e.g., ``(m, n, k)``, then
+    ``m * n * k`` samples are drawn.  If size is ``None`` (default),
+    a single value is returned if ``loc`` and ``scale`` are both scalars.
+    Otherwise, ``np.broadcast(loc, scale).size`` samples are drawn.
+
+Returns
+-------
+out : ndarray or scalar
+    Drawn samples from the parameterized normal distribution.
+</pre></div>
+</div>
+<p>You can also see some examples of how the function is used by looking further down in the help output. For example, you will find the text:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Draw samples from the distribution:
+
+&gt;&gt;&gt; mu, sigma = 0, 0.1 # mean and standard deviation
+&gt;&gt;&gt; s = np.random.normal(mu, sigma, 1000)
+</pre></div>
+</div>
+<p>We can see from the help output (above) that the np.random.normal function has three arguments, loc or mean, scale or standard deviation, and size. These are shown to be equal to specific values.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>normal(loc=0.0, scale=1.0, size=None)
+</pre></div>
+</div>
+<p>This means that those values are the default settings, so that if you don’t do anything, then the function will return a single random number with a mean of 0 and a standard deviation of 1.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>-1.6197078395165387
+</pre></div>
+</div>
+</div>
+</div>
+<p>If we wanted to create random numbers with a different mean and standard deviation (say mean == 100 and standard deviation == 15), then we could simply set those values in the function call. Let’s say that we would like 5 random numbers from this distribution:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">my_random_numbers</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="n">my_random_numbers</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>array([ 87.51020891, 113.28077946,  90.69392519, 105.98727832,
+       121.81339933])
+</pre></div>
+</div>
+</div>
+</div>
+<p>You will see that I set the variable to the name <code class="docutils literal notranslate"><span class="pre">my_random_numbers</span></code>. In general, it’s always good to be as descriptive as possible when creating variables; rather than calling them x or y, use names that describe the actual contents. This will make it much easier to understand what’s going on once things get more complicated.</p>
+</div>
+<div class="section" id="arrays">
+<h2>Arrays<a class="headerlink" href="#arrays" title="Permalink to this headline">¶</a></h2>
+<p>You may have noticed that the my_random_numbers created above wasn’t like the variables that we had seen before — it contained several values in it. We refer to this kind of variable as an <em>array</em>.</p>
+<p>If you want to create your own new array, you can do that using the <code class="docutils literal notranslate"><span class="pre">np.array()</span></code> function:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">my_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">])</span>
+<span class="n">my_array</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>array([4, 5, 6])
+</pre></div>
+</div>
+</div>
+</div>
+<p>This kind of array is also known as a vector. It is an array of numbers that only has a single dimension - and can be any number of elements long in that single dimension. It can be a row vector (like <code class="docutils literal notranslate"><span class="pre">my_array</span></code> above) or a column vector.</p>
+<p>You can access the individual elements within a vector by using square brackets along with a number that refers to the location within the vector. These index values start at 0, a convention of many programming languages that can take a little getting used to.</p>
+<p>Let’s say we want to see the value in the second place of the vector:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">my_array</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>5
+</pre></div>
+</div>
+</div>
+</div>
+<p>You can also look at a range of positions, by putting the start and end+1 locations with a colon in between. For example, to see the values in second and third place:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">my_array</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>array([5, 6])
+</pre></div>
+</div>
+</div>
+</div>
+<p>You can also change the values of specific locations using the same indexing:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">my_array</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mi">7</span>
+<span class="n">my_array</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>array([4, 5, 7])
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="math-with-vectors-and-matrices">
+<h2>Math with vectors and matrices<a class="headerlink" href="#math-with-vectors-and-matrices" title="Permalink to this headline">¶</a></h2>
+<p>You can apply mathematical operations to the elements of an array in the same way that you apply them to regular variables.
+Let’s say that we want to multiply each element in the array by the number 5:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">my_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">])</span>
+<span class="n">my_array_times_five</span> <span class="o">=</span> <span class="n">my_array</span> <span class="o">*</span> <span class="mi">5</span>
+<span class="n">my_array_times_five</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>array([20, 25, 30])
+</pre></div>
+</div>
+</div>
+</div>
+<p>You can also apply mathematical operations on pairs of vectors. In this case, each matching element is used for the operation.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">my_first_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="n">my_second_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">])</span>
+<span class="n">my_first_array</span> <span class="o">+</span> <span class="n">my_second_array</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>array([11, 22, 23])
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can also apply logical operations across vectors; again, this will return a vector with the operation applied to the pairs of values at each position.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">array_a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="n">array_b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
+<span class="n">array_a</span> <span class="o">==</span> <span class="n">array_b</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>array([ True,  True, False])
+</pre></div>
+</div>
+</div>
+</div>
+<p>Most functions will work with vectors just as they would with a single number. For example, let’s say we wanted to obtain the trigonometric sine for each of a set of values. We could create a vector and pass it to the <code class="docutils literal notranslate"><span class="pre">np.sin()</span></code> function, which will return as many sine values as there are input values:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">my_angle_values</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+<span class="n">my_sin_values</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">my_angle_values</span><span class="p">)</span>
+<span class="n">my_sin_values</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>array([0.        , 0.84147098, 0.90929743])
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="dictionaries">
+<h2>Dictionaries<a class="headerlink" href="#dictionaries" title="Permalink to this headline">¶</a></h2>
+<p>There is another kind of variable in Python that is very useful, which is known as a <em>dictionary</em>.  A dictionary is like a container that
+stores values that are associated with particular <em>keys</em>.  A dictionary is created using squiggly brackets; each entry must include a key and a value (which can be any kind of variable, including another dictionary), separated by a color.  For example, let’s say that we wanted to store the ages of three people:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ages</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Lisa&#39;</span><span class="p">:</span> <span class="mi">23</span><span class="p">,</span> <span class="s1">&#39;Angela&#39;</span><span class="p">:</span> <span class="mi">25</span><span class="p">,</span> <span class="s1">&#39;Monique&#39;</span><span class="p">:</span> <span class="mi">27</span><span class="p">}</span>
+<span class="n">ages</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>{&#39;Lisa&#39;: 23, &#39;Angela&#39;: 25, &#39;Monique&#39;: 27}
+</pre></div>
+</div>
+</div>
+</div>
+<p>To access the elements, we use the names of each field as an index</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ages</span><span class="p">[</span><span class="s1">&#39;Lisa&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>23
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="data-frames">
+<h2>Data Frames<a class="headerlink" href="#data-frames" title="Permalink to this headline">¶</a></h2>
+<p>Often in a dataset we will have a number of different variables that we want to work with. Instead of having a different named variable that stores each one, it is often useful to combine all of the separate variables into a single package, which is referred to as a data frame.</p>
+<p>If you are familiar with a spreadsheet (say from Microsoft Excel) then you already have a basic understanding of a data frame.
+Let’s say that we have values of price and mileage for three different types of cars. We could start by creating a variable for each one, making sure that the three cars are in the same order for each of the variables:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">car_model</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;Ford Fusion&quot;</span><span class="p">,</span> <span class="s2">&quot;Hyundai Accent&quot;</span><span class="p">,</span> <span class="s2">&quot;Toyota Corolla&quot;</span><span class="p">)</span>
+<span class="n">car_price</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">25000</span><span class="p">,</span> <span class="mi">16000</span><span class="p">,</span> <span class="mi">18000</span><span class="p">])</span>
+<span class="n">car_mileage</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">27</span><span class="p">,</span> <span class="mi">36</span><span class="p">,</span> <span class="mi">32</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can then combine these into a single data frame, using the pd.DataFrame() function. I like to use “_df” in the names of data frames just to make clear that it’s a data frame, so we will call this one “cars_df”:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Price&#39;</span><span class="p">:</span> <span class="n">car_price</span><span class="p">,</span>
+        <span class="s1">&#39;Mileage&#39;</span><span class="p">:</span> <span class="n">car_mileage</span><span class="p">}</span>
+<span class="n">cars_df2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">car_model</span><span class="p">)</span>
+<span class="n">cars_df2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Price</th>
+      <th>Mileage</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Ford Fusion</th>
+      <td>25000</td>
+      <td>27</td>
+    </tr>
+    <tr>
+      <th>Hyundai Accent</th>
+      <td>16000</td>
+      <td>36</td>
+    </tr>
+    <tr>
+      <th>Toyota Corolla</th>
+      <td>18000</td>
+      <td>32</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Each of the columns in the data frame contains one of the variables, with the name that we gave it when we created the data frame.
+We can access each of those columns using the same <code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> indexing we use to access arrays, but we can use the column names we
+specified for the dataframe. For example, if we wanted to access the mileage variable, we would combine the name of the data frame
+with the name of the variable as follows:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cars_df2</span><span class="p">[</span><span class="s1">&#39;Mileage&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>Ford Fusion       27
+Hyundai Accent    36
+Toyota Corolla    32
+Name: Mileage, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<p>This is just like any other vector, in that we can refer to its individual values using square brackets as we did with regular vectors. For example, if we want the mileage value for the car in the second place:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cars_df2</span><span class="p">[</span><span class="s1">&#39;Mileage&#39;</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>36
+</pre></div>
+</div>
+</div>
+</div>
+<p>Similarly, you can perform operations on the vector. For example, we might want to square all the values in the “Price” column:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">square</span><span class="p">(</span><span class="n">cars_df2</span><span class="p">[</span><span class="s1">&#39;Price&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>Ford Fusion       625000000
+Hyundai Accent    256000000
+Toyota Corolla    324000000
+Name: Price, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s say we don’t know the organisation of the dataframe, but we want to see the price of a Toyota Corolla. We can  use filtering to obtain certain values from dataframe.</p>
+<p>Specifing the index that corresponds to “Toyota Corolla” gives you all the values for that row of the dataframe. To do this, we need to use the <code class="docutils literal notranslate"><span class="pre">.loc</span></code> operator on the data frame.  The first argument to the <code class="docutils literal notranslate"><span class="pre">.loc</span></code> operator refers to the rows in the data frame, whereas the second refers to the columns.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cars_df2</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;Toyota Corolla&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>Price      18000
+Mileage       32
+Name: Toyota Corolla, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<p>To obtain only the mileage, specify the mileage column.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cars_df2</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="s2">&quot;Toyota Corolla&quot;</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;Mileage&#39;</span><span class="p">]]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Mileage</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Toyota Corolla</th>
+      <td>32</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>We can also filter by some characteristics of the car.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cars_df2</span><span class="p">[(</span><span class="n">cars_df2</span><span class="p">[</span><span class="s1">&#39;Mileage&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">30</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">cars_df2</span><span class="p">[</span><span class="s1">&#39;Price&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">18000</span><span class="p">)]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Price</th>
+      <th>Mileage</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Hyundai Accent</th>
+      <td>16000</td>
+      <td>36</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Dataframes are enormously powerful for manipulating (“wrangling”) large and complex datasets, which are often what we are dealing with in statistics. For further information on dataframes in pandas, see: https://towardsdatascience.com/my-python-pandas-cheat-sheet-746b11e44368</p>
+</div>
+<div class="section" id="working-with-data-files">
+<h2>1.10 Working with data files<a class="headerlink" href="#working-with-data-files" title="Permalink to this headline">¶</a></h2>
+<p>When we are doing statistics, we often need to load in the data that we will analyze. Those data will live in a file on one’s computer or on the internet. For this example, let’s use a file that is hosted on the internet, which contains the gross domestic product (GDP) values for a number of countries around the world.
+This file is stored as a <em>comma-separated value</em> (or CSV) file, meaning that the values for each of the variables in the dataset are separated by commas. There are three variables: the relative rank of the countries, the name of the country, and its GDP value. Here is what the first few lines of the file look like:
+We can load the file using the <code class="docutils literal notranslate"><span class="pre">pd.read_csv()</span></code> function:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">data_url</span> <span class="o">=</span> <span class="s1">&#39;https://raw.githubusercontent.com/psych10/psych10/master/notebooks/Session03-IntroToR/gdp.csv&#39;</span>
+<span class="n">gdp_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">data_url</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>A data frame, like every variable in Python is an <em>object</em>.  Later in the book we will discuss object-oriented programming, but the important point for now is that objects can both store information and can do things.  Each object has a set of <em>methods</em>, which we denote using a period. For example, the data frame has a method called <code class="docutils literal notranslate"><span class="pre">.head()</span></code> which will show us the top 5 rows of the data frame:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gdp_data</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Rank</th>
+      <th>Country</th>
+      <th>GDP</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>Liechtenstein</td>
+      <td>141100</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>Qatar</td>
+      <td>104300</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>Luxembourg</td>
+      <td>81100</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4</td>
+      <td>Bermuda</td>
+      <td>69900</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5</td>
+      <td>Singapore</td>
+      <td>60500</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>If we want to see the list of all of the methods that are associated with a particular object, we can use the <code class="docutils literal notranslate"><span class="pre">dir()</span></code> function:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">dir</span><span class="p">(</span><span class="n">gdp_data</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>[&#39;Country&#39;,
+ &#39;GDP&#39;,
+ &#39;Rank&#39;,
+ &#39;T&#39;,
+ &#39;_AXIS_ALIASES&#39;,
+ &#39;_AXIS_IALIASES&#39;,
+ &#39;_AXIS_LEN&#39;,
+ &#39;_AXIS_NAMES&#39;,
+ &#39;_AXIS_NUMBERS&#39;,
+ &#39;_AXIS_ORDERS&#39;,
+ &#39;_AXIS_REVERSED&#39;,
+ &#39;__abs__&#39;,
+ &#39;__add__&#39;,
+ &#39;__and__&#39;,
+ &#39;__annotations__&#39;,
+ &#39;__array__&#39;,
+ &#39;__array_priority__&#39;,
+ &#39;__array_wrap__&#39;,
+ &#39;__bool__&#39;,
+ &#39;__class__&#39;,
+ &#39;__contains__&#39;,
+ &#39;__copy__&#39;,
+ &#39;__deepcopy__&#39;,
+ &#39;__delattr__&#39;,
+ &#39;__delitem__&#39;,
+ &#39;__dict__&#39;,
+ &#39;__dir__&#39;,
+ &#39;__div__&#39;,
+ &#39;__doc__&#39;,
+ &#39;__eq__&#39;,
+ &#39;__finalize__&#39;,
+ &#39;__floordiv__&#39;,
+ &#39;__format__&#39;,
+ &#39;__ge__&#39;,
+ &#39;__getattr__&#39;,
+ &#39;__getattribute__&#39;,
+ &#39;__getitem__&#39;,
+ &#39;__getstate__&#39;,
+ &#39;__gt__&#39;,
+ &#39;__hash__&#39;,
+ &#39;__iadd__&#39;,
+ &#39;__iand__&#39;,
+ &#39;__ifloordiv__&#39;,
+ &#39;__imod__&#39;,
+ &#39;__imul__&#39;,
+ &#39;__init__&#39;,
+ &#39;__init_subclass__&#39;,
+ &#39;__invert__&#39;,
+ &#39;__ior__&#39;,
+ &#39;__ipow__&#39;,
+ &#39;__isub__&#39;,
+ &#39;__iter__&#39;,
+ &#39;__itruediv__&#39;,
+ &#39;__ixor__&#39;,
+ &#39;__le__&#39;,
+ &#39;__len__&#39;,
+ &#39;__lt__&#39;,
+ &#39;__matmul__&#39;,
+ &#39;__mod__&#39;,
+ &#39;__module__&#39;,
+ &#39;__mul__&#39;,
+ &#39;__ne__&#39;,
+ &#39;__neg__&#39;,
+ &#39;__new__&#39;,
+ &#39;__nonzero__&#39;,
+ &#39;__or__&#39;,
+ &#39;__pos__&#39;,
+ &#39;__pow__&#39;,
+ &#39;__radd__&#39;,
+ &#39;__rand__&#39;,
+ &#39;__rdiv__&#39;,
+ &#39;__reduce__&#39;,
+ &#39;__reduce_ex__&#39;,
+ &#39;__repr__&#39;,
+ &#39;__rfloordiv__&#39;,
+ &#39;__rmatmul__&#39;,
+ &#39;__rmod__&#39;,
+ &#39;__rmul__&#39;,
+ &#39;__ror__&#39;,
+ &#39;__round__&#39;,
+ &#39;__rpow__&#39;,
+ &#39;__rsub__&#39;,
+ &#39;__rtruediv__&#39;,
+ &#39;__rxor__&#39;,
+ &#39;__setattr__&#39;,
+ &#39;__setitem__&#39;,
+ &#39;__setstate__&#39;,
+ &#39;__sizeof__&#39;,
+ &#39;__str__&#39;,
+ &#39;__sub__&#39;,
+ &#39;__subclasshook__&#39;,
+ &#39;__truediv__&#39;,
+ &#39;__weakref__&#39;,
+ &#39;__xor__&#39;,
+ &#39;_accessors&#39;,
+ &#39;_add_numeric_operations&#39;,
+ &#39;_add_series_or_dataframe_operations&#39;,
+ &#39;_agg_by_level&#39;,
+ &#39;_agg_examples_doc&#39;,
+ &#39;_agg_summary_and_see_also_doc&#39;,
+ &#39;_aggregate&#39;,
+ &#39;_aggregate_multiple_funcs&#39;,
+ &#39;_align_frame&#39;,
+ &#39;_align_series&#39;,
+ &#39;_box_col_values&#39;,
+ &#39;_box_item_values&#39;,
+ &#39;_builtin_table&#39;,
+ &#39;_check_inplace_setting&#39;,
+ &#39;_check_is_chained_assignment_possible&#39;,
+ &#39;_check_label_or_level_ambiguity&#39;,
+ &#39;_check_setitem_copy&#39;,
+ &#39;_clear_item_cache&#39;,
+ &#39;_clip_with_one_bound&#39;,
+ &#39;_clip_with_scalar&#39;,
+ &#39;_combine_frame&#39;,
+ &#39;_combine_match_index&#39;,
+ &#39;_consolidate&#39;,
+ &#39;_consolidate_inplace&#39;,
+ &#39;_construct_axes_dict&#39;,
+ &#39;_construct_axes_dict_from&#39;,
+ &#39;_construct_axes_from_arguments&#39;,
+ &#39;_construct_result&#39;,
+ &#39;_constructor&#39;,
+ &#39;_constructor_expanddim&#39;,
+ &#39;_constructor_sliced&#39;,
+ &#39;_convert&#39;,
+ &#39;_count_level&#39;,
+ &#39;_create_indexer&#39;,
+ &#39;_cython_table&#39;,
+ &#39;_deprecations&#39;,
+ &#39;_dir_additions&#39;,
+ &#39;_dir_deletions&#39;,
+ &#39;_drop_axis&#39;,
+ &#39;_drop_labels_or_levels&#39;,
+ &#39;_ensure_valid_index&#39;,
+ &#39;_find_valid_index&#39;,
+ &#39;_from_arrays&#39;,
+ &#39;_from_axes&#39;,
+ &#39;_get_agg_axis&#39;,
+ &#39;_get_axis&#39;,
+ &#39;_get_axis_name&#39;,
+ &#39;_get_axis_number&#39;,
+ &#39;_get_axis_resolvers&#39;,
+ &#39;_get_block_manager_axis&#39;,
+ &#39;_get_bool_data&#39;,
+ &#39;_get_cacher&#39;,
+ &#39;_get_cleaned_column_resolvers&#39;,
+ &#39;_get_cython_func&#39;,
+ &#39;_get_index_resolvers&#39;,
+ &#39;_get_item_cache&#39;,
+ &#39;_get_label_or_level_values&#39;,
+ &#39;_get_numeric_data&#39;,
+ &#39;_get_value&#39;,
+ &#39;_get_values&#39;,
+ &#39;_getitem_bool_array&#39;,
+ &#39;_getitem_multilevel&#39;,
+ &#39;_gotitem&#39;,
+ &#39;_iget_item_cache&#39;,
+ &#39;_indexed_same&#39;,
+ &#39;_info_axis&#39;,
+ &#39;_info_axis_name&#39;,
+ &#39;_info_axis_number&#39;,
+ &#39;_info_repr&#39;,
+ &#39;_init_mgr&#39;,
+ &#39;_internal_get_values&#39;,
+ &#39;_internal_names&#39;,
+ &#39;_internal_names_set&#39;,
+ &#39;_is_builtin_func&#39;,
+ &#39;_is_cached&#39;,
+ &#39;_is_copy&#39;,
+ &#39;_is_datelike_mixed_type&#39;,
+ &#39;_is_homogeneous_type&#39;,
+ &#39;_is_label_or_level_reference&#39;,
+ &#39;_is_label_reference&#39;,
+ &#39;_is_level_reference&#39;,
+ &#39;_is_mixed_type&#39;,
+ &#39;_is_numeric_mixed_type&#39;,
+ &#39;_is_view&#39;,
+ &#39;_ix&#39;,
+ &#39;_ixs&#39;,
+ &#39;_join_compat&#39;,
+ &#39;_maybe_cache_changed&#39;,
+ &#39;_maybe_update_cacher&#39;,
+ &#39;_metadata&#39;,
+ &#39;_needs_reindex_multi&#39;,
+ &#39;_obj_with_exclusions&#39;,
+ &#39;_protect_consolidate&#39;,
+ &#39;_reduce&#39;,
+ &#39;_reindex_axes&#39;,
+ &#39;_reindex_columns&#39;,
+ &#39;_reindex_index&#39;,
+ &#39;_reindex_multi&#39;,
+ &#39;_reindex_with_indexers&#39;,
+ &#39;_repr_data_resource_&#39;,
+ &#39;_repr_fits_horizontal_&#39;,
+ &#39;_repr_fits_vertical_&#39;,
+ &#39;_repr_html_&#39;,
+ &#39;_repr_latex_&#39;,
+ &#39;_reset_cache&#39;,
+ &#39;_reset_cacher&#39;,
+ &#39;_sanitize_column&#39;,
+ &#39;_selected_obj&#39;,
+ &#39;_selection&#39;,
+ &#39;_selection_list&#39;,
+ &#39;_selection_name&#39;,
+ &#39;_series&#39;,
+ &#39;_set_as_cached&#39;,
+ &#39;_set_axis&#39;,
+ &#39;_set_axis_name&#39;,
+ &#39;_set_is_copy&#39;,
+ &#39;_set_item&#39;,
+ &#39;_set_value&#39;,
+ &#39;_setitem_array&#39;,
+ &#39;_setitem_frame&#39;,
+ &#39;_setitem_slice&#39;,
+ &#39;_setup_axes&#39;,
+ &#39;_slice&#39;,
+ &#39;_stat_axis&#39;,
+ &#39;_stat_axis_name&#39;,
+ &#39;_stat_axis_number&#39;,
+ &#39;_take_with_is_copy&#39;,
+ &#39;_to_dict_of_blocks&#39;,
+ &#39;_try_aggregate_string_function&#39;,
+ &#39;_typ&#39;,
+ &#39;_update_inplace&#39;,
+ &#39;_validate_dtype&#39;,
+ &#39;_values&#39;,
+ &#39;_where&#39;,
+ &#39;_xs&#39;,
+ &#39;abs&#39;,
+ &#39;add&#39;,
+ &#39;add_prefix&#39;,
+ &#39;add_suffix&#39;,
+ &#39;agg&#39;,
+ &#39;aggregate&#39;,
+ &#39;align&#39;,
+ &#39;all&#39;,
+ &#39;any&#39;,
+ &#39;append&#39;,
+ &#39;apply&#39;,
+ &#39;applymap&#39;,
+ &#39;asfreq&#39;,
+ &#39;asof&#39;,
+ &#39;assign&#39;,
+ &#39;astype&#39;,
+ &#39;at&#39;,
+ &#39;at_time&#39;,
+ &#39;attrs&#39;,
+ &#39;axes&#39;,
+ &#39;between_time&#39;,
+ &#39;bfill&#39;,
+ &#39;bool&#39;,
+ &#39;boxplot&#39;,
+ &#39;clip&#39;,
+ &#39;columns&#39;,
+ &#39;combine&#39;,
+ &#39;combine_first&#39;,
+ &#39;convert_dtypes&#39;,
+ &#39;copy&#39;,
+ &#39;corr&#39;,
+ &#39;corrwith&#39;,
+ &#39;count&#39;,
+ &#39;cov&#39;,
+ &#39;cummax&#39;,
+ &#39;cummin&#39;,
+ &#39;cumprod&#39;,
+ &#39;cumsum&#39;,
+ &#39;describe&#39;,
+ &#39;diff&#39;,
+ &#39;div&#39;,
+ &#39;divide&#39;,
+ &#39;dot&#39;,
+ &#39;drop&#39;,
+ &#39;drop_duplicates&#39;,
+ &#39;droplevel&#39;,
+ &#39;dropna&#39;,
+ &#39;dtypes&#39;,
+ &#39;duplicated&#39;,
+ &#39;empty&#39;,
+ &#39;eq&#39;,
+ &#39;equals&#39;,
+ &#39;eval&#39;,
+ &#39;ewm&#39;,
+ &#39;expanding&#39;,
+ &#39;explode&#39;,
+ &#39;ffill&#39;,
+ &#39;fillna&#39;,
+ &#39;filter&#39;,
+ &#39;first&#39;,
+ &#39;first_valid_index&#39;,
+ &#39;floordiv&#39;,
+ &#39;from_dict&#39;,
+ &#39;from_records&#39;,
+ &#39;ge&#39;,
+ &#39;get&#39;,
+ &#39;groupby&#39;,
+ &#39;gt&#39;,
+ &#39;head&#39;,
+ &#39;hist&#39;,
+ &#39;iat&#39;,
+ &#39;idxmax&#39;,
+ &#39;idxmin&#39;,
+ &#39;iloc&#39;,
+ &#39;index&#39;,
+ &#39;infer_objects&#39;,
+ &#39;info&#39;,
+ &#39;insert&#39;,
+ &#39;interpolate&#39;,
+ &#39;isin&#39;,
+ &#39;isna&#39;,
+ &#39;isnull&#39;,
+ &#39;items&#39;,
+ &#39;iteritems&#39;,
+ &#39;iterrows&#39;,
+ &#39;itertuples&#39;,
+ &#39;join&#39;,
+ &#39;keys&#39;,
+ &#39;kurt&#39;,
+ &#39;kurtosis&#39;,
+ &#39;last&#39;,
+ &#39;last_valid_index&#39;,
+ &#39;le&#39;,
+ &#39;loc&#39;,
+ &#39;lookup&#39;,
+ &#39;lt&#39;,
+ &#39;mad&#39;,
+ &#39;mask&#39;,
+ &#39;max&#39;,
+ &#39;mean&#39;,
+ &#39;median&#39;,
+ &#39;melt&#39;,
+ &#39;memory_usage&#39;,
+ &#39;merge&#39;,
+ &#39;min&#39;,
+ &#39;mod&#39;,
+ &#39;mode&#39;,
+ &#39;mul&#39;,
+ &#39;multiply&#39;,
+ &#39;ndim&#39;,
+ &#39;ne&#39;,
+ &#39;nlargest&#39;,
+ &#39;notna&#39;,
+ &#39;notnull&#39;,
+ &#39;nsmallest&#39;,
+ &#39;nunique&#39;,
+ &#39;pct_change&#39;,
+ &#39;pipe&#39;,
+ &#39;pivot&#39;,
+ &#39;pivot_table&#39;,
+ &#39;plot&#39;,
+ &#39;pop&#39;,
+ &#39;pow&#39;,
+ &#39;prod&#39;,
+ &#39;product&#39;,
+ &#39;quantile&#39;,
+ &#39;query&#39;,
+ &#39;radd&#39;,
+ &#39;rank&#39;,
+ &#39;rdiv&#39;,
+ &#39;reindex&#39;,
+ &#39;reindex_like&#39;,
+ &#39;rename&#39;,
+ &#39;rename_axis&#39;,
+ &#39;reorder_levels&#39;,
+ &#39;replace&#39;,
+ &#39;resample&#39;,
+ &#39;reset_index&#39;,
+ &#39;rfloordiv&#39;,
+ &#39;rmod&#39;,
+ &#39;rmul&#39;,
+ &#39;rolling&#39;,
+ &#39;round&#39;,
+ &#39;rpow&#39;,
+ &#39;rsub&#39;,
+ &#39;rtruediv&#39;,
+ &#39;sample&#39;,
+ &#39;select_dtypes&#39;,
+ &#39;sem&#39;,
+ &#39;set_axis&#39;,
+ &#39;set_index&#39;,
+ &#39;shape&#39;,
+ &#39;shift&#39;,
+ &#39;size&#39;,
+ &#39;skew&#39;,
+ &#39;slice_shift&#39;,
+ &#39;sort_index&#39;,
+ &#39;sort_values&#39;,
+ &#39;squeeze&#39;,
+ &#39;stack&#39;,
+ &#39;std&#39;,
+ &#39;style&#39;,
+ &#39;sub&#39;,
+ &#39;subtract&#39;,
+ &#39;sum&#39;,
+ &#39;swapaxes&#39;,
+ &#39;swaplevel&#39;,
+ &#39;tail&#39;,
+ &#39;take&#39;,
+ &#39;to_clipboard&#39;,
+ &#39;to_csv&#39;,
+ &#39;to_dict&#39;,
+ &#39;to_excel&#39;,
+ &#39;to_feather&#39;,
+ &#39;to_gbq&#39;,
+ &#39;to_hdf&#39;,
+ &#39;to_html&#39;,
+ &#39;to_json&#39;,
+ &#39;to_latex&#39;,
+ &#39;to_markdown&#39;,
+ &#39;to_numpy&#39;,
+ &#39;to_parquet&#39;,
+ &#39;to_period&#39;,
+ &#39;to_pickle&#39;,
+ &#39;to_records&#39;,
+ &#39;to_sql&#39;,
+ &#39;to_stata&#39;,
+ &#39;to_string&#39;,
+ &#39;to_timestamp&#39;,
+ &#39;to_xarray&#39;,
+ &#39;transform&#39;,
+ &#39;transpose&#39;,
+ &#39;truediv&#39;,
+ &#39;truncate&#39;,
+ &#39;tshift&#39;,
+ &#39;tz_convert&#39;,
+ &#39;tz_localize&#39;,
+ &#39;unstack&#39;,
+ &#39;update&#39;,
+ &#39;values&#39;,
+ &#39;var&#39;,
+ &#39;where&#39;,
+ &#39;xs&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<p>This shows a long list of methods; you will learn more about many of these as we progress through the course.</p>
+</div>
+</div>
+
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="index.html" title="previous page">Preface {-}</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Russell A. Poldrack<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    <script src="_static/js/index.js"></script>
+    
+  </body>
+</html>
