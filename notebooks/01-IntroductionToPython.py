@@ -44,7 +44,7 @@
 #
 #
 
-# l## Getting started with Python
+# ## Getting started with Python
 #
 # When we work with Python, we can do this at the command line in a terminal or (as we will do) using a *Jupyter notebook*.
 # Notebooks are composed of *cells*, each of which can contain either Python code or text.  
@@ -114,9 +114,9 @@ True == 1
 
 # This will become important later on, when we work with probabilities.
 
-# ## 1.4 Variables
+# ## Variables
 #
-# A variable is a symbol that stands for another value (just like “X” in algebra). We can create a variable by assigning a value to it using the `=` operator. If we then type the name of the variable, Python will print out its value.
+# A variable is a symbol that stands for another value (just like “X” in algebra). We can create a variable by assigning a value to it using the `=` operator. If we then type the name of the variable, Python will print out its value --- as long as that variable name is the last entry in the cell.
 
 x = 4
 x
@@ -133,31 +133,31 @@ x = x + 1
 
 x
 
-# ## 1.5 Libraries
+# ## Libraries
 #
 # Although Python has many useful features, many of the features we will need are not contained in the primary Python library but instead come from open source libraries that have been developed by various members of the python community.
 #
-# Two packages that we will use extensively are NumPy and Pandas. These libraries are part of the SciPy stack, a group of Python libraries used for scientific computing.
+# Two packages that we will use extensively are [NumPy](https://numpy.org/) and [Pandas](https://pandas.pydata.org/). These libraries are part of the [SciPy](https://www.scipy.org/) stack, a group of Python libraries used for scientific computing.
 #
-# In Python, to work with a library, we first have to **import** it and specify how we are going to call on the functions of that library (functions will be explained in more detail below).
+# In Python, to work with a library, we first have to *import* it and specify how we are going to call on the functions of that library (functions will be explained in more detail below).
 #
 # Here is how we will import NumPy:
 
 import numpy as np
 
-# Now, when we call on a NumPy function, we will use the prefix np. This will be made clearer below.
+# Now, when we call on a NumPy function, we will use the prefix ``np```. This will be made clearer below.
 #
-# We also import pandas, specifying **pd** as the prefix:
+# We also import pandas, specifying ``pd``` as the prefix:
 
 import pandas as pd  ## RP: pd is more common abbreviation
 
-# After importing a library, you can now access all of its features using the prefix specified. If you want to learn more about a library's features, you can find them using the ``help()`` function:
+# After importing a library, you can now access all of its features using the specified prefix. If you want to learn more about a library's features, you can find them using the ``help()`` function:
 
 # + tags=[]
-help(np.zeros) ## RP: using a function with a shorter/simpler help output
+help(np.zeros)
 # -
 
-# ## 1.5 Functions
+# ## Functions
 #
 # A function is an operator that takes some input and gives an output based on the input. For example, let’s say that we have a number, and we want to determine its absolute value. NumPy has a function called ``abs()`` that takes in a number and outputs its absolute value:
 
@@ -225,8 +225,8 @@ my_random_numbers
 
 # You will see that I set the variable to the name ``my_random_numbers``. In general, it’s always good to be as descriptive as possible when creating variables; rather than calling them x or y, use names that describe the actual contents. This will make it much easier to understand what’s going on once things get more complicated.
 
-# ## 1.6 Arrays
-# You may have noticed that the my_random_numbers created above wasn’t like the variables that we had seen before — it contained a number of values in it. We refer to this kind of variable as an array.
+# ## Arrays
+# You may have noticed that the my_random_numbers created above wasn’t like the variables that we had seen before — it contained several values in it. We refer to this kind of variable as an *array*.
 #
 # If you want to create your own new array, you can do that using the ``np.array()`` function:
 
@@ -250,43 +250,14 @@ my_array[1:3]
 my_array[2] = 7
 my_array
 
-# **RP: I wonder if we really need this here...**
+# ## Math with vectors and matrices
 #
-# You will often want to work with more data than can be stored in a vector. In this case, you will work with a matrix. While a vector is an array of numbers in just one dimension (either a row or a column), a matrix is an array of numbers with more than one dimension. Typically, you will work with 2-dimensional matrices - arrays with multiple columns and multiple rows.
+# You can apply mathematical operations to the elements of an array in the same way that you apply them to regular variables. 
+# Let's say that we want to multiply each element in the array by the number 5:
 #
-# To build a matrix, you use the np.array command again, this time arranging the numbers according to their places in the matrix. For example:
-
-my_2d_array = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
-my_2d_array
-
-# When you access the individual elements of this array, you have to specific indices for both dimensions - rows first, then columns. Remember that index values start at 0.
-#
-# Let’s say we want to see the value in the second place (column) of the third row:
-
-my_2d_array[2, 1]
-
-# ## 1.7 Math with vectors and matrices
-#
-# You can apply mathematical operations to the elements of an array using NumPy functions, such as multiply.
-#
-# **RP: I would start with standard operators rather than using the np functions.  
-#
-
-## RP: there was an error here, this was being defined as this_array rather than my_array
-#this_array = np.array([4, 5, 6])
-my_array = np.array([4, 5, 6])
-my_array_times_five = np.multiply(my_array, 5)
-my_array_times_five
-
-# Note that what you get using more conventional notation (* for multiply) is quite different:  **RP: This is incorrect**
-
-# +
-
-assert np.allclose(my_array * 5, np.multiply(my_array, 5))
-# -
 
 my_array = np.array([4, 5, 6])
-my_array_times_five = my_array*5
+my_array_times_five = my_array * 5
 my_array_times_five
 
 # You can also apply mathematical operations on pairs of vectors. In this case, each matching element is used for the operation.
@@ -297,8 +268,8 @@ my_first_array + my_second_array
 
 # We can also apply logical operations across vectors; again, this will return a vector with the operation applied to the pairs of values at each position.
 
-array_a = np.array([1,2,3])
-array_b = np.array([1,2,4])
+array_a = np.array([1, 2, 3])
+array_b = np.array([1, 2, 4])
 array_a == array_b
 
 # Most functions will work with vectors just as they would with a single number. For example, let’s say we wanted to obtain the trigonometric sine for each of a set of values. We could create a vector and pass it to the ``np.sin()`` function, which will return as many sine values as there are input values:
@@ -307,30 +278,39 @@ my_angle_values = np.array([0, 1, 2])
 my_sin_values = np.sin(my_angle_values)
 my_sin_values
 
-# ## 1.8 Data Frames
+# ## Dictionaries
+# There is another kind of variable in Python that is very useful, which is known as a *dictionary*.  A dictionary is like a container that 
+# stores values that are associated with particular *keys*.  A dictionary is created using squiggly brackets; each entry must include a key and a value (which can be any kind of variable, including another dictionary), separated by a color.  For example, let's say that we wanted to store the ages of three people:
+
+ages = {'Lisa': 23, 'Angela': 25, 'Monique': 27}
+ages
+
+# To access the elements, we use the names of each field as an index
+
+ages['Lisa']
+
+# ## Data Frames
 # Often in a dataset we will have a number of different variables that we want to work with. Instead of having a different named variable that stores each one, it is often useful to combine all of the separate variables into a single package, which is referred to as a data frame.
 #
 # If you are familiar with a spreadsheet (say from Microsoft Excel) then you already have a basic understanding of a data frame.
 # Let’s say that we have values of price and mileage for three different types of cars. We could start by creating a variable for each one, making sure that the three cars are in the same order for each of the variables:
 
-car_model=("Ford Fusion", "Hyundai Accent", "Toyota Corolla")
-car_price=np.array([25000, 16000, 18000])
-car_mileage=np.array([27, 36, 32])
+car_model = ("Ford Fusion", "Hyundai Accent", "Toyota Corolla")
+car_price = np.array([25000, 16000, 18000])
+car_mileage = np.array([27, 36, 32])
 
 # We can then combine these into a single data frame, using the pd.DataFrame() function. I like to use "_df" in the names of data frames just to make clear that it’s a data frame, so we will call this one “cars_df”:
 
-# +
-## RP: It might be useful to either describe dictionaries above, or to say "this is a dictionary, we will learn about them later"
-## otherwise they might be confused about this construction
-
-data = {
- 'Price': car_price,
-     'Mileage': car_mileage}
+data = {'Price': car_price,
+        'Mileage': car_mileage}
 cars_df2 = pd.DataFrame(data, index=car_model)
 cars_df2
-# -
 
-# Each of the columns in the data frame contains one of the variables, with the name that we gave it when we created the data frame. We can access each of those columns using the same ``[ ]`` indexing we use to access arrays, but we can use the column names we specified for the dataframe. For example, if we wanted to access the mileage variable, we would combine the name of the data frame with the name of the variable as follows:
+
+# Each of the columns in the data frame contains one of the variables, with the name that we gave it when we created the data frame. 
+# We can access each of those columns using the same ``[ ]`` indexing we use to access arrays, but we can use the column names we 
+# specified for the dataframe. For example, if we wanted to access the mileage variable, we would combine the name of the data frame
+# with the name of the variable as follows:
 
 cars_df2['Mileage']
 
@@ -354,12 +334,24 @@ cars_df2.loc[["Toyota Corolla"], ['Mileage']]
 
 # We can also filter by some characteristics of the car.
 
-cars_df2[(cars_df2['Mileage'] > 30) &    
-   (cars_df2['Price']<18000)]
+cars_df2[(cars_df2['Mileage'] > 30) & (cars_df2['Price'] < 18000)]
 
 # Dataframes are enormously powerful for manipulating ("wrangling") large and complex datasets, which are often what we are dealing with in statistics. For further information on dataframes in pandas, see: https://towardsdatascience.com/my-python-pandas-cheat-sheet-746b11e44368
 
 # ## 1.10 Working with data files
-# When we are doing statistics, we often need to load in the data that we will analyze. Those data will live in a file on one’s computer or on the internet. For this example, let’s use a file that is hosted on the internet, which contains the gross domestic product (GDP) values for a number of countries around the world. This file is stored as comma-delimited text, meaning that the values for each of the variables in the dataset are separate by commas. There are three variables: the relative rank of the countries, the name of the country, and its GDP value. Here is what the first few lines of the file look like:
+# When we are doing statistics, we often need to load in the data that we will analyze. Those data will live in a file on one’s computer or on the internet. For this example, let’s use a file that is hosted on the internet, which contains the gross domestic product (GDP) values for a number of countries around the world. 
+# This file is stored as a *comma-separated value* (or CSV) file, meaning that the values for each of the variables in the dataset are separated by commas. There are three variables: the relative rank of the countries, the name of the country, and its GDP value. Here is what the first few lines of the file look like:
+# We can load the file using the ``pd.read_csv()`` function:
 
+data_url = 'https://raw.githubusercontent.com/psych10/psych10/master/notebooks/Session03-IntroToR/gdp.csv'
+gdp_data = pd.read_csv(data_url)
 
+# A data frame, like every variable in Python is an *object*.  Later in the book we will discuss object-oriented programming, but the important point for now is that objects can both store information and can do things.  Each object has a set of *methods*, which we denote using a period. For example, the data frame has a method called ``.head()`` which will show us the top 5 rows of the data frame:
+
+gdp_data.head()
+
+# If we want to see the list of all of the methods that are associated with a particular object, we can use the ``dir()`` function:
+
+dir(gdp_data)
+
+# This shows a long list of methods; you will learn more about many of these as we progress through the course.
