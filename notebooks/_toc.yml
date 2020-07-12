@@ -2,7 +2,7 @@
 - file: index
   sections:
     - file: 01-IntroductionToPython.ipynb
-    # - file: Part2_SummarizingData.ipynb
+    - file: 02-SummarizingData.ipynb
     # - file: Part3_DataVisualization.ipynb
     # - file: Part4_FittingSimpleModels.ipynb
     # - file: Part5_Probability.ipynb
