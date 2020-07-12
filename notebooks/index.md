@@ -1,6 +1,6 @@
 # Preface
 
-**NOTE**: This book is a work in progress!  Please check back soon for more.
+**NOTE**: This book is a work in progress!  Please check back regularly for updates.
 
 This book is a companion to [Statistical Thinking for the 21st Century](https://statsthinking21.org/), an open source statistical textbook. It focuses on the use of the Python statistical programming language for statistics and data analysis.   
 
