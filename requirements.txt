@@ -1,3 +1,4 @@
 jupyter-book
 numpy
 pandas
+scikit-learn
