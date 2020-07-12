@@ -1,0 +1,38 @@
+#######################################################################################
+# Book settings
+title : Python Compantion to Statistical Thinking in the 21st Century
+author: Russell A. Poldrack
+# logo: 'qe-logo-large.png'
+
+# Information about where the book exists on the web
+description: >-
+  A guide to statistical data analysis using Python
+
+#######################################################################################
+# Execution settings
+execute:
+  execute_notebooks           : cache
+
+#######################################################################################
+# HTML-specific settings
+html:
+  home_page_in_navbar         : false
+
+# #######################################################################################
+# Interact link settings
+notebook_interface            : "notebook"
+
+#######################################################################################
+# Launch button settings
+repository:
+  url                         : https://github.com/statsthinking21/statsthinking21-python
+  path_to_book                : "notebooks"
+
+binder:
+  binderhub_url               : "https://mybinder.org"
+  text                        : "Launch binder"
+
+latex:
+  latex_engine                : "xelatex"
+  latex_documents:
+    targetname: book.tex
