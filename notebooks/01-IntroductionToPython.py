@@ -15,6 +15,7 @@
 # ---
 
 # # Introduction to Python
+# *Contributors*: John Butler, Russell Poldrack
 #
 # In this chapter we will give you an overview of the basic features of the Python programming language.  This introduction won't make you an ace programmer --- only practice will do that. However, it will give you an introduction to some of the most important features of the language.
 #
