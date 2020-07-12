@@ -95,4 +95,73 @@ good_health_df.shape
 
 nhanes_data['WeightLbs'] = nhanes_data['WeightLbs'] * 2.205
 
-# This shows another way to refer to a particular variable in a dataframe: simply put its name in square brackets.  Pandas also has 
+# This shows another way to refer to a particular variable in a dataframe: simply put its name in square brackets.  Pandas also has the ability to replace particular values in a variable.  First, let's look at the values of the `Gender` variable in the data frame, to see what values it takes. We can see all of the unique values of a variable using the `.unique()` operator:
+
+nhanes_data['Gender'].unique()
+
+# Now let's say that we wanted to recode the `Gender` variable so that instead of "Female" and "Male" its values were "F" and "M".  One way to do this would be to use the `.rename()` operator on the data frame:
+
+
+nhanes_data['GenderMF'] = nhanes_data['Gender'].replace({'Female': 'F', 'Male': 'M'})
+nhanes_data['GenderMF'].unique()
+
+
+# ### Understanding your data
+
+# Let's say that we want to learn more about the variable labeled `GeneralHealthCondition` in the dataset.  We can load some information about that variable using the `open_variable_page()` function from the `nhanes` package:
+
+from nhanes.load import open_variable_page
+open_variable_page('GeneralHealthCondition')
+
+# This shows us the question that was asked ("Would you say {your/SP's} health in general is...").
+
+# ## Summarizing data using a frequency distribution
+
+# Let's say that we want to know the frequencies of all of the different answers to the GeneralHealthCondition question.  We can do this using the `.value_counts()` method of the data frame:
+
+nhanes_data['GeneralHealthCondition'].value_counts()
+
+# It's usually more helpful to present a *relative frequency distribution*, which shows proportions rather than counts.  We can obtain that by simply dividing the frequency distribution by the total number of cases, which we can obtain using the `.sum()` operator:
+
+GeneralHealthCondition_frequency_dist = nhanes_data['GeneralHealthCondition'].value_counts()
+GeneralHealthCondition_frequency_dist / GeneralHealthCondition_frequency_dist.sum()
+
+
+# ### Data Cleaning
+
+# When we work with real data, they often have problems that we have to fix before we can analyze them properly.  An example is the `GeneralHealthCondition` variable that we worked with in the previous example. You may have noticed that the values of the variable had some extranous information, which were held over from the way that the question is worded (including "Fair or" and "Poor?").  We can clean these up by replacing the problematic values using the `.replace()` method:
+
+nhanes_data['GeneralHealthConditionFixed'] = nhanes_data['GeneralHealthCondition'].replace({'Fair or': 'Fair', 'Poor?': 'Poor'})
+nhanes_data['GeneralHealthConditionFixed'].unique()
+
+# Now let's look at a more complex example.  Let's say that we want to know who is currently a smokker in the NHANES sample.  If we look more closely at the [details of the smoking questionnaire](https://wwwn.cdc.gov/Nchs/Nhanes/2017-2018/SMQ_J.htm), we will see that not all individuals got the same questions; for example, if a person said that they had not smoked more than 100 cigarettes in their life (recorded in the `SmokedAtLeast100CigarettesInLife` variable), then they were not asked the question about whether they currently smoked cigarettes (stored as `DoYouNowSmokeCigarettes`).  We can see this in the number of respondents to each question:
+
+print(nhanes_data['SmokedAtLeast100CigarettesInLife'].value_counts())
+
+nhanes_data['DoYouNowSmokeCigarettes'].value_counts()
+
+# Looking at these two variables, it's plain to see that there are many more values included in the first question than in the second. Let's look at bit more closely at the data to see what's going on:
+
+nhanes_data[['SmokedAtLeast100CigarettesInLife', 'DoYouNowSmokeCigarettes']].head(10)
+
+# Here we can see that anyone who said No to the question about having smoked at least 100 cigarettes in their life (which is coded as zero) has a missing value for the question about current smoking (since that question wasn't asked to these individuals).  To clean up these data, we need to do two things. First, we need to remove the individuals who have NaN for both questions, then we need to recode the NaN's for the second question for those people who said no on the first question.  To do this, let's first create a new data frame that contains just the variables we are interested in:
+
+smoking_df = nhanes_data[['SmokedAtLeast100CigarettesInLife', 'DoYouNowSmokeCigarettes']]
+smoking_df.shape
+
+# First let's remove any rows that have NaN in both columns. We can do this using the `.dropna()` method, which has an option that allows us to specify that we only drop rows that are all NaN (by setting `how='all'`):
+
+smoking_df = smoking_df.dropna(how='all')
+smoking_df.shape
+
+# Next we need to recode the NaN values for the second question, for those individuals who said no to the first question.  We will replace them with the answer 'Not at all'.  To do this, we can use the `.loc` operator with a test for the value of the first column:
+
+smoking_df.loc[smoking_df['SmokedAtLeast100CigarettesInLife']==0, 'DoYouNowSmokeCigarettes'] = 'Not at all'
+smoking_df.head()
+
+# This replaced the NaN values in the second question, but only for those individuals who said no to the first question.  Now we can summarize the frequency of smoking across the entire group:
+
+smoking_df['DoYouNowSmokeCigarettes'].value_counts() / smoking_df['DoYouNowSmokeCigarettes'].value_counts().sum()
+
+In the next chapter you will learn how to visualize data like these using statistical graphs.
+
