@@ -163,5 +163,5 @@ smoking_df.head()
 
 smoking_df['DoYouNowSmokeCigarettes'].value_counts() / smoking_df['DoYouNowSmokeCigarettes'].value_counts().sum()
 
-In the next chapter you will learn how to visualize data like these using statistical graphs.
+# In the next chapter you will learn how to visualize data like these using statistical graphs.
 
