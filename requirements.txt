@@ -3,3 +3,4 @@ numpy
 pandas
 scikit-learn
 nhanes
+jupytext
