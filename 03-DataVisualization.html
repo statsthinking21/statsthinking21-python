@@ -191,6 +191,7 @@
 <span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
 </pre></div>
 </div>
 </div>
@@ -341,7 +342,14 @@
 </div>
 <p>This tells us that the median male is taller than 75% of all of the females in the sample.</p>
 <p>Another type of plot that is commonly used is the <em>violin plot</em>, which shows the shape of the entire distribution:</p>
-<p>sns.violinplot(x=’Gender’, y=’StandingHeightCm’, data=adult_nhanes_data)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+<span class="n">sns</span><span class="o">.</span><span class="n">violinplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;Gender&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;StandingHeightCm&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">adult_nhanes_data</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
 </div>
 <div class="section" id="scatter-plot">
 <h2>Scatter plot<a class="headerlink" href="#scatter-plot" title="Permalink to this headline">¶</a></h2>
