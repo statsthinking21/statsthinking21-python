@@ -2,11 +2,11 @@
 # ---
 # jupyter:
 #   jupytext:
-#     formats: ipynb,py:light
+#     formats: ipynb,py:percent
 #     text_representation:
 #       extension: .py
-#       format_name: light
-#       format_version: '1.5'
+#       format_name: percent
+#       format_version: '1.3'
 #       jupytext_version: 1.4.2
 #   kernelspec:
 #     display_name: Python 3
@@ -14,6 +14,7 @@
 #     name: python3
 # ---
 
+# %% [markdown]
 # # Introduction to Python
 # *Contributors*: John Butler, Russell Poldrack
 #
@@ -45,6 +46,7 @@
 #
 #
 
+# %% [markdown]
 # ## Getting started with Python
 #
 # When we work with Python, we can do this at the command line in a terminal or (as we will do) using a *Jupyter notebook*.
@@ -58,12 +60,16 @@
 #
 # In the simplest case, if we just type in a number, the cell will simply respond with that number. In the code cell below, we have typed the number 3. Click on the cell to edit or run the code again (Shift+Enter).
 
+# %%
 3
 
+# %% [markdown]
 # Let’s try something a bit more complicated:
 
+# %%
 3 + 4
 
+# %% [markdown]
 # Python spits out the answer to whatever you type in, as long as it can figure it out. 
 #
 # Now let’s try typing in a word:
@@ -82,58 +88,82 @@
 # ```
 #
 
+# %% [markdown]
 # What? Why did this happen? When Python encounters a letter or word, it assumes that it is referring to the *name of a variable* — think of X from high school algebra. We will return to variables in a little while, but if we want Python to print out the word hello then we need to contain it in quotation marks (single or double, it doesn't matter), telling Python that it is a character string.
 
+# %%
 "hello"
 
+# %% [markdown]
 # There are many types of variables in Python. You have already seen two examples: integers (like the number 3) and character strings (like the word “hello”). Another important one is real numbers, which are the most common kind of numbers that we will deal with in statistics, which span the entire number line including the spaces in between the integers. For example:
 
+# %%
 1 / 6
 
 
+# %% [markdown]
 # By default, Python uses floating-point numbers, which provide a high level of precision. In many cases, however, you may want to round floating-point outputs to two or three decimal places, which can be done with the ``round()`` function.
 
+# %%
 round(1 / 6, 3)
 
+# %% [markdown]
 # Another kind of variable is known as a logical variable, because it is based on the idea from logic that a statement can be either True or False.
 #
 # To determine whether a statement is true or not, we use logical operators. You are already familiar with some of these, like the greater-than (`>`) and less-than (`<`) operators.
 
+# %%
 1 < 3
 
+# %%
 2 > 4
 
+# %% [markdown]
 # Often we want to know whether two numbers are equal or not equal to one another. There are special operators in python to do this: `==` for equals, and `!=` for not-equals:
 
+# %%
 3 == 3
 
+# %%
 4 != 4
 
+# %% [markdown]
 # One very important thing to know is that Python treats *True* the same as the number one, and *False* the same as the number zero.  To see this, let's test whether ``True`` is equal to the number one:
 
+# %%
 True == 1
 
+# %% [markdown]
 # This will become important later on, when we work with probabilities.
 
+# %% [markdown]
 # ## Variables
 #
 # A variable is a symbol that stands for another value (just like “X” in algebra). We can create a variable by assigning a value to it using the `=` operator. If we then type the name of the variable, Python will print out its value --- as long as that variable name is the last entry in the cell.
 
+# %%
 x = 4
 x
 
+# %% [markdown]
 # The variable now stands for the value that it contains, so we can perform operations on it and get the same answer as if we used the value itself.
 
+# %%
 x + 3
 
+# %%
 x == 5
 
+# %% [markdown]
 # We can change the value of a variable by simply assigning a new value to it.
 
+# %%
 x = x + 1
 
+# %%
 x
 
+# %% [markdown]
 # ## Libraries
 #
 # Although Python has many useful features, many of the features we will need are not contained in the primary Python library but instead come from open source libraries that have been developed by various members of the python community.
@@ -144,29 +174,36 @@ x
 #
 # Here is how we will import NumPy:
 
+# %%
 import numpy as np
 
+# %% [markdown]
 # Now, when we call on a NumPy function, we will use the prefix ``np```. This will be made clearer below.
 #
 # We also import pandas, specifying ``pd``` as the prefix:
 
+# %%
 import pandas as pd  ## RP: pd is more common abbreviation
 
+# %% [markdown]
 # After importing a library, you can now access all of its features using the specified prefix. If you want to learn more about a library's features, you can find them using the ``help()`` function:
 
-# + tags=[]
+# %% tags=[]
 help(np.zeros)
-# -
 
+# %% [markdown]
 # ## Functions
 #
 # A function is an operator that takes some input and gives an output based on the input. For example, let’s say that we have a number, and we want to determine its absolute value. NumPy has a function called ``abs()`` that takes in a number and outputs its absolute value:
 
+# %%
 x = -3
 np.abs(x)
 
+# %% [markdown]
 # Most functions take an input like the ``np.abs()`` function (which we call an argument), but some also have special keywords that can be used to change how the function works. For example, the ``np.random.normal()`` function generates random numbers from a normal distribution (which we will learn more about later). Have a look at the help page for this function by typing ``help(np.random.normal)`` in the console, which will cause a help page to appear below. The first section of the help page for the ``np.random.normal()`` function shows the following:
 
+# %% [markdown]
 #     normal(...) method of numpy.random.mtrand.RandomState instance
 #     normal(loc=0.0, scale=1.0, size=None)
 #     
@@ -200,6 +237,7 @@ np.abs(x)
 #     out : ndarray or scalar
 #         Drawn samples from the parameterized normal distribution.
 
+# %% [markdown]
 # You can also see some examples of how the function is used by looking further down in the help output. For example, you will find the text:
 #
 #     Draw samples from the distribution:
@@ -216,143 +254,191 @@ np.abs(x)
 #
 #
 
+# %%
 np.random.normal()
 
+# %% [markdown]
 # If we wanted to create random numbers with a different mean and standard deviation (say mean == 100 and standard deviation == 15), then we could simply set those values in the function call. Let’s say that we would like 5 random numbers from this distribution:
 #
 
+# %%
 my_random_numbers = np.random.normal(100, 15, 5)
 my_random_numbers
 
+# %% [markdown]
 # You will see that I set the variable to the name ``my_random_numbers``. In general, it’s always good to be as descriptive as possible when creating variables; rather than calling them x or y, use names that describe the actual contents. This will make it much easier to understand what’s going on once things get more complicated.
 
+# %% [markdown]
 # ## Arrays
 # You may have noticed that the my_random_numbers created above wasn’t like the variables that we had seen before — it contained several values in it. We refer to this kind of variable as an *array*.
 #
 # If you want to create your own new array, you can do that using the ``np.array()`` function:
 
+# %%
 my_array = np.array([4, 5, 6])
 my_array
 
+# %% [markdown]
 # This kind of array is also known as a vector. It is an array of numbers that only has a single dimension - and can be any number of elements long in that single dimension. It can be a row vector (like ``my_array`` above) or a column vector.
 #
 # You can access the individual elements within a vector by using square brackets along with a number that refers to the location within the vector. These index values start at 0, a convention of many programming languages that can take a little getting used to. 
 #
 # Let’s say we want to see the value in the second place of the vector:
 
+# %%
 my_array[1]
 
+# %% [markdown]
 # You can also look at a range of positions, by putting the start and end+1 locations with a colon in between. For example, to see the values in second and third place:
 
+# %%
 my_array[1:3]
 
+# %% [markdown]
 # You can also change the values of specific locations using the same indexing:
 
+# %%
 my_array[2] = 7
 my_array
 
+# %% [markdown]
 # ## Math with vectors and matrices
 #
 # You can apply mathematical operations to the elements of an array in the same way that you apply them to regular variables. 
 # Let's say that we want to multiply each element in the array by the number 5:
 #
 
+# %%
 my_array = np.array([4, 5, 6])
 my_array_times_five = my_array * 5
 my_array_times_five
 
+# %% [markdown]
 # You can also apply mathematical operations on pairs of vectors. In this case, each matching element is used for the operation.
 
+# %%
 my_first_array = np.array([1, 2, 3])
 my_second_array = np.array([10, 20, 20])
 my_first_array + my_second_array
 
+# %% [markdown]
 # We can also apply logical operations across vectors; again, this will return a vector with the operation applied to the pairs of values at each position.
 
+# %%
 array_a = np.array([1, 2, 3])
 array_b = np.array([1, 2, 4])
 array_a == array_b
 
+# %% [markdown]
 # Most functions will work with vectors just as they would with a single number. For example, let’s say we wanted to obtain the trigonometric sine for each of a set of values. We could create a vector and pass it to the ``np.sin()`` function, which will return as many sine values as there are input values:
 
+# %%
 my_angle_values = np.array([0, 1, 2])
 my_sin_values = np.sin(my_angle_values)
 my_sin_values
 
+# %% [markdown]
 # ## Dictionaries
 # There is another kind of variable in Python that is very useful, which is known as a *dictionary*.  A dictionary is like a container that 
 # stores values that are associated with particular *keys*.  A dictionary is created using squiggly brackets; each entry must include a key and a value (which can be any kind of variable, including another dictionary), separated by a color.  For example, let's say that we wanted to store the ages of three people:
 
+# %%
 ages = {'Lisa': 23, 'Angela': 25, 'Monique': 27}
 ages
 
+# %% [markdown]
 # To access the elements, we use the names of each field as an index
 
+# %%
 ages['Lisa']
 
+# %% [markdown]
 # ## Data Frames
 # Often in a dataset we will have a number of different variables that we want to work with. Instead of having a different named variable that stores each one, it is often useful to combine all of the separate variables into a single package, which is referred to as a data frame.
 #
 # If you are familiar with a spreadsheet (say from Microsoft Excel) then you already have a basic understanding of a data frame.
 # Let’s say that we have values of price and mileage for three different types of cars. We could start by creating a variable for each one, making sure that the three cars are in the same order for each of the variables:
 
+# %%
 car_model = ("Ford Fusion", "Hyundai Accent", "Toyota Corolla")
 car_price = np.array([25000, 16000, 18000])
 car_mileage = np.array([27, 36, 32])
 
+# %% [markdown]
 # We can then combine these into a single data frame, using the pd.DataFrame() function. I like to use "_df" in the names of data frames just to make clear that it’s a data frame, so we will call this one “cars_df”:
 
+# %%
 data = {'Price': car_price,
         'Mileage': car_mileage}
 cars_df2 = pd.DataFrame(data, index=car_model)
 cars_df2
 
 
+# %% [markdown]
 # Each of the columns in the data frame contains one of the variables, with the name that we gave it when we created the data frame. 
 # We can access each of those columns using the same ``[ ]`` indexing we use to access arrays, but we can use the column names we 
 # specified for the dataframe. For example, if we wanted to access the mileage variable, we would combine the name of the data frame
 # with the name of the variable as follows:
 
+# %%
 cars_df2['Mileage']
 
+# %% [markdown]
 # This is just like any other vector, in that we can refer to its individual values using square brackets as we did with regular vectors. For example, if we want the mileage value for the car in the second place:
 
+# %%
 cars_df2['Mileage'][1]
 
+# %% [markdown]
 # Similarly, you can perform operations on the vector. For example, we might want to square all the values in the "Price" column:
 
+# %%
 np.square(cars_df2['Price'])
 
+# %% [markdown]
 # Let's say we don't know the organisation of the dataframe, but we want to see the price of a Toyota Corolla. We can  use filtering to obtain certain values from dataframe.
 #
 # Specifing the index that corresponds to "Toyota Corolla" gives you all the values for that row of the dataframe. To do this, we need to use the ``.loc`` operator on the data frame.  The first argument to the ``.loc`` operator refers to the rows in the data frame, whereas the second refers to the columns.
 
+# %%
 cars_df2.loc["Toyota Corolla"]
 
+# %% [markdown]
 # To obtain only the mileage, specify the mileage column.
 
+# %%
 cars_df2.loc[["Toyota Corolla"], ['Mileage']]
 
+# %% [markdown]
 # We can also filter by some characteristics of the car.
 
+# %%
 cars_df2[(cars_df2['Mileage'] > 30) & (cars_df2['Price'] < 18000)]
 
+# %% [markdown]
 # Dataframes are enormously powerful for manipulating ("wrangling") large and complex datasets, which are often what we are dealing with in statistics. For further information on dataframes in pandas, see: https://towardsdatascience.com/my-python-pandas-cheat-sheet-746b11e44368
 
+# %% [markdown]
 # ## 1.10 Working with data files
 # When we are doing statistics, we often need to load in the data that we will analyze. Those data will live in a file on one’s computer or on the internet. For this example, let’s use a file that is hosted on the internet, which contains the gross domestic product (GDP) values for a number of countries around the world. 
 # This file is stored as a *comma-separated value* (or CSV) file, meaning that the values for each of the variables in the dataset are separated by commas. There are three variables: the relative rank of the countries, the name of the country, and its GDP value. Here is what the first few lines of the file look like:
 # We can load the file using the ``pd.read_csv()`` function:
 
+# %%
 data_url = 'https://raw.githubusercontent.com/psych10/psych10/master/notebooks/Session03-IntroToR/gdp.csv'
 gdp_data = pd.read_csv(data_url)
 
+# %% [markdown]
 # A data frame, like every variable in Python is an *object*.  Later in the book we will discuss object-oriented programming, but the important point for now is that objects can both store information and can do things.  Each object has a set of *methods*, which we denote using a period. For example, the data frame has a method called ``.head()`` which will show us the top 5 rows of the data frame:
 
+# %%
 gdp_data.head()
 
+# %% [markdown]
 # If we want to see the list of all of the methods that are associated with a particular object, we can use the ``dir()`` function:
 
+# %%
 dir(gdp_data)
 
+# %% [markdown]
 # This shows a long list of methods; you will learn more about many of these as we progress through the course.
