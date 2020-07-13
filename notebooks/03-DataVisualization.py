@@ -160,33 +160,16 @@ plt.ylabel('Systolic BP - Second reading')
 
 
 # %% [markdown]
-# In this section we will recreate Figure \@ref(fig:challengerTemps) from Chapter \@ref{data-visualization}.  Here is the code to generate the figure; we will go through each of its sections below.
+# In this section we will recreate a version of [Figure 4.2](https://statsthinking21.github.io/statsthinking21-core-site/data-visualization.html#anatomy-of-a-plot) from Statistical Thinking in the 21st Century.  
 
-# %% [markdown]
-# ```{r fig.width=8,fig.height=4,out.height='50%'}
-# oringDf <- read.table("data/orings.csv", sep = ",",
-#                       header = TRUE)
+# %%
 
-# %% [markdown]
-# oringDf %>%
-#   ggplot(aes(x = Temperature, y = DamageIndex)) +
-#   geom_point() +
-#   geom_smooth(method = "loess",
-#               se = FALSE, span = 1) + 
-#   ylim(0, 12) +
-#   geom_vline(xintercept = 27.5, size =8, 
-#              alpha = 0.3, color = "red") +
-#   labs(
-#     y = "Damage Index",
-#     x = "Temperature at time of launch"
-#   ) +
-#   scale_x_continuous(breaks = seq.int(25, 85, 5)) +
-#   annotate(
-#     "text",
-#     angle=90,
-#     x = 27.5,
-#     y = 6,
-#     label = "Forecasted temperature on Jan 28",
-#     size = 5
-#   )
-# ```
+oring_data = pd.read_csv('data/orings.csv', index_col=0)
+
+ax = sns.lineplot(x='Temperature', y='DamageIndex', data=oring_data, ci=None)
+plt.xlabel('Temperature at time of launch')
+plt.ylabel('Damage Index')
+ax.fill_between([26, 29], 0, 12, 
+                facecolor='red', alpha=0.3)
+ax.text(27, 1, 'Forecasted temperature on Jan 28', rotation=90)
+
