@@ -104,53 +104,22 @@ p_hearing_problem = hearing_data['HaveSeriousDifficultyHearing'].mean()
 p_hearing_problem
 
 # %% [markdown]
-# What's the probability for each combination of unhealthy/healthy and over 70/ not? We can create a table that finds the joint probability for each combination:
+# What's the probability for each combination of hearing problems/no problems and over 70/ not? We can create a table that finds the joint probability for each combination, using the `pd.crosstab()` function:
 
 # %%
 joint_table = pd.crosstab(hearing_data.Over70, hearing_data['HaveSeriousDifficultyHearing'], normalize=True)
 joint_table
 
-# ```{r}
-# pBoth <- healthDataFrame %>% 
-#   mutate(
-#     both = Unhealthy*Over70
-#   ) %>%
-#   summarise(
-#     pBoth = mean(both)) %>% 
-#   pull()
 
-# pBoth
-# ```
-
-# Finally, what's the probability of someone being unhealthy, given that they are over 70 years of age?
-
-# ```{r}
-
-# pUnhealthyGivenOver70 <-
-#   healthDataFrame %>%
-#   filter(Over70 == TRUE) %>% # limit to Over70
-#   summarise(pUnhealthy = mean(Unhealthy)) %>% 
-#   pull()
-
-# pUnhealthyGivenOver70
-
-
-# ```
-
-# ```{r}
-# # compute the opposite:
-# # what the probability of being over 70 given that 
-# # one is unhealthy?
-# pOver70givenUnhealthy <-
-#   healthDataFrame %>%
-#   filter(Unhealthy == TRUE) %>% # limit to Unhealthy
-#   summarise(pOver70 = mean(Over70)) %>% 
-#   pull()
-
-# pOver70givenUnhealthy
-
-# ```
-
-
+# %% [markdown]
+# Finally, what's the probability of someone having hearing problems, given that they are over 70 years of age?  To do this, we limit the computation of the probability of having hearing problems to only include those people who are over 70:
 
 # %%
+p_hearingproblem_given_over_70 = hearing_data.query('Over70 == True')['HaveSeriousDifficultyHearing'].mean()
+p_hearingproblem_given_over_70
+
+# %% [markdown]
+# Now compute the opposite: What is the probability of being over 70 given that one has a hearing problem?
+#
+# p_over_70_given_hearingproblem = hearing_data.query('HaveSeriousDifficultyHearing == True')['Over70'].mean()
+# p_over_70_given_hearingproblem
