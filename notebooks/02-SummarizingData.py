@@ -93,7 +93,7 @@ good_health_df.shape
 
 # We can add a new variable to a data frame easily, by simply giving it a new name. Let's say that we wanted to convert the weight value in NHANES (stored in the `WeightKg` variable) from kilograms to pounds.  
 
-nhanes_data['WeightLbs'] = nhanes_data['WeightLbs'] * 2.205
+nhanes_data['WeightLbs'] = nhanes_data['WeightKg'] * 2.205
 
 # This shows another way to refer to a particular variable in a dataframe: simply put its name in square brackets.  Pandas also has the ability to replace particular values in a variable.  First, let's look at the values of the `Gender` variable in the data frame, to see what values it takes. We can see all of the unique values of a variable using the `.unique()` operator:
 
