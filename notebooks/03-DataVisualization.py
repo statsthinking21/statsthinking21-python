@@ -177,7 +177,3 @@ ax.fill_between([26, 29], 0, 12,
 ax.text(27, 1, 'Forecasted temperature on Jan 28', rotation=90)
 plt.show()
 
-
-
-
-# %%
