@@ -1,4 +1,4 @@
 build:
-	jupyter-book build notebooks/
+	jupyter-book -W build notebooks/
 clean:
 	-rm -rf notebooks/_build/
