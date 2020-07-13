@@ -21,13 +21,6 @@
 # This chapter will introduce you to how to summarize data using data frames in Pandas.
 
 # %% [markdown]
-# Before doing anything else we need to import the packages that we will use in this chapter.  
-
-# %%
-import pandas as pd
-import numpy as np
-
-# %% [markdown]
 # ## Working with data frames
 
 # %% [markdown]
@@ -218,7 +211,7 @@ smoking_df.shape
 # Next we need to recode the NaN values for the second question, for those individuals who said no to the first question.  We will replace them with the answer 'Not at all'.  To do this, we can use the `.loc` operator with a test for the value of the first column:
 
 # %%
-smoking_df.loc[smoking_df['SmokedAtLeast100CigarettesInLife']==0, 'DoYouNowSmokeCigarettes'] = 'Not at all'
+smoking_df.loc[smoking_df['SmokedAtLeast100CigarettesInLife'] == 0, 'DoYouNowSmokeCigarettes'] = 'Not at all'
 smoking_df.head()
 
 # %% [markdown]
