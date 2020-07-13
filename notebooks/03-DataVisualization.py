@@ -167,7 +167,7 @@ plt.ylabel('Systolic BP - Second reading')
 
 # %%
 
-oring_data = pd.read_csv('https://raw.githubusercontent.com/statsthinking21/statsthinking21-python/master/notebooks/data/orings.csv', index_col=0)
+oring_data = pd.read_csv('orings.csv', index_col=0)
 
 ax = sns.lineplot(x='Temperature', y='DamageIndex', data=oring_data, ci=None)
 plt.xlabel('Temperature at time of launch')
