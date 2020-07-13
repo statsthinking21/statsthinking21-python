@@ -212,6 +212,13 @@ To access the data, we will use a Python package called <a class="reference exte
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="stderr docutils container">
+<pre class="stderr literal-block">/opt/hostedtoolcache/Python/3.7.8/x64/lib/python3.7/site-packages/IPython/core/interactiveshell.py:3263: DtypeWarning: Columns (142) have mixed types.Specify dtype option on import or set low_memory=False.
+  if (await self.run_code(code, result,  async_=asy)):
+</pre>
+</div>
+</div>
 </div>
 <p>We can use the <code class="docutils literal notranslate"><span class="pre">.head()</span></code> method to look inside the data frame:</p>
 <div class="cell docutils container">
@@ -220,11 +227,207 @@ To access the data, we will use a Python package called <a class="reference exte
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>GeneralHealthCondition</th>
+      <th>EverBreastfedOrFedBreastmilk</th>
+      <th>AgeStoppedBreastfeedingdays</th>
+      <th>AgeFirstFedFormuladays</th>
+      <th>AgeStoppedReceivingFormuladays</th>
+      <th>AgeStartedOtherFoodbeverage</th>
+      <th>AgeFirstFedMilkdays</th>
+      <th>TypeOfMilkFirstFedWholeMilk</th>
+      <th>TypeOfMilkFirstFed2Milk</th>
+      <th>TypeOfMilkFirstFed1Milk</th>
+      <th>...</th>
+      <th>DaysSmokedCigsDuringPast30Days</th>
+      <th>AvgCigarettesdayDuringPast30Days</th>
+      <th>TriedToQuitSmoking</th>
+      <th>TimesStoppedSmokingCigarettes</th>
+      <th>HowLongWereYouAbleToStopSmoking</th>
+      <th>UnitOfMeasureDayweekmonthyear_2_SMQ</th>
+      <th>CurrentSelfreportedHeightInches</th>
+      <th>CurrentSelfreportedWeightPounds</th>
+      <th>TriedToLoseWeightInPastYear</th>
+      <th>TimesLost10LbsOrMoreToLoseWeight</th>
+    </tr>
+    <tr>
+      <th>SEQN</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>93703.0</th>
+      <td>NaN</td>
+      <td>1.0</td>
+      <td>273.0</td>
+      <td>1.0</td>
+      <td>365.0</td>
+      <td>152.0</td>
+      <td>365.0</td>
+      <td>Whole or regular milk</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>93704.0</th>
+      <td>NaN</td>
+      <td>1.0</td>
+      <td>60.0</td>
+      <td>3.0</td>
+      <td>365.0</td>
+      <td>126.0</td>
+      <td>365.0</td>
+      <td>Whole or regular milk</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>93705.0</th>
+      <td>Good</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>63.0</td>
+      <td>165.0</td>
+      <td>0.0</td>
+      <td>11 times or more</td>
+    </tr>
+    <tr>
+      <th>93706.0</th>
+      <td>Very good</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>68.0</td>
+      <td>145.0</td>
+      <td>0.0</td>
+      <td>Never</td>
+    </tr>
+    <tr>
+      <th>93707.0</th>
+      <td>Good</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 197 columns</p>
+</div></div></div>
 </div>
 <p>Let’s look at the structure of this dataset.  We can see the <em>shape</em> of the data frame – that is, the number of rows and columns – using the <code class="docutils literal notranslate"><span class="pre">.shape</span></code> method:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">nhanes_data</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>(8366, 197)
 </pre></div>
 </div>
 </div>
@@ -236,12 +439,39 @@ To access the data, we will use a Python package called <a class="reference exte
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>Float64Index([ 93703.0,  93704.0,  93705.0,  93706.0,  93707.0,  93708.0,
+               93709.0,  93711.0,  93712.0,  93713.0,
+              ...
+              102946.0, 102947.0, 102948.0, 102949.0, 102951.0, 102952.0,
+              102953.0, 102954.0, 102955.0, 102956.0],
+             dtype=&#39;float64&#39;, name=&#39;SEQN&#39;, length=8366)
+</pre></div>
+</div>
+</div>
 </div>
 <p>The index contains a bunch of numbers, each of which refers to one of the individuals in the NHANES data set.  In a data frame, the rows always refer to <em>observations</em>, by which mean that each row reflects an individual unit of data.  In the case of a dataset like NHANES, the observations would usually refer to individual people, though as we will see later, we sometimes want the rows to be even more specific.
 We can also look at the content of the columns, which we can access using the <code class="docutils literal notranslate"><span class="pre">.columns</span></code> operator:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">nhanes_data</span><span class="o">.</span><span class="n">columns</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>Index([&#39;GeneralHealthCondition&#39;, &#39;EverBreastfedOrFedBreastmilk&#39;,
+       &#39;AgeStoppedBreastfeedingdays&#39;, &#39;AgeFirstFedFormuladays&#39;,
+       &#39;AgeStoppedReceivingFormuladays&#39;, &#39;AgeStartedOtherFoodbeverage&#39;,
+       &#39;AgeFirstFedMilkdays&#39;, &#39;TypeOfMilkFirstFedWholeMilk&#39;,
+       &#39;TypeOfMilkFirstFed2Milk&#39;, &#39;TypeOfMilkFirstFed1Milk&#39;,
+       ...
+       &#39;DaysSmokedCigsDuringPast30Days&#39;, &#39;AvgCigarettesdayDuringPast30Days&#39;,
+       &#39;TriedToQuitSmoking&#39;, &#39;TimesStoppedSmokingCigarettes&#39;,
+       &#39;HowLongWereYouAbleToStopSmoking&#39;,
+       &#39;UnitOfMeasureDayweekmonthyear_2_SMQ&#39;,
+       &#39;CurrentSelfreportedHeightInches&#39;, &#39;CurrentSelfreportedWeightPounds&#39;,
+       &#39;TriedToLoseWeightInPastYear&#39;, &#39;TimesLost10LbsOrMoreToLoseWeight&#39;],
+      dtype=&#39;object&#39;, length=197)
 </pre></div>
 </div>
 </div>
@@ -256,11 +486,24 @@ We can also look at the content of the columns, which we can access using the <c
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>&#39;Good&#39;
+</pre></div>
+</div>
+</div>
 </div>
 <p>If there were several variables that we wanted to see for this individual, we could include the names of those variables in a <em>list</em>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">nhanes_data</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">93707</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;GeneralHealthCondition&#39;</span><span class="p">,</span> <span class="s1">&#39;Gender&#39;</span><span class="p">,</span> <span class="s1">&#39;AgeInYearsAtScreening&#39;</span><span class="p">]]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>GeneralHealthCondition    Good
+Gender                    Male
+AgeInYearsAtScreening       13
+Name: 93707.0, dtype: object
 </pre></div>
 </div>
 </div>
@@ -272,6 +515,58 @@ We can also look at the content of the columns, which we can access using the <c
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>GeneralHealthCondition</th>
+      <th>Gender</th>
+      <th>AgeInYearsAtScreening</th>
+    </tr>
+    <tr>
+      <th>SEQN</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>102951</th>
+      <td>NaN</td>
+      <td>Male</td>
+      <td>4.0</td>
+    </tr>
+    <tr>
+      <th>102955</th>
+      <td>Very good</td>
+      <td>Female</td>
+      <td>14.0</td>
+    </tr>
+    <tr>
+      <th>93707</th>
+      <td>Good</td>
+      <td>Male</td>
+      <td>13.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 </div>
 <div class="section" id="missing-values">
@@ -284,6 +579,52 @@ We can also look at the content of the columns, which we can access using the <c
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>GeneralHealthCondition</th>
+      <th>Gender</th>
+      <th>AgeInYearsAtScreening</th>
+    </tr>
+    <tr>
+      <th>SEQN</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>102955</th>
+      <td>Very good</td>
+      <td>Female</td>
+      <td>14.0</td>
+    </tr>
+    <tr>
+      <th>93707</th>
+      <td>Good</td>
+      <td>Male</td>
+      <td>13.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <p>This operator removes any rows that have missing values for any of the variables in the data frame.</p>
 </div>
@@ -297,12 +638,22 @@ We can also look at the content of the columns, which we can access using the <c
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>(2898, 197)
+</pre></div>
+</div>
+</div>
 </div>
 <p>This shows that there were 2898 observations that matched our criterion.  We can also search for specific values: For example, let’s say that we want to find anyone who reported that their general health condition was “Good”.  This one is a bit tricky, because we are searching for a string of text, which we have to embed in our query, which is also a string of text.  Fortunately, there are two different quotation marks that we can use (<code class="docutils literal notranslate"><span class="pre">'</span></code> or <code class="docutils literal notranslate"><span class="pre">&quot;</span></code>) and Python treats them as distinct operators, so we can surround our text within double quotes, inside a string surrounded by single quotes:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">good_health_df</span> <span class="o">=</span> <span class="n">nhanes_data</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;GeneralHealthCondition == &quot;Good&quot;&#39;</span><span class="p">)</span>
 <span class="n">good_health_df</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>(2454, 197)
 </pre></div>
 </div>
 </div>
@@ -314,7 +665,7 @@ We can also look at the content of the columns, which we can access using the <c
 <p>We can add a new variable to a data frame easily, by simply giving it a new name. Let’s say that we wanted to convert the weight value in NHANES (stored in the <code class="docutils literal notranslate"><span class="pre">WeightKg</span></code> variable) from kilograms to pounds.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">nhanes_data</span><span class="p">[</span><span class="s1">&#39;WeightLbs&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">nhanes_data</span><span class="p">[</span><span class="s1">&#39;WeightLbs&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="mf">2.205</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">nhanes_data</span><span class="p">[</span><span class="s1">&#39;WeightLbs&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">nhanes_data</span><span class="p">[</span><span class="s1">&#39;WeightKg&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="mf">2.205</span>
 </pre></div>
 </div>
 </div>
@@ -326,12 +677,22 @@ We can also look at the content of the columns, which we can access using the <c
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>array([&#39;Female&#39;, &#39;Male&#39;], dtype=object)
+</pre></div>
+</div>
+</div>
 </div>
 <p>Now let’s say that we wanted to recode the <code class="docutils literal notranslate"><span class="pre">Gender</span></code> variable so that instead of “Female” and “Male” its values were “F” and “M”.  One way to do this would be to use the <code class="docutils literal notranslate"><span class="pre">.rename()</span></code> operator on the data frame:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">nhanes_data</span><span class="p">[</span><span class="s1">&#39;GenderMF&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">nhanes_data</span><span class="p">[</span><span class="s1">&#39;Gender&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">({</span><span class="s1">&#39;Female&#39;</span><span class="p">:</span> <span class="s1">&#39;F&#39;</span><span class="p">,</span> <span class="s1">&#39;Male&#39;</span><span class="p">:</span> <span class="s1">&#39;M&#39;</span><span class="p">})</span>
 <span class="n">nhanes_data</span><span class="p">[</span><span class="s1">&#39;GenderMF&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>array([&#39;F&#39;, &#39;M&#39;], dtype=object)
 </pre></div>
 </div>
 </div>
@@ -359,12 +720,32 @@ We can also look at the content of the columns, which we can access using the <c
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>Good         2454
+Very good    1544
+Fair or      1175
+Excellent     619
+Poor?         172
+Name: GeneralHealthCondition, dtype: int64
+</pre></div>
+</div>
+</div>
 </div>
 <p>It’s usually more helpful to present a <em>relative frequency distribution</em>, which shows proportions rather than counts.  We can obtain that by simply dividing the frequency distribution by the total number of cases, which we can obtain using the <code class="docutils literal notranslate"><span class="pre">.sum()</span></code> operator:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">GeneralHealthCondition_frequency_dist</span> <span class="o">=</span> <span class="n">nhanes_data</span><span class="p">[</span><span class="s1">&#39;GeneralHealthCondition&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
 <span class="n">GeneralHealthCondition_frequency_dist</span> <span class="o">/</span> <span class="n">GeneralHealthCondition_frequency_dist</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>Good         0.411469
+Very good    0.258887
+Fair or      0.197015
+Excellent    0.103789
+Poor?        0.028840
+Name: GeneralHealthCondition, dtype: float64
 </pre></div>
 </div>
 </div>
@@ -379,6 +760,12 @@ We can also look at the content of the columns, which we can access using the <c
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>array([nan, &#39;Good&#39;, &#39;Very good&#39;, &#39;Fair&#39;, &#39;Excellent&#39;, &#39;Poor&#39;],
+      dtype=object)
+</pre></div>
+</div>
+</div>
 </div>
 <p>Now let’s look at a more complex example.  Let’s say that we want to know who is currently a smokker in the NHANES sample.  If we look more closely at the <a class="reference external" href="https://wwwn.cdc.gov/Nchs/Nhanes/2017-2018/SMQ_J.htm">details of the smoking questionnaire</a>, we will see that not all individuals got the same questions; for example, if a person said that they had not smoked more than 100 cigarettes in their life (recorded in the <code class="docutils literal notranslate"><span class="pre">SmokedAtLeast100CigarettesInLife</span></code> variable), then they were not asked the question about whether they currently smoked cigarettes (stored as <code class="docutils literal notranslate"><span class="pre">DoYouNowSmokeCigarettes</span></code>).  We can see this in the number of respondents to each question:</p>
 <div class="cell docutils container">
@@ -387,10 +774,25 @@ We can also look at the content of the columns, which we can access using the <c
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>0.0    3301
+1.0    2232
+Name: SmokedAtLeast100CigarettesInLife, dtype: int64
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">nhanes_data</span><span class="p">[</span><span class="s1">&#39;DoYouNowSmokeCigarettes&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>Not at all    1260
+Every day      763
+Some days      209
+Name: DoYouNowSmokeCigarettes, dtype: int64
 </pre></div>
 </div>
 </div>
@@ -402,12 +804,99 @@ We can also look at the content of the columns, which we can access using the <c
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>SmokedAtLeast100CigarettesInLife</th>
+      <th>DoYouNowSmokeCigarettes</th>
+    </tr>
+    <tr>
+      <th>SEQN</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>93703.0</th>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>93704.0</th>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>93705.0</th>
+      <td>1.0</td>
+      <td>Not at all</td>
+    </tr>
+    <tr>
+      <th>93706.0</th>
+      <td>0.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>93707.0</th>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>93708.0</th>
+      <td>0.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>93709.0</th>
+      <td>1.0</td>
+      <td>Every day</td>
+    </tr>
+    <tr>
+      <th>93711.0</th>
+      <td>0.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>93712.0</th>
+      <td>1.0</td>
+      <td>Some days</td>
+    </tr>
+    <tr>
+      <th>93713.0</th>
+      <td>1.0</td>
+      <td>Every day</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <p>Here we can see that anyone who said No to the question about having smoked at least 100 cigarettes in their life (which is coded as zero) has a missing value for the question about current smoking (since that question wasn’t asked to these individuals).  To clean up these data, we need to do two things. First, we need to remove the individuals who have NaN for both questions, then we need to recode the NaN’s for the second question for those people who said no on the first question.  To do this, let’s first create a new data frame that contains just the variables we are interested in:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">smoking_df</span> <span class="o">=</span> <span class="n">nhanes_data</span><span class="p">[[</span><span class="s1">&#39;SmokedAtLeast100CigarettesInLife&#39;</span><span class="p">,</span> <span class="s1">&#39;DoYouNowSmokeCigarettes&#39;</span><span class="p">]]</span>
 <span class="n">smoking_df</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>(8366, 2)
 </pre></div>
 </div>
 </div>
@@ -420,6 +909,11 @@ We can also look at the content of the columns, which we can access using the <c
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>(5533, 2)
+</pre></div>
+</div>
+</div>
 </div>
 <p>Next we need to recode the NaN values for the second question, for those individuals who said no to the first question.  We will replace them with the answer ‘Not at all’.  To do this, we can use the <code class="docutils literal notranslate"><span class="pre">.loc</span></code> operator with a test for the value of the first column:</p>
 <div class="cell docutils container">
@@ -429,11 +923,76 @@ We can also look at the content of the columns, which we can access using the <c
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>SmokedAtLeast100CigarettesInLife</th>
+      <th>DoYouNowSmokeCigarettes</th>
+    </tr>
+    <tr>
+      <th>SEQN</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>93705.0</th>
+      <td>1.0</td>
+      <td>Not at all</td>
+    </tr>
+    <tr>
+      <th>93706.0</th>
+      <td>0.0</td>
+      <td>Not at all</td>
+    </tr>
+    <tr>
+      <th>93708.0</th>
+      <td>0.0</td>
+      <td>Not at all</td>
+    </tr>
+    <tr>
+      <th>93709.0</th>
+      <td>1.0</td>
+      <td>Every day</td>
+    </tr>
+    <tr>
+      <th>93711.0</th>
+      <td>0.0</td>
+      <td>Not at all</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <p>This replaced the NaN values in the second question, but only for those individuals who said no to the first question.  Now we can summarize the frequency of smoking across the entire group:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">smoking_df</span><span class="p">[</span><span class="s1">&#39;DoYouNowSmokeCigarettes&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span> <span class="o">/</span> <span class="n">smoking_df</span><span class="p">[</span><span class="s1">&#39;DoYouNowSmokeCigarettes&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>Not at all    0.824327
+Every day     0.137900
+Some days     0.037773
+Name: DoYouNowSmokeCigarettes, dtype: float64
 </pre></div>
 </div>
 </div>
