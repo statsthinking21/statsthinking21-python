@@ -24,6 +24,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import numpy as np
 import pandas as pd
+# %matplotlib inline
 
 
 # %% [markdown]
@@ -136,8 +137,10 @@ sns.boxplot(x='Gender', y='StandingHeightCm', data=adult_nhanes_data)
 # This tells us that the median male is taller than 75% of all of the females in the sample.
 #
 # Another type of plot that is commonly used is the *violin plot*, which shows the shape of the entire distribution:
-#
-# sns.violinplot(x='Gender', y='StandingHeightCm', data=adult_nhanes_data)
+
+# %%
+
+sns.violinplot(x='Gender', y='StandingHeightCm', data=adult_nhanes_data)
 
 # %% [markdown]
 # ### Scatter plot
