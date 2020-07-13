@@ -190,15 +190,6 @@
   <div class="section" id="summarizing-data">
 <h1>Summarizing Data<a class="headerlink" href="#summarizing-data" title="Permalink to this headline">¶</a></h1>
 <p>This chapter will introduce you to how to summarize data using data frames in Pandas.</p>
-<p>Before doing anything else we need to import the packages that we will use in this chapter.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-</pre></div>
-</div>
-</div>
-</div>
 <div class="section" id="working-with-data-frames">
 <h2>Working with data frames<a class="headerlink" href="#working-with-data-frames" title="Permalink to this headline">¶</a></h2>
 <p>In the last chapter you were introduced to the concept of a <em>data frame</em>, which we will use throughout much of this book.<br />
@@ -918,7 +909,7 @@ Name: DoYouNowSmokeCigarettes, dtype: int64
 <p>Next we need to recode the NaN values for the second question, for those individuals who said no to the first question.  We will replace them with the answer ‘Not at all’.  To do this, we can use the <code class="docutils literal notranslate"><span class="pre">.loc</span></code> operator with a test for the value of the first column:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">smoking_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">smoking_df</span><span class="p">[</span><span class="s1">&#39;SmokedAtLeast100CigarettesInLife&#39;</span><span class="p">]</span><span class="o">==</span><span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;DoYouNowSmokeCigarettes&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Not at all&#39;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">smoking_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">smoking_df</span><span class="p">[</span><span class="s1">&#39;SmokedAtLeast100CigarettesInLife&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;DoYouNowSmokeCigarettes&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Not at all&#39;</span>
 <span class="n">smoking_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
