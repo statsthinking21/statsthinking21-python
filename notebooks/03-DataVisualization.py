@@ -132,121 +132,32 @@ adult_nhanes_data = nhanes_data.query('AgeInYearsAtScreening > 17')
 sns.boxplot(x='Gender', y='StandingHeightCm', data=adult_nhanes_data)
 
 # %% [markdown]
-# This tells us that 
-
-# %% [markdown]
-# #### Error bars
-# Now, let's do something a bit more complex, but much more useful -- let's create our own summary of the data, so we can choose which summary statistic to plot and also compute a measure of dispersion of our choosing.
-
-# %% [markdown]
-# ```{r fig.width=8, fig.height=4, out.width="80%"}
-# # summarise data
-# mpg_summary <- mpg %>%
-#   group_by(manufacturer) %>% 
-#   summarise(n = n(), 
-#             mean_hwy = mean(hwy), 
-#             sd_hwy = sd(hwy))
-
-# %% [markdown]
-# # compute confidence intervals for the error bars
-# # (we'll talk about this later in the course!)
-
-# %% [markdown]
-# limits <- aes(
-#   # compute the lower limit of the error bar
-#   ymin = mean_hwy - 1.96 * sd_hwy / sqrt(n), 
-#   # compute the upper limit
-#   ymax = mean_hwy + 1.96 * sd_hwy / sqrt(n))
-
-# %% [markdown]
-# # now we're giving ggplot the mean for each group, 
-# # instead of the datapoints themselves
-
-# %% [markdown]
-# ggplot(mpg_summary, aes(manufacturer, mean_hwy)) +
-#   # we set stat = "identity" on the summary data 
-#   geom_bar(stat = "identity") + 
-#   # we create error bars using the limits we computed above
-#   geom_errorbar(limits, width=0.5) 
-# ```
-
-# %% [markdown]
-# Error bars don't always mean the same thing -- it's important to determine whether you're looking at e.g. standard error or confidence intervals (which we'll talk more about later in the course).
-
-# %% [markdown]
-# ##### Minimizing non-data ink
-
-# %% [markdown]
-# The plot we just created is nice and all, but it's tough to look at. The bar plots add a lot of ink that doesn't help us compare engine sizes across manufacturers. Similarly, the width of the error bars doesn't add any information. Let's tweak which *geometry* we use, and tweak the appearance of the error bars.
-
-# %% [markdown]
-# ```{r fig.width=8, fig.height=4, out.width="80%"}
-# ggplot(mpg_summary, aes(manufacturer, mean_hwy)) +
-#   # switch to point instead of bar to minimize ink used
-#   geom_point() + 
-#   # remove the horizontal parts of the error bars
-#   geom_errorbar(limits, width = 0) 
-# ```
-
-# %% [markdown]
-# Looks a lot cleaner, but our points are all over the place. Let's make a final tweak to make *learning something* from this plot a bit easier.
-
-# %% [markdown]
-# ```{r fig.width=8, fig.height=4, out.width="80%"}
-# mpg_summary_ordered <- mpg_summary %>%
-#   mutate(
-#     # we sort manufacturers by mean engine size
-#     manufacturer = reorder(manufacturer, -mean_hwy)
-#   )
-
-# %% [markdown]
-# ggplot(mpg_summary_ordered, aes(manufacturer, mean_hwy)) +
-#   geom_point() + 
-#   geom_errorbar(limits, width = 0) 
-
-# %% [markdown]
-# ```
+# This tells us that the median male is taller than 75% of all of the females in the sample.
+#
+# Another type of plot that is commonly used is the *violin plot*, which shows the shape of the entire distribution:
+#
+# sns.violinplot(x='Gender', y='StandingHeightCm', data=adult_nhanes_data)
 
 # %% [markdown]
 # ### Scatter plot
+#
+# When we have multiple *continuous* variables, we can use points to plot each variable on an axis. This is known as a **scatter plot**. As an example, let's look at the blood pressure readings taken in the NHANES study.  Each individual has their blood pressure taken three times. Here we will plot the first reading against the second reading, using a scatter plot. We will also add a line showing where the x axis is equal to the y axis, which makes it easier to see how the two variables are related to each other.
+
+# %%
+sns.scatterplot(x='SystolicBloodPres1StRdgMmHg',
+                y='SystolicBloodPres2NdRdgMmHg',
+                data=adult_nhanes_data)
+plt.plot([adult_nhanes_data['SystolicBloodPres1StRdgMmHg'].min(),
+          adult_nhanes_data['SystolicBloodPres1StRdgMmHg'].max()],
+          [adult_nhanes_data['SystolicBloodPres2NdRdgMmHg'].min(),
+          adult_nhanes_data['SystolicBloodPres2NdRdgMmHg'].max()],
+          color='k')
+plt.xlabel('Systolic BP - First reading')
+plt.ylabel('Systolic BP - Second reading')
 
 # %% [markdown]
-# When we have multiple *continuous* variables, we can use points to plot each variable on an axis. This is known as a **scatter plot**. You've seen this example in your reading.
+# Here we can see that the two variables are closely related to one another.  We can also see that most of the blue points fall below the black line, which tells us that the second reading is generally somewhat lower than the first reading. 
 
-# %% [markdown]
-# ```{r fig.width=4, fig.height=4, out.width="50%"}
-# ggplot(mpg, aes(displ, hwy)) +
-#   geom_point()
-# ```
-
-# %% [markdown]
-# #### Layers of data
-
-# %% [markdown]
-# We can add layers of data onto this graph, like a *line of best fit*. We use a geometry known as a **smooth** to accomplish this.
-
-# %% [markdown]
-# ```{r fig.width=4, fig.height=4, out.width="50%"}
-# ggplot(mpg, aes(displ, hwy)) +
-#   geom_point() +
-#   geom_smooth(color = "black")
-# ```
-
-# %% [markdown]
-# We can add on points and a smooth line for another set of data as well (efficiency in the city instead of on the highway).
-
-# %% [markdown]
-# ```{r fig.width=4, fig.height=4, out.width="50%"}
-# ggplot(mpg) +
-#   geom_point(aes(displ, hwy), color = "grey") +
-#   geom_smooth(aes(displ, hwy), color = "grey") +
-#   geom_point(aes(displ, cty), color = "limegreen") +
-#   geom_smooth(aes(displ, cty), color = "limegreen")
-# ```
-
-
-# %% [markdown]
-# ## Creating a more complex plot
 
 # %% [markdown]
 # In this section we will recreate Figure \@ref(fig:challengerTemps) from Chapter \@ref{data-visualization}.  Here is the code to generate the figure; we will go through each of its sections below.
