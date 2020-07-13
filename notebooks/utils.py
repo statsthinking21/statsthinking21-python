@@ -2,7 +2,8 @@ import pandas as pd
 import numpy as np
 
 
-def threshold_df_correlation(df, thresh=0.3, use_absolute_corr=True):
+def threshold_df_correlation(df, thresh=0.3, 
+                             use_absolute_corr=True, show_corrs=True):
     """
     return correlations in a data frame that exceed a particular threshold
     """
@@ -19,4 +20,8 @@ def threshold_df_correlation(df, thresh=0.3, use_absolute_corr=True):
         exceedence.loc[variable_idx, 'rowvar'] = cc.index[row]
         exceedence.loc[variable_idx, 'colvar'] = cc.index[col]
         exceedence.loc[variable_idx, 'corr'] = cc.iloc[row, col]
+    if show_corrs:
+        with pd.option_context('display.max_rows', None):
+            print(exceedence)
+
     return(exceedence)
