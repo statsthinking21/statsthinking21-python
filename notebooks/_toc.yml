@@ -5,7 +5,7 @@
     - file: 02-SummarizingData.ipynb
     - file: 03-DataVisualization.ipynb
     - file: 04-FittingSimpleModels.ipynb
-    # - file: Part5_Probability.ipynb
+    - file: 05-Probability.ipynb
     # - file: Part6_Sampling.ipynb
     # - file: Part7_ResamplingAndSimulation.ipynb
     # - file: Part8_HypothesisTesting.ipynb
