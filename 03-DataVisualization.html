@@ -223,7 +223,7 @@
 </div>
 <div class="cell_output docutils container">
 <div class="stderr docutils container">
-<pre class="stderr literal-block">/Users/poldrack/anaconda3/envs/py38/lib/python3.8/site-packages/IPython/core/interactiveshell.py:3263: DtypeWarning: Columns (142) have mixed types.Specify dtype option on import or set low_memory=False.
+<pre class="stderr literal-block">/opt/hostedtoolcache/Python/3.7.8/x64/lib/python3.7/site-packages/IPython/core/interactiveshell.py:3263: DtypeWarning: Columns (142) have mixed types.Specify dtype option on import or set low_memory=False.
   if (await self.run_code(code, result,  async_=asy)):
 </pre>
 </div>
@@ -273,6 +273,12 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f46f0786610&gt;]
+</pre></div>
+</div>
+<img alt="_images/03-DataVisualization_14_1.png" src="_images/03-DataVisualization_14_1.png" />
+</div>
 </div>
 <p>Here we have taken advantage of the fact that the output of our histogram command above contains both the bins (in its [1] position) and the histogram values (in its [0]) position.  Why do we include <code class="docutils literal notranslate"><span class="pre">[1:]</span></code> after the bins variable?  This is because the bins include both the upper and lower edges of the bin, which means that there is one more bin value than there are average values.  Adding <code class="docutils literal notranslate"><span class="pre">[1:]</span></code> is equivalent to saying “start with the second bin” which is equivalent to using the top edges of each bin for our X axis.</p>
 <p>Now let’s plot a smoothed version of the histogram, using the <code class="docutils literal notranslate"><span class="pre">sns.distplot()</span></code> function from the seaborn library.</p>
@@ -281,6 +287,12 @@
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">distplot</span><span class="p">(</span><span class="n">nhanes_data</span><span class="p">[</span><span class="s1">&#39;AgeInYearsAtScreening&#39;</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="n">bins</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f46f073eed0&gt;
+</pre></div>
+</div>
+<img alt="_images/03-DataVisualization_16_1.png" src="_images/03-DataVisualization_16_1.png" />
 </div>
 </div>
 <p>You can see that the line is now much smoother (less bumpy) than the one above.  It generally follows the overall shape of the data pretty closely, but you can also see that it mostly hides the large bump at 80 years.  It’s always important to keep in mind that anything we do to the data has the potential to distort their message.</p>
@@ -320,7 +332,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fde6058d5b0&gt;
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f46edb52690&gt;
 </pre></div>
 </div>
 <img alt="_images/03-DataVisualization_23_1.png" src="_images/03-DataVisualization_23_1.png" />
@@ -338,6 +350,12 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f46edb0b210&gt;
+</pre></div>
+</div>
+<img alt="_images/03-DataVisualization_26_1.png" src="_images/03-DataVisualization_26_1.png" />
+</div>
 </div>
 <p>This tells us that the median male is taller than 75% of all of the females in the sample.</p>
 <p>Another type of plot that is commonly used is the <em>violin plot</em>, which shows the shape of the entire distribution:</p>
@@ -347,6 +365,12 @@
 <span class="n">sns</span><span class="o">.</span><span class="n">violinplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;Gender&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;StandingHeightCm&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">adult_nhanes_data</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f46edb03790&gt;
+</pre></div>
+</div>
+<img alt="_images/03-DataVisualization_28_1.png" src="_images/03-DataVisualization_28_1.png" />
 </div>
 </div>
 </div>
@@ -368,6 +392,12 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;Systolic BP - Second reading&#39;)
+</pre></div>
+</div>
+<img alt="_images/03-DataVisualization_30_1.png" src="_images/03-DataVisualization_30_1.png" />
+</div>
 </div>
 <p>Here we can see that the two variables are closely related to one another.  We can also see that most of the blue points fall below the black line, which tells us that the second reading is generally somewhat lower than the first reading.</p>
 <p>In this section we will recreate a version of <a class="reference external" href="https://statsthinking21.github.io/statsthinking21-core-site/data-visualization.html#anatomy-of-a-plot">Figure 4.2</a> from Statistical Thinking in the 21st Century.</p>
@@ -385,6 +415,9 @@
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/03-DataVisualization_33_0.png" src="_images/03-DataVisualization_33_0.png" />
 </div>
 </div>
 </div>
