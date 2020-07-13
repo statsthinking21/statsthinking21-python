@@ -41,7 +41,7 @@ p1isTrue = np.mean(outcome1isTrue)
 p1isTrue
 
 # %% [markdown]
-# ## Empirical frequency (Section \@ref(empirical-frequency))
+# ## Empirical frequency
 # Let's walk through how [we computed empirical frequency of rain in San Francisco](https://statsthinking21.github.io/statsthinking21-core-site/probability.html#empirical-frequency).
 #
 # First we load the data:
@@ -73,7 +73,7 @@ pRainInSF = SFrain['rainToday'].mean()
 pRainInSF
 
 # %% [markdown]
-# ## Conditional probability (Section \@ref(conditional-probability))
+# ## Conditional probability
 # Let's determine the conditional probability of someone having hearing problems, given that they are over 70 years of age, using the NHANES dataset.  First, let's create a new variable called `Over70` that denotes whether each individual is over 70 or not.
 
 # %%
