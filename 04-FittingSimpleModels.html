@@ -1,0 +1,574 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Fitting simple models &#8212; Python Companion to Statistical Thinking in the 21st Century</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link href="_static/css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="_static/sphinx-book-theme.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/jupyter-sphinx.css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/sphinx-book-theme.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/mystnb.js"></script>
+    <script src="_static/sphinx-book-theme.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Data Visualization" href="03-DataVisualization.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="index.html">
+  
+  
+  <h1 class="site-logo" id="site-title">Python Companion to Statistical Thinking in the 21st Century</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  
+  <ul class="nav sidenav_l1">
+  <li class="">
+    <a href="01-IntroductionToPython.html">Introduction to Python</a>
+  </li>
+  <li class="">
+    <a href="02-SummarizingData.html">Summarizing Data</a>
+  </li>
+  <li class="">
+    <a href="03-DataVisualization.html">Data Visualization</a>
+  </li>
+  <li class="active">
+    <a href="">Fitting simple models</a>
+  </li>
+</ul>
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/04-FittingSimpleModels.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+    </div>
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+<div class="tocsection onthispage pt-5 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
+
+<nav id="bd-toc-nav">
+    <ul class="nav section-nav flex-column">
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#mean" class="nav-link">Mean</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#median" class="nav-link">Median</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#mode" class="nav-link">Mode</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#creating-functions" class="nav-link">Creating functions</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#variability" class="nav-link">Variability</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#z-scores" class="nav-link">Z-scores</a>
+        </li>
+    
+    </ul>
+</nav>
+
+
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="fitting-simple-models">
+<h1>Fitting simple models<a class="headerlink" href="#fitting-simple-models" title="Permalink to this headline">¶</a></h1>
+<p>In this chapter we will focus on how to compute the measures of central tendency and variability that were covered in the previous chapter.  Most of these can be computed using a built-in Python function, but we will show how to do them manually in order to give some intuition about how they work. First let’s load the NHANES data that we will use for our examples.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">nhanes.load</span> <span class="kn">import</span> <span class="n">load_NHANES_data</span>
+<span class="n">nhanes_data</span> <span class="o">=</span> <span class="n">load_NHANES_data</span><span class="p">()</span>
+<span class="n">adult_nhanes_data</span> <span class="o">=</span> <span class="n">nhanes_data</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;AgeInYearsAtScreening &gt; 17&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="stderr docutils container">
+<pre class="stderr literal-block">/opt/hostedtoolcache/Python/3.7.8/x64/lib/python3.7/site-packages/IPython/core/interactiveshell.py:3263: DtypeWarning: Columns (142) have mixed types.Specify dtype option on import or set low_memory=False.
+  if (await self.run_code(code, result,  async_=asy)):
+</pre>
+</div>
+</div>
+</div>
+<p>Since we will be analyzing the <code class="docutils literal notranslate"><span class="pre">StandingHeightCm</span></code> variable, we should exclude any observations that are missing this measurement.  We will also recode the variable to be called <code class="docutils literal notranslate"><span class="pre">Height</span></code> in order to simplify the coding later.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">adult_nhanes_data</span> <span class="o">=</span> <span class="n">adult_nhanes_data</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;StandingHeightCm&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;StandingHeightCm&#39;</span><span class="p">:</span> <span class="s1">&#39;Height&#39;</span><span class="p">})</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="mean">
+<h2>Mean<a class="headerlink" href="#mean" title="Permalink to this headline">¶</a></h2>
+<p>The mean is defined as the sum of values divided by the number of values being summed:
+<span class="math notranslate nohighlight">\($
+\bar{X} = \frac{\sum_{i=1}^{n}x_i}{n}
+$\)</span>
+Let’s say that we want to obtain the mean height for adults in the NHANES database (contained in the data <code class="docutils literal notranslate"><span class="pre">Height</span></code> that we generated above).  We would sum the individual heights (using the <code class="docutils literal notranslate"><span class="pre">.sum()</span></code> operator) and then divide by the number of values:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">adult_nhanes_data</span><span class="p">[</span><span class="s1">&#39;Height&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">/</span> <span class="n">adult_nhanes_data</span><span class="p">[</span><span class="s1">&#39;Height&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>166.3623438648053
+</pre></div>
+</div>
+</div>
+</div>
+<p>There is, of course, a built-in operator for the data frame called <code class="docutils literal notranslate"><span class="pre">.mean()</span></code> that will compute the mean.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">adult_nhanes_data</span><span class="p">[</span><span class="s1">&#39;Height&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>166.3623438648053
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="median">
+<h2>Median<a class="headerlink" href="#median" title="Permalink to this headline">¶</a></h2>
+<p>The median is the middle value after sorting the entire set of values. First we sort the data in order of their values:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">height_sorted</span> <span class="o">=</span> <span class="n">adult_nhanes_data</span><span class="p">[</span><span class="s1">&#39;Height&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sort_values</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Next we find the median value.  If there is an odd number of values in the list, then this is just the value in the middle, whereas if the number of values is even then we take the average of the two middle values.  We can determine whether the number of items is even by dividing the length by two and seeing if there is a remainder; we do this using the <code class="docutils literal notranslate"><span class="pre">%%</span></code> operator, which is known as the <em>modulus</em> and returns the remainder:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">height_length_mod_2</span> <span class="o">=</span> <span class="n">height_sorted</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">%</span> <span class="mi">2</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Here we will test whether the remainder is equal to one; if it is, then we will take the middle value, otherwise we will take the average of the two middle values.  We can do this using an if/else structure, which executes different processes depending on which of the arguments are true. Here is a simple example:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="mi">1</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;1 &gt; 2&#39;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;1 is not greater than two!&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>1 is not greater than two!
+</pre></div>
+</div>
+</div>
+</div>
+<p>For our example, we can use an if statement to determine how to compute the median, depending on whether there is an odd or even number of data points.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="k">if</span> <span class="n">height_length_mod_2</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span> 
+    <span class="c1"># odd number values - take the single midpoint</span>
+    <span class="n">midpoint</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ceil</span><span class="p">(</span><span class="n">height_sorted</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">/</span> <span class="mi">2</span><span class="p">))</span>
+    <span class="n">median</span> <span class="o">=</span> <span class="n">height_sorted</span><span class="p">[</span><span class="n">midpoint</span><span class="p">]</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="c1"># even number of values - need to average the two middle points</span>
+    <span class="n">midpoints</span> <span class="o">=</span> <span class="p">[</span><span class="nb">int</span><span class="p">((</span><span class="n">height_sorted</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">),</span>
+                 <span class="nb">int</span><span class="p">(</span><span class="n">height_sorted</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)]</span>
+    <span class="n">median</span> <span class="o">=</span> <span class="n">height_sorted</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">midpoints</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>There is a lot going on there, so let’s unpack it.  The first line of the if statement asks whether the remainder is equal to one — if so, then it executes the lines that are indented below it. Python uses indentation as part of its syntax, so you always need to be very careful about indentation.  If the remainder is one, that means that the number of observations is odd, and thus that we can simply take the single middle point.  We determine this by dividing the number of observations by two, and then rounding up (which is what the <code class="docutils literal notranslate"><span class="pre">np.ceil()</span></code> function does).  Finally, we have to convert this number into an integer using the <code class="docutils literal notranslate"><span class="pre">int()</span></code> function, since we can only use integers to index a data frame.<br />
+If the first test is false — that is, if the remainder is zero — then, the second section of code (after the <code class="docutils literal notranslate"><span class="pre">else</span></code> statement) will be executed instead.  Here we need to find the two midpoints and average them, so we create a new list containing those two points, and then use that index our data and then take the mean.</p>
+</div>
+<div class="section" id="mode">
+<h2>Mode<a class="headerlink" href="#mode" title="Permalink to this headline">¶</a></h2>
+<p>The mode is the most frequent value that occurs in a variable. For example, let’s say that we had the following data:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="n">toy_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;myvar&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">]})</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can see by eye that the mode is “a” since it occurs more often than the others.  To find it computationally, let’s use the <code class="docutils literal notranslate"><span class="pre">.value_counts()</span></code> operator to find the frequency of each value:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">myvar_frequencies</span> <span class="o">=</span> <span class="n">toy_data</span><span class="p">[</span><span class="s1">&#39;myvar&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+<span class="n">myvar_frequencies</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>a    2
+c    1
+b    1
+Name: myvar, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now let’s find the highest frequency, using the <code class="docutils literal notranslate"><span class="pre">.max()</span></code> operator:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">max_frequency</span> <span class="o">=</span> <span class="n">myvar_frequencies</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+<span class="n">max_frequency</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>2
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now we can find the values that have the maximum frequency:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mode</span> <span class="o">=</span> <span class="n">myvar_frequencies</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">myvar_frequencies</span> <span class="o">==</span> <span class="n">max_frequency</span><span class="p">]</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">values</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="creating-functions">
+<h2>Creating functions<a class="headerlink" href="#creating-functions" title="Permalink to this headline">¶</a></h2>
+<p>It is often useful to create our own custom <em>function</em> in order to perform a particular action. Let’s do that for our mode function:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">my_mode_function</span><span class="p">(</span><span class="nb">input</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A function to compute the mode. </span>
+
+<span class="sd">    Inputs:</span>
+<span class="sd">    ------</span>
+<span class="sd">    input: a pandas Series</span>
+
+<span class="sd">    Outputs:</span>
+<span class="sd">    --------</span>
+<span class="sd">    mode: an array containing the mode values</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># make sure the input is a pandas series</span>
+    <span class="nb">input</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span>
+
+    <span class="c1"># compute the frequency distribution</span>
+    <span class="n">frequencies</span> <span class="o">=</span> <span class="nb">input</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+
+    <span class="c1"># compute the maximum frequency</span>
+    <span class="n">max_frequency</span> <span class="o">=</span> <span class="n">frequencies</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+
+    <span class="c1"># find the values matching the maximum frequency (i.e. the mode)</span>
+    <span class="n">mode</span> <span class="o">=</span> <span class="n">frequencies</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span>
+        <span class="n">frequencies</span> <span class="o">==</span> <span class="n">max_frequency</span><span class="p">]</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">values</span>
+
+    <span class="k">return</span><span class="p">(</span><span class="n">mode</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s look at this one section at a time.
+The first row tells Python to define a new function, called “my_mode_function”, which takes in a single variable that will be called “input”. This variable only exists inside the function; you can’t access it from the outside.<br />
+The next section, surrounded by triple-quotes, is known as a <em>docstring</em>, and it provides documentation about our function. It’s always a good idea to write a docstring that describes what the function does, what kinds of inputs it expects, and what kind of output it produces.
+The next line converts the input to a particular kind of variable called a pandas <em>Series</em>; this is the same kind of variable as a column in a data frame.  Including this command allows our function to take in various types of variables (including Series and lists) and treat them as if they were a Series, using the operators that are available such as <code class="docutils literal notranslate"><span class="pre">.value_counts()</span></code>.
+The remaining lines perform the computations that we performed above to compute the mean.
+The final line tells Python to return the value of the mode when the function is called.  Let’s see this in action:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">my_mode_function</span><span class="p">([</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>array([&#39;a&#39;], dtype=object)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s also make sure that it works properly if there are multiple modes:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">my_mode_function</span><span class="p">([</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>array([&#39;c&#39;, &#39;a&#39;], dtype=object)
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="variability">
+<h2>Variability<a class="headerlink" href="#variability" title="Permalink to this headline">¶</a></h2>
+<p>Let’s first compute the <em>variance</em>, which is the average squared difference between each value and the mean.  Let’s do this with our cleaned-up version of the height data, but instead of working with the entire dataset, let’s take a random sample of 150 individuals:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sample_size</span> <span class="o">=</span> <span class="mi">150</span>
+<span class="n">height_sample</span> <span class="o">=</span> <span class="n">adult_nhanes_data</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">sample_size</span><span class="p">)[</span><span class="s1">&#39;Height&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We could have simply entered the number 150 into the sample function, but by first creating a new variable called <code class="docutils literal notranslate"><span class="pre">sample_size</span></code> and setting it to 150, we make it clearer to the reader of the code exactly what this number refers to.  It’s always good practice to create a new variable rather than typing a number directly into a formula.</p>
+<p>To compute the variance we need we need to first compute the sum of squared errors from the mean. In Python, we can square a vector using <code class="docutils literal notranslate"><span class="pre">**2</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sum_of_squared_errors</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">((</span><span class="n">height_sample</span> <span class="o">-</span> <span class="n">height_sample</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Then we divide by N - 1 to get the estimated variance:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">variance_estimate</span> <span class="o">=</span> <span class="n">sum_of_squared_errors</span> <span class="o">/</span> <span class="p">(</span><span class="n">height_sample</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">variance_estimate</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>102.14233780760628
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can compare this to the built-in <code class="docutils literal notranslate"><span class="pre">.var()</span></code> operator:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">height_sample</span><span class="o">.</span><span class="n">var</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>102.14233780760628
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can get the <em>standard deviation</em> by simply taking the square root of the variance:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">std_dev_estimate</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">variance_estimate</span><span class="p">)</span>
+<span class="n">std_dev_estimate</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>10.10654925321231
+</pre></div>
+</div>
+</div>
+</div>
+<p>Which is the same value obtained using the built-in <code class="docutils literal notranslate"><span class="pre">.std()</span></code> operator:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">height_sample</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>10.10654925321231
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="z-scores">
+<h2>Z-scores<a class="headerlink" href="#z-scores" title="Permalink to this headline">¶</a></h2>
+<p>A Z-score is obtained by first subtracting the mean and then dividing by the standard deviation of a distribution.  Let’s do this for the <code class="docutils literal notranslate"><span class="pre">height_sample</span></code> data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mean_height</span> <span class="o">=</span> <span class="n">height_sample</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">sd_height</span> <span class="o">=</span> <span class="n">height_sample</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
+
+<span class="n">z_height</span> <span class="o">=</span> <span class="p">(</span><span class="n">height_sample</span> <span class="o">-</span> <span class="n">mean_height</span><span class="p">)</span> <span class="o">/</span> <span class="n">sd_height</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now let’s plot the histogram of Z-scores alongside the histogram for the original values. Matplotlib allows us to create a grid of figures using the <code class="docutils literal notranslate"><span class="pre">plt.subplot()</span></code> function.  Let’s see this in action:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">height_sample</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">z_height</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>(array([ 4., 10., 17., 24., 20., 22., 22., 18.,  8.,  5.]),
+ array([-2.24178066, -1.78959863, -1.33741659, -0.88523456, -0.43305252,
+         0.01912951,  0.47131154,  0.92349358,  1.37567561,  1.82785765,
+         2.28003968]),
+ &lt;a list of 10 Patch objects&gt;)
+</pre></div>
+</div>
+<img alt="_images/04-FittingSimpleModels_46_1.png" src="_images/04-FittingSimpleModels_46_1.png" />
+</div>
+</div>
+<p>You will notice that the shapes of the histograms are exactly the same. We can also see this by plotting the two variables against one another in a scatterplot:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">height_sample</span><span class="p">,</span> <span class="n">z_height</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x7fd7d9794210&gt;
+</pre></div>
+</div>
+<img alt="_images/04-FittingSimpleModels_48_1.png" src="_images/04-FittingSimpleModels_48_1.png" />
+</div>
+</div>
+<p>You see here that they fall along a straight line, meaning that they are perfectly related to each other exactly — the only difference is where they are located on the number line.</p>
+</div>
+</div>
+
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="03-DataVisualization.html" title="previous page">Data Visualization</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Russell A. Poldrack<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    <script src="_static/js/index.js"></script>
+    
+  </body>
+</html>
