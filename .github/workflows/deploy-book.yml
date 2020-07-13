@@ -27,7 +27,7 @@ jobs:
     - name: Build the book
       run: |
         jupytext --sync --pre-commit
-        jupyter-book -W build notebooks
+        jupyter-book build notebooks
 
     # save artifacts
     - name: Archive production artifacts
