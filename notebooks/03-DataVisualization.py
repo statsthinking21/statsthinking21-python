@@ -27,30 +27,24 @@ import numpy
 
 # %% [markdown]
 # ## Let's think through a visualization
-
-# %% [markdown]
+#
 # Principles we want to keep in mind: 
-
-# %% [markdown]
+#
 # * Show the data without distortion
 # * Use color, shape, and location to encourage comparisons
 # * Minimize visual clutter (maximize your information to ink ratio)
-
-# %% [markdown]
+#
 # The two questions you want to ask yourself before getting started are:
-
-# %% [markdown]
+#
 # * What type of variable(s) am I plotting?
 # * What comparison do I want to make salient for the viewer (possibly myself)?
-
-# %% [markdown]
+#
 # Figuring out *how* to highlight a comparison and include relevant variables usually benefits from sketching the plot out first.
 
 
 # %% [markdown]
 # # Plotting the distribution of a single variable
-
-# %% [markdown]
+#
 # One of the most common uses of plotting is to plot the *distribution* of the data --- which you can think of as the *shape* of the data.  There are various ways to do this, but one of the most common is known as a *histogram*, which plots the number of observations that fall into specific bins. We can plot a histogram using the `plt.hist()` function from matplotlib.  As an example, let's look at the distribution of ages in the NHANES dataset.  First we need to load the data:
 
 
@@ -83,8 +77,7 @@ age_density_1year_bins = plt.hist(nhanes_data['AgeInYearsAtScreening'], bins=bin
 
 # %% [markdown]
 # #### Bar vs. line plots
-
-# %% [markdown]
+#
 # The histograms above are an example of *bar plots* where each number is represented by a bar. We could also plot the distribution using a line instead.  One reason to do this is that we can make the line a bit *smoother* than the actual data.  For example, here are the histogram data from above, plotted as a line:
 
 # %%
@@ -92,8 +85,7 @@ plt.plot(age_density_1year_bins[1][1:], age_density_1year_bins[0])
 
 # %% [markdown]
 # Here we have taken advantage of the fact that the output of our histogram command above contains both the bins (in its [1] position) and the histogram values (in its [0]) position.  Why do we include `[1:]` after the bins variable?  This is because the bins include both the upper and lower edges of the bin, which means that there is one more bin value than there are average values.  Adding `[1:]` is equivalent to saying "start with the second bin" which is equivalent to using the top edges of each bin for our X axis.
-
-# %% [markdown]
+#
 # Now let's plot a smoothed version of the histogram, using the `sns.distplot()` function from the seaborn library.  
 
 # %%
@@ -104,8 +96,7 @@ sns.distplot(nhanes_data['AgeInYearsAtScreening'], bins=bins)
 
 # %% [markdown]
 # # Plots with two variables
-
-# %% [markdown]
+#
 # Another common use of visualization is to examine the relationship betwen two variables.  For example, let's say that we wanted to plot average height as a function of age in the NHANES dataset.  We would first summarize the data to obtain the average height for each age:
 
 # %%
@@ -130,74 +121,21 @@ sns.lineplot(x='AgeInYearsAtScreening', y='StandingHeightCm', hue='Gender', data
 # You will notice that the lines have shaded areas around them; these are called *confidence intervals*, and you will learn about them later in the course.  They basically tell us something about the uncertainty around our estimates of the average.
 
 # %% [markdown]
-# ### Adding on variables
-
-# %% [markdown]
-# What if we wanted to add another variable into the mix? Maybe the *year* of the car is also important to consider. We have a few options here. First, you could map the variable to another **aesthetic**.
-
-# %% [markdown]
-# ```{r fig.width=8, fig.height=4, out.width="80%"}
-# # first, year needs to be converted to a factor
-# mpg$year <- factor(mpg$year) 
-
-# %% [markdown]
-# ggplot(mpg, aes(manufacturer, hwy, fill = year)) +
-#   geom_bar(stat = "summary", fun.y = "mean")
-# ```
-
-# %% [markdown]
-# By default, the bars are *stacked* on top of one another. If you want to separate them, you can change the `position` argument form its default to "dodge".
-
-# %% [markdown]
-# ```{r fig.width=8, fig.height=4, out.width="80%"}
-# ggplot(mpg, aes(manufacturer, hwy, fill=year)) +
-#   geom_bar(stat = "summary", 
-#            fun.y = "mean", 
-#            position = "dodge")
-# ```
-
-# %% [markdown]
-# ```{r fig.width=4, fig.height=4, out.width="50%"}
-# ggplot(mpg, aes(year, hwy, 
-#                 group=manufacturer,
-#                 color=manufacturer)) +
-#   geom_line(stat = "summary", fun.y = "mean")
-
-# %% [markdown]
-# ```
-
-# %% [markdown]
-# For a less visually cluttered plot, let's try **facetting**. This creates *subplots* for each value of the `year` variable.
-
-# %% [markdown]
-# ```{r fig.width=8, fig.height=4, out.width="80%"}
-# ggplot(mpg, aes(manufacturer, hwy)) +
-#   # split up the bar plot into two by year
-#   facet_grid(year ~ .) + 
-#   geom_bar(stat = "summary", 
-#            fun.y = "mean")
-# ```
-
-# %% [markdown]
 # ### Plotting dispersion
+#
+# An important job of statistical visualization is to show us the variability, or *dispersion*, of our data.  We have already see how to do this using histograms; now let's look at how we can compare distributions.
+#
+# Let's start with a simple example: Comparing the height of adult men and women in the NHANES sample.  One commonly used plot is the *box plot* (sometimes known as a *box and whiskers plot*).  This form of plot uses quartiles to give us a sense of spread. The thickest line, somewhere inside the box, represents the *median*. The upper and lower bounds of the box (the *hinges*) are the first and third quartiles (can you use them to approximate the interquartile range?). The lines extending from the hinges are the remaining data points, excluding **outliers**, which are plotted as individual points. 
+
+# %%
+adult_nhanes_data = nhanes_data.query('AgeInYearsAtScreening > 17')
+sns.boxplot(x='Gender', y='StandingHeightCm', data=adult_nhanes_data)
 
 # %% [markdown]
-# Instead of looking at just the means, we can get a sense of the entire distribution of mileage values for each manufacturer.
-
-# %% [markdown]
-# #### Box plot
-# ```{r fig.width=8, fig.height=4, out.width="80%"}
-# ggplot(mpg, aes(manufacturer, hwy)) +
-#   geom_boxplot()
-# ```
-
-# %% [markdown]
-# A **box plot** (or box and whiskers plot) uses quartiles to give us a sense of spread. The thickest line, somewhere inside the box, represents the *median*. The upper and lower bounds of the box (the *hinges*) are the first and third quartiles (can you use them to approximate the interquartile range?). The lines extending from the hinges are the remaining data points, excluding **outliers**, which are plotted as individual points.
+# This tells us that 
 
 # %% [markdown]
 # #### Error bars
-
-# %% [markdown]
 # Now, let's do something a bit more complex, but much more useful -- let's create our own summary of the data, so we can choose which summary statistic to plot and also compute a measure of dispersion of our choosing.
 
 # %% [markdown]
