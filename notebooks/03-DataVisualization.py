@@ -62,9 +62,23 @@ age_density_1year_bins = plt.hist(nhanes_data['AgeInYearsAtScreening'], bins=bin
 
 # Now we see the proportion of individuals that fall into each age bin.  Why do you think there are so many eighty-year-olds in the dataset?  Have a look at the [documentation for the Age question](https://wwwn.cdc.gov/Nchs/Nhanes/2017-2018/DEMO_J.htm#RIDAGEYR) and see if you can figure it out.
 
-# ### Bar vs. line plots
+# #### Bar vs. line plots
 
-# The histograms above are an example of *bar plots* where each number is represented by a bar. In some cases we prefer to use a line instead of a bar, particularly when we want to highlight the relationships between different X-axis values, such as when we are plotting data over time.  For example, let's say that we wanted to plot average height as a function of age in the NHANES dataset.  We would first summarize the data to obtain the average height for each age:
+# The histograms above are an example of *bar plots* where each number is represented by a bar. We could also plot the distribution using a line instead.  One reason to do this is that we can make the line a bit *smoother* than the actual data.  For example, here are the histogram data from above, plotted as a line:
+
+plt.plot(age_density_1year_bins[1][1:], age_density_1year_bins[0])
+
+# Here we have taken advantage of the fact that the output of our histogram command above contains both the bins (in its [1] position) and the histogram values (in its [0]) position.  Why do we include `[1:]` after the bins variable?  This is because the bins include both the upper and lower edges of the bin, which means that there is one more bin value than there are average values.  Adding `[1:]` is equivalent to saying "start with the second bin" which is equivalent to using the top edges of each bin for our X axis.
+
+# Now let's plot a smoothed version of the histogram, using the `sns.distplot()` function from the seaborn library.  
+
+sns.distplot(nhanes_data['AgeInYearsAtScreening'], bins=bins)
+
+# You can see that the line is now much smoother (less bumpy) than the one above.  It generally follows the overall shape of the data pretty closely, but you can also see that it mostly hides the large bump at 80 years.  It's always important to keep in mind that anything we do to the data has the potential to distort their message.
+
+# # Plots with two variables
+
+# Another common use of visualization is to examine the relationship betwen two variables.  For example, let's say that we wanted to plot average height as a function of age in the NHANES dataset.  We would first summarize the data to obtain the average height for each age:
 
 mean_height_by_age = nhanes_data.groupby('AgeInYearsAtScreening')['StandingHeightCm'].mean()
 
@@ -79,28 +93,7 @@ plt.ylabel('Standing Height (cm)')
 sns.lineplot(x='AgeInYearsAtScreening', y='StandingHeightCm', hue='Gender', data=nhanes_data)
 
 
-# ## Plots with two variables
-
-# Let's check out mileage by car manufacturer. We'll plot one *continuous* variable by one *nominal* one.
-
-# First, let's make a bar plot by choosing the stat "summary" and picking the "mean" function to summarize the data.
-
-# ```{r fig.width=8, fig.height=4, out.width="80%"}
-# ggplot(mpg, aes(manufacturer, hwy)) +
-#   geom_bar(stat = "summary", fun.y = "mean")  + 
-#   ylab('Highway mileage')
-# ```
-
-# One problem with this plot is that it's hard to read some of the labels because they overlap. How could we fix that?  Hint: search the web for "ggplot rotate x axis labels" and add the appropriate command. 
-
-# *TBD: fix*
-
-# ```{r fig.width=8, fig.height=4, out.width="80%"}
-# ggplot(mpg, aes(manufacturer, hwy)) +
-#   geom_bar(stat = "summary", fun.y = "mean")  + 
-#   ylab('Highway mileage')
-# ```
-
+# You will notice that the lines have shaded areas around them; these are called *confidence intervals*, and you will learn about them later in the course.  They basically tell us something about the uncertainty around our estimates of the average.
 
 # ### Adding on variables
 
