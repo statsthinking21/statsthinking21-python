@@ -26,6 +26,7 @@ jobs:
     # Build the book
     - name: Build the book
       run: |
+        jupytext --sync --pre-commit
         jupyter-book build notebooks
 
     # Push the book's HTML to github-pages
