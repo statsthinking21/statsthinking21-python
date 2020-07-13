@@ -170,9 +170,9 @@ The (currently proposed) technical plan for the book is as follows.
 
 1. The python file for each chapter will be named *chapter-<*topic*>.py*.  In principle, the chapters should coordinate with those in the [core text](https://statsthinking21.github.io/statsthinking21-core-site/); if one wishes to break this rule, then please raise an issue for discussion.  Any additional files (e.g. those defining utility functions) should be placed with the *utils* directory, and preferably named with the chapter topic in the name (e.g. "chapter-topic-utils.py").
 
-1. The chapters files should be written using [Jupytext](https://github.com/mwouts/jupytext), which allows one to generate a jupyter notebook from a pure Python file, using the *percent* format in which cells are delimited with a commented %%. This decision was made in order to simplify the use of version control on the code; when using plain Jupyter notebooks, the metadata is saved in the file such that the file contents change every time the notebook is executed, making it very difficult to determine the relevant changes.
+1. The chapters files should be written using [Jupytext](https://github.com/mwouts/jupytext), which allows one to generate a jupyter notebook from a pure Python file, using the *percent* format in which cells are delimited with a commented %%. This decision was made in order to simplify the use of version control on the code; when using plain Jupyter notebooks, the metadata is saved in the file such that the file contents change every time the notebook is executed, making it very difficult to determine the relevant changes.  
 
-1. The chapter files will be automatically converted to standard Jupyter notebooks using Jupytext using continuous integration (TBD).
+1. The chapter files will be automatically converted to standard Jupyter notebooks using Jupytext using continuous integration.
 
 1. The book will be generated using [jupyter-book](https://jupyterbook.org/intro.html), which renders the jupyter notebooks to html.
 
