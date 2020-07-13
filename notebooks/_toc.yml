@@ -3,7 +3,7 @@
   sections:
     - file: 01-IntroductionToPython.ipynb
     - file: 02-SummarizingData.ipynb
-    # - file: Part3_DataVisualization.ipynb
+    - file: 03-DataVisualization.ipynb
     # - file: Part4_FittingSimpleModels.ipynb
     # - file: Part5_Probability.ipynb
     # - file: Part6_Sampling.ipynb
