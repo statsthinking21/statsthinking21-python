@@ -29,6 +29,13 @@ jobs:
         jupytext --sync --pre-commit
         jupyter-book -W build notebooks
 
+    # save artifacts
+    - name: Archive production artifacts
+      uses: actions/upload-artifact@v1
+      with:
+        name: dist
+        path: dist
+
     # Push the book's HTML to github-pages
     - name: GitHub Pages action
       uses: peaceiris/actions-gh-pages@v3.6.1
