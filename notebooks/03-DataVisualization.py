@@ -24,7 +24,6 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import numpy as np
 import pandas as pd
-# %matplotlib inline
 
 
 # %% [markdown]
@@ -176,4 +175,9 @@ plt.ylabel('Damage Index')
 ax.fill_between([26, 29], 0, 12, 
                 facecolor='red', alpha=0.3)
 ax.text(27, 1, 'Forecasted temperature on Jan 28', rotation=90)
+plt.show()
 
+
+
+
+# %%
