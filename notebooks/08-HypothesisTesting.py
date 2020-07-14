@@ -23,87 +23,87 @@
 
 # %%
 
-# ```{r}
-# # simulate tossing of 100,000 flips of 100 coins to identify 
-# # empirical probability of 70 or more heads out of 100 flips
+import numpy as np
 
-# nRuns <- 100000
+num_runs = 1000000
 
-# # create function to toss coins
-# tossCoins <- function() {
-#   flips <- runif(100) > 0.5 
-#   return(tibble(nHeads=sum(flips)))
-# }
+def toss_coins_and_count_heads(num_coins=100, p_heads=0.5):
+    """
+    flip a coin num_coins times and return number of heads
+    """
 
-# # create an input data frame for do()
-# input_df <- tibble(id=seq(nRuns)) %>%
-#   group_by(id)
+    flips = np.random.rand(num_coins) > (1 - p_heads)
+    return(np.sum(flips))
 
-# # use do() to perform the coin flips
-# flip_results <- input_df %>%
-#   do(tossCoins()) %>%
-#   ungroup()
+    
+flip_results_df = pd.DataFrame({'n_heads': np.zeros(num_runs)})
 
-# p_ge_70_sim <- 
-#   flip_results %>%
-#   summarise(p_gt_70 = mean(nHeads >= 70)) %>%
-#   pull()
-
-# p_ge_70_sim
+for run in range(num_runs):
+    flip_results_df.loc[run, 'n_heads'] = toss_coins_and_count_heads()
 
 
-# ```
+# %% [markdown]
+# Now we can compute the proportion of samples from the distribution observed when the true proportion of heads is 0.5.  
 
+# %%
+import scipy.stats
 
+pvalue = 1 - scipy.stats.percentileofscore(flip_results_df, 0.7)
+pvalue
+
+# %% [markdown]
 # For comparison, we can also compute the p-value for 70 or more heads based on a null hypothesis of $P_{heads}=0.5$, using the binomial distribution.
-
+#
 # ```{r}
 # # compute the probability of 69 or fewer heads, 
 # # when P(heads)=0.5
 # p_lt_70 <- pbinom(69, 100, 0.5) 
-
+#
 # # the probability of 70 or more heads is simply 
 # # the complement of p_lt_70
 # p_ge_70 <- 1 - p_lt_70
-
+#
 # p_ge_70
 # ```
-
+#
 # ## Simulating p-values
-
+#
 # In this exercise we will perform hypothesis testing many times in order to test whether the p-values provided by our statistical test are valid.  We will sample data from a normal distribution with a mean of zero, and for each sample perform a t-test to determine whether the mean is different from zero.  We will then count how often we reject the null hypothesis; since we know that the true mean is zero, these are by definition Type I errors.
-
+#
 # ```{r}
 # nRuns <- 5000
-
+#
 # # create input data frame for do()
 # input_df <- tibble(id=seq(nRuns)) %>%
 #   group_by(id)
-
+#
 # # create a function that will take a sample
 # # and perform a one-sample t-test
-
+#
 # sample_ttest <- function(sampSize=32){
 #   tt.result <- t.test(rnorm(sampSize))
 #   return(tibble(pvalue=tt.result$p.value))
 # }
-
+#
 # # perform simulations
-
+#
 # sample_ttest_result <- input_df %>%
 #   do(sample_ttest())
-
+#
 # p_error <-
 #   sample_ttest_result %>%
 #   ungroup() %>%
 #   summarize(p_error = mean(pvalue<.05)) %>%
 #   pull()
-
+#
 # p_error
-
+#
 # ```
-
+#
 # We should see that the proportion of samples with $p < .05$ is about 5%.
+#
+#
+#
+#
 
-
-
+# %%
