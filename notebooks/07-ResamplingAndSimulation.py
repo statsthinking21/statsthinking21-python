@@ -136,7 +136,8 @@ bootstrap_ci = [scipy.stats.scoreatpercentile(bootstrap_df['mean'], 2.5),
 
 # %% [markdown]
 # Let's compare the bootstrap distribution to the sampling distribution that we would expect given the sample mean and standard deviation:
-#
+
+# %%
 # hist = plt.hist(bootstrap_df['mean'], 100, density=True)
 #
 # hist_bin_min = np.min(hist[1])
