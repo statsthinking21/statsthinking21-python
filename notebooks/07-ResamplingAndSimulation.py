@@ -85,7 +85,10 @@ for i in range(num_runs):
 # %% [markdown]
 # Now let's find the 99th percentile of the maximum distriibution.  There is a built-in function in the `scipy.stats` module, called `scoreatpercentile` that will do this for us:
 #
-# cutoff = scipy.stats.scoreatpercentile(sample_max_df['max'], 95)
+
+
+# %%
+cutoff = scipy.stats.scoreatpercentile(sample_max_df['max'], 95)
 
 
 # %% [markdown]
