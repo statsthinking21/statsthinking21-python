@@ -17,124 +17,131 @@
 # # Resampling and simulation in R
 #
 # ## Generating random samples
-# Here we will generate random samples from a number of different distributions and plot their histograms.
+# Here we will generate random samples from a number of different distributions and plot their histograms.  We could write out separate commands to plot each of our functions of interest, but that would involve repeating a lot of code, so instead we will take advantage of the fact that Python allows us to treat modules as variables.  We will specify the module that creates each distribution, and then loop through them, each time incrementing the panel number.  Some distributions also take specific parameters; for example, the Chi-squared distribution requires specifying the degrees of freedom.  We will store those in a separate dictionary and use them as needed.
 
 # %%
+import scipy.stats
+import matplotlib.pyplot as plt
+
+num_samples = 10000
+
+plt.figure(figsize=(8, 8))
+
+generators = {'Uniform': scipy.stats.uniform,
+              'Normal': scipy.stats.norm, 
+              'Exponential': scipy.stats.expon,
+              'Chi-squared': scipy.stats.chi2}
+
+generator_parameters = {'Chi-squared': 10}
+panel_num = 1
+for distribution in generators:
+    plt.subplot(2, 2, panel_num)
+    if distribution in generator_parameters:
+        sample = generators[distribution].rvs(
+            generator_parameters[distribution], size=num_samples)
+    else:
+        sample = generators[distribution].rvs(size=num_samples)
+    plt.hist(sample, bins=100)
+    plt.title(distribution)
+    plt.xlabel('Value')
+    plt.ylabel('Density')
+    # the following function prevents the labels from overlapping
+    plt.tight_layout()
+    panel_num += 1
 
 
-# ```{r fig.height=8, fig.width=8}
-
-# nsamples <- 10000
-# nhistbins <- 100
-
-# # uniform distribution
-
-# p1 <-
-#   tibble(
-#     x = runif(nsamples)
-#   ) %>% 
-#   ggplot((aes(x))) +
-#   geom_histogram(bins = nhistbins) + 
-#   labs(title = "Uniform")
-
-# # normal distribution
-# p2 <-
-#   tibble(
-#     x = rnorm(nsamples)
-#   ) %>% 
-#   ggplot(aes(x)) +
-#   geom_histogram(bins = nhistbins) +
-#   labs(title = "Normal")
-
-# # Chi-squared distribution
-# p3 <-
-#   tibble(
-#     x = rnorm(nsamples)
-#   ) %>% 
-#   ggplot(aes(x)) +
-#   geom_histogram(bins = nhistbins) +
-#   labs(title = "Normal")
-
-# # Chi-squared distribution
-# p3 <-
-#   tibble(
-#     x = rchisq(nsamples, df=1)
-#   ) %>% 
-#   ggplot(aes(x)) +
-#   geom_histogram(bins = nhistbins) +
-#   labs(title = "Chi-squared")
-
-# # Poisson distribution
-# p4 <-
-#   tibble(
-#     x = rbinom(nsamples, 20, 0.25)
-#   ) %>% 
-#   ggplot(aes(x)) +
-#   geom_histogram(bins = nhistbins) +
-#   labs(title = "Binomial (p=0.25, 20 trials)")
-
-
-# plot_grid(p1, p2, p3, p4, ncol = 2)
-
-# ```
-
+# %% [markdown]
 # ## Simulating the maximum finishing time
+# Let's simulate 5000 samples of 150 observations, collecting the maximum value from each sample, and then plotting the distribution of maxima.
 
-# Let's simulate 150 samples, collecting the maximum value from each sample, and then plotting the distribution of maxima.
+# %%
+import numpy as np
+import pandas as pd
 
-# ```{r fig.width=4, fig.height=4, out.width="50%"}
-# # sample maximum value 5000 times and compute 99th percentile
-# nRuns <- 5000
-# sampSize <- 150
+num_runs = 5000
+sample_size = 150
 
-# sampleMax <- function(sampSize = 150) {
-#   samp <- rnorm(sampSize, mean = 5, sd = 1)
-#   return(tibble(max=max(samp)))
-# }
+def sample_and_return_max(sample_size, 
+    distribution=None):
 
-# input_df <- tibble(id=seq(nRuns)) %>%
-#   group_by(id)
+    # if distribution is not specified, then use the normal
+    if distribution is None:
+        distribution = scipy.stats.norm
+    
+    sample = distribution.rvs(size=sample_size)
+    return(np.max(sample))
 
-# maxTime <- input_df %>% do(sampleMax())
+sample_max_df = pd.DataFrame({'max': np.zeros(num_runs)})
 
-# cutoff <- quantile(maxTime$max, 0.99)
+for i in range(num_runs):
+    sample_max_df.loc[i, 'max'] = sample_and_return_max(sample_size)
 
 
-# ggplot(maxTime,aes(max)) +
-#   geom_histogram(bins = 100) +
-#   geom_vline(xintercept = cutoff, color = "red")
+# %% [markdown]
+# Now let's find the 99th percentile of the maximum distriibution.  There is a built-in function in the `scipy.stats` module, called `scoreatpercentile` that will do this for us:
+#
+# cutoff = scipy.stats.scoreatpercentile(sample_max_df['max'], 95)
 
-# ```
 
+# %% [markdown]
+# Plot the histogram of the maximum values, along with a vertical line at the 95th percentile.
+
+# %%
+hist = plt.hist(sample_max_df['max'], bins=100)
+plt.ylabel('Count')
+plt.xlabel('Maximum value')
+_ = plt.axvline(x=cutoff, ymax=np.max(hist[0]), color='k')
+
+
+# %% [markdown]
 # ## The bootstrap
-
 # The bootstrap is useful for creating confidence intervals in cases where we don't have a parametric distribution. One example is for the median; let's look at how that works. We will start by implementing it by hand, to see more closely how it works.  We will start by collecting a sample of individuals from the NHANES dataset, and the using the bootstrap to obtain confidence intervals on the median for the Height variable.
 
-# ```{r echo=FALSE}
+# %%
+#+
+from nhanes.load import load_NHANES_data
+nhanes_data = load_NHANES_data()
+adult_nhanes_data = nhanes_data.query('AgeInYearsAtScreening > 17')
+adult_nhanes_data = adult_nhanes_data.dropna(subset=['StandingHeightCm']).rename(columns={'StandingHeightCm': 'Height'})
 
-# nRuns <- 2500
-# sampleSize <- 64
+num_runs = 5000
+sample_size = 100
 
-# # take a sample
-# heightSample <- 
-#   NHANES_adult %>%
-#   sample_n(sampleSize)
+# Take a sample for which we will perform the bootstrap
 
-# # create a function to collect a sample with replacement
-# bootMedianHeight <- function(df) {
-#   bootSample <- sample_n(df, dim(df)[1], replace = TRUE)
-#   return(tibble(medianHeight=median(bootSample$Height)))
-# }
+nhanes_sample = adult_nhanes_data.sample(sample_size)
 
-# input_df <- tibble(id=seq(nRuns)) %>%
-#   group_by(id)
+# Perform the resampling
 
-# bootMeans <- do(input_df, bootMedianHeight(heightSample))
+bootstrap_df = pd.DataFrame({'mean': np.zeros(num_runs)})
+for sampling_run in range(num_runs):
+    bootstrap_sample = nhanes_sample.sample(sample_size, replace=True)
+    bootstrap_df.loc[sampling_run, 'mean'] = bootstrap_sample['Height'].mean()
 
-# bootCI <- tibble(`Lower CI limit`=quantile(bootMeans$medianHeight,.025),
-#             Median=median(heightSample$Height),
-#             `Upper CI limit`=quantile(bootMeans$medianHeight,.975)
-#             )
-# kable(bootCI)
-# ```
+# Compute the 2.5% and 97.5% percentiles of the distribution
 
+
+bootstrap_ci = [scipy.stats.scoreatpercentile(bootstrap_df['mean'], 2.5),
+                scipy.stats.scoreatpercentile(bootstrap_df['mean'], 97.5)]
+
+#-
+
+# %% [markdown]
+# Let's compare the bootstrap distribution to the sampling distribution that we would expect given the sample mean and standard deviation:
+#
+# hist = plt.hist(bootstrap_df['mean'], 100, density=True)
+#
+# hist_bin_min = np.min(hist[1])
+# hist_bin_max = np.max(hist[1])
+# step_size = 0.01
+# x_values = np.arange(hist_bin_min, hist_bin_max, step_size)
+# normal_values = scipy.stats.norm.pdf(
+#     x_values,
+#     loc=nhanes_sample['Height'].mean(),
+#     scale=nhanes_sample['Height'].std()/np.sqrt(sample_size))
+# plt.plot(x_values, normal_values, color='r')
+#
+#
+
+# %% [markdown]
+# This shows that the bootstrap sampling distrbution does a good job of recapitulating the theoretical sampling distribution in this case.
