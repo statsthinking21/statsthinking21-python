@@ -120,6 +120,7 @@ p_hearingproblem_given_over_70
 
 # %% [markdown]
 # Now compute the opposite: What is the probability of being over 70 given that one has a hearing problem?
-#
-# p_over_70_given_hearingproblem = hearing_data.query('HaveSeriousDifficultyHearing == True')['Over70'].mean()
-# p_over_70_given_hearingproblem
+
+# %%
+p_over_70_given_hearingproblem = hearing_data.query('HaveSeriousDifficultyHearing == True')['Over70'].mean()
+p_over_70_given_hearingproblem
