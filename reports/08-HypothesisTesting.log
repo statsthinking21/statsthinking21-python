@@ -1,0 +1,45 @@
+Traceback (most recent call last):
+  File "/opt/hostedtoolcache/Python/3.7.8/x64/lib/python3.7/site-packages/jupyter_cache/executors/basic.py", line 163, in execute
+    executenb(nb_bundle.nb, cwd=tmpdirname, timeout=timeout)
+  File "/opt/hostedtoolcache/Python/3.7.8/x64/lib/python3.7/site-packages/nbconvert/preprocessors/execute.py", line 737, in executenb
+    return ep.preprocess(nb, resources, km=km)[0]
+  File "/opt/hostedtoolcache/Python/3.7.8/x64/lib/python3.7/site-packages/nbconvert/preprocessors/execute.py", line 405, in preprocess
+    nb, resources = super(ExecutePreprocessor, self).preprocess(nb, resources)
+  File "/opt/hostedtoolcache/Python/3.7.8/x64/lib/python3.7/site-packages/nbconvert/preprocessors/base.py", line 69, in preprocess
+    nb.cells[index], resources = self.preprocess_cell(cell, resources, index)
+  File "/opt/hostedtoolcache/Python/3.7.8/x64/lib/python3.7/site-packages/nbconvert/preprocessors/execute.py", line 448, in preprocess_cell
+    raise CellExecutionError.from_cell_and_msg(cell, out)
+nbconvert.preprocessors.execute.CellExecutionError: An error occurred while executing the following cell:
+------------------
+
+import numpy as np
+
+num_runs = 1000000
+
+def toss_coins_and_count_heads(num_coins=100, p_heads=0.5):
+    """
+    flip a coin num_coins times and return number of heads
+    """
+
+    flips = np.random.rand(num_coins) > (1 - p_heads)
+    return(np.sum(flips))
+
+    
+flip_results_df = pd.DataFrame({'n_heads': np.zeros(num_runs)})
+
+for run in range(num_runs):
+    flip_results_df.loc[run, 'n_heads'] = toss_coins_and_count_heads()
+------------------
+
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mNameError[0m                                 Traceback (most recent call last)
+[0;32m<ipython-input-1-1ded3196f929>[0m in [0;36m<module>[0;34m[0m
+[1;32m     12[0m [0;34m[0m[0m
+[1;32m     13[0m [0;34m[0m[0m
+[0;32m---> 14[0;31m [0mflip_results_df[0m [0;34m=[0m [0mpd[0m[0;34m.[0m[0mDataFrame[0m[0;34m([0m[0;34m{[0m[0;34m'n_heads'[0m[0;34m:[0m [0mnp[0m[0;34m.[0m[0mzeros[0m[0;34m([0m[0mnum_runs[0m[0;34m)[0m[0;34m}[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m     15[0m [0;34m[0m[0m
+[1;32m     16[0m [0;32mfor[0m [0mrun[0m [0;32min[0m [0mrange[0m[0;34m([0m[0mnum_runs[0m[0;34m)[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+
+[0;31mNameError[0m: name 'pd' is not defined
+NameError: name 'pd' is not defined
+

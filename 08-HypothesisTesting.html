@@ -153,6 +153,10 @@
             <a href="#simple-example-coin-flipping-section-ref-randomization-very-simple" class="nav-link">Simple example: Coin-flipping (Section @ref(randomization-very-simple))</a>
         </li>
     
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#simulating-p-values" class="nav-link">Simulating p-values</a>
+        </li>
+    
     </ul>
 </nav>
 
@@ -174,92 +178,44 @@ First let’s generate our data, simulating 100,000 sets of 100 flips. We use su
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
-<span class="c1"># ```{r}</span>
-<span class="c1"># # simulate tossing of 100,000 flips of 100 coins to identify </span>
-<span class="c1"># # empirical probability of 70 or more heads out of 100 flips</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
-<span class="c1"># nRuns &lt;- 100000</span>
+<span class="n">num_runs</span> <span class="o">=</span> <span class="mi">1000000</span>
 
-<span class="c1"># # create function to toss coins</span>
-<span class="c1"># tossCoins &lt;- function() {</span>
-<span class="c1">#   flips &lt;- runif(100) &gt; 0.5 </span>
-<span class="c1">#   return(tibble(nHeads=sum(flips)))</span>
-<span class="c1"># }</span>
+<span class="k">def</span> <span class="nf">toss_coins_and_count_heads</span><span class="p">(</span><span class="n">num_coins</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">p_heads</span><span class="o">=</span><span class="mf">0.5</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    flip a coin num_coins times and return number of heads</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
-<span class="c1"># # create an input data frame for do()</span>
-<span class="c1"># input_df &lt;- tibble(id=seq(nRuns)) %&gt;%</span>
-<span class="c1">#   group_by(id)</span>
+    <span class="n">flips</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">num_coins</span><span class="p">)</span> <span class="o">&gt;</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">p_heads</span><span class="p">)</span>
+    <span class="k">return</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">flips</span><span class="p">))</span>
 
-<span class="c1"># # use do() to perform the coin flips</span>
-<span class="c1"># flip_results &lt;- input_df %&gt;%</span>
-<span class="c1">#   do(tossCoins()) %&gt;%</span>
-<span class="c1">#   ungroup()</span>
+    
+<span class="n">flip_results_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;n_heads&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">num_runs</span><span class="p">)})</span>
 
-<span class="c1"># p_ge_70_sim &lt;- </span>
-<span class="c1">#   flip_results %&gt;%</span>
-<span class="c1">#   summarise(p_gt_70 = mean(nHeads &gt;= 70)) %&gt;%</span>
-<span class="c1">#   pull()</span>
-
-<span class="c1"># p_ge_70_sim</span>
-
-
-<span class="c1"># ```</span>
-
-
-<span class="c1"># For comparison, we can also compute the p-value for 70 or more heads based on a null hypothesis of $P_{heads}=0.5$, using the binomial distribution.</span>
-
-<span class="c1"># ```{r}</span>
-<span class="c1"># # compute the probability of 69 or fewer heads, </span>
-<span class="c1"># # when P(heads)=0.5</span>
-<span class="c1"># p_lt_70 &lt;- pbinom(69, 100, 0.5) </span>
-
-<span class="c1"># # the probability of 70 or more heads is simply </span>
-<span class="c1"># # the complement of p_lt_70</span>
-<span class="c1"># p_ge_70 &lt;- 1 - p_lt_70</span>
-
-<span class="c1"># p_ge_70</span>
-<span class="c1"># ```</span>
-
-<span class="c1"># ## Simulating p-values</span>
-
-<span class="c1"># In this exercise we will perform hypothesis testing many times in order to test whether the p-values provided by our statistical test are valid.  We will sample data from a normal distribution with a mean of zero, and for each sample perform a t-test to determine whether the mean is different from zero.  We will then count how often we reject the null hypothesis; since we know that the true mean is zero, these are by definition Type I errors.</span>
-
-<span class="c1"># ```{r}</span>
-<span class="c1"># nRuns &lt;- 5000</span>
-
-<span class="c1"># # create input data frame for do()</span>
-<span class="c1"># input_df &lt;- tibble(id=seq(nRuns)) %&gt;%</span>
-<span class="c1">#   group_by(id)</span>
-
-<span class="c1"># # create a function that will take a sample</span>
-<span class="c1"># # and perform a one-sample t-test</span>
-
-<span class="c1"># sample_ttest &lt;- function(sampSize=32){</span>
-<span class="c1">#   tt.result &lt;- t.test(rnorm(sampSize))</span>
-<span class="c1">#   return(tibble(pvalue=tt.result$p.value))</span>
-<span class="c1"># }</span>
-
-<span class="c1"># # perform simulations</span>
-
-<span class="c1"># sample_ttest_result &lt;- input_df %&gt;%</span>
-<span class="c1">#   do(sample_ttest())</span>
-
-<span class="c1"># p_error &lt;-</span>
-<span class="c1">#   sample_ttest_result %&gt;%</span>
-<span class="c1">#   ungroup() %&gt;%</span>
-<span class="c1">#   summarize(p_error = mean(pvalue&lt;.05)) %&gt;%</span>
-<span class="c1">#   pull()</span>
-
-<span class="c1"># p_error</span>
-
-<span class="c1"># ```</span>
-
-<span class="c1"># We should see that the proportion of samples with $p &lt; .05$ is about 5%.</span>
-
+<span class="k">for</span> <span class="n">run</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_runs</span><span class="p">):</span>
+    <span class="n">flip_results_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">run</span><span class="p">,</span> <span class="s1">&#39;n_heads&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">toss_coins_and_count_heads</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 </div>
+<p>Now we can compute the proportion of samples from the distribution observed when the true proportion of heads is 0.5.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">scipy.stats</span>
+
+<span class="n">pvalue</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">scipy</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">percentileofscore</span><span class="p">(</span><span class="n">flip_results_df</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">)</span>
+<span class="n">pvalue</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>For comparison, we can also compute the p-value for 70 or more heads based on a null hypothesis of <span class="math notranslate nohighlight">\(P_{heads}=0.5\)</span>, using the binomial distribution.</p>
+</div>
+<div class="section" id="simulating-p-values">
+<h2>Simulating p-values<a class="headerlink" href="#simulating-p-values" title="Permalink to this headline">¶</a></h2>
+<p>In this exercise we will perform hypothesis testing many times in order to test whether the p-values provided by our statistical test are valid.  We will sample data from a normal distribution with a mean of zero, and for each sample perform a t-test to determine whether the mean is different from zero.  We will then count how often we reject the null hypothesis; since we know that the true mean is zero, these are by definition Type I errors.</p>
+<p>We should see that the proportion of samples with <span class="math notranslate nohighlight">\(p &lt; .05\)</span> is about 5%.</p>
 </div>
 </div>
 
