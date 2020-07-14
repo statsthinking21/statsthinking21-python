@@ -6,7 +6,7 @@
     - file: 03-DataVisualization.ipynb
     - file: 04-FittingSimpleModels.ipynb
     - file: 05-Probability.ipynb
-    # - file: Part6_Sampling.ipynb
+    - file: 06-Sampling.ipynb
     # - file: Part7_ResamplingAndSimulation.ipynb
     # - file: Part8_HypothesisTesting.ipynb
     # - file: Part9_EffectSizeAndPower.ipynb
