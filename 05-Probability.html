@@ -1,0 +1,688 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Probability &#8212; Python Companion to Statistical Thinking in the 21st Century</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link href="_static/css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="_static/sphinx-book-theme.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/jupyter-sphinx.css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/sphinx-book-theme.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/mystnb.js"></script>
+    <script src="_static/sphinx-book-theme.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Fitting simple models" href="04-FittingSimpleModels.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="index.html">
+  
+  
+  <h1 class="site-logo" id="site-title">Python Companion to Statistical Thinking in the 21st Century</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  
+  <ul class="nav sidenav_l1">
+  <li class="">
+    <a href="01-IntroductionToPython.html">Introduction to Python</a>
+  </li>
+  <li class="">
+    <a href="02-SummarizingData.html">Summarizing Data</a>
+  </li>
+  <li class="">
+    <a href="03-DataVisualization.html">Data Visualization</a>
+  </li>
+  <li class="">
+    <a href="04-FittingSimpleModels.html">Fitting simple models</a>
+  </li>
+  <li class="active">
+    <a href="">Probability</a>
+  </li>
+</ul>
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/05-Probability.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+    </div>
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+<div class="tocsection onthispage pt-5 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
+
+<nav id="bd-toc-nav">
+    <ul class="nav section-nav flex-column">
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#basic-probability-calculations" class="nav-link">Basic probability calculations</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#empirical-frequency" class="nav-link">Empirical frequency</a>
+        </li>
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#conditional-probability" class="nav-link">Conditional probability</a>
+        </li>
+    
+    </ul>
+</nav>
+
+
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="probability">
+<h1>Probability<a class="headerlink" href="#probability" title="Permalink to this headline">¶</a></h1>
+<p>In this chapter we will go over how to perform probability computations in Python.</p>
+<div class="section" id="basic-probability-calculations">
+<h2>Basic probability calculations<a class="headerlink" href="#basic-probability-calculations" title="Permalink to this headline">¶</a></h2>
+<p>Let’s create a vector of outcomes from one to 6, using the <code class="docutils literal notranslate"><span class="pre">np.arange()</span></code> function to create such a sequence.  This function takes the minimum and maximum values as its inputs, but note that the maximum is not included in the sequence; that is, the sequence goes up to but not including the maximum.  Thus, we would have to give 1 and 7 as the minimum and maximum in order to get a sequence of numbers from 1 to 6:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="n">outcomes</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span>
+<span class="n">outcomes</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>array([1, 2, 3, 4, 5, 6])
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now let’s create a vector of logical values based on whether the outcome in each position is equal to 1. Remember that <code class="docutils literal notranslate"><span class="pre">==</span></code> tests for equality of each element in a vector:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">outcome1isTrue</span> <span class="o">=</span> <span class="n">outcomes</span> <span class="o">==</span> <span class="mi">1</span> 
+<span class="n">outcome1isTrue</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>array([ True, False, False, False, False, False])
+</pre></div>
+</div>
+</div>
+</div>
+<p>Remember that the simple probability of an outcome is number of occurrences of the outcome divided by the total number of events.  To compute a probability, we can take advantage of the fact that TRUE/FALSE are equivalent to 1/0 in Python.  The formula for the mean (sum of values divided by the number of values) is thus exactly the same as the formula for the simple probability!  So, we can compute the probability of the event by simply taking the mean of the logical vector.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">p1isTrue</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">outcome1isTrue</span><span class="p">)</span>
+<span class="n">p1isTrue</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>0.16666666666666666
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="empirical-frequency">
+<h2>Empirical frequency<a class="headerlink" href="#empirical-frequency" title="Permalink to this headline">¶</a></h2>
+<p>Let’s walk through how <a class="reference external" href="https://statsthinking21.github.io/statsthinking21-core-site/probability.html#empirical-frequency">we computed empirical frequency of rain in San Francisco</a>.</p>
+<p>First we load the data:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#+</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="n">SFrain</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;https://raw.githubusercontent.com/statsthinking21/statsthinking21-python/master/notebooks/data/SanFranciscoRain.csv&#39;</span><span class="p">)</span>
+
+<span class="c1"># we will remove the STATION and NAME variables </span>
+<span class="c1"># since they are identical for all rows</span>
+
+<span class="n">SFrain</span> <span class="o">=</span> <span class="n">SFrain</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;STATION&#39;</span><span class="p">,</span> <span class="s1">&#39;NAME&#39;</span><span class="p">])</span>
+<span class="n">SFrain</span>
+<span class="c1">#-</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>DATE</th>
+      <th>PRCP</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2017-01-01</td>
+      <td>0.05</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2017-01-02</td>
+      <td>0.10</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2017-01-03</td>
+      <td>0.40</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2017-01-04</td>
+      <td>0.89</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2017-01-05</td>
+      <td>0.01</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>360</th>
+      <td>2017-12-27</td>
+      <td>0.00</td>
+    </tr>
+    <tr>
+      <th>361</th>
+      <td>2017-12-28</td>
+      <td>0.00</td>
+    </tr>
+    <tr>
+      <th>362</th>
+      <td>2017-12-29</td>
+      <td>0.00</td>
+    </tr>
+    <tr>
+      <th>363</th>
+      <td>2017-12-30</td>
+      <td>0.00</td>
+    </tr>
+    <tr>
+      <th>364</th>
+      <td>2017-12-31</td>
+      <td>0.00</td>
+    </tr>
+  </tbody>
+</table>
+<p>365 rows × 2 columns</p>
+</div></div></div>
+</div>
+<p>We see that the data frame contains a variable called <code class="docutils literal notranslate"><span class="pre">PRCP</span></code> which denotes the amount of rain each day. Let’s create a new variable called <code class="docutils literal notranslate"><span class="pre">rainToday</span></code> that denotes whether the amount of precipitation was above zero:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SFrain</span><span class="p">[</span><span class="s1">&#39;rainToday&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">SFrain</span><span class="p">[</span><span class="s1">&#39;PRCP&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span>
+<span class="n">SFrain</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>DATE</th>
+      <th>PRCP</th>
+      <th>rainToday</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2017-01-01</td>
+      <td>0.05</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2017-01-02</td>
+      <td>0.10</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2017-01-03</td>
+      <td>0.40</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2017-01-04</td>
+      <td>0.89</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2017-01-05</td>
+      <td>0.01</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>360</th>
+      <td>2017-12-27</td>
+      <td>0.00</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>361</th>
+      <td>2017-12-28</td>
+      <td>0.00</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>362</th>
+      <td>2017-12-29</td>
+      <td>0.00</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>363</th>
+      <td>2017-12-30</td>
+      <td>0.00</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>364</th>
+      <td>2017-12-31</td>
+      <td>0.00</td>
+      <td>False</td>
+    </tr>
+  </tbody>
+</table>
+<p>365 rows × 3 columns</p>
+</div></div></div>
+</div>
+<p>Now we will summarize the data to compute the probability of rain:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pRainInSF</span> <span class="o">=</span> <span class="n">SFrain</span><span class="p">[</span><span class="s1">&#39;rainToday&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">pRainInSF</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>0.2
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="conditional-probability">
+<h2>Conditional probability<a class="headerlink" href="#conditional-probability" title="Permalink to this headline">¶</a></h2>
+<p>Let’s determine the conditional probability of someone having hearing problems, given that they are over 70 years of age, using the NHANES dataset.  First, let’s create a new variable called <code class="docutils literal notranslate"><span class="pre">Over70</span></code> that denotes whether each individual is over 70 or not.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">nhanes.load</span> <span class="kn">import</span> <span class="n">load_NHANES_data</span>
+<span class="n">nhanes_data</span> <span class="o">=</span> <span class="n">load_NHANES_data</span><span class="p">()</span>
+
+<span class="n">nhanes_data</span><span class="p">[</span><span class="s1">&#39;Over70&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">nhanes_data</span><span class="p">[</span><span class="s1">&#39;AgeInYearsAtScreening&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">70</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="stderr docutils container">
+<pre class="stderr literal-block">/opt/hostedtoolcache/Python/3.7.8/x64/lib/python3.7/site-packages/IPython/core/interactiveshell.py:3263: DtypeWarning: Columns (142) have mixed types.Specify dtype option on import or set low_memory=False.
+  if (await self.run_code(code, result,  async_=asy)):
+</pre>
+</div>
+</div>
+</div>
+<p>Now let’s create a cleaned-up dataset that only includes the over70 variable along with the variable called <code class="docutils literal notranslate"><span class="pre">HaveSeriousDifficultyHearing</span></code> that denotes whether a person reports having serious hearing difficulty (coded as 1 for “yes” and 0 for “no”).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">hearing_data</span> <span class="o">=</span> <span class="n">nhanes_data</span><span class="p">[[</span><span class="s1">&#39;Over70&#39;</span><span class="p">,</span> <span class="s1">&#39;HaveSeriousDifficultyHearing&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+<span class="n">hearing_data</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Over70</th>
+      <th>HaveSeriousDifficultyHearing</th>
+    </tr>
+    <tr>
+      <th>SEQN</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>93703.0</th>
+      <td>False</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>93704.0</th>
+      <td>False</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>93705.0</th>
+      <td>False</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>93706.0</th>
+      <td>False</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>93707.0</th>
+      <td>False</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>102952.0</th>
+      <td>False</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>102953.0</th>
+      <td>False</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>102954.0</th>
+      <td>False</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>102955.0</th>
+      <td>False</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>102956.0</th>
+      <td>False</td>
+      <td>0.0</td>
+    </tr>
+  </tbody>
+</table>
+<p>8365 rows × 2 columns</p>
+</div></div></div>
+</div>
+<p>First, what’s the probability of being over 70?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">p_over_70</span> <span class="o">=</span> <span class="n">hearing_data</span><span class="p">[</span><span class="s1">&#39;Over70&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">p_over_70</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>0.10531978481769277
+</pre></div>
+</div>
+</div>
+</div>
+<p>Second, what’s the probability of having hearing problems?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">p_hearing_problem</span> <span class="o">=</span> <span class="n">hearing_data</span><span class="p">[</span><span class="s1">&#39;HaveSeriousDifficultyHearing&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">p_hearing_problem</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>0.06276150627615062
+</pre></div>
+</div>
+</div>
+</div>
+<p>What’s the probability for each combination of hearing problems/no problems and over 70/ not? We can create a table that finds the joint probability for each combination, using the <code class="docutils literal notranslate"><span class="pre">pd.crosstab()</span></code> function:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">joint_table</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">crosstab</span><span class="p">(</span><span class="n">hearing_data</span><span class="o">.</span><span class="n">Over70</span><span class="p">,</span> <span class="n">hearing_data</span><span class="p">[</span><span class="s1">&#39;HaveSeriousDifficultyHearing&#39;</span><span class="p">],</span> <span class="n">normalize</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">joint_table</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>HaveSeriousDifficultyHearing</th>
+      <th>0.0</th>
+      <th>1.0</th>
+    </tr>
+    <tr>
+      <th>Over70</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>False</th>
+      <td>0.859653</td>
+      <td>0.035027</td>
+    </tr>
+    <tr>
+      <th>True</th>
+      <td>0.077585</td>
+      <td>0.027735</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Finally, what’s the probability of someone having hearing problems, given that they are over 70 years of age?  To do this, we limit the computation of the probability of having hearing problems to only include those people who are over 70:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">p_hearingproblem_given_over_70</span> <span class="o">=</span> <span class="n">hearing_data</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;Over70 == True&#39;</span><span class="p">)[</span><span class="s1">&#39;HaveSeriousDifficultyHearing&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">p_hearingproblem_given_over_70</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>0.2633371169125993
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now compute the opposite: What is the probability of being over 70 given that one has a hearing problem?</p>
+<p>p_over_70_given_hearingproblem = hearing_data.query(‘HaveSeriousDifficultyHearing == True’)[‘Over70’].mean()
+p_over_70_given_hearingproblem</p>
+</div>
+</div>
+
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="04-FittingSimpleModels.html" title="previous page">Fitting simple models</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Russell A. Poldrack<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    <script src="_static/js/index.js"></script>
+    
+  </body>
+</html>
