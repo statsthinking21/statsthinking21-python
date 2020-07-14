@@ -61,8 +61,12 @@ import pandas as pd
 num_runs = 5000
 sample_size = 150
 
+
 def sample_and_return_max(sample_size, 
-    distribution=None):
+                          distribution=None):
+    """
+    function to sample from a distribution and return maximum
+    """
 
     # if distribution is not specified, then use the normal
     if distribution is None:
@@ -70,6 +74,7 @@ def sample_and_return_max(sample_size,
     
     sample = distribution.rvs(size=sample_size)
     return(np.max(sample))
+
 
 sample_max_df = pd.DataFrame({'max': np.zeros(num_runs)})
 
