@@ -317,16 +317,25 @@
 </div>
 </div>
 <p>Let’s compare the bootstrap distribution to the sampling distribution that we would expect given the sample mean and standard deviation:</p>
-<p>hist = plt.hist(bootstrap_df[‘mean’], 100, density=True)</p>
-<p>hist_bin_min = np.min(hist[1])
-hist_bin_max = np.max(hist[1])
-step_size = 0.01
-x_values = np.arange(hist_bin_min, hist_bin_max, step_size)
-normal_values = scipy.stats.norm.pdf(
-x_values,
-loc=nhanes_sample[‘Height’].mean(),
-scale=nhanes_sample[‘Height’].std()/np.sqrt(sample_size))
-plt.plot(x_values, normal_values, color=’r’)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># hist = plt.hist(bootstrap_df[&#39;mean&#39;], 100, density=True)</span>
+<span class="c1">#</span>
+<span class="c1"># hist_bin_min = np.min(hist[1])</span>
+<span class="c1"># hist_bin_max = np.max(hist[1])</span>
+<span class="c1"># step_size = 0.01</span>
+<span class="c1"># x_values = np.arange(hist_bin_min, hist_bin_max, step_size)</span>
+<span class="c1"># normal_values = scipy.stats.norm.pdf(</span>
+<span class="c1">#     x_values,</span>
+<span class="c1">#     loc=nhanes_sample[&#39;Height&#39;].mean(),</span>
+<span class="c1">#     scale=nhanes_sample[&#39;Height&#39;].std()/np.sqrt(sample_size))</span>
+<span class="c1"># plt.plot(x_values, normal_values, color=&#39;r&#39;)</span>
+<span class="c1">#</span>
+<span class="c1">#</span>
+</pre></div>
+</div>
+</div>
+</div>
 <p>This shows that the bootstrap sampling distrbution does a good job of recapitulating the theoretical sampling distribution in this case.</p>
 </div>
 </div>

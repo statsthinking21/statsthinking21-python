@@ -1,0 +1,296 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Hypothesis testing in Python &#8212; Python Companion to Statistical Thinking in the 21st Century</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link href="_static/css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="_static/sphinx-book-theme.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/jupyter-sphinx.css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/sphinx-book-theme.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/mystnb.js"></script>
+    <script src="_static/sphinx-book-theme.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="index.html">
+  
+  
+  <h1 class="site-logo" id="site-title">Python Companion to Statistical Thinking in the 21st Century</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  
+  <ul class="nav sidenav_l1">
+  <li class="">
+    <a href="01-IntroductionToPython.html">Introduction to Python</a>
+  </li>
+  <li class="">
+    <a href="02-SummarizingData.html">Summarizing Data</a>
+  </li>
+  <li class="">
+    <a href="03-DataVisualization.html">Data Visualization</a>
+  </li>
+  <li class="">
+    <a href="04-FittingSimpleModels.html">Fitting simple models</a>
+  </li>
+  <li class="">
+    <a href="05-Probability.html">Probability</a>
+  </li>
+  <li class="">
+    <a href="06-Sampling.html">Sampling</a>
+  </li>
+  <li class="">
+    <a href="07-ResamplingAndSimulation.html">Resampling and simulation in R</a>
+  </li>
+</ul>
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/08-HypothesisTesting.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+    </div>
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+<div class="tocsection onthispage pt-5 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
+
+<nav id="bd-toc-nav">
+    <ul class="nav section-nav flex-column">
+    
+        <li class="nav-item toc-entry toc-h2">
+            <a href="#simple-example-coin-flipping-section-ref-randomization-very-simple" class="nav-link">Simple example: Coin-flipping (Section @ref(randomization-very-simple))</a>
+        </li>
+    
+    </ul>
+</nav>
+
+
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="hypothesis-testing-in-python">
+<h1>Hypothesis testing in Python<a class="headerlink" href="#hypothesis-testing-in-python" title="Permalink to this headline">¶</a></h1>
+<p>In this chapter we will present several examples of using Python to perform hypothesis testing.</p>
+<div class="section" id="simple-example-coin-flipping-section-ref-randomization-very-simple">
+<h2>Simple example: Coin-flipping (Section &#64;ref(randomization-very-simple))<a class="headerlink" href="#simple-example-coin-flipping-section-ref-randomization-very-simple" title="Permalink to this headline">¶</a></h2>
+<p>Let’s say that we flipped 100 coins and observed 70 heads. We would like to use these data to test the hypothesis that the true probability is 0.5.
+First let’s generate our data, simulating 100,000 sets of 100 flips. We use such a large number because it turns out that it’s very rare to get 70 heads, so we need many attempts in order to get a reliable estimate of these probabilties.  This will take a couple of minutes to complete.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+<span class="c1"># ```{r}</span>
+<span class="c1"># # simulate tossing of 100,000 flips of 100 coins to identify </span>
+<span class="c1"># # empirical probability of 70 or more heads out of 100 flips</span>
+
+<span class="c1"># nRuns &lt;- 100000</span>
+
+<span class="c1"># # create function to toss coins</span>
+<span class="c1"># tossCoins &lt;- function() {</span>
+<span class="c1">#   flips &lt;- runif(100) &gt; 0.5 </span>
+<span class="c1">#   return(tibble(nHeads=sum(flips)))</span>
+<span class="c1"># }</span>
+
+<span class="c1"># # create an input data frame for do()</span>
+<span class="c1"># input_df &lt;- tibble(id=seq(nRuns)) %&gt;%</span>
+<span class="c1">#   group_by(id)</span>
+
+<span class="c1"># # use do() to perform the coin flips</span>
+<span class="c1"># flip_results &lt;- input_df %&gt;%</span>
+<span class="c1">#   do(tossCoins()) %&gt;%</span>
+<span class="c1">#   ungroup()</span>
+
+<span class="c1"># p_ge_70_sim &lt;- </span>
+<span class="c1">#   flip_results %&gt;%</span>
+<span class="c1">#   summarise(p_gt_70 = mean(nHeads &gt;= 70)) %&gt;%</span>
+<span class="c1">#   pull()</span>
+
+<span class="c1"># p_ge_70_sim</span>
+
+
+<span class="c1"># ```</span>
+
+
+<span class="c1"># For comparison, we can also compute the p-value for 70 or more heads based on a null hypothesis of $P_{heads}=0.5$, using the binomial distribution.</span>
+
+<span class="c1"># ```{r}</span>
+<span class="c1"># # compute the probability of 69 or fewer heads, </span>
+<span class="c1"># # when P(heads)=0.5</span>
+<span class="c1"># p_lt_70 &lt;- pbinom(69, 100, 0.5) </span>
+
+<span class="c1"># # the probability of 70 or more heads is simply </span>
+<span class="c1"># # the complement of p_lt_70</span>
+<span class="c1"># p_ge_70 &lt;- 1 - p_lt_70</span>
+
+<span class="c1"># p_ge_70</span>
+<span class="c1"># ```</span>
+
+<span class="c1"># ## Simulating p-values</span>
+
+<span class="c1"># In this exercise we will perform hypothesis testing many times in order to test whether the p-values provided by our statistical test are valid.  We will sample data from a normal distribution with a mean of zero, and for each sample perform a t-test to determine whether the mean is different from zero.  We will then count how often we reject the null hypothesis; since we know that the true mean is zero, these are by definition Type I errors.</span>
+
+<span class="c1"># ```{r}</span>
+<span class="c1"># nRuns &lt;- 5000</span>
+
+<span class="c1"># # create input data frame for do()</span>
+<span class="c1"># input_df &lt;- tibble(id=seq(nRuns)) %&gt;%</span>
+<span class="c1">#   group_by(id)</span>
+
+<span class="c1"># # create a function that will take a sample</span>
+<span class="c1"># # and perform a one-sample t-test</span>
+
+<span class="c1"># sample_ttest &lt;- function(sampSize=32){</span>
+<span class="c1">#   tt.result &lt;- t.test(rnorm(sampSize))</span>
+<span class="c1">#   return(tibble(pvalue=tt.result$p.value))</span>
+<span class="c1"># }</span>
+
+<span class="c1"># # perform simulations</span>
+
+<span class="c1"># sample_ttest_result &lt;- input_df %&gt;%</span>
+<span class="c1">#   do(sample_ttest())</span>
+
+<span class="c1"># p_error &lt;-</span>
+<span class="c1">#   sample_ttest_result %&gt;%</span>
+<span class="c1">#   ungroup() %&gt;%</span>
+<span class="c1">#   summarize(p_error = mean(pvalue&lt;.05)) %&gt;%</span>
+<span class="c1">#   pull()</span>
+
+<span class="c1"># p_error</span>
+
+<span class="c1"># ```</span>
+
+<span class="c1"># We should see that the proportion of samples with $p &lt; .05$ is about 5%.</span>
+
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Russell A. Poldrack<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    <script src="_static/js/index.js"></script>
+    
+  </body>
+</html>
