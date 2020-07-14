@@ -649,8 +649,19 @@
 </div>
 </div>
 <p>Now compute the opposite: What is the probability of being over 70 given that one has a hearing problem?</p>
-<p>p_over_70_given_hearingproblem = hearing_data.query(‘HaveSeriousDifficultyHearing == True’)[‘Over70’].mean()
-p_over_70_given_hearingproblem</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">p_over_70_given_hearingproblem</span> <span class="o">=</span> <span class="n">hearing_data</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;HaveSeriousDifficultyHearing == True&#39;</span><span class="p">)[</span><span class="s1">&#39;Over70&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">p_over_70_given_hearingproblem</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>0.4419047619047619
+</pre></div>
+</div>
+</div>
+</div>
 </div>
 </div>
 
