@@ -49,59 +49,60 @@ for run in range(num_runs):
 # %%
 import scipy.stats
 
-pvalue = 1 - scipy.stats.percentileofscore(flip_results_df, 0.7)
+pvalue = 100 - scipy.stats.percentileofscore(flip_results_df, 0.7) #CK - percentileofscore gives number 0-100, so pvalue has to be 100-answer
 pvalue
 
 # %% [markdown]
 # For comparison, we can also compute the p-value for 70 or more heads based on a null hypothesis of $P_{heads}=0.5$, using the binomial distribution.
 #
-# ```{r}
+# 
 # # compute the probability of 69 or fewer heads, 
 # # when P(heads)=0.5
-# p_lt_70 <- pbinom(69, 100, 0.5) 
-#
+
+# %%
+
+p_lt_70 = scipy.stats.binom.cdf(k=69, n=100, p=0.5)
+p_lt_70
+
+# %% [markdown]
 # # the probability of 70 or more heads is simply 
 # # the complement of p_lt_70
-# p_ge_70 <- 1 - p_lt_70
+# %%
+
+p_ge_70 = 1 - p_lt_70
+p_ge_70
 #
-# p_ge_70
-# ```
-#
+# %% [markdown]
 # ## Simulating p-values
 #
 # In this exercise we will perform hypothesis testing many times in order to test whether the p-values provided by our statistical test are valid.  We will sample data from a normal distribution with a mean of zero, and for each sample perform a t-test to determine whether the mean is different from zero.  We will then count how often we reject the null hypothesis; since we know that the true mean is zero, these are by definition Type I errors.
 #
-# ```{r}
-# nRuns <- 5000
-#
-# # create input data frame for do()
-# input_df <- tibble(id=seq(nRuns)) %>%
-#   group_by(id)
-#
-# # create a function that will take a sample
-# # and perform a one-sample t-test
-#
-# sample_ttest <- function(sampSize=32){
-#   tt.result <- t.test(rnorm(sampSize))
-#   return(tibble(pvalue=tt.result$p.value))
-# }
-#
-# # perform simulations
-#
-# sample_ttest_result <- input_df %>%
-#   do(sample_ttest())
-#
-# p_error <-
-#   sample_ttest_result %>%
-#   ungroup() %>%
-#   summarize(p_error = mean(pvalue<.05)) %>%
-#   pull()
-#
-# p_error
-#
-# ```
-#
-# We should see that the proportion of samples with $p < .05$ is about 5%.
+# %%
+
+num_runs = 5000
+
+# create a function that will take a sample
+# and perform a one-sample t-test
+def sample_ttest(sampSize=32):
+    """
+    perform a ttest on random data of n=sampSize
+    """
+
+    ttresult = scipy.stats.ttest_1samp(np.random.normal(loc=0.0, scale=1.0, size=sampSize),0)
+    return(ttresult.pvalue)
+
+# create input data frame for the function
+sim_results_df = pd.DataFrame({'p_value': np.zeros(num_runs)})
+
+# perform simulations
+for run in range(num_runs):
+    sim_results_df.loc[run, 'p_value'] = sample_ttest()
+
+p_error = sim_results_df.loc[sim_results_df['p_value']<0.05].mean(axis=0)
+p_error
+
+# %% [markdown]
+# We should see that the proportion of samples with p < .05 is about 5%.
 #
 #
 #
