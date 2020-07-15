@@ -63,30 +63,54 @@
 </form>
 
 <nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
-  
-  <ul class="nav sidenav_l1">
-  <li class="">
-    <a href="01-IntroductionToPython.html">Introduction to Python</a>
-  </li>
-  <li class="active">
-    <a href="">Summarizing Data</a>
-  </li>
-  <li class="">
-    <a href="03-DataVisualization.html">Data Visualization</a>
-  </li>
-  <li class="">
-    <a href="04-FittingSimpleModels.html">Fitting simple models</a>
-  </li>
-  <li class="">
-    <a href="05-Probability.html">Probability</a>
-  </li>
-  <li class="">
-    <a href="06-Sampling.html">Sampling</a>
-  </li>
-  <li class="">
-    <a href="07-ResamplingAndSimulation.html">Resampling and simulation in R</a>
-  </li>
+  <ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="01-IntroductionToPython.html">
+   Introduction to Python
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Summarizing Data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="03-DataVisualization.html">
+   Data Visualization
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="03-DataVisualization.html#plotting-the-distribution-of-a-single-variable">
+   Plotting the distribution of a single variable
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="03-DataVisualization.html#plots-with-two-variables">
+   Plots with two variables
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="04-FittingSimpleModels.html">
+   Fitting simple models
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="05-Probability.html">
+   Probability
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="06-Sampling.html">
+   Sampling
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="07-ResamplingAndSimulation.html">
+   Resampling and simulation in R
+  </a>
+ </li>
 </ul>
+
 </nav>
 
  <!-- To handle the deprecated key -->
@@ -143,56 +167,63 @@
         <!-- Launch buttons -->
 
     </div>
+
+    <!-- Table of contents -->
     <div class="d-none d-md-block col-md-2 bd-toc show">
-<div class="tocsection onthispage pt-5 pb-3">
-    <i class="fas fa-list"></i> On this page
-</div>
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> On this page
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#working-with-data-frames">
+   Working with data frames
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#selecting-rows-observations-and-columns-variables">
+     Selecting rows (observations) and columns (variables)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#missing-values">
+     Missing values
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#selecting-rows-by-value">
+     Selecting rows by value
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#creating-new-variables">
+   Creating new variables
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#understanding-your-data">
+     Understanding your data
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#summarizing-data-using-a-frequency-distribution">
+   Summarizing data using a frequency distribution
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#data-cleaning">
+     Data Cleaning
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
 
-<nav id="bd-toc-nav">
-    <ul class="nav section-nav flex-column">
-    
-        <li class="nav-item toc-entry toc-h2">
-            <a href="#working-with-data-frames" class="nav-link">Working with data frames</a><ul class="nav section-nav flex-column">
-                
-        <li class="nav-item toc-entry toc-h3">
-            <a href="#selecting-rows-observations-and-columns-variables" class="nav-link">Selecting rows (observations) and columns (variables)</a>
-        </li>
-    
-        <li class="nav-item toc-entry toc-h3">
-            <a href="#missing-values" class="nav-link">Missing values</a>
-        </li>
-    
-        <li class="nav-item toc-entry toc-h3">
-            <a href="#selecting-rows-by-value" class="nav-link">Selecting rows by value</a>
-        </li>
-    
-            </ul>
-        </li>
-    
-        <li class="nav-item toc-entry toc-h2">
-            <a href="#creating-new-variables" class="nav-link">Creating new variables</a><ul class="nav section-nav flex-column">
-                
-        <li class="nav-item toc-entry toc-h3">
-            <a href="#understanding-your-data" class="nav-link">Understanding your data</a>
-        </li>
-    
-            </ul>
-        </li>
-    
-        <li class="nav-item toc-entry toc-h2">
-            <a href="#summarizing-data-using-a-frequency-distribution" class="nav-link">Summarizing data using a frequency distribution</a><ul class="nav section-nav flex-column">
-                
-        <li class="nav-item toc-entry toc-h3">
-            <a href="#data-cleaning" class="nav-link">Data Cleaning</a>
-        </li>
-    
-            </ul>
-        </li>
-    
-    </ul>
-</nav>
-
-
+        </nav>
     </div>
 </div>
     <div id="main-content" class="row">

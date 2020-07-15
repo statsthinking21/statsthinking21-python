@@ -63,30 +63,54 @@
 </form>
 
 <nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
-  
-  <ul class="nav sidenav_l1">
-  <li class="">
-    <a href="01-IntroductionToPython.html">Introduction to Python</a>
-  </li>
-  <li class="">
-    <a href="02-SummarizingData.html">Summarizing Data</a>
-  </li>
-  <li class="">
-    <a href="03-DataVisualization.html">Data Visualization</a>
-  </li>
-  <li class="active">
-    <a href="">Fitting simple models</a>
-  </li>
-  <li class="">
-    <a href="05-Probability.html">Probability</a>
-  </li>
-  <li class="">
-    <a href="06-Sampling.html">Sampling</a>
-  </li>
-  <li class="">
-    <a href="07-ResamplingAndSimulation.html">Resampling and simulation in R</a>
-  </li>
+  <ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="01-IntroductionToPython.html">
+   Introduction to Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="02-SummarizingData.html">
+   Summarizing Data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="03-DataVisualization.html">
+   Data Visualization
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="03-DataVisualization.html#plotting-the-distribution-of-a-single-variable">
+   Plotting the distribution of a single variable
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="03-DataVisualization.html#plots-with-two-variables">
+   Plots with two variables
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Fitting simple models
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="05-Probability.html">
+   Probability
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="06-Sampling.html">
+   Sampling
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="07-ResamplingAndSimulation.html">
+   Resampling and simulation in R
+  </a>
+ </li>
 </ul>
+
 </nav>
 
  <!-- To handle the deprecated key -->
@@ -143,42 +167,47 @@
         <!-- Launch buttons -->
 
     </div>
+
+    <!-- Table of contents -->
     <div class="d-none d-md-block col-md-2 bd-toc show">
-<div class="tocsection onthispage pt-5 pb-3">
-    <i class="fas fa-list"></i> On this page
-</div>
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> On this page
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#mean">
+   Mean
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#median">
+   Median
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#mode">
+   Mode
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#creating-functions">
+   Creating functions
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#variability">
+   Variability
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#z-scores">
+   Z-scores
+  </a>
+ </li>
+</ul>
 
-<nav id="bd-toc-nav">
-    <ul class="nav section-nav flex-column">
-    
-        <li class="nav-item toc-entry toc-h2">
-            <a href="#mean" class="nav-link">Mean</a>
-        </li>
-    
-        <li class="nav-item toc-entry toc-h2">
-            <a href="#median" class="nav-link">Median</a>
-        </li>
-    
-        <li class="nav-item toc-entry toc-h2">
-            <a href="#mode" class="nav-link">Mode</a>
-        </li>
-    
-        <li class="nav-item toc-entry toc-h2">
-            <a href="#creating-functions" class="nav-link">Creating functions</a>
-        </li>
-    
-        <li class="nav-item toc-entry toc-h2">
-            <a href="#variability" class="nav-link">Variability</a>
-        </li>
-    
-        <li class="nav-item toc-entry toc-h2">
-            <a href="#z-scores" class="nav-link">Z-scores</a>
-        </li>
-    
-    </ul>
-</nav>
-
-
+        </nav>
     </div>
 </div>
     <div id="main-content" class="row">
@@ -413,7 +442,7 @@ The final line tells Python to return the value of the mode when the function is
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>array([&#39;c&#39;, &#39;a&#39;], dtype=object)
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>array([&#39;a&#39;, &#39;c&#39;], dtype=object)
 </pre></div>
 </div>
 </div>
@@ -448,7 +477,7 @@ The final line tells Python to return the value of the mode when the function is
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>95.8391986577181
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>112.12731498881432
 </pre></div>
 </div>
 </div>
@@ -461,7 +490,7 @@ The final line tells Python to return the value of the mode when the function is
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>95.8391986577181
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>112.12731498881432
 </pre></div>
 </div>
 </div>
@@ -475,7 +504,7 @@ The final line tells Python to return the value of the mode when the function is
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>9.78974967288327
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>10.589018603667402
 </pre></div>
 </div>
 </div>
@@ -488,7 +517,7 @@ The final line tells Python to return the value of the mode when the function is
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>9.78974967288327
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>10.589018603667402
 </pre></div>
 </div>
 </div>
@@ -522,10 +551,10 @@ The final line tells Python to return the value of the mode when the function is
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>(array([ 7.,  6., 28., 25., 20., 20., 28., 12.,  3.,  1.]),
- array([-2.22824901, -1.73283287, -1.23741673, -0.74200059, -0.24658445,
-         0.24883169,  0.74424784,  1.23966398,  1.73508012,  2.23049626,
-         2.7259124 ]),
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>(array([ 7., 10., 25., 17., 28., 22., 17., 13.,  8.,  3.]),
+ array([-2.08398287, -1.63257182, -1.18116077, -0.72974972, -0.27833867,
+         0.17307238,  0.62448343,  1.07589448,  1.52730553,  1.97871658,
+         2.43012763]),
  &lt;a list of 10 Patch objects&gt;)
 </pre></div>
 </div>
@@ -540,7 +569,7 @@ The final line tells Python to return the value of the mode when the function is
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x7fad4d280a10&gt;
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x7effd9c3e490&gt;
 </pre></div>
 </div>
 <img alt="_images/04-FittingSimpleModels_48_1.png" src="_images/04-FittingSimpleModels_48_1.png" />

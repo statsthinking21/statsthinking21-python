@@ -63,30 +63,54 @@
 </form>
 
 <nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
-  
-  <ul class="nav sidenav_l1">
-  <li class="">
-    <a href="01-IntroductionToPython.html">Introduction to Python</a>
-  </li>
-  <li class="">
-    <a href="02-SummarizingData.html">Summarizing Data</a>
-  </li>
-  <li class="active">
-    <a href="">Data Visualization</a>
-  </li>
-  <li class="">
-    <a href="04-FittingSimpleModels.html">Fitting simple models</a>
-  </li>
-  <li class="">
-    <a href="05-Probability.html">Probability</a>
-  </li>
-  <li class="">
-    <a href="06-Sampling.html">Sampling</a>
-  </li>
-  <li class="">
-    <a href="07-ResamplingAndSimulation.html">Resampling and simulation in R</a>
-  </li>
+  <ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="01-IntroductionToPython.html">
+   Introduction to Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="02-SummarizingData.html">
+   Summarizing Data
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Data Visualization
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="#plotting-the-distribution-of-a-single-variable">
+   Plotting the distribution of a single variable
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="#plots-with-two-variables">
+   Plots with two variables
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="04-FittingSimpleModels.html">
+   Fitting simple models
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="05-Probability.html">
+   Probability
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="06-Sampling.html">
+   Sampling
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="07-ResamplingAndSimulation.html">
+   Resampling and simulation in R
+  </a>
+ </li>
 </ul>
+
 </nav>
 
  <!-- To handle the deprecated key -->
@@ -143,52 +167,22 @@
         <!-- Launch buttons -->
 
     </div>
+
+    <!-- Table of contents -->
     <div class="d-none d-md-block col-md-2 bd-toc show">
-<div class="tocsection onthispage pt-5 pb-3">
-    <i class="fas fa-list"></i> On this page
-</div>
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> On this page
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#let-s-think-through-a-visualization">
+   Let’s think through a visualization
+  </a>
+ </li>
+</ul>
 
-<nav id="bd-toc-nav">
-    <ul class="nav section-nav flex-column">
-    
-        <li class="nav-item toc-entry toc-h2">
-            <a href="#" class="nav-link">Data Visualization</a><ul class="nav section-nav flex-column">
-                
-        <li class="nav-item toc-entry toc-h3">
-            <a href="#let-s-think-through-a-visualization" class="nav-link">Let’s think through a visualization</a>
-        </li>
-    
-            </ul>
-        </li>
-    
-        <li class="nav-item toc-entry toc-h2">
-            <a href="#plotting-the-distribution-of-a-single-variable" class="nav-link">Plotting the distribution of a single variable</a><ul class="nav section-nav flex-column">
-                
-        <li class="nav-item toc-entry toc-h3">
-            <a href="#bar-vs-line-plots" class="nav-link">Bar vs. line plots</a>
-        </li>
-    
-            </ul>
-        </li>
-    
-        <li class="nav-item toc-entry toc-h2">
-            <a href="#plots-with-two-variables" class="nav-link">Plots with two variables</a><ul class="nav section-nav flex-column">
-                
-        <li class="nav-item toc-entry toc-h3">
-            <a href="#plotting-dispersion" class="nav-link">Plotting dispersion</a>
-        </li>
-    
-        <li class="nav-item toc-entry toc-h3">
-            <a href="#scatter-plot" class="nav-link">Scatter plot</a>
-        </li>
-    
-            </ul>
-        </li>
-    
-    </ul>
-</nav>
-
-
+        </nav>
     </div>
 </div>
     <div id="main-content" class="row">
@@ -288,7 +282,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fe31b0d8550&gt;]
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f3f8483f450&gt;]
 </pre></div>
 </div>
 <img alt="_images/03-DataVisualization_14_1.png" src="_images/03-DataVisualization_14_1.png" />
@@ -303,7 +297,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fe31b08d390&gt;
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f3f84797950&gt;
 </pre></div>
 </div>
 <img alt="_images/03-DataVisualization_16_1.png" src="_images/03-DataVisualization_16_1.png" />
@@ -346,7 +340,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fe31b0a0750&gt;
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f3f81cbc490&gt;
 </pre></div>
 </div>
 <img alt="_images/03-DataVisualization_23_1.png" src="_images/03-DataVisualization_23_1.png" />
@@ -365,7 +359,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fe3163883d0&gt;
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f3f7fa903d0&gt;
 </pre></div>
 </div>
 <img alt="_images/03-DataVisualization_26_1.png" src="_images/03-DataVisualization_26_1.png" />
@@ -381,7 +375,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fe315c44a90&gt;
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f3f7f2dd4d0&gt;
 </pre></div>
 </div>
 <img alt="_images/03-DataVisualization_28_1.png" src="_images/03-DataVisualization_28_1.png" />
