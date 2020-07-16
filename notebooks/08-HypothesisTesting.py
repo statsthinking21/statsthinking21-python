@@ -26,7 +26,7 @@
 import numpy as np
 import pandas as pd
 
-num_runs = 1000000
+num_runs = 10000
 
 def toss_coins_and_count_heads(num_coins=100, p_heads=0.5):
     """
@@ -55,7 +55,7 @@ pvalue
 # %% [markdown]
 # For comparison, we can also compute the p-value for 70 or more heads based on a null hypothesis of $P_{heads}=0.5$, using the binomial distribution.
 #
-# 
+#
 # # compute the probability of 69 or fewer heads, 
 # # when P(heads)=0.5
 
