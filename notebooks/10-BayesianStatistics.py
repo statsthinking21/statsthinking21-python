@@ -34,8 +34,6 @@ posterior
 
 
 
-
-
 # %% [markdown]
 # The high specificity of the test, along with the relatively high base rate of the disease, means that most people who test positive actually have the disease. 
 # Now let's plot the posterior as a function of the prior.  Let's first create a function to compute the posterior, and then apply this with a range of values for the prior.
@@ -110,10 +108,12 @@ num_responders = 312
 num_tested = 1000
 
 # copy the posterior from the previous analysis and rename it as the prior
+
 study2_df = bayes_df[['proportion', 'posterior']].rename(columns={'posterior': 'prior'})
 
 # compute the binomial likelihood of the observed data for each
 # possible value of proportion
+
 study2_df['likelihood'] = scipy.stats.binom.pmf(num_responders,
                                                num_tested,
                                                study2_df['proportion'])
