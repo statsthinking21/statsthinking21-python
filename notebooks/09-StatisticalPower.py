@@ -14,13 +14,12 @@
 # ---
 
 # %% [markdown]
-#
-#
+# # Statistical Power Analysis in Python
+# In this chapter we focus specifically on statistical power.  We will use the NHANES dataset, so let's first set that up.
 # %%
 
 import numpy as np
 import pandas as pd
-
 
 np.random.seed(12345) 
 
@@ -32,9 +31,7 @@ adult_nhanes_data = adult_nhanes_data.dropna(subset=['WeightKg']).rename(columns
 
 
 # %% [markdown]
-# In this chapter we focus specifically on statistical power.
-#
-# # Power analysis
+# ## Power analysis
 #
 # We can compute a power analysis using functions from the `statsmodels.stats.power` package. Let's focus on the power for an independent samples t-test in order to determine a difference in the mean between two groups.  Let's say that we think than an effect size of Cohen's d=0.5 is realistic for the study in question (based on previous research) and would be of scientific interest.  We wish to have 80% power to find the effect if it exists.  We can compute the sample size needed for adequate power using the `TTestIndPower()` function:
 
@@ -47,20 +44,15 @@ import matplotlib.pyplot as plt
 power_analysis = smp.TTestIndPower()
 sample_size = power_analysis.solve_power(effect_size=0.5, power=0.8, alpha=0.05)
 sample_size
-#print('Sample Size: %.3f' % sample_size)
 
 # %% [markdown]
 # Thus, about 64 participants would be needed in each group in order to test the hypothesis with adequate power.
 #
-#
-#
-# # Power curves
+# ## Power curves
 #
 # We can also create plots that can show us how the power to find an effect varies as a function of effect size and sample size, at the alpha specified in the power analysis. We willl use the `plot_power()` function. The x-axis is defined by the 'dep_var' argument, while sample sizes (nobs) and effect sizes (effect_size) are provided in arrays. 
-#
-#
 # %%
-
+#+
 effect_sizes = np.array([0.2, 0.5, 0.8])
 sample_sizes = np.array(range(10, 500, 10))
 
@@ -76,6 +68,7 @@ fig = power_analysis.plot_power(
 #import itertools
 #input_df=pd.DataFrame(itertools.product(sample_sizes, effect_sizes))
 #input_df
+#-
 
 # %% [markdown]
 # Using this, we can then perform a power analysis for each combination of effect size and sample size to create our power curves.  In this case, let's say that we wish to perform a two-sample t-test.
@@ -112,14 +105,14 @@ fig = power_analysis.plot_power(
 # ```
 
 # %% [markdown]
-# # Simulating statistical power
+# ## Simulating statistical power
 #
 #
 # Let's simulate this to see whether the power analysis actually gives the right answer.
 # We will sample data for two groups, with a difference of 0.5 standard deviations between their underlying distributions, and we will look at how often we reject the null hypothesis.
 
 # %%
-
+#+
 num_runs = 5000
 effectSize = 0.5
 
@@ -155,9 +148,8 @@ for run in range(num_runs):
 
 p_reject = np.mean(power_sim_results['p_value'] < 0.05)
 p_reject
+#-
 
 
 # %% [markdown]
 # This should return a number very close to 0.8.
-
-# %%
