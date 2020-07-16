@@ -30,89 +30,111 @@ adult_nhanes_data = nhanes_data.query('AgeInYearsAtScreening > 17')
 # %%
 
 import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
 
 def generate_linear_data(slope, intercept,
-                         x = None, noise_sd=1, npoints=100):
+                         noise_sd=1, x = None, 
+                         npoints=100, seed=None):
     """
     generate data with a given slope and intercept
     and add normally distributed noise
 
     if x is passed as an argument then a given x will be used,
     otherwise it will be generated randomly
+
+    Returns:
+    --------
+    a pandas data frame with variables x and y
     """
+    if seed is not None:
+        np.random.seed(seed)
     if x is None:
         x = np.random.randn(npoints)
     
     y = x * slope + intercept + np.random.randn(x.shape[0]) * noise_sd
-    return(y)
+    return(pd.DataFrame({'x': x, 'y': y}))
+
+slope = 1
+intercept = 10
+noise_sd = 1
+simulated_data = generate_linear_data(slope, intercept, noise_sd, seed=1)
+
+plt.scatter(simulated_data['x'], simulated_data['y'])
 
 
-# ```{r fig.width=4, fig.height=4, out.width="50%"}
-# npoints <- 100
-# intercept = 10
-# # slope of X/Y relationship
-# slope=0.5
-# # this lets us control the strength of the relationship
-# # by varying the amount of noise added to the y variable
-# noise_sd = 0.6
+# %% [markdown]
+# We can then perform linear regression on these data using the `ols` function.  This function doesn't automatically include an intercept in its model, so we need to add one to the design.  Fitting the model using this function is a two-step process.  First, we set up the model and store it to a variable (which we will call `ols_model`).  Then, we actually fit the model, which generates the results that we store to a different variable called `ols_results`, and view a summary using the `.summary()` method of the results variable.
+#
+# from statsmodels.formula.api import ols
+#
+# ols_model = ols(formula='y ~ x + 1', data=simulated_data)
+# ols_result = ols_model.fit()
+# ols_result.summary()
 
-# regression_data <- tibble(x = rnorm(npoints)) %>%
-#   mutate(y = x*slope + rnorm(npoints)*noise_sd + intercept)
-
-# ggplot(regression_data,aes(x,y)) + 
-#   geom_point()
-# ```
-
-# We can then apply `lm()` to these data:
-
-# ```{r}
-# lm_result <- lm(y ~ x, data=regression_data)
-# summary(lm_result)
-# ```
-
-# We should see three things in the `lm()` results:
-
+# %% [markdown]
+#  We should see three things in these results:
+#
 # * The estimate of the Intercept in the model should be very close to the intercept that we specified
 # * The estimate for the x parameter should be very close to the slope that we specified
-# * The residual standard error should be roughly similar to the noise standard deviation that we specified
+# * The residual standard deviation should be roughly similar to the noise standard deviation that we specified.  The summary doesn't report the residual standard deviation directly but we can compute it using the residuals that are stored in the `.resid` element in the result output:
+
+# %%
+ols_result.resid.std()
 
 
-# ## Model criticism and diagnostics (Section \@ref(model-criticism))
+# %% [markdown]
+# ## Model criticism and diagnostics
+# Once we have fitted the model, we want to look at some diagnostics to determine whether the model is actually fitting properly.  
+# The first thing to examine is to make sure that the residuals are (at least roughly) normally distributed.  We can do this using a Q-Q plot:
 
-# Once we have fitted the model, we want to look at some diagnostics to determine whether the model is actually fitting properly.  We can do this using the `autoplot()` function from the `ggfortify` package.
+# %%
+import seaborn as sns
+import scipy.stats
 
+scipy.stats.probplot(ols_result.resid, plot=sns.mpl.pyplot)
 
-# ```{r fig.width=8, fig.height=4, out.width="80%"}
-# autoplot(lm_result,which=1:2)
+# %% [markdown]
+# This looks pretty good, in the sense that the residual data points fall very close to the unit line.  This is not surprising, since we generated the data with normally distributed noise.  We should also plot the predicted (or *fitted*) values against the residuals, to make sure that the model does work systematically better for some predicted values versus others.
 
-# ```
+# %%
 
-# The left panel in this plot shows the relationship between the predicted (or "fitted") values and the residuals.  We would like to make sure that there is no clear relationship between these two (as we will see below).  The right panel shows a Q-Q plot, which helps us assess whether the residuals from the model are normally distributed. In this case, they look reasonably normal, as the points don't differ too much from the unit line.
+plt.scatter(ols_result.fittedvalues, ols_result.resid)
+plt.xlabel('Fitted value')
+plt.ylabel('Residual')
 
+# %% [markdown]
+# As expected, we see no clear relationship.
+#
 # ## Examples of problematic model fit
-
 # Let's say that there was another variable at play in this dataset, which we were not aware of. This variable causes some of the cases to have much larger values than others, in a way that is unrelated to the X variable.  We play a trick here using the `seq()` function to create a sequence from zero to one, and then threshold those 0.5 (in order to obtain half of the values as zero and the other half as one) and then multiply by the desired effect size:
 
-# ```{r}
-# effsize=2
-# regression_data <- regression_data %>%
-#   mutate(y2=y + effsize*(seq(1/npoints,1,1/npoints)>0.5))
+# %%
+simulated_data.loc[:, 'x2'] = (simulated_data.index < (simulated_data.shape[0]/2)).astype('int')
+hidden_effect_size = 10
+simulated_data.loc[:, 'y2'] = simulated_data['y'] + simulated_data['x2'] * hidden_effect_size
 
-# lm_result2 <- lm(y2 ~ x, data=regression_data)
-# summary(lm_result2)
+# %% [markdown]
+# Now we fit the model again, and examine the residuals:
+#
+# ols_model2 = ols(formula='y2 ~ x + 1', data=simulated_data)
+# ols_result2 = ols_model.fit()
+#
+# plt.figure(figsize=(12,6))
+# plt.subplot(1, 2, 1)
+# scipy.stats.probplot(ols_result2.resid, plot=sns.mpl.pyplot)
+#
+# plt.subplot(1, 2, 2)
+# plt.scatter(ols_result2.fittedvalues, ols_result2.resid)
+# plt.xlabel('Fitted value')
+# plt.ylabel('Residual')
 
-# ```
-
-# One thing you should notice is that the model now fits overall much worse; the R-squared is about half of what it was in the previous model, which reflects the fact that more variability was added to the data, but it wasn't accounted for in the model.  Let's see if our diagnostic reports can give us any insight:
-
-# ```{r fig.width=8, fig.height=4, out.width="80%"}
-# autoplot(lm_result2,which=1:2)
-
-# ```
-
-# The residual versus fitted graph doesn't give us much insight, but we see from the Q-Q plot that the residuals are diverging quite a bit from the unit line.
-
+# %% [markdown]
+# The lack of normality is clear from the Q-Q plot, and we can also see that there is obvious structure in the residuals.  
+#
 # Let's look at another potential problem, in which the y variable is nonlinearly related to the X variable.  We can create these data by squaring the X variable when we generate the Y variable:
+
+# %%
 
 # ```{r}
 # effsize=2
