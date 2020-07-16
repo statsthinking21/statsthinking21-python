@@ -11,7 +11,7 @@
     - file: 08-HypothesisTesting.ipynb
     - file: 09-StatisticalPower.ipynb
     - file: 10-BayesianStatistics.ipynb
-    # - file: Part11_ModelingCategoricalRelationships.ipynb
+    - file: 11-ModelingCategoricalRelationships.ipynb
     # - file: Part12_ModelingContinuousRelationships.ipynb
     # - file: Part13_GeneralLinearModel.ipynb
     # - file: Part14_ComparingMeans.ipynb
