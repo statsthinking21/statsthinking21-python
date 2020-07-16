@@ -34,6 +34,8 @@ posterior
 
 
 
+
+
 # %% [markdown]
 # The high specificity of the test, along with the relatively high base rate of the disease, means that most people who test positive actually have the disease. 
 # Now let's plot the posterior as a function of the prior.  Let's first create a function to compute the posterior, and then apply this with a range of values for the prior.
@@ -150,10 +152,10 @@ rseed = 1
 
 # clean up smoking variables
 adult_nhanes_data.loc[adult_nhanes_data['SmokedAtLeast100CigarettesInLife'] == 0, 'DoYouNowSmokeCigarettes'] = 'Not at all'
-adult_nhanes_data['SmokeNow'] = adult_nhanes_data['DoYouNowSmokeCigarettes'] != 'Not at all'
+adult_nhanes_data.loc[:, 'SmokeNow'] = adult_nhanes_data['DoYouNowSmokeCigarettes'] != 'Not at all'
 
 # Create average alcohol consumption variable between the two dietary recalls
-adult_nhanes_data['AvgAlcohol'] = adult_nhanes_data[['AlcoholGm_DR1TOT', 'AlcoholGm_DR2TOT']].mean(1)
+adult_nhanes_data.loc[:, 'AvgAlcohol'] = adult_nhanes_data[['AlcoholGm_DR1TOT', 'AlcoholGm_DR2TOT']].mean(1)
 adult_nhanes_data = adult_nhanes_data.dropna(subset=['AvgAlcohol'])
 
 sample_size_per_group = 150
@@ -162,7 +164,7 @@ nonsmoker_sample = adult_nhanes_data.query('SmokeNow == False').sample(sample_si
 smoker_sample = adult_nhanes_data.query('SmokeNow == True').sample(sample_size_per_group, random_state=rseed)[['SmokeNow', 'AvgAlcohol']]
 
 full_sample = pd.concat((nonsmoker_sample, smoker_sample))
-full_sample['SmokeNow'] = full_sample['SmokeNow'].astype('int')
+full_sample.loc[:, 'SmokeNow'] = full_sample['SmokeNow'].astype('int')
 full_sample.groupby('SmokeNow').mean()
 #-
 
