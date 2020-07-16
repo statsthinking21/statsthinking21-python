@@ -1,0 +1,946 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>The General Linear Model in R &#8212; Python Companion to Statistical Thinking in the 21st Century</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link href="_static/css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="_static/sphinx-book-theme.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/jupyter-sphinx.css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/sphinx-book-theme.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/mystnb.js"></script>
+    <script src="_static/sphinx-book-theme.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Modeling categorical relationships in Python" href="11-ModelingCategoricalRelationships.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="index.html">
+  
+  
+  <h1 class="site-logo" id="site-title">Python Companion to Statistical Thinking in the 21st Century</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="01-IntroductionToPython.html">
+   Introduction to Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="02-SummarizingData.html">
+   Summarizing Data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="03-DataVisualization.html">
+   Data Visualization
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="04-FittingSimpleModels.html">
+   Fitting simple models
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="05-Probability.html">
+   Probability
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="06-Sampling.html">
+   Sampling
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="07-ResamplingAndSimulation.html">
+   Resampling and simulation in R
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="08-HypothesisTesting.html">
+   Hypothesis testing in Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="09-StatisticalPower.html">
+   Statistical Power Analysis in Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="10-BayesianStatistics.html">
+   Bayesian Statistics in Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="11-ModelingCategoricalRelationships.html">
+   Modeling categorical relationships in Python
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   The General Linear Model in R
+  </a>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/13-GeneralLinearModel.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> On this page
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#linear-regression">
+   Linear regression
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#model-criticism-and-diagnostics">
+   Model criticism and diagnostics
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#examples-of-problematic-model-fit">
+   Examples of problematic model fit
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#extending-regression-to-binary-outcomes">
+   Extending regression to binary outcomes.
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#cross-validation">
+   Cross-validation
+  </a>
+ </li>
+</ul>
+
+        </nav>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="the-general-linear-model-in-r">
+<h1>The General Linear Model in R<a class="headerlink" href="#the-general-linear-model-in-r" title="Permalink to this headline">¶</a></h1>
+<p>In this chapter we will explore how to fit general linear models in Python.  We will focus on the tools provided by the <code class="docutils literal notranslate"><span class="pre">statsmodels</span></code> package.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">nhanes.load</span> <span class="kn">import</span> <span class="n">load_NHANES_data</span>
+<span class="n">nhanes_data</span> <span class="o">=</span> <span class="n">load_NHANES_data</span><span class="p">()</span>
+<span class="n">adult_nhanes_data</span> <span class="o">=</span> <span class="n">nhanes_data</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;AgeInYearsAtScreening &gt; 17&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="linear-regression">
+<h2>Linear regression<a class="headerlink" href="#linear-regression" title="Permalink to this headline">¶</a></h2>
+<p>To perform linear regression in Python, we use the <code class="docutils literal notranslate"><span class="pre">OLS()</span></code> function (which stands for <em>ordinary least squares</em>) from the <code class="docutils literal notranslate"><span class="pre">statsmodels</span></code> package.  Let’s generate some simulated data and use this function to compute the linear regression solution.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+
+<span class="k">def</span> <span class="nf">generate_linear_data</span><span class="p">(</span><span class="n">slope</span><span class="p">,</span> <span class="n">intercept</span><span class="p">,</span>
+                         <span class="n">noise_sd</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> 
+                         <span class="n">npoints</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    generate data with a given slope and intercept</span>
+<span class="sd">    and add normally distributed noise</span>
+
+<span class="sd">    if x is passed as an argument then a given x will be used,</span>
+<span class="sd">    otherwise it will be generated randomly</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">    --------</span>
+<span class="sd">    a pandas data frame with variables x and y</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">seed</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">x</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">npoints</span><span class="p">)</span>
+    
+    <span class="n">y</span> <span class="o">=</span> <span class="n">x</span> <span class="o">*</span> <span class="n">slope</span> <span class="o">+</span> <span class="n">intercept</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">*</span> <span class="n">noise_sd</span>
+    <span class="k">return</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;x&#39;</span><span class="p">:</span> <span class="n">x</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">:</span> <span class="n">y</span><span class="p">}))</span>
+
+
+<span class="n">slope</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">intercept</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">noise_sd</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">simulated_data</span> <span class="o">=</span> <span class="n">generate_linear_data</span><span class="p">(</span><span class="n">slope</span><span class="p">,</span> <span class="n">intercept</span><span class="p">,</span> <span class="n">noise_sd</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">simulated_data</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">],</span> <span class="n">simulated_data</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x7fc7348c3970&gt;
+</pre></div>
+</div>
+<img alt="_images/13-GeneralLinearModel_3_1.png" src="_images/13-GeneralLinearModel_3_1.png" />
+</div>
+</div>
+<p>We can then perform linear regression on these data using the <code class="docutils literal notranslate"><span class="pre">ols</span></code> function.  This function doesn’t automatically include an intercept in its model, so we need to add one to the design.  Fitting the model using this function is a two-step process.  First, we set up the model and store it to a variable (which we will call <code class="docutils literal notranslate"><span class="pre">ols_model</span></code>).  Then, we actually fit the model, which generates the results that we store to a different variable called <code class="docutils literal notranslate"><span class="pre">ols_results</span></code>, and view a summary using the <code class="docutils literal notranslate"><span class="pre">.summary()</span></code> method of the results variable.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">statsmodels.formula.api</span> <span class="kn">import</span> <span class="n">ols</span>
+
+<span class="n">ols_model</span> <span class="o">=</span> <span class="n">ols</span><span class="p">(</span><span class="n">formula</span><span class="o">=</span><span class="s1">&#39;y ~ x + 1&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">simulated_data</span><span class="p">)</span>
+<span class="n">ols_result</span> <span class="o">=</span> <span class="n">ols_model</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+<span class="n">ols_result</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="simpletable">
+<caption>OLS Regression Results</caption>
+<tr>
+  <th>Dep. Variable:</th>            <td>y</td>        <th>  R-squared:         </th> <td>   0.522</td>
+</tr>
+<tr>
+  <th>Model:</th>                   <td>OLS</td>       <th>  Adj. R-squared:    </th> <td>   0.517</td>
+</tr>
+<tr>
+  <th>Method:</th>             <td>Least Squares</td>  <th>  F-statistic:       </th> <td>   107.0</td>
+</tr>
+<tr>
+  <th>Date:</th>             <td>Thu, 16 Jul 2020</td> <th>  Prob (F-statistic):</th> <td>2.20e-17</td>
+</tr>
+<tr>
+  <th>Time:</th>                 <td>23:11:43</td>     <th>  Log-Likelihood:    </th> <td> -134.44</td>
+</tr>
+<tr>
+  <th>No. Observations:</th>      <td>   100</td>      <th>  AIC:               </th> <td>   272.9</td>
+</tr>
+<tr>
+  <th>Df Residuals:</th>          <td>    98</td>      <th>  BIC:               </th> <td>   278.1</td>
+</tr>
+<tr>
+  <th>Df Model:</th>              <td>     1</td>      <th>                     </th>     <td> </td>   
+</tr>
+<tr>
+  <th>Covariance Type:</th>      <td>nonrobust</td>    <th>                     </th>     <td> </td>   
+</tr>
+</table>
+<table class="simpletable">
+<tr>
+      <td></td>         <th>coef</th>     <th>std err</th>      <th>t</th>      <th>P>|t|</th>  <th>[0.025</th>    <th>0.975]</th>  
+</tr>
+<tr>
+  <th>Intercept</th> <td>   10.1470</td> <td>    0.094</td> <td>  107.973</td> <td> 0.000</td> <td>    9.961</td> <td>   10.334</td>
+</tr>
+<tr>
+  <th>x</th>         <td>    1.0954</td> <td>    0.106</td> <td>   10.342</td> <td> 0.000</td> <td>    0.885</td> <td>    1.306</td>
+</tr>
+</table>
+<table class="simpletable">
+<tr>
+  <th>Omnibus:</th>       <td> 0.898</td> <th>  Durbin-Watson:     </th> <td>   2.157</td>
+</tr>
+<tr>
+  <th>Prob(Omnibus):</th> <td> 0.638</td> <th>  Jarque-Bera (JB):  </th> <td>   0.561</td>
+</tr>
+<tr>
+  <th>Skew:</th>          <td>-0.172</td> <th>  Prob(JB):          </th> <td>   0.755</td>
+</tr>
+<tr>
+  <th>Kurtosis:</th>      <td> 3.127</td> <th>  Cond. No.          </th> <td>    1.15</td>
+</tr>
+</table><br/><br/>Warnings:<br/>[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.</div></div>
+</div>
+<p>We should see three things in these results:</p>
+<ul class="simple">
+<li><p>The estimate of the Intercept in the model should be very close to the intercept that we specified</p></li>
+<li><p>The estimate for the x parameter should be very close to the slope that we specified</p></li>
+<li><p>The residual standard deviation should be roughly similar to the noise standard deviation that we specified.  The summary doesn’t report the residual standard deviation directly but we can compute it using the residuals that are stored in the <code class="docutils literal notranslate"><span class="pre">.resid</span></code> element in the result output:</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ols_result</span><span class="o">.</span><span class="n">resid</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>0.9328350998082222
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="model-criticism-and-diagnostics">
+<h2>Model criticism and diagnostics<a class="headerlink" href="#model-criticism-and-diagnostics" title="Permalink to this headline">¶</a></h2>
+<p>Once we have fitted the model, we want to look at some diagnostics to determine whether the model is actually fitting properly.<br />
+The first thing to examine is to make sure that the residuals are (at least roughly) normally distributed.  We can do this using a Q-Q plot:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="kn">import</span> <span class="nn">scipy.stats</span>
+
+<span class="n">scipy</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">probplot</span><span class="p">(</span><span class="n">ols_result</span><span class="o">.</span><span class="n">resid</span><span class="p">,</span> <span class="n">plot</span><span class="o">=</span><span class="n">sns</span><span class="o">.</span><span class="n">mpl</span><span class="o">.</span><span class="n">pyplot</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>((array([-2.46203784, -2.12570747, -1.93122778, -1.79044653, -1.67819304,
+         -1.58381122, -1.50174123, -1.42869743, -1.36256869, -1.30191411,
+         -1.24570419, -1.19317644, -1.14374949, -1.09696931, -1.05247413,
+         -1.00997067, -0.96921765, -0.93001393, -0.89218993, -0.85560121,
+         -0.82012357, -0.78564937, -0.75208458, -0.71934648, -0.68736185,
+         -0.65606548, -0.62539893, -0.59530962, -0.56574992, -0.53667655,
+         -0.50804994, -0.47983378, -0.45199463, -0.42450149, -0.39732558,
+         -0.37044003, -0.34381966, -0.31744076, -0.29128096, -0.26531902,
+         -0.23953472, -0.21390872, -0.18842244, -0.16305799, -0.13779803,
+         -0.1126257 , -0.08752455, -0.06247843, -0.03747145, -0.01248789,
+          0.01248789,  0.03747145,  0.06247843,  0.08752455,  0.1126257 ,
+          0.13779803,  0.16305799,  0.18842244,  0.21390872,  0.23953472,
+          0.26531902,  0.29128096,  0.31744076,  0.34381966,  0.37044003,
+          0.39732558,  0.42450149,  0.45199463,  0.47983378,  0.50804994,
+          0.53667655,  0.56574992,  0.59530962,  0.62539893,  0.65606548,
+          0.68736185,  0.71934648,  0.75208458,  0.78564937,  0.82012357,
+          0.85560121,  0.89218993,  0.93001393,  0.96921765,  1.00997067,
+          1.05247413,  1.09696931,  1.14374949,  1.19317644,  1.24570419,
+          1.30191411,  1.36256869,  1.42869743,  1.50174123,  1.58381122,
+          1.67819304,  1.79044653,  1.93122778,  2.12570747,  2.46203784]),
+  array([-2.5482371 , -2.0909615 , -1.91011081, -1.78183221, -1.67901437,
+         -1.65965562, -1.39835615, -1.35433747, -1.35349874, -1.32450874,
+         -1.32071777, -1.31372454, -1.31149674, -1.26359797, -1.03141285,
+         -1.02807434, -0.96988026, -0.77573225, -0.76933571, -0.74914872,
+         -0.71307311, -0.65612258, -0.59211795, -0.53953167, -0.51333264,
+         -0.4857747 , -0.4792586 , -0.44367702, -0.41520854, -0.36352006,
+         -0.35492012, -0.32790965, -0.31527698, -0.3145051 , -0.30314853,
+         -0.27638373, -0.26193063, -0.18035491, -0.17125738, -0.16925471,
+         -0.16405551, -0.1568569 , -0.13346467, -0.09060228, -0.08741092,
+         -0.07851139, -0.06660155,  0.05147435,  0.05283821,  0.05769373,
+          0.07401461,  0.09534008,  0.12202649,  0.18569196,  0.20481024,
+          0.20627062,  0.24199814,  0.26910835,  0.2709454 ,  0.28029596,
+          0.30157991,  0.30688003,  0.31428509,  0.33836826,  0.36473919,
+          0.37760336,  0.42704054,  0.44189202,  0.47162341,  0.47663995,
+          0.47974695,  0.48018453,  0.48417952,  0.48811872,  0.49645734,
+          0.51109903,  0.54895531,  0.66572149,  0.70984843,  0.72310305,
+          0.72991447,  0.73133351,  0.7931718 ,  0.80261309,  0.83081737,
+          0.89891574,  0.97037584,  1.00083831,  1.02499538,  1.04070618,
+          1.1070823 ,  1.13587234,  1.15439669,  1.21366375,  1.49236429,
+          1.77213663,  1.79345755,  1.835123  ,  2.07330289,  2.3660403 ])),
+ (0.9415840543542681, -1.5528172622144374e-15, 0.9941442250040646))
+</pre></div>
+</div>
+<img alt="_images/13-GeneralLinearModel_9_1.png" src="_images/13-GeneralLinearModel_9_1.png" />
+</div>
+</div>
+<p>This looks pretty good, in the sense that the residual data points fall very close to the unit line.  This is not surprising, since we generated the data with normally distributed noise.  We should also plot the predicted (or <em>fitted</em>) values against the residuals, to make sure that the model does work systematically better for some predicted values versus others.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">ols_result</span><span class="o">.</span><span class="n">fittedvalues</span><span class="p">,</span> <span class="n">ols_result</span><span class="o">.</span><span class="n">resid</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Fitted value&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Residual&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;Residual&#39;)
+</pre></div>
+</div>
+<img alt="_images/13-GeneralLinearModel_11_1.png" src="_images/13-GeneralLinearModel_11_1.png" />
+</div>
+</div>
+<p>As expected, we see no clear relationship.</p>
+</div>
+<div class="section" id="examples-of-problematic-model-fit">
+<h2>Examples of problematic model fit<a class="headerlink" href="#examples-of-problematic-model-fit" title="Permalink to this headline">¶</a></h2>
+<p>Let’s say that there was another variable at play in this dataset, which we were not aware of. This variable causes some of the cases to have much larger values than others, in a way that is unrelated to the X variable.  We play a trick here using the <code class="docutils literal notranslate"><span class="pre">seq()</span></code> function to create a sequence from zero to one, and then threshold those 0.5 (in order to obtain half of the values as zero and the other half as one) and then multiply by the desired effect size:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">simulated_data</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s1">&#39;x2&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">simulated_data</span><span class="o">.</span><span class="n">index</span> <span class="o">&lt;</span> <span class="p">(</span><span class="n">simulated_data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">/</span> <span class="mi">2</span><span class="p">))</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;int&#39;</span><span class="p">)</span>
+<span class="n">hidden_effect_size</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">simulated_data</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s1">&#39;y2&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">simulated_data</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">simulated_data</span><span class="p">[</span><span class="s1">&#39;x2&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">hidden_effect_size</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now we fit the model again, and examine the residuals:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ols_model2</span> <span class="o">=</span> <span class="n">ols</span><span class="p">(</span><span class="n">formula</span><span class="o">=</span><span class="s1">&#39;y2 ~ x + 1&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">simulated_data</span><span class="p">)</span>
+<span class="n">ols_result2</span> <span class="o">=</span> <span class="n">ols_model2</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">scipy</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">probplot</span><span class="p">(</span><span class="n">ols_result2</span><span class="o">.</span><span class="n">resid</span><span class="p">,</span> <span class="n">plot</span><span class="o">=</span><span class="n">sns</span><span class="o">.</span><span class="n">mpl</span><span class="o">.</span><span class="n">pyplot</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">ols_result2</span><span class="o">.</span><span class="n">fittedvalues</span><span class="p">,</span> <span class="n">ols_result2</span><span class="o">.</span><span class="n">resid</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Fitted value&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Residual&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;Residual&#39;)
+</pre></div>
+</div>
+<img alt="_images/13-GeneralLinearModel_15_1.png" src="_images/13-GeneralLinearModel_15_1.png" />
+</div>
+</div>
+<p>The lack of normality is clear from the Q-Q plot, and we can also see that there is obvious structure in the residuals.</p>
+<p>Let’s look at another potential problem, in which the y variable is nonlinearly related to the X variable.  We can create these data by squaring the X variable when we generate the Y variable:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">noise_sd</span> <span class="o">=</span> <span class="mf">0.1</span>
+<span class="n">simulated_data</span><span class="p">[</span><span class="s1">&#39;y3&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">simulated_data</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">slope</span> <span class="o">+</span> <span class="n">intercept</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">simulated_data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">*</span> <span class="n">noise_sd</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">simulated_data</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">],</span> <span class="n">simulated_data</span><span class="p">[</span><span class="s1">&#39;y3&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x7fc72c18f520&gt;
+</pre></div>
+</div>
+<img alt="_images/13-GeneralLinearModel_17_1.png" src="_images/13-GeneralLinearModel_17_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ols_model3</span> <span class="o">=</span> <span class="n">ols</span><span class="p">(</span><span class="n">formula</span><span class="o">=</span><span class="s1">&#39;y3 ~ x + 1&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">simulated_data</span><span class="p">)</span>
+<span class="n">ols_result3</span> <span class="o">=</span> <span class="n">ols_model3</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+<span class="n">ols_result3</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="simpletable">
+<caption>OLS Regression Results</caption>
+<tr>
+  <th>Dep. Variable:</th>           <td>y3</td>        <th>  R-squared:         </th> <td>   0.008</td>
+</tr>
+<tr>
+  <th>Model:</th>                   <td>OLS</td>       <th>  Adj. R-squared:    </th> <td>  -0.002</td>
+</tr>
+<tr>
+  <th>Method:</th>             <td>Least Squares</td>  <th>  F-statistic:       </th> <td>  0.8369</td>
+</tr>
+<tr>
+  <th>Date:</th>             <td>Thu, 16 Jul 2020</td> <th>  Prob (F-statistic):</th>  <td> 0.363</td> 
+</tr>
+<tr>
+  <th>Time:</th>                 <td>23:11:43</td>     <th>  Log-Likelihood:    </th> <td> -149.89</td>
+</tr>
+<tr>
+  <th>No. Observations:</th>      <td>   100</td>      <th>  AIC:               </th> <td>   303.8</td>
+</tr>
+<tr>
+  <th>Df Residuals:</th>          <td>    98</td>      <th>  BIC:               </th> <td>   309.0</td>
+</tr>
+<tr>
+  <th>Df Model:</th>              <td>     1</td>      <th>                     </th>     <td> </td>   
+</tr>
+<tr>
+  <th>Covariance Type:</th>      <td>nonrobust</td>    <th>                     </th>     <td> </td>   
+</tr>
+</table>
+<table class="simpletable">
+<tr>
+      <td></td>         <th>coef</th>     <th>std err</th>      <th>t</th>      <th>P>|t|</th>  <th>[0.025</th>    <th>0.975]</th>  
+</tr>
+<tr>
+  <th>Intercept</th> <td>   10.7813</td> <td>    0.110</td> <td>   98.295</td> <td> 0.000</td> <td>   10.564</td> <td>   10.999</td>
+</tr>
+<tr>
+  <th>x</th>         <td>    0.1131</td> <td>    0.124</td> <td>    0.915</td> <td> 0.363</td> <td>   -0.132</td> <td>    0.358</td>
+</tr>
+</table>
+<table class="simpletable">
+<tr>
+  <th>Omnibus:</th>       <td>62.137</td> <th>  Durbin-Watson:     </th> <td>   1.699</td>
+</tr>
+<tr>
+  <th>Prob(Omnibus):</th> <td> 0.000</td> <th>  Jarque-Bera (JB):  </th> <td> 203.933</td>
+</tr>
+<tr>
+  <th>Skew:</th>          <td> 2.285</td> <th>  Prob(JB):          </th> <td>5.21e-45</td>
+</tr>
+<tr>
+  <th>Kurtosis:</th>      <td> 8.297</td> <th>  Cond. No.          </th> <td>    1.15</td>
+</tr>
+</table><br/><br/>Warnings:<br/>[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.</div></div>
+</div>
+<p>Now we see that there is no significant linear relationship between <span class="math notranslate nohighlight">\(X^2\)</span> and Y/ But if we look at the residuals the problem with the model becomes clear:</p>
+<p>plt.figure(figsize=(12, 6))
+plt.subplot(1, 2, 1)
+scipy.stats.probplot(ols_result3.resid, plot=sns.mpl.pyplot)</p>
+<p>plt.subplot(1, 2, 2)
+plt.scatter(ols_result3.fittedvalues, ols_result3.resid)
+plt.xlabel(‘Fitted value’)
+plt.ylabel(‘Residual’)</p>
+<p>In this case we can see the clearly nonlinear relationship between the predicted and residual values, as well as the clear lack of normality in the residuals.</p>
+<p>As we noted in the previous chapter, the “linear” in the general linear model doesn’t refer to the shape of the response, but instead refers to the fact that model is linear in its parameters — that is, the predictors in the model only get multiplied the parameters (e.g., rather than being raised to a power of the parameter).  Here is how we would build a model that could account for the nonlinear relationship, by using <code class="docutils literal notranslate"><span class="pre">x**2</span></code> in the model:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">simulated_data</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s1">&#39;x_squared&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">simulated_data</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">]</span> <span class="o">**</span> <span class="mi">2</span>
+<span class="n">ols_model4</span> <span class="o">=</span> <span class="n">ols</span><span class="p">(</span><span class="n">formula</span><span class="o">=</span><span class="s1">&#39;y3 ~ x_squared + 1&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">simulated_data</span><span class="p">)</span>
+<span class="n">ols_result4</span> <span class="o">=</span> <span class="n">ols_model4</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+<span class="n">ols_result4</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="simpletable">
+<caption>OLS Regression Results</caption>
+<tr>
+  <th>Dep. Variable:</th>           <td>y3</td>        <th>  R-squared:         </th> <td>   0.992</td> 
+</tr>
+<tr>
+  <th>Model:</th>                   <td>OLS</td>       <th>  Adj. R-squared:    </th> <td>   0.992</td> 
+</tr>
+<tr>
+  <th>Method:</th>             <td>Least Squares</td>  <th>  F-statistic:       </th> <td>1.243e+04</td>
+</tr>
+<tr>
+  <th>Date:</th>             <td>Thu, 16 Jul 2020</td> <th>  Prob (F-statistic):</th> <td>4.87e-105</td>
+</tr>
+<tr>
+  <th>Time:</th>                 <td>23:11:43</td>     <th>  Log-Likelihood:    </th> <td>  92.204</td> 
+</tr>
+<tr>
+  <th>No. Observations:</th>      <td>   100</td>      <th>  AIC:               </th> <td>  -180.4</td> 
+</tr>
+<tr>
+  <th>Df Residuals:</th>          <td>    98</td>      <th>  BIC:               </th> <td>  -175.2</td> 
+</tr>
+<tr>
+  <th>Df Model:</th>              <td>     1</td>      <th>                     </th>     <td> </td>    
+</tr>
+<tr>
+  <th>Covariance Type:</th>      <td>nonrobust</td>    <th>                     </th>     <td> </td>    
+</tr>
+</table>
+<table class="simpletable">
+<tr>
+      <td></td>         <th>coef</th>     <th>std err</th>      <th>t</th>      <th>P>|t|</th>  <th>[0.025</th>    <th>0.975]</th>  
+</tr>
+<tr>
+  <th>Intercept</th> <td>   10.0215</td> <td>    0.012</td> <td>  841.568</td> <td> 0.000</td> <td>    9.998</td> <td>   10.045</td>
+</tr>
+<tr>
+  <th>x_squared</th> <td>    0.9740</td> <td>    0.009</td> <td>  111.473</td> <td> 0.000</td> <td>    0.957</td> <td>    0.991</td>
+</tr>
+</table>
+<table class="simpletable">
+<tr>
+  <th>Omnibus:</th>       <td> 0.981</td> <th>  Durbin-Watson:     </th> <td>   2.260</td>
+</tr>
+<tr>
+  <th>Prob(Omnibus):</th> <td> 0.612</td> <th>  Jarque-Bera (JB):  </th> <td>   1.073</td>
+</tr>
+<tr>
+  <th>Skew:</th>          <td> 0.216</td> <th>  Prob(JB):          </th> <td>   0.585</td>
+</tr>
+<tr>
+  <th>Kurtosis:</th>      <td> 2.735</td> <th>  Cond. No.          </th> <td>    2.09</td>
+</tr>
+</table><br/><br/>Warnings:<br/>[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.</div></div>
+</div>
+<p>Now we see that the effect of <span class="math notranslate nohighlight">\(X^2\)</span> is significant, and if we look at the residual plot we should see that things look much better:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">scipy</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">probplot</span><span class="p">(</span><span class="n">ols_result4</span><span class="o">.</span><span class="n">resid</span><span class="p">,</span> <span class="n">plot</span><span class="o">=</span><span class="n">sns</span><span class="o">.</span><span class="n">mpl</span><span class="o">.</span><span class="n">pyplot</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">ols_result4</span><span class="o">.</span><span class="n">fittedvalues</span><span class="p">,</span> <span class="n">ols_result4</span><span class="o">.</span><span class="n">resid</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Fitted value&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Residual&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;Residual&#39;)
+</pre></div>
+</div>
+<img alt="_images/13-GeneralLinearModel_23_1.png" src="_images/13-GeneralLinearModel_23_1.png" />
+</div>
+</div>
+<p>Not perfect, but much better than before!</p>
+</div>
+<div class="section" id="extending-regression-to-binary-outcomes">
+<h2>Extending regression to binary outcomes.<a class="headerlink" href="#extending-regression-to-binary-outcomes" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">statsmodels.formula.api</span> <span class="kn">import</span> <span class="n">logit</span>
+
+<span class="n">diabetes_df</span> <span class="o">=</span> <span class="n">adult_nhanes_data</span><span class="o">.</span><span class="n">query</span><span class="p">(</span>
+    <span class="s1">&#39;DoctorToldYouHaveDiabetes != &quot;Borderline&quot;&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span>
+        <span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;DoctorToldYouHaveDiabetes&#39;</span><span class="p">,</span> <span class="s1">&#39;AgeInYearsAtScreening&#39;</span><span class="p">,</span> <span class="s1">&#39;BodyMassIndexKgm2&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span>
+            <span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;DoctorToldYouHaveDiabetes&#39;</span><span class="p">:</span> <span class="s1">&#39;Diabetes&#39;</span><span class="p">,</span> <span class="s1">&#39;AgeInYearsAtScreening&#39;</span><span class="p">:</span> <span class="s1">&#39;Age&#39;</span><span class="p">,</span> <span class="s1">&#39;BodyMassIndexKgm2&#39;</span><span class="p">:</span> <span class="s1">&#39;BMI&#39;</span><span class="p">})</span>
+<span class="n">diabetes_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s1">&#39;Diabetes&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">diabetes_df</span><span class="p">[</span><span class="s1">&#39;Diabetes&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;int&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now we would like to build a model that allows us to predict who has diabetes, based on their age and Body Mass Index (BMI). However, you may have noticed that the Diabetes variable is a binary variable; because linear regression assumes that the residuals from the model will be normally distributed, and the binary nature of the data will violate this, we instead need to use a different kind of model, known as a <em>logistic regression</em> model, which is built to deal with binary outcomes.  We can fit this model using the <code class="docutils literal notranslate"><span class="pre">logit()</span></code> function:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+<span class="n">logitfit</span> <span class="o">=</span> <span class="n">logit</span><span class="p">(</span><span class="n">formula</span> <span class="o">=</span> <span class="s1">&#39;Diabetes ~ Age + BMI&#39;</span><span class="p">,</span> <span class="n">data</span> <span class="o">=</span> <span class="n">diabetes_df</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">disp</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="n">logitfit</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="simpletable">
+<caption>Logit Regression Results</caption>
+<tr>
+  <th>Dep. Variable:</th>       <td>Diabetes</td>     <th>  No. Observations:  </th>   <td>  5267</td>  
+</tr>
+<tr>
+  <th>Model:</th>                 <td>Logit</td>      <th>  Df Residuals:      </th>   <td>  5264</td>  
+</tr>
+<tr>
+  <th>Method:</th>                 <td>MLE</td>       <th>  Df Model:          </th>   <td>     2</td>  
+</tr>
+<tr>
+  <th>Date:</th>            <td>Thu, 16 Jul 2020</td> <th>  Pseudo R-squ.:     </th>   <td>0.1661</td>  
+</tr>
+<tr>
+  <th>Time:</th>                <td>23:11:44</td>     <th>  Log-Likelihood:    </th>  <td> -1895.1</td> 
+</tr>
+<tr>
+  <th>converged:</th>             <td>True</td>       <th>  LL-Null:           </th>  <td> -2272.6</td> 
+</tr>
+<tr>
+  <th>Covariance Type:</th>     <td>nonrobust</td>    <th>  LLR p-value:       </th> <td>1.122e-164</td>
+</tr>
+</table>
+<table class="simpletable">
+<tr>
+      <td></td>         <th>coef</th>     <th>std err</th>      <th>z</th>      <th>P>|z|</th>  <th>[0.025</th>    <th>0.975]</th>  
+</tr>
+<tr>
+  <th>Intercept</th> <td>   -7.3101</td> <td>    0.276</td> <td>  -26.478</td> <td> 0.000</td> <td>   -7.851</td> <td>   -6.769</td>
+</tr>
+<tr>
+  <th>Age</th>       <td>    0.0622</td> <td>    0.003</td> <td>   21.763</td> <td> 0.000</td> <td>    0.057</td> <td>    0.068</td>
+</tr>
+<tr>
+  <th>BMI</th>       <td>    0.0693</td> <td>    0.005</td> <td>   12.769</td> <td> 0.000</td> <td>    0.059</td> <td>    0.080</td>
+</tr>
+</table></div></div>
+</div>
+<p>This looks very similar to the output from the <code class="docutils literal notranslate"><span class="pre">ols()</span></code> function, and it shows us that there is a significant relationship between the age, weight, and diabetes. The model provides us with a predicted probability that each individual will have diabetes; if this is greater than 0.5, then that means that the model predicts that the individual is more likely than not to have diabetes.<br />
+We can start by simply comparing those predictions to the actual outcomes.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+<span class="n">diabetes_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s1">&#39;LogitPrediction&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">logitfit</span><span class="o">.</span><span class="n">predict</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mf">0.5</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;int&#39;</span><span class="p">)</span>
+
+<span class="n">pd</span><span class="o">.</span><span class="n">crosstab</span><span class="p">(</span><span class="n">diabetes_df</span><span class="p">[</span><span class="s1">&#39;Diabetes&#39;</span><span class="p">],</span> <span class="n">diabetes_df</span><span class="p">[</span><span class="s1">&#39;LogitPrediction&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>LogitPrediction</th>
+      <th>0</th>
+      <th>1</th>
+    </tr>
+    <tr>
+      <th>Diabetes</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>4400</td>
+      <td>50</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>756</td>
+      <td>61</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>This table shows that the model did somewhat well, in that it labeled most non-diabetic people as non-diabetic, and most diabetic people as diabetic.  However, it also made a lot of mistakes, mislabeling nearly half of all diabetic people as non-diabetic.</p>
+<p>We would often like a single number that tells us how good our prediction is.  We could simply ask how many of our predictions are correct on average:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">diabetes_df</span><span class="p">[</span><span class="s1">&#39;LogitPrediction&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">diabetes_df</span><span class="p">[</span><span class="s1">&#39;Diabetes&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>0.8469717106512246
+</pre></div>
+</div>
+</div>
+</div>
+<p>This tells us that we are doing fairly well at prediction, with over 80% accuracy. However, this measure is problematic, because most people in the sample don’t have diabetes.  This means that we could get relatively high accuracy if we simply said that no one has diabetes:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">diabetes_df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">==</span> <span class="n">diabetes_df</span><span class="p">[</span><span class="s1">&#39;Diabetes&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>0.844883235238276
+</pre></div>
+</div>
+</div>
+</div>
+<p>One commonly used value when we have a graded prediction (as we do here, with the probabiilty that is predicted by the model) is called the <em>area under the receiver operating characteristic</em> or <em>AUROC</em>. This is a number that ranges from zero to one, where 0.5 means that we are guessing, and one means that our predictions are perfect. Let’s see what that comes out to for this dataset, using the <code class="docutils literal notranslate"><span class="pre">roc_auc_score</span></code> from the <a class="reference external" href="https://scikit-learn.org/stable/">scikit-learn</a> package:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">roc_auc_score</span>
+<span class="n">rocscore</span> <span class="o">=</span> <span class="n">roc_auc_score</span><span class="p">(</span><span class="n">diabetes_df</span><span class="p">[</span><span class="s1">&#39;Diabetes&#39;</span><span class="p">],</span> <span class="n">logitfit</span><span class="o">.</span><span class="n">predict</span><span class="p">())</span>
+<span class="n">rocscore</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>0.7854712362301102
+</pre></div>
+</div>
+</div>
+</div>
+<p>Our model performs relatively well according to this score.  What if we wanted to know whether this is better than chance?  One option would be to create a null model, in which we purposely break the relationship between our variables. We could then ask how likely our observed score would be if there is no true relationship.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.utils</span> <span class="kn">import</span> <span class="n">shuffle</span>
+
+<span class="n">shuffled_df</span> <span class="o">=</span> <span class="n">diabetes_df</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+<span class="n">num_runs</span> <span class="o">=</span> <span class="mi">1000</span>
+
+<span class="n">roc_scores</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;auc&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">num_runs</span><span class="p">)})</span>
+
+<span class="k">for</span> <span class="n">simulation_run</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_runs</span><span class="p">):</span>
+    <span class="c1"># shuffle the diabetes labels in order to break the relationship</span>
+    <span class="n">shuffled_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s1">&#39;Diabetes&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">shuffle</span><span class="p">(</span><span class="n">shuffled_df</span><span class="p">[</span><span class="s1">&#39;Diabetes&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
+    <span class="n">randomfit</span> <span class="o">=</span> <span class="n">logit</span><span class="p">(</span><span class="n">formula</span> <span class="o">=</span> <span class="s1">&#39;Diabetes ~ Age + BMI&#39;</span><span class="p">,</span> <span class="n">data</span> <span class="o">=</span> <span class="n">shuffled_df</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">disp</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">roc_scores</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">simulation_run</span><span class="p">,</span> <span class="s1">&#39;auc&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">roc_auc_score</span><span class="p">(</span><span class="n">shuffled_df</span><span class="p">[</span><span class="s1">&#39;Diabetes&#39;</span><span class="p">],</span> <span class="n">randomfit</span><span class="o">.</span><span class="n">predict</span><span class="p">())</span>
+
+<span class="n">pvalue</span> <span class="o">=</span> <span class="p">(</span><span class="mi">100</span> <span class="o">-</span> <span class="n">scipy</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">percentileofscore</span><span class="p">(</span><span class="n">roc_scores</span><span class="p">[</span><span class="s1">&#39;auc&#39;</span><span class="p">],</span> <span class="n">rocscore</span><span class="p">))</span><span class="o">/</span><span class="mi">100</span>
+<span class="n">pvalue</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>0.0
+</pre></div>
+</div>
+</div>
+</div>
+<p>This shows us that our observed score is higher than all of 1000 scores obtained using random permutations. Thus, we can conclude that our accuracy is greater than chance. However, this doesn’t tell us how well we can predict whether a <em>new</em> individual will have diabetes.  This is what we turn to next.</p>
+</div>
+<div class="section" id="cross-validation">
+<h2>Cross-validation<a class="headerlink" href="#cross-validation" title="Permalink to this headline">¶</a></h2>
+<p>Cross-validation is a powerful technique that allows us to estimate how well our results will generalize to a new dataset. Here we will build our own crossvalidation code to see how it works, continuing the logistic regression example from the previous section.
+In cross-validation, we want to split the data into several subsets and then iteratively train the model while leaving out each subset (which we usually call <em>folds</em>) and then test the model on that held-out fold.
+We can use one of the tools from the <a class="reference external" href="https://scikit-learn.org/stable/">scikit-learn</a> package to create our cross-validation folds for us.  Let’s start by using 10-fold crossvalidation, in which we split the data into 10 parts, and the fit the model while holding out one of those parts and then testing it on the held-out data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">KFold</span>
+
+<span class="n">kf</span> <span class="o">=</span> <span class="n">KFold</span><span class="p">(</span><span class="n">n_splits</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">diabetes_df</span><span class="p">[</span><span class="s1">&#39;Predicted&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+
+<span class="k">for</span> <span class="n">train_index</span><span class="p">,</span> <span class="n">test_index</span> <span class="ow">in</span> <span class="n">kf</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">diabetes_df</span><span class="p">):</span>
+    <span class="n">train_data</span> <span class="o">=</span> <span class="n">diabetes_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">train_index</span><span class="p">,</span> <span class="p">:]</span>
+    <span class="n">test_data</span> <span class="o">=</span> <span class="n">diabetes_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">test_index</span><span class="p">,</span> <span class="p">:]</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="n">logit</span><span class="p">(</span><span class="n">formula</span> <span class="o">=</span> <span class="s1">&#39;Diabetes ~ Age + BMI&#39;</span><span class="p">,</span> <span class="n">data</span> <span class="o">=</span> <span class="n">train_data</span><span class="p">)</span>
+    <span class="n">trainfit</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">disp</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">diabetes_df</span><span class="p">[</span><span class="s1">&#39;Predicted&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="nb">list</span><span class="p">(</span><span class="n">test_index</span><span class="p">)]</span> <span class="o">=</span> <span class="n">trainfit</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span>
+       <span class="n">test_data</span><span class="p">[[</span><span class="s1">&#39;Age&#39;</span><span class="p">,</span> <span class="s1">&#39;BMI&#39;</span><span class="p">]])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">crosstab</span><span class="p">(</span><span class="n">diabetes_df</span><span class="p">[</span><span class="s1">&#39;Diabetes&#39;</span><span class="p">],</span> <span class="n">diabetes_df</span><span class="p">[</span><span class="s1">&#39;Predicted&#39;</span><span class="p">]</span><span class="o">&gt;</span><span class="mf">0.5</span><span class="p">))</span>
+
+<span class="n">roc_auc_score</span><span class="p">(</span><span class="n">diabetes_df</span><span class="p">[</span><span class="s1">&#39;Diabetes&#39;</span><span class="p">],</span> <span class="n">diabetes_df</span><span class="p">[</span><span class="s1">&#39;Predicted&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>Predicted  False  True 
+Diabetes               
+0           4397     53
+1            759     58
+</pre></div>
+</div>
+<div class="stderr docutils container">
+<pre class="stderr literal-block">/opt/conda/lib/python3.8/site-packages/pandas/core/indexing.py:671: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  self._setitem_with_indexer(indexer, value)
+</pre>
+</div>
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>0.7841971861977913
+</pre></div>
+</div>
+</div>
+</div>
+<p>This result shows that our model is able to generalize to new individuals relatively well — in fact, almost as well as the original model. This is because our sample size is very large; with smaller samples, the generalization performance is usually much less using crossvalidation than using the full sample.</p>
+</div>
+</div>
+
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="11-ModelingCategoricalRelationships.html" title="previous page">Modeling categorical relationships in Python</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Russell A. Poldrack<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    <script src="_static/js/index.js"></script>
+    
+  </body>
+</html>
