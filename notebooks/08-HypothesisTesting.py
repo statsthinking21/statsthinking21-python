@@ -28,6 +28,7 @@ import pandas as pd
 
 num_runs = 10000
 
+
 def toss_coins_and_count_heads(num_coins=100, p_heads=0.5):
     """
     flip a coin num_coins times and return number of heads
@@ -49,7 +50,7 @@ for run in range(num_runs):
 # %%
 import scipy.stats
 
-pvalue = 100 - scipy.stats.percentileofscore(flip_results_df, 0.7) #CK - percentileofscore gives number 0-100, so pvalue has to be 100-answer
+pvalue = 100 - scipy.stats.percentileofscore(flip_results_df, 0.7) 
 pvalue
 
 # %% [markdown]
@@ -81,6 +82,7 @@ p_ge_70
 
 num_runs = 5000
 
+
 # create a function that will take a sample
 # and perform a one-sample t-test
 def sample_ttest(sampSize=32):
@@ -88,8 +90,9 @@ def sample_ttest(sampSize=32):
     perform a ttest on random data of n=sampSize
     """
 
-    ttresult = scipy.stats.ttest_1samp(np.random.normal(loc=0.0, scale=1.0, size=sampSize),0)
+    ttresult = scipy.stats.ttest_1samp(np.random.normal(loc=0.0, scale=1.0, size=sampSize), 0)
     return(ttresult.pvalue)
+
 
 # create input data frame for the function
 sim_results_df = pd.DataFrame({'p_value': np.zeros(num_runs)})
@@ -98,7 +101,7 @@ sim_results_df = pd.DataFrame({'p_value': np.zeros(num_runs)})
 for run in range(num_runs):
     sim_results_df.loc[run, 'p_value'] = sample_ttest()
 
-p_error = sim_results_df.loc[sim_results_df['p_value']<0.05].mean(axis=0)
+p_error = sim_results_df.loc[sim_results_df['p_value'] < 0.05].mean(axis=0)
 p_error
 
 # %% [markdown]
