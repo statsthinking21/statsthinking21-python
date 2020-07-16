@@ -8,9 +8,9 @@
     - file: 05-Probability.ipynb
     - file: 06-Sampling.ipynb
     - file: 07-ResamplingAndSimulation.ipynb
-    # - file: Part8_HypothesisTesting.ipynb
-    # - file: Part9_EffectSizeAndPower.ipynb
-    # - file: Part10_BayesianStatistics.ipynb
+    - file: 08-HypothesisTesting.ipynb
+    - file: 09-StatisticalPower.ipynb
+    - file: 10-BayesianStatistics.ipynb
     # - file: Part11_ModelingCategoricalRelationships.ipynb
     # - file: Part12_ModelingContinuousRelationships.ipynb
     # - file: Part13_GeneralLinearModel.ipynb
