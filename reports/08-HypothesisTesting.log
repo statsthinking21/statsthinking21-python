@@ -1,18 +1,18 @@
 Traceback (most recent call last):
-  File "/opt/hostedtoolcache/Python/3.7.8/x64/lib/python3.7/site-packages/jupyter_cache/executors/basic.py", line 163, in execute
+  File "/opt/conda/lib/python3.8/site-packages/jupyter_cache/executors/basic.py", line 163, in execute
     executenb(nb_bundle.nb, cwd=tmpdirname, timeout=timeout)
-  File "/opt/hostedtoolcache/Python/3.7.8/x64/lib/python3.7/site-packages/nbconvert/preprocessors/execute.py", line 737, in executenb
+  File "/opt/conda/lib/python3.8/site-packages/nbconvert/preprocessors/execute.py", line 737, in executenb
     return ep.preprocess(nb, resources, km=km)[0]
-  File "/opt/hostedtoolcache/Python/3.7.8/x64/lib/python3.7/site-packages/nbconvert/preprocessors/execute.py", line 405, in preprocess
+  File "/opt/conda/lib/python3.8/site-packages/nbconvert/preprocessors/execute.py", line 405, in preprocess
     nb, resources = super(ExecutePreprocessor, self).preprocess(nb, resources)
-  File "/opt/hostedtoolcache/Python/3.7.8/x64/lib/python3.7/site-packages/nbconvert/preprocessors/base.py", line 69, in preprocess
+  File "/opt/conda/lib/python3.8/site-packages/nbconvert/preprocessors/base.py", line 69, in preprocess
     nb.cells[index], resources = self.preprocess_cell(cell, resources, index)
-  File "/opt/hostedtoolcache/Python/3.7.8/x64/lib/python3.7/site-packages/nbconvert/preprocessors/execute.py", line 438, in preprocess_cell
+  File "/opt/conda/lib/python3.8/site-packages/nbconvert/preprocessors/execute.py", line 438, in preprocess_cell
     reply, outputs = self.run_cell(cell, cell_index, store_history)
-  File "/opt/hostedtoolcache/Python/3.7.8/x64/lib/python3.7/site-packages/nbconvert/preprocessors/execute.py", line 571, in run_cell
+  File "/opt/conda/lib/python3.8/site-packages/nbconvert/preprocessors/execute.py", line 571, in run_cell
     if self._passed_deadline(deadline):
-  File "/opt/hostedtoolcache/Python/3.7.8/x64/lib/python3.7/site-packages/nbconvert/preprocessors/execute.py", line 541, in _passed_deadline
+  File "/opt/conda/lib/python3.8/site-packages/nbconvert/preprocessors/execute.py", line 541, in _passed_deadline
     self._handle_timeout()
-  File "/opt/hostedtoolcache/Python/3.7.8/x64/lib/python3.7/site-packages/nbconvert/preprocessors/execute.py", line 504, in _handle_timeout
+  File "/opt/conda/lib/python3.8/site-packages/nbconvert/preprocessors/execute.py", line 504, in _handle_timeout
     raise TimeoutError("Cell execution timed out")
 TimeoutError: Cell execution timed out

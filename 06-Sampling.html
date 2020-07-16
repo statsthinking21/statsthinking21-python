@@ -216,13 +216,6 @@
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="stderr docutils container">
-<pre class="stderr literal-block">/opt/hostedtoolcache/Python/3.7.8/x64/lib/python3.7/site-packages/IPython/core/interactiveshell.py:3263: DtypeWarning: Columns (142) have mixed types.Specify dtype option on import or set low_memory=False.
-  if (await self.run_code(code, result,  async_=asy)):
-</pre>
-</div>
-</div>
 </div>
 <p>Now let’s repeatedly sample 50 individuals from the dataset, compute the mean, and store the resulting values.  For this we are going to use a <em>for loop</em>, which allows us to repeatedly perform a particular set of actions.</p>
 <div class="cell docutils container">
@@ -277,7 +270,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7efc4a1cc4d0&gt;]
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f1d007a0ee0&gt;]
 </pre></div>
 </div>
 <img alt="_images/06-Sampling_5_1.png" src="_images/06-Sampling_5_1.png" />
@@ -294,13 +287,20 @@
 </div>
 </div>
 <div class="cell_output docutils container">
+<div class="stderr docutils container">
+<pre class="stderr literal-block">/opt/conda/lib/python3.8/site-packages/numpy/lib/histograms.py:839: RuntimeWarning: invalid value encountered in greater_equal
+  keep = (tmp_a &gt;= first_edge)
+/opt/conda/lib/python3.8/site-packages/numpy/lib/histograms.py:840: RuntimeWarning: invalid value encountered in less_equal
+  keep &amp;= (tmp_a &lt;= last_edge)
+</pre>
+</div>
 <div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>(array([369., 626., 925., 541., 357., 302., 241.,   0., 463., 902.]),
  array([  2000.,  11800.,  21600.,  31400.,  41200.,  51000.,  60800.,
          70600.,  80400.,  90200., 100000.]),
  &lt;a list of 10 Patch objects&gt;)
 </pre></div>
 </div>
-<img alt="_images/06-Sampling_7_1.png" src="_images/06-Sampling_7_1.png" />
+<img alt="_images/06-Sampling_7_2.png" src="_images/06-Sampling_7_2.png" />
 </div>
 </div>
 <p>This odd distribution comes in part from the how the variable is coded, as shown <a class="reference external" href="https://wwwn.cdc.gov/Nchs/Nhanes/2017-2018/DEMO_J.htm#INDFMIN2">here</a>. Let’s resample this variable 5000 times, compute the mean, and examine the distribution.  To do this, we will create a function that resamples and returns the mean:</p>
@@ -419,11 +419,11 @@
 </div>
 <div class="cell_output docutils container">
 <div class="stderr docutils container">
-<pre class="stderr literal-block">/opt/hostedtoolcache/Python/3.7.8/x64/lib/python3.7/site-packages/pandas/core/computation/expressions.py:178: UserWarning: evaluating in Python space because the '*' operator is not supported by numexpr for the bool dtype, use '&amp;' instead
-  f&quot;evaluating in Python space because the {repr(op_str)} &quot;
+<pre class="stderr literal-block">/opt/conda/lib/python3.8/site-packages/pandas/core/computation/expressions.py:177: UserWarning: evaluating in Python space because the '*' operator is not supported by numexpr for the bool dtype, use '&amp;' instead
+  warnings.warn(
 </pre>
 </div>
-<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>0.953
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>0.966
 </pre></div>
 </div>
 </div>
