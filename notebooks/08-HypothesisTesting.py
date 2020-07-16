@@ -57,8 +57,7 @@ pvalue
 # For comparison, we can also compute the p-value for 70 or more heads based on a null hypothesis of $P_{heads}=0.5$, using the binomial distribution.
 #
 #
-# # compute the probability of 69 or fewer heads, 
-# # when P(heads)=0.5
+# compute the probability of 69 or fewer heads, when P(heads)=0.5
 
 # %%
 
@@ -66,8 +65,7 @@ p_lt_70 = scipy.stats.binom.cdf(k=69, n=100, p=0.5)
 p_lt_70
 
 # %% [markdown]
-# # the probability of 70 or more heads is simply 
-# # the complement of p_lt_70
+# the probability of 70 or more heads is simply the complement of p_lt_70
 # %%
 
 p_ge_70 = 1 - p_lt_70
@@ -106,9 +104,5 @@ p_error
 
 # %% [markdown]
 # We should see that the proportion of samples with p < .05 is about 5%.
-#
-#
-#
-#
 
 # %%
