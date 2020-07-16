@@ -27,7 +27,7 @@
 sensitivity = 0.90
 specificity = 0.99
 prior = 0.074
-likelihood = sensitivity # p(test|disease present) 
+likelihood = sensitivity  # p(test|disease present) 
 marginal_likelihood = sensitivity * prior + (1 - specificity) * (1 - prior)
 posterior = (likelihood * prior) / marginal_likelihood
 posterior
@@ -45,11 +45,13 @@ import pandas as pd
 import scipy.stats
 import matplotlib.pyplot as plt
 
+
 def compute_posterior(prior, sensitivity, specificity):
-    likelihood = sensitivity # p(test|disease present) 
+    likelihood = sensitivity  # p(test|disease present) 
     marginal_likelihood = sensitivity * prior + (1 - specificity) * (1 - prior)
     posterior = (likelihood * prior) / marginal_likelihood
     return(posterior)
+
 
 prior_values = np.arange(0.001, 0.5, 0.001)
 posterior_values = compute_posterior(prior_values, sensitivity, specificity)
@@ -155,7 +157,7 @@ adult_nhanes_data = adult_nhanes_data.dropna(subset=['AvgAlcohol'])
 sample_size_per_group = 150
 
 nonsmoker_sample = adult_nhanes_data.query('SmokeNow == False').sample(sample_size_per_group, random_state=rseed)[['SmokeNow', 'AvgAlcohol']]
-smoker_sample = adult_nhanes_data.query('SmokeNow == True').sample(sample_size_per_group, random_state=rseed)[ ['SmokeNow', 'AvgAlcohol']]
+smoker_sample = adult_nhanes_data.query('SmokeNow == True').sample(sample_size_per_group, random_state=rseed)[['SmokeNow', 'AvgAlcohol']]
 
 full_sample = pd.concat((nonsmoker_sample, smoker_sample))
 full_sample['SmokeNow'] = full_sample['SmokeNow'].astype('int')
@@ -170,7 +172,6 @@ full_sample.groupby('SmokeNow').mean()
 #+
 
 # import the necessary functions from rpy2
-import rpy2
 import rpy2.robjects as robjects
 from rpy2.robjects import r, pandas2ri
 from rpy2.robjects.packages import importr
