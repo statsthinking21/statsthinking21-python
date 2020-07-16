@@ -1,0 +1,376 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Statistical Power Analysis in Python &#8212; Python Companion to Statistical Thinking in the 21st Century</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link href="_static/css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="_static/sphinx-book-theme.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/jupyter-sphinx.css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/sphinx-book-theme.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/mystnb.js"></script>
+    <script src="_static/sphinx-book-theme.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Bayesian Statistics in Python" href="10-BayesianStatistics.html" />
+    <link rel="prev" title="Hypothesis testing in Python" href="08-HypothesisTesting.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="index.html">
+  
+  
+  <h1 class="site-logo" id="site-title">Python Companion to Statistical Thinking in the 21st Century</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="01-IntroductionToPython.html">
+   Introduction to Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="02-SummarizingData.html">
+   Summarizing Data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="03-DataVisualization.html">
+   Data Visualization
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="03-DataVisualization.html#plotting-the-distribution-of-a-single-variable">
+   Plotting the distribution of a single variable
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="03-DataVisualization.html#plots-with-two-variables">
+   Plots with two variables
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="04-FittingSimpleModels.html">
+   Fitting simple models
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="05-Probability.html">
+   Probability
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="06-Sampling.html">
+   Sampling
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="07-ResamplingAndSimulation.html">
+   Resampling and simulation in R
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="08-HypothesisTesting.html">
+   Hypothesis testing in Python
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Statistical Power Analysis in Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="10-BayesianStatistics.html">
+   Bayesian Statistics in Python
+  </a>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/09-StatisticalPower.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> On this page
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#power-analysis">
+   Power analysis
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#power-curves">
+   Power curves
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#simulating-statistical-power">
+   Simulating statistical power
+  </a>
+ </li>
+</ul>
+
+        </nav>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="statistical-power-analysis-in-python">
+<h1>Statistical Power Analysis in Python<a class="headerlink" href="#statistical-power-analysis-in-python" title="Permalink to this headline">¶</a></h1>
+<p>In this chapter we focus specifically on statistical power.  We will use the NHANES dataset, so let’s first set that up.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">12345</span><span class="p">)</span> 
+
+<span class="kn">from</span> <span class="nn">nhanes.load</span> <span class="kn">import</span> <span class="n">load_NHANES_data</span>
+
+<span class="n">nhanes_data</span> <span class="o">=</span> <span class="n">load_NHANES_data</span><span class="p">()</span> 
+<span class="n">adult_nhanes_data</span> <span class="o">=</span> <span class="n">nhanes_data</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;AgeInYearsAtScreening &gt; 18&#39;</span><span class="p">)</span>
+<span class="n">adult_nhanes_data</span> <span class="o">=</span> <span class="n">adult_nhanes_data</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;WeightKg&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;WeightKg&#39;</span><span class="p">:</span> <span class="s1">&#39;Weight&#39;</span><span class="p">})</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="power-analysis">
+<h2>Power analysis<a class="headerlink" href="#power-analysis" title="Permalink to this headline">¶</a></h2>
+<p>We can compute a power analysis using functions from the <code class="docutils literal notranslate"><span class="pre">statsmodels.stats.power</span></code> package. Let’s focus on the power for an independent samples t-test in order to determine a difference in the mean between two groups.  Let’s say that we think than an effect size of Cohen’s d=0.5 is realistic for the study in question (based on previous research) and would be of scientific interest.  We wish to have 80% power to find the effect if it exists.  We can compute the sample size needed for adequate power using the <code class="docutils literal notranslate"><span class="pre">TTestIndPower()</span></code> function:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+<span class="kn">import</span> <span class="nn">scipy.stats</span>
+<span class="kn">import</span> <span class="nn">statsmodels.stats.power</span> <span class="k">as</span> <span class="nn">smp</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">power_analysis</span> <span class="o">=</span> <span class="n">smp</span><span class="o">.</span><span class="n">TTestIndPower</span><span class="p">()</span>
+<span class="n">sample_size</span> <span class="o">=</span> <span class="n">power_analysis</span><span class="o">.</span><span class="n">solve_power</span><span class="p">(</span><span class="n">effect_size</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">power</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.05</span><span class="p">)</span>
+<span class="n">sample_size</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>63.765611775409525
+</pre></div>
+</div>
+</div>
+</div>
+<p>Thus, about 64 participants would be needed in each group in order to test the hypothesis with adequate power.</p>
+</div>
+<div class="section" id="power-curves">
+<h2>Power curves<a class="headerlink" href="#power-curves" title="Permalink to this headline">¶</a></h2>
+<p>We can also create plots that can show us how the power to find an effect varies as a function of effect size and sample size, at the alpha specified in the power analysis. We will use the <code class="docutils literal notranslate"><span class="pre">plot_power()</span></code> function. The x-axis is defined by the <code class="docutils literal notranslate"><span class="pre">dep_var</span></code> argument, while sample sizes (nobs) and effect sizes (effect_size) are provided as arrays.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#+</span>
+<span class="n">effect_sizes</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">])</span>
+<span class="n">sample_sizes</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">500</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;seaborn&#39;</span><span class="p">)</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">power_analysis</span><span class="o">.</span><span class="n">plot_power</span><span class="p">(</span>
+    <span class="n">dep_var</span><span class="o">=</span><span class="s1">&#39;nobs&#39;</span><span class="p">,</span> <span class="n">nobs</span><span class="o">=</span><span class="n">sample_sizes</span><span class="p">,</span>  
+    <span class="n">effect_size</span><span class="o">=</span><span class="n">effect_sizes</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> 
+    <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Power of Independent Samples t-test</span><span class="se">\n</span><span class="s1">$</span><span class="se">\\</span><span class="s1">alpha = 0.05$&#39;</span><span class="p">)</span>
+
+<span class="c1">#-</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/09-StatisticalPower_5_0.png" src="_images/09-StatisticalPower_5_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="simulating-statistical-power">
+<h2>Simulating statistical power<a class="headerlink" href="#simulating-statistical-power" title="Permalink to this headline">¶</a></h2>
+<p>We can also simulate data to see whether the power analysis actually gives the right answer.
+We will sample data for two groups, with a difference of 0.5 standard deviations between their underlying distributions and a sample size based on power analysis, and we will then look at how often we reject the null hypothesis.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#+</span>
+<span class="n">num_runs</span> <span class="o">=</span> <span class="mi">5000</span>
+<span class="n">effectSize</span> <span class="o">=</span> <span class="mf">0.5</span>
+
+<span class="c1"># perform power analysis to get sample size</span>
+<span class="n">power_analysis</span> <span class="o">=</span> <span class="n">smp</span><span class="o">.</span><span class="n">TTestIndPower</span><span class="p">()</span>
+<span class="n">sampleSize</span> <span class="o">=</span> <span class="n">power_analysis</span><span class="o">.</span><span class="n">solve_power</span><span class="p">(</span>
+    <span class="n">effect_size</span><span class="o">=</span><span class="n">effectSize</span><span class="p">,</span> <span class="n">power</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.05</span><span class="p">)</span>
+
+<span class="c1"># round up from estimated sample size</span>
+<span class="n">sampleSize</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ceil</span><span class="p">(</span><span class="n">sampleSize</span><span class="p">))</span>
+
+<span class="c1"># create a function that will generate samples and test for</span>
+<span class="c1"># a difference between groups using a two-sample t-test</span>
+
+
+<span class="k">def</span> <span class="nf">get_t_result</span><span class="p">(</span><span class="n">sampleSize</span><span class="p">,</span> <span class="n">effectSize</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    perform a ttest on random data of n=sampSize</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    
+    <span class="n">group1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">sampleSize</span><span class="p">)</span>
+    <span class="n">group2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="n">effectSize</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">sampleSize</span><span class="p">)</span>
+    <span class="n">ttresult</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">ttest_ind</span><span class="p">(</span><span class="n">group1</span><span class="p">,</span> <span class="n">group2</span><span class="p">)</span>
+    <span class="k">return</span><span class="p">(</span><span class="n">ttresult</span><span class="o">.</span><span class="n">pvalue</span><span class="p">)</span>
+
+
+<span class="c1"># create input data frame for output</span>
+<span class="n">power_sim_results</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;p_value&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">num_runs</span><span class="p">)})</span>
+
+<span class="k">for</span> <span class="n">run</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_runs</span><span class="p">):</span>
+    <span class="n">power_sim_results</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">run</span><span class="p">,</span> <span class="s1">&#39;p_value&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">get_t_result</span><span class="p">(</span><span class="n">sampleSize</span><span class="p">,</span> <span class="n">effectSize</span><span class="p">)</span>
+
+
+<span class="n">p_reject</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">power_sim_results</span><span class="p">[</span><span class="s1">&#39;p_value&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mf">0.05</span><span class="p">)</span>
+<span class="n">p_reject</span>
+<span class="c1">#-</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>0.7994
+</pre></div>
+</div>
+</div>
+</div>
+<p>This should return a number very close to 0.8.</p>
+</div>
+</div>
+
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="08-HypothesisTesting.html" title="previous page">Hypothesis testing in Python</a>
+    <a class='right-next' id="next-link" href="10-BayesianStatistics.html" title="next page">Bayesian Statistics in Python</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Russell A. Poldrack<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    <script src="_static/js/index.js"></script>
+    
+  </body>
+</html>

@@ -1,0 +1,683 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Bayesian Statistics in Python &#8212; Python Companion to Statistical Thinking in the 21st Century</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link href="_static/css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="_static/sphinx-book-theme.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/jupyter-sphinx.css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/sphinx-book-theme.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/mystnb.js"></script>
+    <script src="_static/sphinx-book-theme.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Statistical Power Analysis in Python" href="09-StatisticalPower.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="index.html">
+  
+  
+  <h1 class="site-logo" id="site-title">Python Companion to Statistical Thinking in the 21st Century</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="01-IntroductionToPython.html">
+   Introduction to Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="02-SummarizingData.html">
+   Summarizing Data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="03-DataVisualization.html">
+   Data Visualization
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="03-DataVisualization.html#plotting-the-distribution-of-a-single-variable">
+   Plotting the distribution of a single variable
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="03-DataVisualization.html#plots-with-two-variables">
+   Plots with two variables
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="04-FittingSimpleModels.html">
+   Fitting simple models
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="05-Probability.html">
+   Probability
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="06-Sampling.html">
+   Sampling
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="07-ResamplingAndSimulation.html">
+   Resampling and simulation in R
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="08-HypothesisTesting.html">
+   Hypothesis testing in Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="09-StatisticalPower.html">
+   Statistical Power Analysis in Python
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Bayesian Statistics in Python
+  </a>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/10-BayesianStatistics.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> On this page
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#applying-bayes-theorem-a-simple-example">
+   Applying Bayes’ theorem: A simple example
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#estimating-posterior-distributions">
+   Estimating posterior distributions
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bayes-factors">
+   Bayes factors
+  </a>
+ </li>
+</ul>
+
+        </nav>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="bayesian-statistics-in-python">
+<h1>Bayesian Statistics in Python<a class="headerlink" href="#bayesian-statistics-in-python" title="Permalink to this headline">¶</a></h1>
+<p>In this chapter we will introduce how to basic Bayesian computations using Python.</p>
+<div class="section" id="applying-bayes-theorem-a-simple-example">
+<h2>Applying Bayes’ theorem: A simple example<a class="headerlink" href="#applying-bayes-theorem-a-simple-example" title="Permalink to this headline">¶</a></h2>
+<p>TBD: MOVE TO MULTIPLE TESTING EXAMPLE SO WE CAN USE BINOMIAL LIKELIHOOD
+A person has a cough and flu-like symptoms, and gets a PCR test for COVID-19, which comes back postiive.  What is the likelihood that they actually have COVID-19, as opposed a regular cold or flu?  We can use Bayes’ theorem to compute this.  Let’s say that the local rate of symptomatic individuals who actually are infected with COVID-19 is 7.4% (as <a class="reference external" href="https://twitter.com/Bob_Wachter/status/1281792549309386752/photo/1">reported</a> on July 10, 2020 for San Francisco); thus, our prior probability that someone with symptoms actually has COVID-19 is .074.  The RT-PCR test used to identify COVID-19 RNA is highly specific (that is, it very rarelly reports the presence of the virus when it is not present); for our example, we will say that the specificity is 99%.  Its sensitivity is not known, but probably is no higher than 90%.<br />
+First let’s look at the probability of disease given a single positive test.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+<span class="n">sensitivity</span> <span class="o">=</span> <span class="mf">0.90</span>
+<span class="n">specificity</span> <span class="o">=</span> <span class="mf">0.99</span>
+<span class="n">prior</span> <span class="o">=</span> <span class="mf">0.074</span>
+<span class="n">likelihood</span> <span class="o">=</span> <span class="n">sensitivity</span>  <span class="c1"># p(test|disease present) </span>
+<span class="n">marginal_likelihood</span> <span class="o">=</span> <span class="n">sensitivity</span> <span class="o">*</span> <span class="n">prior</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">specificity</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">prior</span><span class="p">)</span>
+<span class="n">posterior</span> <span class="o">=</span> <span class="p">(</span><span class="n">likelihood</span> <span class="o">*</span> <span class="n">prior</span><span class="p">)</span> <span class="o">/</span> <span class="n">marginal_likelihood</span>
+<span class="n">posterior</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>0.8779330345373055
+</pre></div>
+</div>
+</div>
+</div>
+<p>The high specificity of the test, along with the relatively high base rate of the disease, means that most people who test positive actually have the disease.
+Now let’s plot the posterior as a function of the prior.  Let’s first create a function to compute the posterior, and then apply this with a range of values for the prior.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">scipy.stats</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+
+<span class="k">def</span> <span class="nf">compute_posterior</span><span class="p">(</span><span class="n">prior</span><span class="p">,</span> <span class="n">sensitivity</span><span class="p">,</span> <span class="n">specificity</span><span class="p">):</span>
+    <span class="n">likelihood</span> <span class="o">=</span> <span class="n">sensitivity</span>  <span class="c1"># p(test|disease present) </span>
+    <span class="n">marginal_likelihood</span> <span class="o">=</span> <span class="n">sensitivity</span> <span class="o">*</span> <span class="n">prior</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">specificity</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">prior</span><span class="p">)</span>
+    <span class="n">posterior</span> <span class="o">=</span> <span class="p">(</span><span class="n">likelihood</span> <span class="o">*</span> <span class="n">prior</span><span class="p">)</span> <span class="o">/</span> <span class="n">marginal_likelihood</span>
+    <span class="k">return</span><span class="p">(</span><span class="n">posterior</span><span class="p">)</span>
+
+
+<span class="n">prior_values</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">0.001</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">)</span>
+<span class="n">posterior_values</span> <span class="o">=</span> <span class="n">compute_posterior</span><span class="p">(</span><span class="n">prior_values</span><span class="p">,</span> <span class="n">sensitivity</span><span class="p">,</span> <span class="n">specificity</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">prior_values</span><span class="p">,</span> <span class="n">posterior_values</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;prior&#39;</span><span class="p">)</span>
+<span class="n">_</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;posterior&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/10-BayesianStatistics_3_0.png" src="_images/10-BayesianStatistics_3_0.png" />
+</div>
+</div>
+<p>This figure highlights a very important general point about diagnostic testing: Even when the test has high specificity, if a condition is rare then most positive test results will be false positives.</p>
+</div>
+<div class="section" id="estimating-posterior-distributions">
+<h2>Estimating posterior distributions<a class="headerlink" href="#estimating-posterior-distributions" title="Permalink to this headline">¶</a></h2>
+<p>In this example we will look at how to estimate entire posterior distributions.<br />
+We will implement the <a class="reference external" href="https://statsthinking21.github.io/statsthinking21-core-site/bayesian-statistics.html#estimating-posterior-distributions">drug testing example</a> from the book.  In that example, we administered a drug to 100 people, and found that 64 of them responded positively to the drug. What we want to estimate is the probability distribution for the proportion of responders, given the data. For simplicity we started with a uniform prior; that is, all proprtions of responding are equally likely to begin with. In addition, we will use a discrete probability distribution; that is, we will estimate the posterior probabiilty for each particular proportion of responders, in steps of 0.01.  This greatly simplifies the math and still retains the main idea.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#+</span>
+<span class="n">num_responders</span> <span class="o">=</span> <span class="mi">64</span>
+<span class="n">num_tested</span> <span class="o">=</span> <span class="mi">100</span>
+
+<span class="n">bayes_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;proportion&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.01</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">)})</span>
+
+<span class="c1"># compute the binomial likelihood of the observed data for each</span>
+<span class="c1"># possible value of proportion</span>
+<span class="n">bayes_df</span><span class="p">[</span><span class="s1">&#39;likelihood&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">binom</span><span class="o">.</span><span class="n">pmf</span><span class="p">(</span><span class="n">num_responders</span><span class="p">,</span>
+                                               <span class="n">num_tested</span><span class="p">,</span>
+                                               <span class="n">bayes_df</span><span class="p">[</span><span class="s1">&#39;proportion&#39;</span><span class="p">])</span>
+<span class="c1"># The prior is equal for all possible values</span>
+<span class="n">bayes_df</span><span class="p">[</span><span class="s1">&#39;prior&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">bayes_df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="c1"># compute the marginal likelihood by adding up the likelihood of each possible proportion times its prior probability.</span>
+
+<span class="n">marginal_likelihood</span> <span class="o">=</span> <span class="p">(</span><span class="n">bayes_df</span><span class="p">[</span><span class="s1">&#39;likelihood&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">bayes_df</span><span class="p">[</span><span class="s1">&#39;prior&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+
+<span class="n">bayes_df</span><span class="p">[</span><span class="s1">&#39;posterior&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">bayes_df</span><span class="p">[</span><span class="s1">&#39;likelihood&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">bayes_df</span><span class="p">[</span><span class="s1">&#39;prior&#39;</span><span class="p">])</span> <span class="o">/</span> <span class="n">marginal_likelihood</span>
+
+<span class="c1"># plot the likelihood, prior, and posterior</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">bayes_df</span><span class="p">[</span><span class="s1">&#39;proportion&#39;</span><span class="p">],</span> <span class="n">bayes_df</span><span class="p">[</span><span class="s1">&#39;likelihood&#39;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;likelihood&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">bayes_df</span><span class="p">[</span><span class="s1">&#39;proportion&#39;</span><span class="p">],</span> <span class="n">bayes_df</span><span class="p">[</span><span class="s1">&#39;prior&#39;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;prior&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">bayes_df</span><span class="p">[</span><span class="s1">&#39;proportion&#39;</span><span class="p">],</span> <span class="n">bayes_df</span><span class="p">[</span><span class="s1">&#39;posterior&#39;</span><span class="p">],</span>
+         <span class="s1">&#39;k--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;posterior&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+<span class="c1">#-</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7fbdaf00e610&gt;
+</pre></div>
+</div>
+<img alt="_images/10-BayesianStatistics_5_1.png" src="_images/10-BayesianStatistics_5_1.png" />
+</div>
+</div>
+<p>The plot shows that the posterior and likelihood are virtually identical, which is due to the fact that the prior is uniform across all possible values.  Now let’s look at a case where the prior is not uniform. Let’s say that we now run a larger study of 1000 people with the same treatment, and we find that 312 of the 1000 individuals respond to the treatment.  In this case, we can use the posterior from the earlier study of 100 people as the prior for our new study.  This is what we sometimes refer to as <em>Bayesian updating</em>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#+</span>
+<span class="n">num_responders</span> <span class="o">=</span> <span class="mi">312</span>
+<span class="n">num_tested</span> <span class="o">=</span> <span class="mi">1000</span>
+
+<span class="c1"># copy the posterior from the previous analysis and rename it as the prior</span>
+
+<span class="n">study2_df</span> <span class="o">=</span> <span class="n">bayes_df</span><span class="p">[[</span><span class="s1">&#39;proportion&#39;</span><span class="p">,</span> <span class="s1">&#39;posterior&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;posterior&#39;</span><span class="p">:</span> <span class="s1">&#39;prior&#39;</span><span class="p">})</span>
+
+<span class="c1"># compute the binomial likelihood of the observed data for each</span>
+<span class="c1"># possible value of proportion</span>
+
+<span class="n">study2_df</span><span class="p">[</span><span class="s1">&#39;likelihood&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">binom</span><span class="o">.</span><span class="n">pmf</span><span class="p">(</span><span class="n">num_responders</span><span class="p">,</span>
+                                               <span class="n">num_tested</span><span class="p">,</span>
+                                               <span class="n">study2_df</span><span class="p">[</span><span class="s1">&#39;proportion&#39;</span><span class="p">])</span>
+
+<span class="c1"># compute the marginal likelihood by adding up the likelihood of each possible proportion times its prior probability.</span>
+
+<span class="n">marginal_likelihood</span> <span class="o">=</span> <span class="p">(</span><span class="n">study2_df</span><span class="p">[</span><span class="s1">&#39;likelihood&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">study2_df</span><span class="p">[</span><span class="s1">&#39;prior&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+
+<span class="n">study2_df</span><span class="p">[</span><span class="s1">&#39;posterior&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">study2_df</span><span class="p">[</span><span class="s1">&#39;likelihood&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">study2_df</span><span class="p">[</span><span class="s1">&#39;prior&#39;</span><span class="p">])</span> <span class="o">/</span> <span class="n">marginal_likelihood</span>
+
+<span class="c1"># plot the likelihood, prior, and posterior</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">study2_df</span><span class="p">[</span><span class="s1">&#39;proportion&#39;</span><span class="p">],</span> <span class="n">study2_df</span><span class="p">[</span><span class="s1">&#39;likelihood&#39;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;likelihood&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">study2_df</span><span class="p">[</span><span class="s1">&#39;proportion&#39;</span><span class="p">],</span> <span class="n">study2_df</span><span class="p">[</span><span class="s1">&#39;prior&#39;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;prior&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">study2_df</span><span class="p">[</span><span class="s1">&#39;proportion&#39;</span><span class="p">],</span> <span class="n">study2_df</span><span class="p">[</span><span class="s1">&#39;posterior&#39;</span><span class="p">],</span>
+         <span class="s1">&#39;k--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;posterior&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+<span class="c1">#-</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7fbdaf00e5e0&gt;
+</pre></div>
+</div>
+<img alt="_images/10-BayesianStatistics_7_1.png" src="_images/10-BayesianStatistics_7_1.png" />
+</div>
+</div>
+<p>Here we see two important things. First, we see that the prior is substantially wider than the likelihood, which occurs because there is much more data going into the likelihood (1000 data points) compared to the prior (100 data points), and more data reduces our uncertainty.  Second, we see that the posterior is much closer to the value observed for the second study than for the first, which occurs for the same reason — we put greater weight on the estimate that is more precise due to a larger sample.</p>
+</div>
+<div class="section" id="bayes-factors">
+<h2>Bayes factors<a class="headerlink" href="#bayes-factors" title="Permalink to this headline">¶</a></h2>
+<p>There are no convenient off-the-shelf tools for estimating Bayes factors using Python, so we will use the <code class="docutils literal notranslate"><span class="pre">rpy2</span></code> package to access the <code class="docutils literal notranslate"><span class="pre">BayesFactor</span></code> library in R.  Let’s compute a Bayes factor for a T-test comparing the amount of reported alcohol computing between smokers versus non-smokers.  First, let’s set up the NHANES data and collect a sample of 150 smokers and 150 nonsmokers.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#+</span>
+<span class="kn">from</span> <span class="nn">nhanes.load</span> <span class="kn">import</span> <span class="n">load_NHANES_data</span>
+<span class="n">nhanes_data</span> <span class="o">=</span> <span class="n">load_NHANES_data</span><span class="p">()</span>
+<span class="n">adult_nhanes_data</span> <span class="o">=</span> <span class="n">nhanes_data</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;AgeInYearsAtScreening &gt; 17&#39;</span><span class="p">)</span>
+<span class="n">rseed</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="c1"># clean up smoking variables</span>
+<span class="n">adult_nhanes_data</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">adult_nhanes_data</span><span class="p">[</span><span class="s1">&#39;SmokedAtLeast100CigarettesInLife&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;DoYouNowSmokeCigarettes&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Not at all&#39;</span>
+<span class="n">adult_nhanes_data</span><span class="p">[</span><span class="s1">&#39;SmokeNow&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">adult_nhanes_data</span><span class="p">[</span><span class="s1">&#39;DoYouNowSmokeCigarettes&#39;</span><span class="p">]</span> <span class="o">!=</span> <span class="s1">&#39;Not at all&#39;</span>
+
+<span class="c1"># Create average alcohol consumption variable between the two dietary recalls</span>
+<span class="n">adult_nhanes_data</span><span class="p">[</span><span class="s1">&#39;AvgAlcohol&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">adult_nhanes_data</span><span class="p">[[</span><span class="s1">&#39;AlcoholGm_DR1TOT&#39;</span><span class="p">,</span> <span class="s1">&#39;AlcoholGm_DR2TOT&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">adult_nhanes_data</span> <span class="o">=</span> <span class="n">adult_nhanes_data</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;AvgAlcohol&#39;</span><span class="p">])</span>
+
+<span class="n">sample_size_per_group</span> <span class="o">=</span> <span class="mi">150</span>
+
+<span class="n">nonsmoker_sample</span> <span class="o">=</span> <span class="n">adult_nhanes_data</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;SmokeNow == False&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">sample_size_per_group</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="n">rseed</span><span class="p">)[[</span><span class="s1">&#39;SmokeNow&#39;</span><span class="p">,</span> <span class="s1">&#39;AvgAlcohol&#39;</span><span class="p">]]</span>
+<span class="n">smoker_sample</span> <span class="o">=</span> <span class="n">adult_nhanes_data</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;SmokeNow == True&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">sample_size_per_group</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="n">rseed</span><span class="p">)[[</span><span class="s1">&#39;SmokeNow&#39;</span><span class="p">,</span> <span class="s1">&#39;AvgAlcohol&#39;</span><span class="p">]]</span>
+
+<span class="n">full_sample</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">((</span><span class="n">nonsmoker_sample</span><span class="p">,</span> <span class="n">smoker_sample</span><span class="p">))</span>
+<span class="n">full_sample</span><span class="p">[</span><span class="s1">&#39;SmokeNow&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">full_sample</span><span class="p">[</span><span class="s1">&#39;SmokeNow&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;int&#39;</span><span class="p">)</span>
+<span class="n">full_sample</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;SmokeNow&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="c1">#-</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="stderr docutils container">
+<pre class="stderr literal-block">/opt/conda/lib/python3.8/site-packages/pandas/core/indexing.py:966: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  self.obj[item] = s
+&lt;ipython-input-5-3ee8b60c14ab&gt;:9: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  adult_nhanes_data['SmokeNow'] = adult_nhanes_data['DoYouNowSmokeCigarettes'] != 'Not at all'
+&lt;ipython-input-5-3ee8b60c14ab&gt;:12: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  adult_nhanes_data['AvgAlcohol'] = adult_nhanes_data[['AlcoholGm_DR1TOT', 'AlcoholGm_DR2TOT']].mean(1)
+</pre>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>AvgAlcohol</th>
+    </tr>
+    <tr>
+      <th>SmokeNow</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>5.748000</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>11.875333</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Now let’s use functions from R to perform a standard t-test as well as compute a Bayes Factor for this comparison.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#+</span>
+
+<span class="c1"># import the necessary functions from rpy2</span>
+<span class="kn">import</span> <span class="nn">rpy2.robjects</span> <span class="k">as</span> <span class="nn">robjects</span>
+<span class="kn">from</span> <span class="nn">rpy2.robjects</span> <span class="kn">import</span> <span class="n">r</span><span class="p">,</span> <span class="n">pandas2ri</span>
+<span class="kn">from</span> <span class="nn">rpy2.robjects.packages</span> <span class="kn">import</span> <span class="n">importr</span>
+<span class="n">pandas2ri</span><span class="o">.</span><span class="n">activate</span><span class="p">()</span>
+
+<span class="c1"># import the BayesFactor package</span>
+<span class="n">BayesFactor</span> <span class="o">=</span> <span class="n">importr</span><span class="p">(</span><span class="s1">&#39;BayesFactor&#39;</span><span class="p">)</span>
+
+<span class="c1"># import the data frames into the R workspace</span>
+<span class="n">robjects</span><span class="o">.</span><span class="n">globalenv</span><span class="p">[</span><span class="s2">&quot;smoker_sample&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">smoker_sample</span>
+<span class="n">robjects</span><span class="o">.</span><span class="n">globalenv</span><span class="p">[</span><span class="s2">&quot;nonsmoker_sample&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">nonsmoker_sample</span>
+
+<span class="c1"># perform the standard t-test</span>
+<span class="n">ttest_output</span> <span class="o">=</span> <span class="n">r</span><span class="p">(</span><span class="s1">&#39;print(t.test(smoker_sample$AvgAlcohol, nonsmoker_sample$AvgAlcohol, alternative=&quot;greater&quot;))&#39;</span><span class="p">)</span>
+
+<span class="c1"># compute the Bayes factor</span>
+<span class="n">r</span><span class="p">(</span><span class="s1">&#39;bf = ttestBF(y=nonsmoker_sample$AvgAlcohol, x=smoker_sample$AvgAlcohol, nullInterval = c(0, Inf))&#39;</span><span class="p">)</span>
+<span class="n">r</span><span class="p">(</span><span class="s1">&#39;print(bf[1]/bf[2])&#39;</span><span class="p">)</span>
+
+<span class="c1">#-</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="stderr docutils container">
+<pre class="stderr literal-block">/opt/conda/lib/python3.8/site-packages/rpy2/robjects/pandas2ri.py:14: FutureWarning: pandas.core.index is deprecated and will be removed in a future version.  The public classes are available in the top-level namespace.
+  from pandas.core.index import Index as PandasIndex
+</pre>
+</div>
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>	Welch Two Sample t-test
+</pre></div>
+</div>
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>data:  
+</pre></div>
+</div>
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>smoker_sample$AvgAlcohol and nonsmoker_sample$AvgAlcohol
+</pre></div>
+</div>
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>t = 2.0573, df = 201.31, p-value = 0.02047
+</pre></div>
+</div>
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>alternative hypothesis: 
+</pre></div>
+</div>
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>true 
+</pre></div>
+</div>
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>difference in means
+</pre></div>
+</div>
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span> is 
+</pre></div>
+</div>
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>greater than
+</pre></div>
+</div>
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span> 
+</pre></div>
+</div>
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>0
+</pre></div>
+</div>
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>95
+</pre></div>
+</div>
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span> percent confidence interval:
+</pre></div>
+</div>
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span> 
+</pre></div>
+</div>
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>1.205694      Inf
+</pre></div>
+</div>
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>sample estimates:
+</pre></div>
+</div>
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>mean of x 
+</pre></div>
+</div>
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>mean of y 
+</pre></div>
+</div>
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span> 11.87533 
+</pre></div>
+</div>
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>  5.74800 
+</pre></div>
+</div>
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>Bayes factor analysis
+--------------
+</pre></div>
+</div>
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>[1] Alt., r=0.707 0&lt;d&lt;Inf
+</pre></div>
+</div>
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span> : 
+</pre></div>
+</div>
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>43.35006
+</pre></div>
+</div>
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span> ±
+</pre></div>
+</div>
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>0.02
+</pre></div>
+</div>
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>%
+</pre></div>
+</div>
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>
+Against denominator:
+</pre></div>
+</div>
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span> 
+</pre></div>
+</div>
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span> 
+</pre></div>
+</div>
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>Alternative, r = 0.707106781186548, mu =/= 0 !(0&lt;d&lt;Inf)
+</pre></div>
+</div>
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span> 
+</pre></div>
+</div>
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>---
+Bayes factor type: 
+</pre></div>
+</div>
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>BFindepSample
+</pre></div>
+</div>
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>, 
+</pre></div>
+</div>
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>JZS
+</pre></div>
+</div>
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>
+
+</pre></div>
+</div>
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>R object with classes: (&#39;BFBayesFactor&#39;,) mapped to:
+</pre></div>
+</div>
+</div>
+</div>
+<p>This shows that the difference between these groups is significant, and the Bayes factor suggests fairly strong evidence for a difference.</p>
+</div>
+</div>
+
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="09-StatisticalPower.html" title="previous page">Statistical Power Analysis in Python</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Russell A. Poldrack<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    <script src="_static/js/index.js"></script>
+    
+  </body>
+</html>
