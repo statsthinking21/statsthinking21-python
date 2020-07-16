@@ -44,7 +44,7 @@ import pandas as pd
 
 
 # %% [markdown]
-# # Plotting the distribution of a single variable
+# ## Plotting the distribution of a single variable
 #
 # One of the most common uses of plotting is to plot the *distribution* of the data --- which you can think of as the *shape* of the data.  There are various ways to do this, but one of the most common is known as a *histogram*, which plots the number of observations that fall into specific bins. We can plot a histogram using the `plt.hist()` function from matplotlib.  As an example, let's look at the distribution of ages in the NHANES dataset.  First we need to load the data:
 
@@ -77,7 +77,7 @@ age_density_1year_bins = plt.hist(nhanes_data['AgeInYearsAtScreening'], bins=bin
 # Now we see the proportion of individuals that fall into each age bin.  Why do you think there are so many eighty-year-olds in the dataset?  Have a look at the [documentation for the Age question](https://wwwn.cdc.gov/Nchs/Nhanes/2017-2018/DEMO_J.htm#RIDAGEYR) and see if you can figure it out.
 
 # %% [markdown]
-# #### Bar vs. line plots
+# ### Bar vs. line plots
 #
 # The histograms above are an example of *bar plots* where each number is represented by a bar. We could also plot the distribution using a line instead.  One reason to do this is that we can make the line a bit *smoother* than the actual data.  For example, here are the histogram data from above, plotted as a line:
 
@@ -96,7 +96,7 @@ sns.distplot(nhanes_data['AgeInYearsAtScreening'], bins=bins)
 # You can see that the line is now much smoother (less bumpy) than the one above.  It generally follows the overall shape of the data pretty closely, but you can also see that it mostly hides the large bump at 80 years.  It's always important to keep in mind that anything we do to the data has the potential to distort their message.
 
 # %% [markdown]
-# # Plots with two variables
+# ## Plots with two variables
 #
 # Another common use of visualization is to examine the relationship betwen two variables.  For example, let's say that we wanted to plot average height as a function of age in the NHANES dataset.  We would first summarize the data to obtain the average height for each age:
 
@@ -122,7 +122,7 @@ sns.lineplot(x='AgeInYearsAtScreening', y='StandingHeightCm', hue='Gender', data
 # You will notice that the lines have shaded areas around them; these are called *confidence intervals*, and you will learn about them later in the course.  They basically tell us something about the uncertainty around our estimates of the average.
 
 # %% [markdown]
-# ### Plotting dispersion
+# ## Plotting dispersion
 #
 # An important job of statistical visualization is to show us the variability, or *dispersion*, of our data.  We have already see how to do this using histograms; now let's look at how we can compare distributions.
 #
