@@ -34,12 +34,6 @@ posterior
 
 
 
-
-
-
-
-
-
 # %% [markdown]
 # The high specificity of the test, along with the relatively high base rate of the disease, means that most people who test positive actually have the disease. 
 # Now let's plot the posterior as a function of the prior.  Let's first create a function to compute the posterior, and then apply this with a range of values for the prior.
