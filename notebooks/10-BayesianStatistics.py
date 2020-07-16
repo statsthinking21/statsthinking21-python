@@ -34,6 +34,8 @@ posterior
 
 
 
+
+
 # %% [markdown]
 # The high specificity of the test, along with the relatively high base rate of the disease, means that most people who test positive actually have the disease. 
 # Now let's plot the posterior as a function of the prior.  Let's first create a function to compute the posterior, and then apply this with a range of values for the prior.
@@ -131,7 +133,7 @@ plt.plot(study2_df['proportion'], study2_df['posterior'],
 
 plt.legend()
 
-#+
+#-
 
 # %% [markdown]
 # Here we see two important things. First, we see that the prior is substantially wider than the likelihood, which occurs because there is much more data going into the likelihood (1000 data points) compared to the prior (100 data points), and more data reduces our uncertainty.  Second, we see that the posterior is much closer to the value observed for the second study than for the first, which occurs for the same reason --- we put greater weight on the estimate that is more precise due to a larger sample. 
