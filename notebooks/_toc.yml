@@ -13,6 +13,6 @@
     - file: 10-BayesianStatistics.ipynb
     - file: 11-ModelingCategoricalRelationships.ipynb
     # - file: Part12_ModelingContinuousRelationships.ipynb
-    # - file: Part13_GeneralLinearModel.ipynb
+    - file: 13-GeneralLinearModel.ipynb
     # - file: Part14_ComparingMeans.ipynb
     # - file: Part15_PracticalStatisticalModeling.ipynb
