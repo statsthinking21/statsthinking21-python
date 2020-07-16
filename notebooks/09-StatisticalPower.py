@@ -50,7 +50,7 @@ sample_size
 #
 # ## Power curves
 #
-# We can also create plots that can show us how the power to find an effect varies as a function of effect size and sample size, at the alpha specified in the power analysis. We willl use the `plot_power()` function. The x-axis is defined by the 'dep_var' argument, while sample sizes (nobs) and effect sizes (effect_size) are provided in arrays. 
+# We can also create plots that can show us how the power to find an effect varies as a function of effect size and sample size, at the alpha specified in the power analysis. We will use the `plot_power()` function. The x-axis is defined by the `dep_var` argument, while sample sizes (nobs) and effect sizes (effect_size) are provided as arrays. 
 # %%
 #+
 effect_sizes = np.array([0.2, 0.5, 0.8])
@@ -64,53 +64,13 @@ fig = power_analysis.plot_power(
     effect_size=effect_sizes, alpha=0.05, ax=ax, 
     title='Power of Independent Samples t-test\n$\\alpha = 0.05$')
 
-
-#import itertools
-#input_df=pd.DataFrame(itertools.product(sample_sizes, effect_sizes))
-#input_df
 #-
-
-# %% [markdown]
-# Using this, we can then perform a power analysis for each combination of effect size and sample size to create our power curves.  In this case, let's say that we wish to perform a two-sample t-test.
-# %%
-#
-# CK: Didn't do this part, since the plot_power function above does it. In case it's better practice, I tried to do it, but got stuck with returning the power result from TTestIndPower.power. Perhaps it can be computed a different way?
-# ```{r}
-# create a function get the power value and
-# return as a tibble
-# get_power <- function(df){
-#  power_result <- pwr.t.test(n=df$sample_sizes, 
-#                             d=df$effect_sizes,
-#                             type='two.sample')
-#  df$power=power_result$power
-#  return(df)
-# }
-# run get_power for each combination of effect size 
-# and sample size
-# power_curves <- input_df %>%
-#  do(get_power(.)) %>%
-#  mutate(effect_sizes = as.factor(effect_sizes)) 
-# ```
-#
-# Now we can plot the power curves, using a separate line for each effect size.
-#
-# ```{r fig.width=4,fig.height=4,out.width="50%"}
-# ggplot(power_curves, 
-#       aes(x=sample_sizes,
-#           y=power, 
-#           linetype=effect_sizes)) + 
-#  geom_line() + 
-#  geom_hline(yintercept = 0.8, 
-#             linetype='dotdash')
-# ```
 
 # %% [markdown]
 # ## Simulating statistical power
 #
-#
-# Let's simulate this to see whether the power analysis actually gives the right answer.
-# We will sample data for two groups, with a difference of 0.5 standard deviations between their underlying distributions, and we will look at how often we reject the null hypothesis.
-
+# We can also simulate data to see whether the power analysis actually gives the right answer.
+# We will sample data for two groups, with a difference of 0.5 standard deviations between their underlying distributions and a sample size based on power analysis, and we will then look at how often we reject the null hypothesis.
 # %%
 #+
 num_runs = 5000
