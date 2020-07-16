@@ -79,16 +79,6 @@
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="03-DataVisualization.html#plotting-the-distribution-of-a-single-variable">
-   Plotting the distribution of a single variable
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="03-DataVisualization.html#plots-with-two-variables">
-   Plots with two variables
-  </a>
- </li>
- <li class="toctree-l1">
   <a class="reference internal" href="04-FittingSimpleModels.html">
    Fitting simple models
   </a>
@@ -232,6 +222,7 @@ First let’s look at the probability of disease given a single positive test.</
 <span class="n">marginal_likelihood</span> <span class="o">=</span> <span class="n">sensitivity</span> <span class="o">*</span> <span class="n">prior</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">specificity</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">prior</span><span class="p">)</span>
 <span class="n">posterior</span> <span class="o">=</span> <span class="p">(</span><span class="n">likelihood</span> <span class="o">*</span> <span class="n">prior</span><span class="p">)</span> <span class="o">/</span> <span class="n">marginal_likelihood</span>
 <span class="n">posterior</span>
+
 </pre></div>
 </div>
 </div>
@@ -314,7 +305,7 @@ We will implement the <a class="reference external" href="https://statsthinking2
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7fbdaf00e610&gt;
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f1a26b0a610&gt;
 </pre></div>
 </div>
 <img alt="_images/10-BayesianStatistics_5_1.png" src="_images/10-BayesianStatistics_5_1.png" />
@@ -358,7 +349,7 @@ We will implement the <a class="reference external" href="https://statsthinking2
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7fbdaf00e5e0&gt;
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f1a48246d90&gt;
 </pre></div>
 </div>
 <img alt="_images/10-BayesianStatistics_7_1.png" src="_images/10-BayesianStatistics_7_1.png" />
@@ -379,10 +370,10 @@ We will implement the <a class="reference external" href="https://statsthinking2
 
 <span class="c1"># clean up smoking variables</span>
 <span class="n">adult_nhanes_data</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">adult_nhanes_data</span><span class="p">[</span><span class="s1">&#39;SmokedAtLeast100CigarettesInLife&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;DoYouNowSmokeCigarettes&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Not at all&#39;</span>
-<span class="n">adult_nhanes_data</span><span class="p">[</span><span class="s1">&#39;SmokeNow&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">adult_nhanes_data</span><span class="p">[</span><span class="s1">&#39;DoYouNowSmokeCigarettes&#39;</span><span class="p">]</span> <span class="o">!=</span> <span class="s1">&#39;Not at all&#39;</span>
+<span class="n">adult_nhanes_data</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s1">&#39;SmokeNow&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">adult_nhanes_data</span><span class="p">[</span><span class="s1">&#39;DoYouNowSmokeCigarettes&#39;</span><span class="p">]</span> <span class="o">!=</span> <span class="s1">&#39;Not at all&#39;</span>
 
 <span class="c1"># Create average alcohol consumption variable between the two dietary recalls</span>
-<span class="n">adult_nhanes_data</span><span class="p">[</span><span class="s1">&#39;AvgAlcohol&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">adult_nhanes_data</span><span class="p">[[</span><span class="s1">&#39;AlcoholGm_DR1TOT&#39;</span><span class="p">,</span> <span class="s1">&#39;AlcoholGm_DR2TOT&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">adult_nhanes_data</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s1">&#39;AvgAlcohol&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">adult_nhanes_data</span><span class="p">[[</span><span class="s1">&#39;AlcoholGm_DR1TOT&#39;</span><span class="p">,</span> <span class="s1">&#39;AlcoholGm_DR2TOT&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">adult_nhanes_data</span> <span class="o">=</span> <span class="n">adult_nhanes_data</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;AvgAlcohol&#39;</span><span class="p">])</span>
 
 <span class="n">sample_size_per_group</span> <span class="o">=</span> <span class="mi">150</span>
@@ -391,7 +382,7 @@ We will implement the <a class="reference external" href="https://statsthinking2
 <span class="n">smoker_sample</span> <span class="o">=</span> <span class="n">adult_nhanes_data</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;SmokeNow == True&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">sample_size_per_group</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="n">rseed</span><span class="p">)[[</span><span class="s1">&#39;SmokeNow&#39;</span><span class="p">,</span> <span class="s1">&#39;AvgAlcohol&#39;</span><span class="p">]]</span>
 
 <span class="n">full_sample</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">((</span><span class="n">nonsmoker_sample</span><span class="p">,</span> <span class="n">smoker_sample</span><span class="p">))</span>
-<span class="n">full_sample</span><span class="p">[</span><span class="s1">&#39;SmokeNow&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">full_sample</span><span class="p">[</span><span class="s1">&#39;SmokeNow&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;int&#39;</span><span class="p">)</span>
+<span class="n">full_sample</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s1">&#39;SmokeNow&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">full_sample</span><span class="p">[</span><span class="s1">&#39;SmokeNow&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;int&#39;</span><span class="p">)</span>
 <span class="n">full_sample</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;SmokeNow&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
 <span class="c1">#-</span>
 </pre></div>
@@ -405,18 +396,12 @@ Try using .loc[row_indexer,col_indexer] = value instead
 
 See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
   self.obj[item] = s
-&lt;ipython-input-5-3ee8b60c14ab&gt;:9: SettingWithCopyWarning: 
+/opt/conda/lib/python3.8/site-packages/pandas/core/indexing.py:845: SettingWithCopyWarning: 
 A value is trying to be set on a copy of a slice from a DataFrame.
 Try using .loc[row_indexer,col_indexer] = value instead
 
 See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  adult_nhanes_data['SmokeNow'] = adult_nhanes_data['DoYouNowSmokeCigarettes'] != 'Not at all'
-&lt;ipython-input-5-3ee8b60c14ab&gt;:12: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame.
-Try using .loc[row_indexer,col_indexer] = value instead
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  adult_nhanes_data['AvgAlcohol'] = adult_nhanes_data[['AlcoholGm_DR1TOT', 'AlcoholGm_DR2TOT']].mean(1)
+  self.obj[key] = _infer_fill_value(value)
 </pre>
 </div>
 <div class="output text_html"><div>

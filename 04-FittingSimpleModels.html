@@ -79,16 +79,6 @@
    Data Visualization
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="03-DataVisualization.html#plotting-the-distribution-of-a-single-variable">
-   Plotting the distribution of a single variable
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="03-DataVisualization.html#plots-with-two-variables">
-   Plots with two variables
-  </a>
- </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
    Fitting simple models
@@ -358,8 +348,8 @@ If the first test is false — that is, if the remainder is zero — then, the s
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>a    2
-b    1
 c    1
+b    1
 Name: myvar, dtype: int64
 </pre></div>
 </div>
@@ -450,7 +440,7 @@ The final line tells Python to return the value of the mode when the function is
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>array([&#39;a&#39;, &#39;c&#39;], dtype=object)
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>array([&#39;c&#39;, &#39;a&#39;], dtype=object)
 </pre></div>
 </div>
 </div>
@@ -485,7 +475,7 @@ The final line tells Python to return the value of the mode when the function is
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>96.94124563758388
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>92.28525100671139
 </pre></div>
 </div>
 </div>
@@ -498,7 +488,7 @@ The final line tells Python to return the value of the mode when the function is
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>96.94124563758393
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>92.28525100671139
 </pre></div>
 </div>
 </div>
@@ -512,7 +502,7 @@ The final line tells Python to return the value of the mode when the function is
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>9.845874549149196
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>9.60652127498354
 </pre></div>
 </div>
 </div>
@@ -525,7 +515,7 @@ The final line tells Python to return the value of the mode when the function is
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>9.8458745491492
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>9.60652127498354
 </pre></div>
 </div>
 </div>
@@ -559,10 +549,10 @@ The final line tells Python to return the value of the mode when the function is
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>(array([ 3.,  5., 19., 23., 26., 24., 24., 17.,  4.,  5.]),
- array([-2.43391279, -1.943352  , -1.45279121, -0.96223042, -0.47166963,
-         0.01889116,  0.50945195,  1.00001274,  1.49057353,  1.98113432,
-         2.47169511]),
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>(array([ 2.,  7., 19., 27., 31., 26., 24., 11.,  2.,  1.]),
+ array([-2.57866498, -2.02799738, -1.47732978, -0.92666219, -0.37599459,
+         0.17467301,  0.72534061,  1.27600821,  1.82667581,  2.37734341,
+         2.928011  ]),
  &lt;a list of 10 Patch objects&gt;)
 </pre></div>
 </div>
@@ -577,7 +567,7 @@ The final line tells Python to return the value of the mode when the function is
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x7eff156f7e20&gt;
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x7f101d61ffd0&gt;
 </pre></div>
 </div>
 <img alt="_images/04-FittingSimpleModels_48_1.png" src="_images/04-FittingSimpleModels_48_1.png" />

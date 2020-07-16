@@ -80,16 +80,6 @@
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="#plotting-the-distribution-of-a-single-variable">
-   Plotting the distribution of a single variable
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="#plots-with-two-variables">
-   Plots with two variables
-  </a>
- </li>
- <li class="toctree-l1">
   <a class="reference internal" href="04-FittingSimpleModels.html">
    Fitting simple models
   </a>
@@ -195,6 +185,35 @@
    Let’s think through a visualization
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#plotting-the-distribution-of-a-single-variable">
+   Plotting the distribution of a single variable
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#bar-vs-line-plots">
+     Bar vs. line plots
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#plots-with-two-variables">
+   Plots with two variables
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#plotting-dispersion">
+   Plotting dispersion
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#scatter-plot">
+     Scatter plot
+    </a>
+   </li>
+  </ul>
+ </li>
 </ul>
 
         </nav>
@@ -233,9 +252,8 @@
 </ul>
 <p>Figuring out <em>how</em> to highlight a comparison and include relevant variables usually benefits from sketching the plot out first.</p>
 </div>
-</div>
 <div class="section" id="plotting-the-distribution-of-a-single-variable">
-<h1>Plotting the distribution of a single variable<a class="headerlink" href="#plotting-the-distribution-of-a-single-variable" title="Permalink to this headline">¶</a></h1>
+<h2>Plotting the distribution of a single variable<a class="headerlink" href="#plotting-the-distribution-of-a-single-variable" title="Permalink to this headline">¶</a></h2>
 <p>One of the most common uses of plotting is to plot the <em>distribution</em> of the data — which you can think of as the <em>shape</em> of the data.  There are various ways to do this, but one of the most common is known as a <em>histogram</em>, which plots the number of observations that fall into specific bins. We can plot a histogram using the <code class="docutils literal notranslate"><span class="pre">plt.hist()</span></code> function from matplotlib.  As an example, let’s look at the distribution of ages in the NHANES dataset.  First we need to load the data:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -281,7 +299,7 @@
 </div>
 <p>Now we see the proportion of individuals that fall into each age bin.  Why do you think there are so many eighty-year-olds in the dataset?  Have a look at the <a class="reference external" href="https://wwwn.cdc.gov/Nchs/Nhanes/2017-2018/DEMO_J.htm#RIDAGEYR">documentation for the Age question</a> and see if you can figure it out.</p>
 <div class="section" id="bar-vs-line-plots">
-<h2>Bar vs. line plots<a class="headerlink" href="#bar-vs-line-plots" title="Permalink to this headline">¶</a></h2>
+<h3>Bar vs. line plots<a class="headerlink" href="#bar-vs-line-plots" title="Permalink to this headline">¶</a></h3>
 <p>The histograms above are an example of <em>bar plots</em> where each number is represented by a bar. We could also plot the distribution using a line instead.  One reason to do this is that we can make the line a bit <em>smoother</em> than the actual data.  For example, here are the histogram data from above, plotted as a line:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -290,7 +308,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f46ef742f70&gt;]
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fc51eaddee0&gt;]
 </pre></div>
 </div>
 <img alt="_images/03-DataVisualization_14_1.png" src="_images/03-DataVisualization_14_1.png" />
@@ -305,7 +323,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f46ef6ecd60&gt;
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fc51ea93c70&gt;
 </pre></div>
 </div>
 <img alt="_images/03-DataVisualization_16_1.png" src="_images/03-DataVisualization_16_1.png" />
@@ -315,7 +333,7 @@
 </div>
 </div>
 <div class="section" id="plots-with-two-variables">
-<h1>Plots with two variables<a class="headerlink" href="#plots-with-two-variables" title="Permalink to this headline">¶</a></h1>
+<h2>Plots with two variables<a class="headerlink" href="#plots-with-two-variables" title="Permalink to this headline">¶</a></h2>
 <p>Another common use of visualization is to examine the relationship betwen two variables.  For example, let’s say that we wanted to plot average height as a function of age in the NHANES dataset.  We would first summarize the data to obtain the average height for each age:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -348,13 +366,14 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f46ef58e6d0&gt;
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fc51e9253a0&gt;
 </pre></div>
 </div>
 <img alt="_images/03-DataVisualization_23_1.png" src="_images/03-DataVisualization_23_1.png" />
 </div>
 </div>
 <p>You will notice that the lines have shaded areas around them; these are called <em>confidence intervals</em>, and you will learn about them later in the course.  They basically tell us something about the uncertainty around our estimates of the average.</p>
+</div>
 <div class="section" id="plotting-dispersion">
 <h2>Plotting dispersion<a class="headerlink" href="#plotting-dispersion" title="Permalink to this headline">¶</a></h2>
 <p>An important job of statistical visualization is to show us the variability, or <em>dispersion</em>, of our data.  We have already see how to do this using histograms; now let’s look at how we can compare distributions.</p>
@@ -367,7 +386,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f46ef43d100&gt;
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fc51e7d9100&gt;
 </pre></div>
 </div>
 <img alt="_images/03-DataVisualization_26_1.png" src="_images/03-DataVisualization_26_1.png" />
@@ -383,15 +402,14 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f46edbc2eb0&gt;
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fc51cef4b50&gt;
 </pre></div>
 </div>
 <img alt="_images/03-DataVisualization_28_1.png" src="_images/03-DataVisualization_28_1.png" />
 </div>
 </div>
-</div>
 <div class="section" id="scatter-plot">
-<h2>Scatter plot<a class="headerlink" href="#scatter-plot" title="Permalink to this headline">¶</a></h2>
+<h3>Scatter plot<a class="headerlink" href="#scatter-plot" title="Permalink to this headline">¶</a></h3>
 <p>When we have multiple <em>continuous</em> variables, we can use points to plot each variable on an axis. This is known as a <strong>scatter plot</strong>. As an example, let’s look at the blood pressure readings taken in the NHANES study.  Each individual has their blood pressure taken three times. Here we will plot the first reading against the second reading, using a scatter plot. We will also add a line showing where the x axis is equal to the y axis, which makes it easier to see how the two variables are related to each other.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -434,6 +452,7 @@
 </div>
 <div class="cell_output docutils container">
 <img alt="_images/03-DataVisualization_33_0.png" src="_images/03-DataVisualization_33_0.png" />
+</div>
 </div>
 </div>
 </div>
