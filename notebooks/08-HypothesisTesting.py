@@ -17,7 +17,7 @@
 # # Hypothesis testing in Python
 # In this chapter we will present several examples of using Python to perform hypothesis testing.
 #
-# ## Simple example: Coin-flipping (Section \@ref(randomization-very-simple))
+# ## Simple example: Coin-flipping
 # Let's say that we flipped 100 coins and observed 70 heads. We would like to use these data to test the hypothesis that the true probability is 0.5.
 # First let's generate our data, simulating 100,000 sets of 100 flips. We use such a large number because it turns out that it's very rare to get 70 heads, so we need many attempts in order to get a reliable estimate of these probabilties.  This will take a couple of minutes to complete.
 
