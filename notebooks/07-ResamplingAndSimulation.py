@@ -14,7 +14,7 @@
 # ---
 
 # %% [markdown]
-# # Resampling and simulation in R
+# # Resampling and simulation
 #
 # ## Generating random samples
 # Here we will generate random samples from a number of different distributions and plot their histograms.  We could write out separate commands to plot each of our functions of interest, but that would involve repeating a lot of code, so instead we will take advantage of the fact that Python allows us to treat modules as variables.  We will specify the module that creates each distribution, and then loop through them, each time incrementing the panel number.  Some distributions also take specific parameters; for example, the Chi-squared distribution requires specifying the degrees of freedom.  We will store those in a separate dictionary and use them as needed.
