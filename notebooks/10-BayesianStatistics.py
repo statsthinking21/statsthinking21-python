@@ -19,7 +19,7 @@
 #
 # ## Applying Bayes' theorem: A simple example
 # TBD: MOVE TO MULTIPLE TESTING EXAMPLE SO WE CAN USE BINOMIAL LIKELIHOOD
-# A person has a cough and flu-like symptoms, and gets a PCR test for COVID-19, which comes back postiive.  What is the likelihood that they actually have COVID-19, as opposed a regular cold or flu?  We can use Bayes' theorem to compute this.  Let's say that the local rate of symptomatic individuals who actually are infected with COVID-19 is 7.4% (as [reported](https://twitter.com/Bob_Wachter/status/1281792549309386752/photo/1) on July 10, 2020 for San Francisco); thus, our prior probability that someone with symptoms actually has COVID-19 is .074.  The RT-PCR test used to identify COVID-19 RNA is highly specific (that is, it very rarelly reports the presence of the virus when it is not present); for our example, we will say that the specificity is 99%.  Its sensitivity is not known, but probably is no higher than 90%.  
+# A person has a cough and flu-like symptoms, and gets a PCR test for COVID-19, which comes back postiive.  What is the likelihood that they actually have COVID-19, as opposed to a regular cold or flu?  We can use Bayes' theorem to compute this.  Let's say that the local rate of symptomatic individuals who actually are infected with COVID-19 is 7.4% (as [reported](https://twitter.com/Bob_Wachter/status/1281792549309386752/photo/1) on July 10, 2020 for San Francisco); thus, our prior probability that someone with symptoms actually has COVID-19 is .074.  The RT-PCR test used to identify COVID-19 RNA is highly specific (that is, it very rarelly reports the presence of the virus when it is not present); for our example, we will say that the specificity is 99%.  Its sensitivity is not known, but probably is no higher than 90%.  
 # First let's look at the probability of disease given a single positive test.
 
 # %%
@@ -31,6 +31,8 @@ likelihood = sensitivity  # p(test|disease present)
 marginal_likelihood = sensitivity * prior + (1 - specificity) * (1 - prior)
 posterior = (likelihood * prior) / marginal_likelihood
 posterior
+
+
 
 
 

@@ -33,7 +33,7 @@ adult_nhanes_data = adult_nhanes_data.dropna(subset=['WeightKg']).rename(columns
 # %% [markdown]
 # ## Power analysis
 #
-# We can compute a power analysis using functions from the `statsmodels.stats.power` package. Let's focus on the power for an independent samples t-test in order to determine a difference in the mean between two groups.  Let's say that we think than an effect size of Cohen's d=0.5 is realistic for the study in question (based on previous research) and would be of scientific interest.  We wish to have 80% power to find the effect if it exists.  We can compute the sample size needed for adequate power using the `TTestIndPower()` function:
+# We can compute a power analysis using functions from the `statsmodels.stats.power` package. Let's focus on the power for an independent samples t-test in order to determine a difference in the mean between two groups.  Let's say that we think that an effect size of Cohen's d=0.5 is realistic for the study in question (based on previous research) and would be of scientific interest.  We wish to have 80% power to find the effect if it exists.  We can compute the sample size needed for adequate power using the `TTestIndPower()` function:
 
 # %%
 
