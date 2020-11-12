@@ -49,7 +49,7 @@ p1isTrue
 # %%
 #+
 import pandas as pd
-SFrain = pd.read_csv('https://raw.githubusercontent.com/statsthinking21/statsthinking21-python/master/notebooks/data/SanFranciscoRain.csv')
+SFrain = pd.read_csv('data/SanFranciscoRain.csv')
 
 # we will remove the STATION and NAME variables 
 # since they are identical for all rows
