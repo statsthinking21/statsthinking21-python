@@ -152,8 +152,8 @@ sns.scatterplot(x='SystolicBloodPres1StRdgMmHg',
                 data=adult_nhanes_data)
 plt.plot([adult_nhanes_data['SystolicBloodPres1StRdgMmHg'].min(),
           adult_nhanes_data['SystolicBloodPres1StRdgMmHg'].max()],
-          [adult_nhanes_data['SystolicBloodPres2NdRdgMmHg'].min(),
-          adult_nhanes_data['SystolicBloodPres2NdRdgMmHg'].max()],
+          [adult_nhanes_data['SystolicBloodPres1StRdgMmHg'].min(),
+          adult_nhanes_data['SystolicBloodPres1StRdgMmHg'].max()],
           color='k')
 plt.xlabel('Systolic BP - First reading')
 plt.ylabel('Systolic BP - Second reading')
