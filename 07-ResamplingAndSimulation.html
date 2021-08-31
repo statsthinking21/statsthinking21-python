@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>Resampling and simulation in Python &#8212; Python Companion to Statistical Thinking in the 21st Century</title>
+    <title>Resampling and simulation in R &#8212; Python Companion to Statistical Thinking in the 21st Century</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
     <link href="_static/css/index.css" rel="stylesheet">
     <link rel="stylesheet" href="_static/sphinx-book-theme.css" type="text/css" />
@@ -96,7 +96,7 @@
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   Resampling and simulation in Python
+   Resampling and simulation in R
   </a>
  </li>
  <li class="toctree-l1">
@@ -215,8 +215,8 @@
         
               <div>
                 
-  <div class="section" id="resampling-and-simulation-in-python">
-<h1>Resampling and simulation in Python<a class="headerlink" href="#resampling-and-simulation-in-python" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="resampling-and-simulation-in-r">
+<h1>Resampling and simulation in R<a class="headerlink" href="#resampling-and-simulation-in-r" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="generating-random-samples">
 <h2>Generating random samples<a class="headerlink" href="#generating-random-samples" title="Permalink to this headline">¶</a></h2>
 <p>Here we will generate random samples from a number of different distributions and plot their histograms.  We could write out separate commands to plot each of our functions of interest, but that would involve repeating a lot of code, so instead we will take advantage of the fact that Python allows us to treat modules as variables.  We will specify the module that creates each distribution, and then loop through them, each time incrementing the panel number.  Some distributions also take specific parameters; for example, the Chi-squared distribution requires specifying the degrees of freedom.  We will store those in a separate dictionary and use them as needed.</p>
