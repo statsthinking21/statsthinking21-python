@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>The General Linear Model in R &#8212; Python Companion to Statistical Thinking in the 21st Century</title>
+    <title>The General Linear Model in Python &#8212; Python Companion to Statistical Thinking in the 21st Century</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
     <link href="_static/css/index.css" rel="stylesheet">
     <link rel="stylesheet" href="_static/sphinx-book-theme.css" type="text/css" />
@@ -95,7 +95,7 @@
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="07-ResamplingAndSimulation.html">
-   Resampling and simulation in R
+   Resampling and simulation in Python
   </a>
  </li>
  <li class="toctree-l1">
@@ -120,7 +120,7 @@
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   The General Linear Model in R
+   The General Linear Model in Python
   </a>
  </li>
 </ul>
@@ -224,8 +224,8 @@
         
               <div>
                 
-  <div class="section" id="the-general-linear-model-in-r">
-<h1>The General Linear Model in R<a class="headerlink" href="#the-general-linear-model-in-r" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="the-general-linear-model-in-python">
+<h1>The General Linear Model in Python<a class="headerlink" href="#the-general-linear-model-in-python" title="Permalink to this headline">¶</a></h1>
 <p>In this chapter we will explore how to fit general linear models in Python.  We will focus on the tools provided by the <code class="docutils literal notranslate"><span class="pre">statsmodels</span></code> package.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -280,7 +280,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x7fc7348c3970&gt;
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x7f661d954a00&gt;
 </pre></div>
 </div>
 <img alt="_images/13-GeneralLinearModel_3_1.png" src="_images/13-GeneralLinearModel_3_1.png" />
@@ -310,10 +310,10 @@
   <th>Method:</th>             <td>Least Squares</td>  <th>  F-statistic:       </th> <td>   107.0</td>
 </tr>
 <tr>
-  <th>Date:</th>             <td>Thu, 16 Jul 2020</td> <th>  Prob (F-statistic):</th> <td>2.20e-17</td>
+  <th>Date:</th>             <td>Tue, 31 Aug 2021</td> <th>  Prob (F-statistic):</th> <td>2.20e-17</td>
 </tr>
 <tr>
-  <th>Time:</th>                 <td>23:11:43</td>     <th>  Log-Likelihood:    </th> <td> -134.44</td>
+  <th>Time:</th>                 <td>14:51:34</td>     <th>  Log-Likelihood:    </th> <td> -134.44</td>
 </tr>
 <tr>
   <th>No. Observations:</th>      <td>   100</td>      <th>  AIC:               </th> <td>   272.9</td>
@@ -499,7 +499,7 @@ The first thing to examine is to make sure that the residuals are (at least roug
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x7fc72c18f520&gt;
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x7f66152135e0&gt;
 </pre></div>
 </div>
 <img alt="_images/13-GeneralLinearModel_17_1.png" src="_images/13-GeneralLinearModel_17_1.png" />
@@ -526,10 +526,10 @@ The first thing to examine is to make sure that the residuals are (at least roug
   <th>Method:</th>             <td>Least Squares</td>  <th>  F-statistic:       </th> <td>  0.8369</td>
 </tr>
 <tr>
-  <th>Date:</th>             <td>Thu, 16 Jul 2020</td> <th>  Prob (F-statistic):</th>  <td> 0.363</td> 
+  <th>Date:</th>             <td>Tue, 31 Aug 2021</td> <th>  Prob (F-statistic):</th>  <td> 0.363</td> 
 </tr>
 <tr>
-  <th>Time:</th>                 <td>23:11:43</td>     <th>  Log-Likelihood:    </th> <td> -149.89</td>
+  <th>Time:</th>                 <td>14:51:35</td>     <th>  Log-Likelihood:    </th> <td> -149.89</td>
 </tr>
 <tr>
   <th>No. Observations:</th>      <td>   100</td>      <th>  AIC:               </th> <td>   303.8</td>
@@ -602,10 +602,10 @@ plt.ylabel(‘Residual’)</p>
   <th>Method:</th>             <td>Least Squares</td>  <th>  F-statistic:       </th> <td>1.243e+04</td>
 </tr>
 <tr>
-  <th>Date:</th>             <td>Thu, 16 Jul 2020</td> <th>  Prob (F-statistic):</th> <td>4.87e-105</td>
+  <th>Date:</th>             <td>Tue, 31 Aug 2021</td> <th>  Prob (F-statistic):</th> <td>4.87e-105</td>
 </tr>
 <tr>
-  <th>Time:</th>                 <td>23:11:43</td>     <th>  Log-Likelihood:    </th> <td>  92.204</td> 
+  <th>Time:</th>                 <td>14:51:35</td>     <th>  Log-Likelihood:    </th> <td>  92.204</td> 
 </tr>
 <tr>
   <th>No. Observations:</th>      <td>   100</td>      <th>  AIC:               </th> <td>  -180.4</td> 
@@ -708,10 +708,10 @@ plt.ylabel(‘Residual’)</p>
   <th>Method:</th>                 <td>MLE</td>       <th>  Df Model:          </th>   <td>     2</td>  
 </tr>
 <tr>
-  <th>Date:</th>            <td>Thu, 16 Jul 2020</td> <th>  Pseudo R-squ.:     </th>   <td>0.1661</td>  
+  <th>Date:</th>            <td>Tue, 31 Aug 2021</td> <th>  Pseudo R-squ.:     </th>   <td>0.1661</td>  
 </tr>
 <tr>
-  <th>Time:</th>                <td>23:11:44</td>     <th>  Log-Likelihood:    </th>  <td> -1895.1</td> 
+  <th>Time:</th>                <td>14:51:35</td>     <th>  Log-Likelihood:    </th>  <td> -1895.1</td> 
 </tr>
 <tr>
   <th>converged:</th>             <td>True</td>       <th>  LL-Null:           </th>  <td> -2272.6</td> 
@@ -889,12 +889,6 @@ We can use one of the tools from the <a class="reference external" href="https:/
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>Predicted  False  True 
-Diabetes               
-0           4397     53
-1            759     58
-</pre></div>
-</div>
 <div class="stderr docutils container">
 <pre class="stderr literal-block">/opt/conda/lib/python3.8/site-packages/pandas/core/indexing.py:671: SettingWithCopyWarning: 
 A value is trying to be set on a copy of a slice from a DataFrame
@@ -902,6 +896,12 @@ A value is trying to be set on a copy of a slice from a DataFrame
 See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
   self._setitem_with_indexer(indexer, value)
 </pre>
+</div>
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>Predicted  False  True 
+Diabetes               
+0           4397     53
+1            759     58
+</pre></div>
 </div>
 <div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>0.7841971861977913
 </pre></div>
