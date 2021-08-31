@@ -32,7 +32,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Statistical Power Analysis in Python" href="09-StatisticalPower.html" />
-    <link rel="prev" title="Resampling and simulation in R" href="07-ResamplingAndSimulation.html" />
+    <link rel="prev" title="Resampling and simulation" href="07-ResamplingAndSimulation.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="docsearch:language" content="en">
@@ -96,7 +96,7 @@
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="07-ResamplingAndSimulation.html">
-   Resampling and simulation in R
+   Resampling and simulation
   </a>
  </li>
  <li class="toctree-l1 current active">
@@ -121,7 +121,7 @@
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="13-GeneralLinearModel.html">
-   The General Linear Model in Python
+   The General Linear Model
   </a>
  </li>
 </ul>
@@ -248,13 +248,13 @@ First let’s generate our data, simulating 100,000 sets of 100 flips. We use su
 <div class="cell_input docutils container">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">scipy.stats</span>
 
-<span class="n">pvalue</span> <span class="o">=</span> <span class="mi">100</span> <span class="o">-</span> <span class="n">scipy</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">percentileofscore</span><span class="p">(</span><span class="n">flip_results_df</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">)</span> 
+<span class="n">pvalue</span> <span class="o">=</span> <span class="mi">100</span> <span class="o">-</span> <span class="n">scipy</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">percentileofscore</span><span class="p">(</span><span class="n">flip_results_df</span><span class="p">,</span> <span class="mi">70</span><span class="p">)</span> 
 <span class="n">pvalue</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>100.0
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>0.010000000000005116
 </pre></div>
 </div>
 </div>
@@ -319,14 +319,14 @@ First let’s generate our data, simulating 100,000 sets of 100 flips. We use su
 <span class="k">for</span> <span class="n">run</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_runs</span><span class="p">):</span>
     <span class="n">sim_results_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">run</span><span class="p">,</span> <span class="s1">&#39;p_value&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">sample_ttest</span><span class="p">()</span>
 
-<span class="n">p_error</span> <span class="o">=</span> <span class="n">sim_results_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">sim_results_df</span><span class="p">[</span><span class="s1">&#39;p_value&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mf">0.05</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">p_error</span> <span class="o">=</span> <span class="n">sim_results_df</span><span class="p">[</span><span class="s1">&#39;p_value&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mf">0.05</span>
+<span class="n">p_error</span> <span class="o">=</span> <span class="n">p_error</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 <span class="n">p_error</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>p_value    0.024385
-dtype: float64
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>0.0512
 </pre></div>
 </div>
 </div>
@@ -344,7 +344,7 @@ dtype: float64
     
     <div class='prev-next-bottom'>
         
-    <a class='left-prev' id="prev-link" href="07-ResamplingAndSimulation.html" title="previous page">Resampling and simulation in R</a>
+    <a class='left-prev' id="prev-link" href="07-ResamplingAndSimulation.html" title="previous page">Resampling and simulation</a>
     <a class='right-next' id="next-link" href="09-StatisticalPower.html" title="next page">Statistical Power Analysis in Python</a>
 
     </div>

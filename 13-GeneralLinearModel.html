@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>The General Linear Model in Python &#8212; Python Companion to Statistical Thinking in the 21st Century</title>
+    <title>The General Linear Model &#8212; Python Companion to Statistical Thinking in the 21st Century</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
     <link href="_static/css/index.css" rel="stylesheet">
     <link rel="stylesheet" href="_static/sphinx-book-theme.css" type="text/css" />
@@ -95,7 +95,7 @@
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="07-ResamplingAndSimulation.html">
-   Resampling and simulation in R
+   Resampling and simulation
   </a>
  </li>
  <li class="toctree-l1">
@@ -120,7 +120,7 @@
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   The General Linear Model in Python
+   The General Linear Model
   </a>
  </li>
 </ul>
@@ -224,8 +224,8 @@
         
               <div>
                 
-  <div class="section" id="the-general-linear-model-in-python">
-<h1>The General Linear Model in Python<a class="headerlink" href="#the-general-linear-model-in-python" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="the-general-linear-model">
+<h1>The General Linear Model<a class="headerlink" href="#the-general-linear-model" title="Permalink to this headline">¶</a></h1>
 <p>In this chapter we will explore how to fit general linear models in Python.  We will focus on the tools provided by the <code class="docutils literal notranslate"><span class="pre">statsmodels</span></code> package.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -280,7 +280,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x7f67d5822a00&gt;
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x7fe809e679a0&gt;
 </pre></div>
 </div>
 <img alt="_images/13-GeneralLinearModel_3_1.png" src="_images/13-GeneralLinearModel_3_1.png" />
@@ -313,7 +313,7 @@
   <th>Date:</th>             <td>Tue, 31 Aug 2021</td> <th>  Prob (F-statistic):</th> <td>2.20e-17</td>
 </tr>
 <tr>
-  <th>Time:</th>                 <td>14:51:50</td>     <th>  Log-Likelihood:    </th> <td> -134.44</td>
+  <th>Time:</th>                 <td>14:59:55</td>     <th>  Log-Likelihood:    </th> <td> -134.44</td>
 </tr>
 <tr>
   <th>No. Observations:</th>      <td>   100</td>      <th>  AIC:               </th> <td>   272.9</td>
@@ -382,55 +382,12 @@ The first thing to examine is to make sure that the residuals are (at least roug
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
 <span class="kn">import</span> <span class="nn">scipy.stats</span>
 
-<span class="n">scipy</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">probplot</span><span class="p">(</span><span class="n">ols_result</span><span class="o">.</span><span class="n">resid</span><span class="p">,</span> <span class="n">plot</span><span class="o">=</span><span class="n">sns</span><span class="o">.</span><span class="n">mpl</span><span class="o">.</span><span class="n">pyplot</span><span class="p">)</span>
+<span class="n">_</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">probplot</span><span class="p">(</span><span class="n">ols_result</span><span class="o">.</span><span class="n">resid</span><span class="p">,</span> <span class="n">plot</span><span class="o">=</span><span class="n">sns</span><span class="o">.</span><span class="n">mpl</span><span class="o">.</span><span class="n">pyplot</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>((array([-2.46203784, -2.12570747, -1.93122778, -1.79044653, -1.67819304,
-         -1.58381122, -1.50174123, -1.42869743, -1.36256869, -1.30191411,
-         -1.24570419, -1.19317644, -1.14374949, -1.09696931, -1.05247413,
-         -1.00997067, -0.96921765, -0.93001393, -0.89218993, -0.85560121,
-         -0.82012357, -0.78564937, -0.75208458, -0.71934648, -0.68736185,
-         -0.65606548, -0.62539893, -0.59530962, -0.56574992, -0.53667655,
-         -0.50804994, -0.47983378, -0.45199463, -0.42450149, -0.39732558,
-         -0.37044003, -0.34381966, -0.31744076, -0.29128096, -0.26531902,
-         -0.23953472, -0.21390872, -0.18842244, -0.16305799, -0.13779803,
-         -0.1126257 , -0.08752455, -0.06247843, -0.03747145, -0.01248789,
-          0.01248789,  0.03747145,  0.06247843,  0.08752455,  0.1126257 ,
-          0.13779803,  0.16305799,  0.18842244,  0.21390872,  0.23953472,
-          0.26531902,  0.29128096,  0.31744076,  0.34381966,  0.37044003,
-          0.39732558,  0.42450149,  0.45199463,  0.47983378,  0.50804994,
-          0.53667655,  0.56574992,  0.59530962,  0.62539893,  0.65606548,
-          0.68736185,  0.71934648,  0.75208458,  0.78564937,  0.82012357,
-          0.85560121,  0.89218993,  0.93001393,  0.96921765,  1.00997067,
-          1.05247413,  1.09696931,  1.14374949,  1.19317644,  1.24570419,
-          1.30191411,  1.36256869,  1.42869743,  1.50174123,  1.58381122,
-          1.67819304,  1.79044653,  1.93122778,  2.12570747,  2.46203784]),
-  array([-2.5482371 , -2.0909615 , -1.91011081, -1.78183221, -1.67901437,
-         -1.65965562, -1.39835615, -1.35433747, -1.35349874, -1.32450874,
-         -1.32071777, -1.31372454, -1.31149674, -1.26359797, -1.03141285,
-         -1.02807434, -0.96988026, -0.77573225, -0.76933571, -0.74914872,
-         -0.71307311, -0.65612258, -0.59211795, -0.53953167, -0.51333264,
-         -0.4857747 , -0.4792586 , -0.44367702, -0.41520854, -0.36352006,
-         -0.35492012, -0.32790965, -0.31527698, -0.3145051 , -0.30314853,
-         -0.27638373, -0.26193063, -0.18035491, -0.17125738, -0.16925471,
-         -0.16405551, -0.1568569 , -0.13346467, -0.09060228, -0.08741092,
-         -0.07851139, -0.06660155,  0.05147435,  0.05283821,  0.05769373,
-          0.07401461,  0.09534008,  0.12202649,  0.18569196,  0.20481024,
-          0.20627062,  0.24199814,  0.26910835,  0.2709454 ,  0.28029596,
-          0.30157991,  0.30688003,  0.31428509,  0.33836826,  0.36473919,
-          0.37760336,  0.42704054,  0.44189202,  0.47162341,  0.47663995,
-          0.47974695,  0.48018453,  0.48417952,  0.48811872,  0.49645734,
-          0.51109903,  0.54895531,  0.66572149,  0.70984843,  0.72310305,
-          0.72991447,  0.73133351,  0.7931718 ,  0.80261309,  0.83081737,
-          0.89891574,  0.97037584,  1.00083831,  1.02499538,  1.04070618,
-          1.1070823 ,  1.13587234,  1.15439669,  1.21366375,  1.49236429,
-          1.77213663,  1.79345755,  1.835123  ,  2.07330289,  2.3660403 ])),
- (0.9415840543542681, -1.5528172622144374e-15, 0.9941442250040646))
-</pre></div>
-</div>
-<img alt="_images/13-GeneralLinearModel_9_1.png" src="_images/13-GeneralLinearModel_9_1.png" />
+<img alt="_images/13-GeneralLinearModel_9_0.png" src="_images/13-GeneralLinearModel_9_0.png" />
 </div>
 </div>
 <p>This looks pretty good, in the sense that the residual data points fall very close to the unit line.  This is not surprising, since we generated the data with normally distributed noise.  We should also plot the predicted (or <em>fitted</em>) values against the residuals, to make sure that the model does work systematically better for some predicted values versus others.</p>
@@ -499,7 +456,7 @@ The first thing to examine is to make sure that the residuals are (at least roug
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x7f67cd0f35b0&gt;
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x7fe801962b50&gt;
 </pre></div>
 </div>
 <img alt="_images/13-GeneralLinearModel_17_1.png" src="_images/13-GeneralLinearModel_17_1.png" />
@@ -529,7 +486,7 @@ The first thing to examine is to make sure that the residuals are (at least roug
   <th>Date:</th>             <td>Tue, 31 Aug 2021</td> <th>  Prob (F-statistic):</th>  <td> 0.363</td> 
 </tr>
 <tr>
-  <th>Time:</th>                 <td>14:51:51</td>     <th>  Log-Likelihood:    </th> <td> -149.89</td>
+  <th>Time:</th>                 <td>14:59:56</td>     <th>  Log-Likelihood:    </th> <td> -149.89</td>
 </tr>
 <tr>
   <th>No. Observations:</th>      <td>   100</td>      <th>  AIC:               </th> <td>   303.8</td>
@@ -605,7 +562,7 @@ plt.ylabel(‘Residual’)</p>
   <th>Date:</th>             <td>Tue, 31 Aug 2021</td> <th>  Prob (F-statistic):</th> <td>4.87e-105</td>
 </tr>
 <tr>
-  <th>Time:</th>                 <td>14:51:51</td>     <th>  Log-Likelihood:    </th> <td>  92.204</td> 
+  <th>Time:</th>                 <td>14:59:56</td>     <th>  Log-Likelihood:    </th> <td>  92.204</td> 
 </tr>
 <tr>
   <th>No. Observations:</th>      <td>   100</td>      <th>  AIC:               </th> <td>  -180.4</td> 
@@ -711,7 +668,7 @@ plt.ylabel(‘Residual’)</p>
   <th>Date:</th>            <td>Tue, 31 Aug 2021</td> <th>  Pseudo R-squ.:     </th>   <td>0.1661</td>  
 </tr>
 <tr>
-  <th>Time:</th>                <td>14:51:51</td>     <th>  Log-Likelihood:    </th>  <td> -1895.1</td> 
+  <th>Time:</th>                <td>14:59:56</td>     <th>  Log-Likelihood:    </th>  <td> -1895.1</td> 
 </tr>
 <tr>
   <th>converged:</th>             <td>True</td>       <th>  LL-Null:           </th>  <td> -2272.6</td> 

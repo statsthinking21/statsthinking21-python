@@ -96,7 +96,7 @@
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="07-ResamplingAndSimulation.html">
-   Resampling and simulation in R
+   Resampling and simulation
   </a>
  </li>
  <li class="toctree-l1">
@@ -121,7 +121,7 @@
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="13-GeneralLinearModel.html">
-   The General Linear Model in Python
+   The General Linear Model
   </a>
  </li>
 </ul>
@@ -221,7 +221,7 @@
 <div class="section" id="applying-bayes-theorem-a-simple-example">
 <h2>Applying Bayes’ theorem: A simple example<a class="headerlink" href="#applying-bayes-theorem-a-simple-example" title="Permalink to this headline">¶</a></h2>
 <p>TBD: MOVE TO MULTIPLE TESTING EXAMPLE SO WE CAN USE BINOMIAL LIKELIHOOD
-A person has a cough and flu-like symptoms, and gets a PCR test for COVID-19, which comes back postiive.  What is the likelihood that they actually have COVID-19, as opposed a regular cold or flu?  We can use Bayes’ theorem to compute this.  Let’s say that the local rate of symptomatic individuals who actually are infected with COVID-19 is 7.4% (as <a class="reference external" href="https://twitter.com/Bob_Wachter/status/1281792549309386752/photo/1">reported</a> on July 10, 2020 for San Francisco); thus, our prior probability that someone with symptoms actually has COVID-19 is .074.  The RT-PCR test used to identify COVID-19 RNA is highly specific (that is, it very rarelly reports the presence of the virus when it is not present); for our example, we will say that the specificity is 99%.  Its sensitivity is not known, but probably is no higher than 90%.<br />
+A person has a cough and flu-like symptoms, and gets a PCR test for COVID-19, which comes back postiive.  What is the likelihood that they actually have COVID-19, as opposed to a regular cold or flu?  We can use Bayes’ theorem to compute this.  Let’s say that the local rate of symptomatic individuals who actually are infected with COVID-19 is 7.4% (as <a class="reference external" href="https://twitter.com/Bob_Wachter/status/1281792549309386752/photo/1">reported</a> on July 10, 2020 for San Francisco); thus, our prior probability that someone with symptoms actually has COVID-19 is .074.  The RT-PCR test used to identify COVID-19 RNA is highly specific (that is, it very rarelly reports the presence of the virus when it is not present); for our example, we will say that the specificity is 99%.  Its sensitivity is not known, but probably is no higher than 90%.<br />
 First let’s look at the probability of disease given a single positive test.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -233,6 +233,8 @@ First let’s look at the probability of disease given a single positive test.</
 <span class="n">marginal_likelihood</span> <span class="o">=</span> <span class="n">sensitivity</span> <span class="o">*</span> <span class="n">prior</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">specificity</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">prior</span><span class="p">)</span>
 <span class="n">posterior</span> <span class="o">=</span> <span class="p">(</span><span class="n">likelihood</span> <span class="o">*</span> <span class="n">prior</span><span class="p">)</span> <span class="o">/</span> <span class="n">marginal_likelihood</span>
 <span class="n">posterior</span>
+
+
 
 </pre></div>
 </div>
@@ -316,7 +318,7 @@ We will implement the <a class="reference external" href="https://statsthinking2
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f4d3cdf0b80&gt;
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f1ad373bb80&gt;
 </pre></div>
 </div>
 <img alt="_images/10-BayesianStatistics_5_1.png" src="_images/10-BayesianStatistics_5_1.png" />
@@ -360,7 +362,7 @@ We will implement the <a class="reference external" href="https://statsthinking2
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f4d3cd73b80&gt;
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f1ad36bbb80&gt;
 </pre></div>
 </div>
 <img alt="_images/10-BayesianStatistics_7_1.png" src="_images/10-BayesianStatistics_7_1.png" />
