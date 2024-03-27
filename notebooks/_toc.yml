@@ -1,18 +1,15 @@
-# - file: preface.md
-- file: index
-  sections:
-    - file: 01-IntroductionToPython.ipynb
-    - file: 02-SummarizingData.ipynb
-    - file: 03-DataVisualization.ipynb
-    - file: 04-FittingSimpleModels.ipynb
-    - file: 05-Probability.ipynb
-    - file: 06-Sampling.ipynb
-    - file: 07-ResamplingAndSimulation.ipynb
-    - file: 08-HypothesisTesting.ipynb
-    - file: 09-StatisticalPower.ipynb
-    - file: 10-BayesianStatistics.ipynb
-    - file: 11-ModelingCategoricalRelationships.ipynb
-    # - file: Part12_ModelingContinuousRelationships.ipynb
-    - file: 13-GeneralLinearModel.ipynb
-    # - file: Part14_ComparingMeans.ipynb
-    # - file: Part15_PracticalStatisticalModeling.ipynb
+format: jb-book
+root: index
+chapters:
+  - file: 01-IntroductionToPython.ipynb
+  - file: 02-SummarizingData.ipynb
+  - file: 03-DataVisualization.ipynb
+  - file: 04-FittingSimpleModels.ipynb
+  - file: 05-Probability.ipynb
+  - file: 06-Sampling.ipynb
+  - file: 07-ResamplingAndSimulation.ipynb
+  - file: 08-HypothesisTesting.ipynb
+  - file: 09-StatisticalPower.ipynb
+  - file: 10-BayesianStatistics.ipynb
+  - file: 11-ModelingCategoricalRelationships.ipynb
+  - file: 13-GeneralLinearModel.ipynb
