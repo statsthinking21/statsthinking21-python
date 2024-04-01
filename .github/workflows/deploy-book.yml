@@ -18,7 +18,6 @@ jobs:
     # Build the book
     - name: Build the book
       run: |
-        jupytext --sync --pre-commit
         jupyter-book build notebooks
 
     # save artifacts
