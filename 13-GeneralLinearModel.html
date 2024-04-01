@@ -1,248 +1,363 @@
 
-
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+
+<html lang="en" data-content_root="./" >
+
   <head>
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
     <title>The General Linear Model &#8212; Python Companion to Statistical Thinking in the 21st Century</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
-    <link href="_static/css/index.css" rel="stylesheet">
-    <link rel="stylesheet" href="_static/sphinx-book-theme.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
-    <link rel="stylesheet" type="text/css" href="_static/jupyter-sphinx.css" />
-    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-    <script src="_static/sphinx-book-theme.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/language_data.js"></script>
-    <script src="_static/togglebutton.js"></script>
-    <script src="_static/clipboard.min.js"></script>
-    <script src="_static/copybutton.js"></script>
-    <script src="_static/mystnb.js"></script>
-    <script src="_static/sphinx-book-theme.js"></script>
-    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '13-GeneralLinearModel';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="prev" title="Modeling categorical relationships in Python" href="11-ModelingCategoricalRelationships.html" />
-
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="docsearch:language" content="en">
-
-
-
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
-    
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
-    <div class="container-xl">
-      <div class="row">
-          
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
     
-        <div class="navbar-brand-box">
-<a class="navbar-brand text-wrap" href="index.html">
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="index.html">
   
   
-  <h1 class="site-logo" id="site-title">Python Companion to Statistical Thinking in the 21st Century</h1>
   
+  
+  
+  
+    <p class="title logo__title">Python Companion to Statistical Thinking in the 21st Century</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="01-IntroductionToPython.html">Introduction to Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02-SummarizingData.html">Summarizing Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03-DataVisualization.html">Data Visualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04-FittingSimpleModels.html">Fitting simple models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="05-Probability.html">Probability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="06-Sampling.html">Sampling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="07-ResamplingAndSimulation.html">Resampling and simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="08-HypothesisTesting.html">Hypothesis testing in Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="09-StatisticalPower.html">Statistical Power Analysis in Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="10-BayesianStatistics.html">Bayesian Statistics in Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="11-ModelingCategoricalRelationships.html">Modeling categorical relationships in Python</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">The General Linear Model</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/13-GeneralLinearModel.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
 </a>
-</div>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
 
-<form class="bd-search d-flex align-items-center" action="search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form>
-
-<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
-  <ul class="current nav sidenav_l1">
- <li class="toctree-l1">
-  <a class="reference internal" href="01-IntroductionToPython.html">
-   Introduction to Python
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="02-SummarizingData.html">
-   Summarizing Data
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="03-DataVisualization.html">
-   Data Visualization
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="04-FittingSimpleModels.html">
-   Fitting simple models
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="05-Probability.html">
-   Probability
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="06-Sampling.html">
-   Sampling
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="07-ResamplingAndSimulation.html">
-   Resampling and simulation
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="08-HypothesisTesting.html">
-   Hypothesis testing in Python
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="09-StatisticalPower.html">
-   Statistical Power Analysis in Python
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="10-BayesianStatistics.html">
-   Bayesian Statistics in Python
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="11-ModelingCategoricalRelationships.html">
-   Modeling categorical relationships in Python
-  </a>
- </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   The General Linear Model
-  </a>
- </li>
-</ul>
-
-</nav>
-
- <!-- To handle the deprecated key -->
-
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
 </div>
 
 
-          
 
 
-          
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
-    
-    <div class="row topbar fixed-top container-xl">
-    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
     </div>
-    <div class="col pl-2 topbar-main">
-        
-        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-            <i class="fas fa-bars"></i>
-            <i class="fas fa-arrow-left"></i>
-            <i class="fas fa-arrow-up"></i>
-        </button>
-        
-        <div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
-
-    
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
-        
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="_sources/13-GeneralLinearModel.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.ipynb</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
-    </div>
-    
+  
 </div>
-        <!-- Source interaction buttons -->
+</div>
+              
+              
 
-
-        <!-- Full screen (wrap in <a> to have style consistency -->
-        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-                data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i
-                    class="fas fa-expand"></i></button></a>
-
-        <!-- Launch buttons -->
-
-    </div>
-
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>The General Linear Model</h1>
     <!-- Table of contents -->
-    <div class="d-none d-md-block col-md-2 bd-toc show">
-        <div class="tocsection onthispage pt-5 pb-3">
-            <i class="fas fa-list"></i> On this page
-        </div>
-        <nav id="bd-toc-nav">
-            <ul class="nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#linear-regression">
-   Linear regression
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#model-criticism-and-diagnostics">
-   Model criticism and diagnostics
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#examples-of-problematic-model-fit">
-   Examples of problematic model fit
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#extending-regression-to-binary-outcomes">
-   Extending regression to binary outcomes.
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#cross-validation">
-   Cross-validation
-  </a>
- </li>
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-regression">Linear regression</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-criticism-and-diagnostics">Model criticism and diagnostics</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#examples-of-problematic-model-fit">Examples of problematic model fit</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#extending-regression-to-binary-outcomes">Extending regression to binary outcomes.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cross-validation">Cross-validation</a></li>
 </ul>
-
-        </nav>
+            </nav>
+        </div>
     </div>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
-              <div>
+
+              
                 
-  <div class="section" id="the-general-linear-model">
-<h1>The General Linear Model<a class="headerlink" href="#the-general-linear-model" title="Permalink to this headline">¶</a></h1>
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="the-general-linear-model">
+<h1>The General Linear Model<a class="headerlink" href="#the-general-linear-model" title="Link to this heading">#</a></h1>
 <p>In this chapter we will explore how to fit general linear models in Python.  We will focus on the tools provided by the <code class="docutils literal notranslate"><span class="pre">statsmodels</span></code> package.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">nhanes.load</span> <span class="kn">import</span> <span class="n">load_NHANES_data</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">nhanes.load</span> <span class="kn">import</span> <span class="n">load_NHANES_data</span>
 <span class="n">nhanes_data</span> <span class="o">=</span> <span class="n">load_NHANES_data</span><span class="p">()</span>
 <span class="n">adult_nhanes_data</span> <span class="o">=</span> <span class="n">nhanes_data</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;AgeInYearsAtScreening &gt; 17&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
-<div class="section" id="linear-regression">
-<h2>Linear regression<a class="headerlink" href="#linear-regression" title="Permalink to this headline">¶</a></h2>
+<section id="linear-regression">
+<h2>Linear regression<a class="headerlink" href="#linear-regression" title="Link to this heading">#</a></h2>
 <p>To perform linear regression in Python, we use the <code class="docutils literal notranslate"><span class="pre">OLS()</span></code> function (which stands for <em>ordinary least squares</em>) from the <code class="docutils literal notranslate"><span class="pre">statsmodels</span></code> package.  Let’s generate some simulated data and use this function to compute the linear regression solution.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 
@@ -250,7 +365,7 @@
 <span class="k">def</span> <span class="nf">generate_linear_data</span><span class="p">(</span><span class="n">slope</span><span class="p">,</span> <span class="n">intercept</span><span class="p">,</span>
                          <span class="n">noise_sd</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> 
                          <span class="n">npoints</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    generate data with a given slope and intercept</span>
 <span class="sd">    and add normally distributed noise</span>
 
@@ -280,16 +395,16 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x7febd5275be0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x7ff27f1a7140&gt;
 </pre></div>
 </div>
-<img alt="_images/13-GeneralLinearModel_3_1.png" src="_images/13-GeneralLinearModel_3_1.png" />
+<img alt="_images/52b4a700144d39470dd1ef18cb796f381a9edfa8d0fac57763a542cb53d73248.png" src="_images/52b4a700144d39470dd1ef18cb796f381a9edfa8d0fac57763a542cb53d73248.png" />
 </div>
 </div>
 <p>We can then perform linear regression on these data using the <code class="docutils literal notranslate"><span class="pre">ols</span></code> function.  This function doesn’t automatically include an intercept in its model, so we need to add one to the design.  Fitting the model using this function is a two-step process.  First, we set up the model and store it to a variable (which we will call <code class="docutils literal notranslate"><span class="pre">ols_model</span></code>).  Then, we actually fit the model, which generates the results that we store to a different variable called <code class="docutils literal notranslate"><span class="pre">ols_results</span></code>, and view a summary using the <code class="docutils literal notranslate"><span class="pre">.summary()</span></code> method of the results variable.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">statsmodels.formula.api</span> <span class="kn">import</span> <span class="n">ols</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">statsmodels.formula.api</span> <span class="kn">import</span> <span class="n">ols</span>
 
 <span class="n">ols_model</span> <span class="o">=</span> <span class="n">ols</span><span class="p">(</span><span class="n">formula</span><span class="o">=</span><span class="s1">&#39;y ~ x + 1&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">simulated_data</span><span class="p">)</span>
 <span class="n">ols_result</span> <span class="o">=</span> <span class="n">ols_model</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
@@ -298,61 +413,17 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html"><table class="simpletable">
-<caption>OLS Regression Results</caption>
-<tr>
-  <th>Dep. Variable:</th>            <td>y</td>        <th>  R-squared:         </th> <td>   0.522</td>
-</tr>
-<tr>
-  <th>Model:</th>                   <td>OLS</td>       <th>  Adj. R-squared:    </th> <td>   0.517</td>
-</tr>
-<tr>
-  <th>Method:</th>             <td>Least Squares</td>  <th>  F-statistic:       </th> <td>   107.0</td>
-</tr>
-<tr>
-  <th>Date:</th>             <td>Thu, 22 Dec 2022</td> <th>  Prob (F-statistic):</th> <td>2.20e-17</td>
-</tr>
-<tr>
-  <th>Time:</th>                 <td>15:26:37</td>     <th>  Log-Likelihood:    </th> <td> -134.44</td>
-</tr>
-<tr>
-  <th>No. Observations:</th>      <td>   100</td>      <th>  AIC:               </th> <td>   272.9</td>
-</tr>
-<tr>
-  <th>Df Residuals:</th>          <td>    98</td>      <th>  BIC:               </th> <td>   278.1</td>
-</tr>
-<tr>
-  <th>Df Model:</th>              <td>     1</td>      <th>                     </th>     <td> </td>   
-</tr>
-<tr>
-  <th>Covariance Type:</th>      <td>nonrobust</td>    <th>                     </th>     <td> </td>   
-</tr>
-</table>
-<table class="simpletable">
-<tr>
-      <td></td>         <th>coef</th>     <th>std err</th>      <th>t</th>      <th>P>|t|</th>  <th>[0.025</th>    <th>0.975]</th>  
-</tr>
-<tr>
-  <th>Intercept</th> <td>   10.1470</td> <td>    0.094</td> <td>  107.973</td> <td> 0.000</td> <td>    9.961</td> <td>   10.334</td>
-</tr>
-<tr>
-  <th>x</th>         <td>    1.0954</td> <td>    0.106</td> <td>   10.342</td> <td> 0.000</td> <td>    0.885</td> <td>    1.306</td>
-</tr>
-</table>
-<table class="simpletable">
-<tr>
-  <th>Omnibus:</th>       <td> 0.898</td> <th>  Durbin-Watson:     </th> <td>   2.157</td>
-</tr>
-<tr>
-  <th>Prob(Omnibus):</th> <td> 0.638</td> <th>  Jarque-Bera (JB):  </th> <td>   0.561</td>
-</tr>
-<tr>
-  <th>Skew:</th>          <td>-0.172</td> <th>  Prob(JB):          </th> <td>   0.755</td>
-</tr>
-<tr>
-  <th>Kurtosis:</th>      <td> 3.127</td> <th>  Cond. No.          </th> <td>    1.15</td>
-</tr>
-</table><br/><br/>Warnings:<br/>[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.</div></div>
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">from</span> <span class="nn">statsmodels.formula.api</span> <span class="kn">import</span> <span class="n">ols</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">ols_model</span> <span class="o">=</span> <span class="n">ols</span><span class="p">(</span><span class="n">formula</span><span class="o">=</span><span class="s1">&#39;y ~ x + 1&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">simulated_data</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">ols_result</span> <span class="o">=</span> <span class="n">ols_model</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;statsmodels&#39;
+</pre></div>
+</div>
+</div>
 </div>
 <p>We should see three things in these results:</p>
 <ul class="simple">
@@ -362,58 +433,44 @@
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ols_result</span><span class="o">.</span><span class="n">resid</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>0.9328350998082221
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ols_result</span><span class="o">.</span><span class="n">resid</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="model-criticism-and-diagnostics">
-<h2>Model criticism and diagnostics<a class="headerlink" href="#model-criticism-and-diagnostics" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="model-criticism-and-diagnostics">
+<h2>Model criticism and diagnostics<a class="headerlink" href="#model-criticism-and-diagnostics" title="Link to this heading">#</a></h2>
 <p>Once we have fitted the model, we want to look at some diagnostics to determine whether the model is actually fitting properly.<br />
 The first thing to examine is to make sure that the residuals are (at least roughly) normally distributed.  We can do this using a Q-Q plot:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
 <span class="kn">import</span> <span class="nn">scipy.stats</span>
 
 <span class="n">_</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">probplot</span><span class="p">(</span><span class="n">ols_result</span><span class="o">.</span><span class="n">resid</span><span class="p">,</span> <span class="n">plot</span><span class="o">=</span><span class="n">sns</span><span class="o">.</span><span class="n">mpl</span><span class="o">.</span><span class="n">pyplot</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="_images/13-GeneralLinearModel_9_0.png" src="_images/13-GeneralLinearModel_9_0.png" />
-</div>
 </div>
 <p>This looks pretty good, in the sense that the residual data points fall very close to the unit line.  This is not surprising, since we generated the data with normally distributed noise.  We should also plot the predicted (or <em>fitted</em>) values against the residuals, to make sure that the model does work systematically better for some predicted values versus others.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">ols_result</span><span class="o">.</span><span class="n">fittedvalues</span><span class="p">,</span> <span class="n">ols_result</span><span class="o">.</span><span class="n">resid</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">ols_result</span><span class="o">.</span><span class="n">fittedvalues</span><span class="p">,</span> <span class="n">ols_result</span><span class="o">.</span><span class="n">resid</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Fitted value&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Residual&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;Residual&#39;)
-</pre></div>
-</div>
-<img alt="_images/13-GeneralLinearModel_11_1.png" src="_images/13-GeneralLinearModel_11_1.png" />
-</div>
 </div>
 <p>As expected, we see no clear relationship.</p>
-</div>
-<div class="section" id="examples-of-problematic-model-fit">
-<h2>Examples of problematic model fit<a class="headerlink" href="#examples-of-problematic-model-fit" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="examples-of-problematic-model-fit">
+<h2>Examples of problematic model fit<a class="headerlink" href="#examples-of-problematic-model-fit" title="Link to this heading">#</a></h2>
 <p>Let’s say that there was another variable at play in this dataset, which we were not aware of. This variable causes some of the cases to have much larger values than others, in a way that is unrelated to the X variable.  We play a trick here using the <code class="docutils literal notranslate"><span class="pre">seq()</span></code> function to create a sequence from zero to one, and then threshold those 0.5 (in order to obtain half of the values as zero and the other half as one) and then multiply by the desired effect size:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">simulated_data</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s1">&#39;x2&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">simulated_data</span><span class="o">.</span><span class="n">index</span> <span class="o">&lt;</span> <span class="p">(</span><span class="n">simulated_data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">/</span> <span class="mi">2</span><span class="p">))</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;int&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">simulated_data</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s1">&#39;x2&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">simulated_data</span><span class="o">.</span><span class="n">index</span> <span class="o">&lt;</span> <span class="p">(</span><span class="n">simulated_data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">/</span> <span class="mi">2</span><span class="p">))</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;int&#39;</span><span class="p">)</span>
 <span class="n">hidden_effect_size</span> <span class="o">=</span> <span class="mi">10</span>
 <span class="n">simulated_data</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s1">&#39;y2&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">simulated_data</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">simulated_data</span><span class="p">[</span><span class="s1">&#39;x2&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">hidden_effect_size</span>
 </pre></div>
@@ -423,7 +480,7 @@ The first thing to examine is to make sure that the residuals are (at least roug
 <p>Now we fit the model again, and examine the residuals:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ols_model2</span> <span class="o">=</span> <span class="n">ols</span><span class="p">(</span><span class="n">formula</span><span class="o">=</span><span class="s1">&#39;y2 ~ x + 1&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">simulated_data</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ols_model2</span> <span class="o">=</span> <span class="n">ols</span><span class="p">(</span><span class="n">formula</span><span class="o">=</span><span class="s1">&#39;y2 ~ x + 1&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">simulated_data</span><span class="p">)</span>
 <span class="n">ols_result2</span> <span class="o">=</span> <span class="n">ols_model2</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
@@ -437,95 +494,27 @@ The first thing to examine is to make sure that the residuals are (at least roug
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;Residual&#39;)
-</pre></div>
-</div>
-<img alt="_images/13-GeneralLinearModel_15_1.png" src="_images/13-GeneralLinearModel_15_1.png" />
-</div>
 </div>
 <p>The lack of normality is clear from the Q-Q plot, and we can also see that there is obvious structure in the residuals.</p>
 <p>Let’s look at another potential problem, in which the y variable is nonlinearly related to the X variable.  We can create these data by squaring the X variable when we generate the Y variable:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">noise_sd</span> <span class="o">=</span> <span class="mf">0.1</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">noise_sd</span> <span class="o">=</span> <span class="mf">0.1</span>
 <span class="n">simulated_data</span><span class="p">[</span><span class="s1">&#39;y3&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">simulated_data</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">slope</span> <span class="o">+</span> <span class="n">intercept</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">simulated_data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">*</span> <span class="n">noise_sd</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">simulated_data</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">],</span> <span class="n">simulated_data</span><span class="p">[</span><span class="s1">&#39;y3&#39;</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x7febccb2f850&gt;
-</pre></div>
-</div>
-<img alt="_images/13-GeneralLinearModel_17_1.png" src="_images/13-GeneralLinearModel_17_1.png" />
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ols_model3</span> <span class="o">=</span> <span class="n">ols</span><span class="p">(</span><span class="n">formula</span><span class="o">=</span><span class="s1">&#39;y3 ~ x + 1&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">simulated_data</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ols_model3</span> <span class="o">=</span> <span class="n">ols</span><span class="p">(</span><span class="n">formula</span><span class="o">=</span><span class="s1">&#39;y3 ~ x + 1&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">simulated_data</span><span class="p">)</span>
 <span class="n">ols_result3</span> <span class="o">=</span> <span class="n">ols_model3</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
 <span class="n">ols_result3</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><table class="simpletable">
-<caption>OLS Regression Results</caption>
-<tr>
-  <th>Dep. Variable:</th>           <td>y3</td>        <th>  R-squared:         </th> <td>   0.008</td>
-</tr>
-<tr>
-  <th>Model:</th>                   <td>OLS</td>       <th>  Adj. R-squared:    </th> <td>  -0.002</td>
-</tr>
-<tr>
-  <th>Method:</th>             <td>Least Squares</td>  <th>  F-statistic:       </th> <td>  0.8369</td>
-</tr>
-<tr>
-  <th>Date:</th>             <td>Thu, 22 Dec 2022</td> <th>  Prob (F-statistic):</th>  <td> 0.363</td> 
-</tr>
-<tr>
-  <th>Time:</th>                 <td>15:26:38</td>     <th>  Log-Likelihood:    </th> <td> -149.89</td>
-</tr>
-<tr>
-  <th>No. Observations:</th>      <td>   100</td>      <th>  AIC:               </th> <td>   303.8</td>
-</tr>
-<tr>
-  <th>Df Residuals:</th>          <td>    98</td>      <th>  BIC:               </th> <td>   309.0</td>
-</tr>
-<tr>
-  <th>Df Model:</th>              <td>     1</td>      <th>                     </th>     <td> </td>   
-</tr>
-<tr>
-  <th>Covariance Type:</th>      <td>nonrobust</td>    <th>                     </th>     <td> </td>   
-</tr>
-</table>
-<table class="simpletable">
-<tr>
-      <td></td>         <th>coef</th>     <th>std err</th>      <th>t</th>      <th>P>|t|</th>  <th>[0.025</th>    <th>0.975]</th>  
-</tr>
-<tr>
-  <th>Intercept</th> <td>   10.7813</td> <td>    0.110</td> <td>   98.295</td> <td> 0.000</td> <td>   10.564</td> <td>   10.999</td>
-</tr>
-<tr>
-  <th>x</th>         <td>    0.1131</td> <td>    0.124</td> <td>    0.915</td> <td> 0.363</td> <td>   -0.132</td> <td>    0.358</td>
-</tr>
-</table>
-<table class="simpletable">
-<tr>
-  <th>Omnibus:</th>       <td>62.137</td> <th>  Durbin-Watson:     </th> <td>   1.699</td>
-</tr>
-<tr>
-  <th>Prob(Omnibus):</th> <td> 0.000</td> <th>  Jarque-Bera (JB):  </th> <td> 203.933</td>
-</tr>
-<tr>
-  <th>Skew:</th>          <td> 2.285</td> <th>  Prob(JB):          </th> <td>5.21e-45</td>
-</tr>
-<tr>
-  <th>Kurtosis:</th>      <td> 8.297</td> <th>  Cond. No.          </th> <td>    1.15</td>
-</tr>
-</table><br/><br/>Warnings:<br/>[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.</div></div>
 </div>
 <p>Now we see that there is no significant linear relationship between <span class="math notranslate nohighlight">\(X^2\)</span> and Y/ But if we look at the residuals the problem with the model becomes clear:</p>
 <p>plt.figure(figsize=(12, 6))
@@ -539,75 +528,18 @@ plt.ylabel(‘Residual’)</p>
 <p>As we noted in the previous chapter, the “linear” in the general linear model doesn’t refer to the shape of the response, but instead refers to the fact that model is linear in its parameters — that is, the predictors in the model only get multiplied the parameters (e.g., rather than being raised to a power of the parameter).  Here is how we would build a model that could account for the nonlinear relationship, by using <code class="docutils literal notranslate"><span class="pre">x**2</span></code> in the model:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">simulated_data</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s1">&#39;x_squared&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">simulated_data</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">]</span> <span class="o">**</span> <span class="mi">2</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">simulated_data</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s1">&#39;x_squared&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">simulated_data</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">]</span> <span class="o">**</span> <span class="mi">2</span>
 <span class="n">ols_model4</span> <span class="o">=</span> <span class="n">ols</span><span class="p">(</span><span class="n">formula</span><span class="o">=</span><span class="s1">&#39;y3 ~ x_squared + 1&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">simulated_data</span><span class="p">)</span>
 <span class="n">ols_result4</span> <span class="o">=</span> <span class="n">ols_model4</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
 <span class="n">ols_result4</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><table class="simpletable">
-<caption>OLS Regression Results</caption>
-<tr>
-  <th>Dep. Variable:</th>           <td>y3</td>        <th>  R-squared:         </th> <td>   0.992</td> 
-</tr>
-<tr>
-  <th>Model:</th>                   <td>OLS</td>       <th>  Adj. R-squared:    </th> <td>   0.992</td> 
-</tr>
-<tr>
-  <th>Method:</th>             <td>Least Squares</td>  <th>  F-statistic:       </th> <td>1.243e+04</td>
-</tr>
-<tr>
-  <th>Date:</th>             <td>Thu, 22 Dec 2022</td> <th>  Prob (F-statistic):</th> <td>4.87e-105</td>
-</tr>
-<tr>
-  <th>Time:</th>                 <td>15:26:38</td>     <th>  Log-Likelihood:    </th> <td>  92.204</td> 
-</tr>
-<tr>
-  <th>No. Observations:</th>      <td>   100</td>      <th>  AIC:               </th> <td>  -180.4</td> 
-</tr>
-<tr>
-  <th>Df Residuals:</th>          <td>    98</td>      <th>  BIC:               </th> <td>  -175.2</td> 
-</tr>
-<tr>
-  <th>Df Model:</th>              <td>     1</td>      <th>                     </th>     <td> </td>    
-</tr>
-<tr>
-  <th>Covariance Type:</th>      <td>nonrobust</td>    <th>                     </th>     <td> </td>    
-</tr>
-</table>
-<table class="simpletable">
-<tr>
-      <td></td>         <th>coef</th>     <th>std err</th>      <th>t</th>      <th>P>|t|</th>  <th>[0.025</th>    <th>0.975]</th>  
-</tr>
-<tr>
-  <th>Intercept</th> <td>   10.0215</td> <td>    0.012</td> <td>  841.568</td> <td> 0.000</td> <td>    9.998</td> <td>   10.045</td>
-</tr>
-<tr>
-  <th>x_squared</th> <td>    0.9740</td> <td>    0.009</td> <td>  111.473</td> <td> 0.000</td> <td>    0.957</td> <td>    0.991</td>
-</tr>
-</table>
-<table class="simpletable">
-<tr>
-  <th>Omnibus:</th>       <td> 0.981</td> <th>  Durbin-Watson:     </th> <td>   2.260</td>
-</tr>
-<tr>
-  <th>Prob(Omnibus):</th> <td> 0.612</td> <th>  Jarque-Bera (JB):  </th> <td>   1.073</td>
-</tr>
-<tr>
-  <th>Skew:</th>          <td> 0.216</td> <th>  Prob(JB):          </th> <td>   0.585</td>
-</tr>
-<tr>
-  <th>Kurtosis:</th>      <td> 2.735</td> <th>  Cond. No.          </th> <td>    2.09</td>
-</tr>
-</table><br/><br/>Warnings:<br/>[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.</div></div>
 </div>
 <p>Now we see that the effect of <span class="math notranslate nohighlight">\(X^2\)</span> is significant, and if we look at the residual plot we should see that things look much better:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
-<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 <span class="n">scipy</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">probplot</span><span class="p">(</span><span class="n">ols_result4</span><span class="o">.</span><span class="n">resid</span><span class="p">,</span> <span class="n">plot</span><span class="o">=</span><span class="n">sns</span><span class="o">.</span><span class="n">mpl</span><span class="o">.</span><span class="n">pyplot</span><span class="p">)</span>
 
@@ -618,20 +550,14 @@ plt.ylabel(‘Residual’)</p>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;Residual&#39;)
-</pre></div>
-</div>
-<img alt="_images/13-GeneralLinearModel_23_1.png" src="_images/13-GeneralLinearModel_23_1.png" />
-</div>
 </div>
 <p>Not perfect, but much better than before!</p>
-</div>
-<div class="section" id="extending-regression-to-binary-outcomes">
-<h2>Extending regression to binary outcomes.<a class="headerlink" href="#extending-regression-to-binary-outcomes" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="extending-regression-to-binary-outcomes">
+<h2>Extending regression to binary outcomes.<a class="headerlink" href="#extending-regression-to-binary-outcomes" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">statsmodels.formula.api</span> <span class="kn">import</span> <span class="n">logit</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">statsmodels.formula.api</span> <span class="kn">import</span> <span class="n">logit</span>
 
 <span class="n">diabetes_df</span> <span class="o">=</span> <span class="n">adult_nhanes_data</span><span class="o">.</span><span class="n">query</span><span class="p">(</span>
     <span class="s1">&#39;DoctorToldYouHaveDiabetes != &quot;Borderline&quot;&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span>
@@ -645,117 +571,29 @@ plt.ylabel(‘Residual’)</p>
 <p>Now we would like to build a model that allows us to predict who has diabetes, based on their age and Body Mass Index (BMI). However, you may have noticed that the Diabetes variable is a binary variable; because linear regression assumes that the residuals from the model will be normally distributed, and the binary nature of the data will violate this, we instead need to use a different kind of model, known as a <em>logistic regression</em> model, which is built to deal with binary outcomes.  We can fit this model using the <code class="docutils literal notranslate"><span class="pre">logit()</span></code> function:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
-<span class="n">logitfit</span> <span class="o">=</span> <span class="n">logit</span><span class="p">(</span><span class="n">formula</span> <span class="o">=</span> <span class="s1">&#39;Diabetes ~ Age + BMI&#39;</span><span class="p">,</span> <span class="n">data</span> <span class="o">=</span> <span class="n">diabetes_df</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">disp</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">logitfit</span> <span class="o">=</span> <span class="n">logit</span><span class="p">(</span><span class="n">formula</span> <span class="o">=</span> <span class="s1">&#39;Diabetes ~ Age + BMI&#39;</span><span class="p">,</span> <span class="n">data</span> <span class="o">=</span> <span class="n">diabetes_df</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">disp</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 
 <span class="n">logitfit</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><table class="simpletable">
-<caption>Logit Regression Results</caption>
-<tr>
-  <th>Dep. Variable:</th>       <td>Diabetes</td>     <th>  No. Observations:  </th>   <td>  5267</td>  
-</tr>
-<tr>
-  <th>Model:</th>                 <td>Logit</td>      <th>  Df Residuals:      </th>   <td>  5264</td>  
-</tr>
-<tr>
-  <th>Method:</th>                 <td>MLE</td>       <th>  Df Model:          </th>   <td>     2</td>  
-</tr>
-<tr>
-  <th>Date:</th>            <td>Thu, 22 Dec 2022</td> <th>  Pseudo R-squ.:     </th>   <td>0.1661</td>  
-</tr>
-<tr>
-  <th>Time:</th>                <td>15:26:38</td>     <th>  Log-Likelihood:    </th>  <td> -1895.1</td> 
-</tr>
-<tr>
-  <th>converged:</th>             <td>True</td>       <th>  LL-Null:           </th>  <td> -2272.6</td> 
-</tr>
-<tr>
-  <th>Covariance Type:</th>     <td>nonrobust</td>    <th>  LLR p-value:       </th> <td>1.122e-164</td>
-</tr>
-</table>
-<table class="simpletable">
-<tr>
-      <td></td>         <th>coef</th>     <th>std err</th>      <th>z</th>      <th>P>|z|</th>  <th>[0.025</th>    <th>0.975]</th>  
-</tr>
-<tr>
-  <th>Intercept</th> <td>   -7.3101</td> <td>    0.276</td> <td>  -26.478</td> <td> 0.000</td> <td>   -7.851</td> <td>   -6.769</td>
-</tr>
-<tr>
-  <th>Age</th>       <td>    0.0622</td> <td>    0.003</td> <td>   21.763</td> <td> 0.000</td> <td>    0.057</td> <td>    0.068</td>
-</tr>
-<tr>
-  <th>BMI</th>       <td>    0.0693</td> <td>    0.005</td> <td>   12.769</td> <td> 0.000</td> <td>    0.059</td> <td>    0.080</td>
-</tr>
-</table></div></div>
 </div>
 <p>This looks very similar to the output from the <code class="docutils literal notranslate"><span class="pre">ols()</span></code> function, and it shows us that there is a significant relationship between the age, weight, and diabetes. The model provides us with a predicted probability that each individual will have diabetes; if this is greater than 0.5, then that means that the model predicts that the individual is more likely than not to have diabetes.<br />
 We can start by simply comparing those predictions to the actual outcomes.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
-<span class="n">diabetes_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s1">&#39;LogitPrediction&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">logitfit</span><span class="o">.</span><span class="n">predict</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mf">0.5</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;int&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">diabetes_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s1">&#39;LogitPrediction&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">logitfit</span><span class="o">.</span><span class="n">predict</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mf">0.5</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;int&#39;</span><span class="p">)</span>
 
 <span class="n">pd</span><span class="o">.</span><span class="n">crosstab</span><span class="p">(</span><span class="n">diabetes_df</span><span class="p">[</span><span class="s1">&#39;Diabetes&#39;</span><span class="p">],</span> <span class="n">diabetes_df</span><span class="p">[</span><span class="s1">&#39;LogitPrediction&#39;</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th>LogitPrediction</th>
-      <th>0</th>
-      <th>1</th>
-    </tr>
-    <tr>
-      <th>Diabetes</th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>4400</td>
-      <td>50</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>756</td>
-      <td>61</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
 </div>
 <p>This table shows that the model did somewhat well, in that it labeled most non-diabetic people as non-diabetic, and most diabetic people as diabetic.  However, it also made a lot of mistakes, mislabeling nearly half of all diabetic people as non-diabetic.</p>
 <p>We would often like a single number that tells us how good our prediction is.  We could simply ask how many of our predictions are correct on average:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">diabetes_df</span><span class="p">[</span><span class="s1">&#39;LogitPrediction&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">diabetes_df</span><span class="p">[</span><span class="s1">&#39;Diabetes&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>0.8469717106512246
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">diabetes_df</span><span class="p">[</span><span class="s1">&#39;LogitPrediction&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">diabetes_df</span><span class="p">[</span><span class="s1">&#39;Diabetes&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -763,12 +601,7 @@ We can start by simply comparing those predictions to the actual outcomes.</p>
 <p>This tells us that we are doing fairly well at prediction, with over 80% accuracy. However, this measure is problematic, because most people in the sample don’t have diabetes.  This means that we could get relatively high accuracy if we simply said that no one has diabetes:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">diabetes_df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">==</span> <span class="n">diabetes_df</span><span class="p">[</span><span class="s1">&#39;Diabetes&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>0.844883235238276
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">diabetes_df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">==</span> <span class="n">diabetes_df</span><span class="p">[</span><span class="s1">&#39;Diabetes&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -776,14 +609,9 @@ We can start by simply comparing those predictions to the actual outcomes.</p>
 <p>One commonly used value when we have a graded prediction (as we do here, with the probabiilty that is predicted by the model) is called the <em>area under the receiver operating characteristic</em> or <em>AUROC</em>. This is a number that ranges from zero to one, where 0.5 means that we are guessing, and one means that our predictions are perfect. Let’s see what that comes out to for this dataset, using the <code class="docutils literal notranslate"><span class="pre">roc_auc_score</span></code> from the <a class="reference external" href="https://scikit-learn.org/stable/">scikit-learn</a> package:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">roc_auc_score</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">roc_auc_score</span>
 <span class="n">rocscore</span> <span class="o">=</span> <span class="n">roc_auc_score</span><span class="p">(</span><span class="n">diabetes_df</span><span class="p">[</span><span class="s1">&#39;Diabetes&#39;</span><span class="p">],</span> <span class="n">logitfit</span><span class="o">.</span><span class="n">predict</span><span class="p">())</span>
 <span class="n">rocscore</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>0.7854712362301102
 </pre></div>
 </div>
 </div>
@@ -791,7 +619,7 @@ We can start by simply comparing those predictions to the actual outcomes.</p>
 <p>Our model performs relatively well according to this score.  What if we wanted to know whether this is better than chance?  One option would be to create a null model, in which we purposely break the relationship between our variables. We could then ask how likely our observed score would be if there is no true relationship.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.utils</span> <span class="kn">import</span> <span class="n">shuffle</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.utils</span> <span class="kn">import</span> <span class="n">shuffle</span>
 
 <span class="n">shuffled_df</span> <span class="o">=</span> <span class="n">diabetes_df</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
 
@@ -810,22 +638,17 @@ We can start by simply comparing those predictions to the actual outcomes.</p>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>0.0
-</pre></div>
-</div>
-</div>
 </div>
 <p>This shows us that our observed score is higher than all of 1000 scores obtained using random permutations. Thus, we can conclude that our accuracy is greater than chance. However, this doesn’t tell us how well we can predict whether a <em>new</em> individual will have diabetes.  This is what we turn to next.</p>
-</div>
-<div class="section" id="cross-validation">
-<h2>Cross-validation<a class="headerlink" href="#cross-validation" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="cross-validation">
+<h2>Cross-validation<a class="headerlink" href="#cross-validation" title="Link to this heading">#</a></h2>
 <p>Cross-validation is a powerful technique that allows us to estimate how well our results will generalize to a new dataset. Here we will build our own crossvalidation code to see how it works, continuing the logistic regression example from the previous section.
 In cross-validation, we want to split the data into several subsets and then iteratively train the model while leaving out each subset (which we usually call <em>folds</em>) and then test the model on that held-out fold.
 We can use one of the tools from the <a class="reference external" href="https://scikit-learn.org/stable/">scikit-learn</a> package to create our cross-validation folds for us.  Let’s start by using 10-fold crossvalidation, in which we split the data into 10 parts, and the fit the model while holding out one of those parts and then testing it on the held-out data.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">KFold</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">KFold</span>
 
 <span class="n">kf</span> <span class="o">=</span> <span class="n">KFold</span><span class="p">(</span><span class="n">n_splits</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
@@ -845,59 +668,123 @@ We can use one of the tools from the <a class="reference external" href="https:/
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>Predicted  False  True 
-Diabetes               
-0           4397     53
-1            759     58
-</pre></div>
-</div>
-<div class="stderr docutils container">
-<pre class="stderr literal-block">/opt/conda/lib/python3.8/site-packages/pandas/core/indexing.py:671: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  self._setitem_with_indexer(indexer, value)
-</pre>
-</div>
-<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>0.7841971861977913
-</pre></div>
-</div>
-</div>
 </div>
 <p>This result shows that our model is able to generalize to new individuals relatively well — in fact, almost as well as the original model. This is because our sample size is very large; with smaller samples, the generalization performance is usually much less using crossvalidation than using the full sample.</p>
-</div>
-</div>
+</section>
+</section>
 
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
 
-              </div>
+                </article>
               
-        </div>
-    </div>
-    
-    
-    <div class='prev-next-bottom'>
-        
-    <a class='left-prev' id="prev-link" href="11-ModelingCategoricalRelationships.html" title="previous page">Modeling categorical relationships in Python</a>
 
-    </div>
-    <footer class="footer mt-5 mt-md-0">
-    <div class="container">
-      <p>
-        
-          By Russell A. Poldrack<br/>
-        
-            &copy; Copyright 2020.<br/>
-      </p>
-    </div>
-  </footer>
-</main>
-
-
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="11-ModelingCategoricalRelationships.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Modeling categorical relationships in Python</p>
       </div>
-    </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
-    <script src="_static/js/index.js"></script>
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-regression">Linear regression</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-criticism-and-diagnostics">Model criticism and diagnostics</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#examples-of-problematic-model-fit">Examples of problematic model fit</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#extending-regression-to-binary-outcomes">Extending regression to binary outcomes.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cross-validation">Cross-validation</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
     
+<p class="component-author">
+By Russell A. Poldrack
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>

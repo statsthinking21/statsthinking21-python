@@ -1,263 +1,365 @@
 
-
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+
+<html lang="en" data-content_root="./" >
+
   <head>
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
     <title>Summarizing Data &#8212; Python Companion to Statistical Thinking in the 21st Century</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
-    <link href="_static/css/index.css" rel="stylesheet">
-    <link rel="stylesheet" href="_static/sphinx-book-theme.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
-    <link rel="stylesheet" type="text/css" href="_static/jupyter-sphinx.css" />
-    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-    <script src="_static/sphinx-book-theme.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/language_data.js"></script>
-    <script src="_static/togglebutton.js"></script>
-    <script src="_static/clipboard.min.js"></script>
-    <script src="_static/copybutton.js"></script>
-    <script src="_static/mystnb.js"></script>
-    <script src="_static/sphinx-book-theme.js"></script>
-    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '02-SummarizingData';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Data Visualization" href="03-DataVisualization.html" />
     <link rel="prev" title="Introduction to Python" href="01-IntroductionToPython.html" />
-
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="docsearch:language" content="en">
-
-
-
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
-    
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
-    <div class="container-xl">
-      <div class="row">
-          
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
     
-        <div class="navbar-brand-box">
-<a class="navbar-brand text-wrap" href="index.html">
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="index.html">
   
   
-  <h1 class="site-logo" id="site-title">Python Companion to Statistical Thinking in the 21st Century</h1>
   
+  
+  
+  
+    <p class="title logo__title">Python Companion to Statistical Thinking in the 21st Century</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="01-IntroductionToPython.html">Introduction to Python</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Summarizing Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03-DataVisualization.html">Data Visualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04-FittingSimpleModels.html">Fitting simple models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="05-Probability.html">Probability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="06-Sampling.html">Sampling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="07-ResamplingAndSimulation.html">Resampling and simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="08-HypothesisTesting.html">Hypothesis testing in Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="09-StatisticalPower.html">Statistical Power Analysis in Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="10-BayesianStatistics.html">Bayesian Statistics in Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="11-ModelingCategoricalRelationships.html">Modeling categorical relationships in Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="13-GeneralLinearModel.html">The General Linear Model</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/02-SummarizingData.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
 </a>
-</div>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
 
-<form class="bd-search d-flex align-items-center" action="search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form>
-
-<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
-  <ul class="current nav sidenav_l1">
- <li class="toctree-l1">
-  <a class="reference internal" href="01-IntroductionToPython.html">
-   Introduction to Python
-  </a>
- </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   Summarizing Data
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="03-DataVisualization.html">
-   Data Visualization
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="04-FittingSimpleModels.html">
-   Fitting simple models
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="05-Probability.html">
-   Probability
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="06-Sampling.html">
-   Sampling
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="07-ResamplingAndSimulation.html">
-   Resampling and simulation
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="08-HypothesisTesting.html">
-   Hypothesis testing in Python
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="09-StatisticalPower.html">
-   Statistical Power Analysis in Python
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="10-BayesianStatistics.html">
-   Bayesian Statistics in Python
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="11-ModelingCategoricalRelationships.html">
-   Modeling categorical relationships in Python
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="13-GeneralLinearModel.html">
-   The General Linear Model
-  </a>
- </li>
-</ul>
-
-</nav>
-
- <!-- To handle the deprecated key -->
-
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
 </div>
 
 
-          
 
 
-          
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
-    
-    <div class="row topbar fixed-top container-xl">
-    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
     </div>
-    <div class="col pl-2 topbar-main">
-        
-        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-            <i class="fas fa-bars"></i>
-            <i class="fas fa-arrow-left"></i>
-            <i class="fas fa-arrow-up"></i>
-        </button>
-        
-        <div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
-
-    
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
-        
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="_sources/02-SummarizingData.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.ipynb</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
-    </div>
-    
+  
 </div>
-        <!-- Source interaction buttons -->
+</div>
+              
+              
 
-
-        <!-- Full screen (wrap in <a> to have style consistency -->
-        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-                data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i
-                    class="fas fa-expand"></i></button></a>
-
-        <!-- Launch buttons -->
-
-    </div>
-
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Summarizing Data</h1>
     <!-- Table of contents -->
-    <div class="d-none d-md-block col-md-2 bd-toc show">
-        <div class="tocsection onthispage pt-5 pb-3">
-            <i class="fas fa-list"></i> On this page
-        </div>
-        <nav id="bd-toc-nav">
-            <ul class="nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#working-with-data-frames">
-   Working with data frames
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#selecting-rows-observations-and-columns-variables">
-     Selecting rows (observations) and columns (variables)
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#missing-values">
-     Missing values
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#selecting-rows-by-value">
-     Selecting rows by value
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#creating-new-variables">
-   Creating new variables
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#understanding-your-data">
-     Understanding your data
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#summarizing-data-using-a-frequency-distribution">
-   Summarizing data using a frequency distribution
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#data-cleaning">
-     Data Cleaning
-    </a>
-   </li>
-  </ul>
- </li>
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-data-frames">Working with data frames</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#selecting-rows-observations-and-columns-variables">Selecting rows (observations) and columns (variables)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#missing-values">Missing values</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#selecting-rows-by-value">Selecting rows by value</a></li>
 </ul>
-
-        </nav>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-new-variables">Creating new variables</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#understanding-your-data">Understanding your data</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summarizing-data-using-a-frequency-distribution">Summarizing data using a frequency distribution</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-cleaning">Data Cleaning</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
     </div>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
-              <div>
+
+              
                 
-  <div class="section" id="summarizing-data">
-<h1>Summarizing Data<a class="headerlink" href="#summarizing-data" title="Permalink to this headline">¶</a></h1>
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="summarizing-data">
+<h1>Summarizing Data<a class="headerlink" href="#summarizing-data" title="Link to this heading">#</a></h1>
 <p>This chapter will introduce you to how to summarize data using data frames in Pandas.</p>
-<div class="section" id="working-with-data-frames">
-<h2>Working with data frames<a class="headerlink" href="#working-with-data-frames" title="Permalink to this headline">¶</a></h2>
+<section id="working-with-data-frames">
+<h2>Working with data frames<a class="headerlink" href="#working-with-data-frames" title="Link to this heading">#</a></h2>
 <p>In the last chapter you were introduced to the concept of a <em>data frame</em>, which we will use throughout much of this book.<br />
 In particular, we will use a dataset known as <a class="reference external" href="https://www.cdc.gov/nchs/nhanes/index.htm">NHANES</a> for several of our examples, so let’s load the library that provides us access to the data.
 This is a large dataset collected from a sample of individuals in the United States every two years, which measures many different aspects of their health and lifestyles.
 To access the data, we will use a Python package called <a class="reference external" href="https://github.com/poldrack/nhanes">nhanes</a> that contains a function to load a cleaned-up version of the dataset.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">nhanes.load</span> <span class="kn">import</span> <span class="n">load_NHANES_data</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">nhanes.load</span> <span class="kn">import</span> <span class="n">load_NHANES_data</span>
 <span class="n">nhanes_data</span> <span class="o">=</span> <span class="n">load_NHANES_data</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -266,7 +368,7 @@ To access the data, we will use a Python package called <a class="reference exte
 <p>We can use the <code class="docutils literal notranslate"><span class="pre">.head()</span></code> method to look inside the data frame:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">nhanes_data</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nhanes_data</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -465,12 +567,12 @@ To access the data, we will use a Python package called <a class="reference exte
 <p>Let’s look at the structure of this dataset.  We can see the <em>shape</em> of the data frame – that is, the number of rows and columns – using the <code class="docutils literal notranslate"><span class="pre">.shape</span></code> method:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">nhanes_data</span><span class="o">.</span><span class="n">shape</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nhanes_data</span><span class="o">.</span><span class="n">shape</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>(8366, 197)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(8366, 197)
 </pre></div>
 </div>
 </div>
@@ -478,17 +580,17 @@ To access the data, we will use a Python package called <a class="reference exte
 <p>We see that the dataset has many more rows than columns. Let’s look more closely at what is contained in the rows and columns.  To obtain the labels for the rows, we use the <code class="docutils literal notranslate"><span class="pre">.index</span></code> operator:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">nhanes_data</span><span class="o">.</span><span class="n">index</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nhanes_data</span><span class="o">.</span><span class="n">index</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>Float64Index([ 93703.0,  93704.0,  93705.0,  93706.0,  93707.0,  93708.0,
-               93709.0,  93711.0,  93712.0,  93713.0,
-              ...
-              102946.0, 102947.0, 102948.0, 102949.0, 102951.0, 102952.0,
-              102953.0, 102954.0, 102955.0, 102956.0],
-             dtype=&#39;float64&#39;, name=&#39;SEQN&#39;, length=8366)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([ 93703.0,  93704.0,  93705.0,  93706.0,  93707.0,  93708.0,  93709.0,
+        93711.0,  93712.0,  93713.0,
+       ...
+       102946.0, 102947.0, 102948.0, 102949.0, 102951.0, 102952.0, 102953.0,
+       102954.0, 102955.0, 102956.0],
+      dtype=&#39;float64&#39;, name=&#39;SEQN&#39;, length=8366)
 </pre></div>
 </div>
 </div>
@@ -497,12 +599,12 @@ To access the data, we will use a Python package called <a class="reference exte
 We can also look at the content of the columns, which we can access using the <code class="docutils literal notranslate"><span class="pre">.columns</span></code> operator:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">nhanes_data</span><span class="o">.</span><span class="n">columns</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nhanes_data</span><span class="o">.</span><span class="n">columns</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>Index([&#39;GeneralHealthCondition&#39;, &#39;EverBreastfedOrFedBreastmilk&#39;,
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([&#39;GeneralHealthCondition&#39;, &#39;EverBreastfedOrFedBreastmilk&#39;,
        &#39;AgeStoppedBreastfeedingdays&#39;, &#39;AgeFirstFedFormuladays&#39;,
        &#39;AgeStoppedReceivingFormuladays&#39;, &#39;AgeStartedOtherFoodbeverage&#39;,
        &#39;AgeFirstFedMilkdays&#39;, &#39;TypeOfMilkFirstFedWholeMilk&#39;,
@@ -520,17 +622,17 @@ We can also look at the content of the columns, which we can access using the <c
 </div>
 </div>
 <p>Each of the columns contains a different <em>variable</em> – that is, a different thing that is measured on each observation.</p>
-<div class="section" id="selecting-rows-observations-and-columns-variables">
-<h3>Selecting rows (observations) and columns (variables)<a class="headerlink" href="#selecting-rows-observations-and-columns-variables" title="Permalink to this headline">¶</a></h3>
+<section id="selecting-rows-observations-and-columns-variables">
+<h3>Selecting rows (observations) and columns (variables)<a class="headerlink" href="#selecting-rows-observations-and-columns-variables" title="Link to this heading">#</a></h3>
 <p>We often want to select a subset of rows from a data frame. You saw in the last chapter how we can access specific rows using the <code class="docutils literal notranslate"><span class="pre">.loc</span></code> operator.  This operator requires us to refer to the row names (that is, the <em>index</em>) and column names.  For example, if we wanted to know the value of the <code class="docutils literal notranslate"><span class="pre">GeneralHealthCondition</span></code> variable for the indivdiual labeled 93707, we could use the following:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">nhanes_data</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">93707</span><span class="p">,</span> <span class="s1">&#39;GeneralHealthCondition&#39;</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nhanes_data</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">93707</span><span class="p">,</span> <span class="s1">&#39;GeneralHealthCondition&#39;</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>&#39;Good&#39;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;Good&#39;
 </pre></div>
 </div>
 </div>
@@ -538,14 +640,14 @@ We can also look at the content of the columns, which we can access using the <c
 <p>If there were several variables that we wanted to see for this individual, we could include the names of those variables in a <em>list</em>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">nhanes_data</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">93707</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;GeneralHealthCondition&#39;</span><span class="p">,</span> <span class="s1">&#39;Gender&#39;</span><span class="p">,</span> <span class="s1">&#39;AgeInYearsAtScreening&#39;</span><span class="p">]]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nhanes_data</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">93707</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;GeneralHealthCondition&#39;</span><span class="p">,</span> <span class="s1">&#39;Gender&#39;</span><span class="p">,</span> <span class="s1">&#39;AgeInYearsAtScreening&#39;</span><span class="p">]]</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>GeneralHealthCondition    Good
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>GeneralHealthCondition    Good
 Gender                    Male
-AgeInYearsAtScreening       13
+AgeInYearsAtScreening     13.0
 Name: 93707.0, dtype: object
 </pre></div>
 </div>
@@ -554,7 +656,7 @@ Name: 93707.0, dtype: object
 <p>This shows us the values for each of those variables for this individual. We could also do the same if there were several individuals that we were interested in:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">nhanes_data</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="mi">102951</span><span class="p">,</span> <span class="mi">102955</span><span class="p">,</span> <span class="mi">93707</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;GeneralHealthCondition&#39;</span><span class="p">,</span> <span class="s1">&#39;Gender&#39;</span><span class="p">,</span> <span class="s1">&#39;AgeInYearsAtScreening&#39;</span><span class="p">]]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nhanes_data</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="mi">102951</span><span class="p">,</span> <span class="mi">102955</span><span class="p">,</span> <span class="mi">93707</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;GeneralHealthCondition&#39;</span><span class="p">,</span> <span class="s1">&#39;Gender&#39;</span><span class="p">,</span> <span class="s1">&#39;AgeInYearsAtScreening&#39;</span><span class="p">]]</span>
 </pre></div>
 </div>
 </div>
@@ -590,19 +692,19 @@ Name: 93707.0, dtype: object
   </thead>
   <tbody>
     <tr>
-      <th>102951</th>
+      <th>102951.0</th>
       <td>NaN</td>
       <td>Male</td>
       <td>4.0</td>
     </tr>
     <tr>
-      <th>102955</th>
+      <th>102955.0</th>
       <td>Very good</td>
       <td>Female</td>
       <td>14.0</td>
     </tr>
     <tr>
-      <th>93707</th>
+      <th>93707.0</th>
       <td>Good</td>
       <td>Male</td>
       <td>13.0</td>
@@ -611,13 +713,13 @@ Name: 93707.0, dtype: object
 </table>
 </div></div></div>
 </div>
-</div>
-<div class="section" id="missing-values">
-<h3>Missing values<a class="headerlink" href="#missing-values" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="missing-values">
+<h3>Missing values<a class="headerlink" href="#missing-values" title="Link to this heading">#</a></h3>
 <p>You will notice that the <code class="docutils literal notranslate"><span class="pre">GeneralHealthCondition</span></code> variable for the first individual in the previous cell contained <em>NaN</em>, which stands for “not a number”.  This is generally used to denote that the data are missing for this particular observation; perhaps they declined to answer the question, or the interviewer failed to properly record the answer.  Missing data are common when we are working with real data.  There are many sophsticated ways to deal with missing data in statistics, but for the moment we will just remove observations that have a missing data on one of our variables of interest, which we can do using the <code class="docutils literal notranslate"><span class="pre">.dropna()</span></code> operator:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">my_subset</span> <span class="o">=</span> <span class="n">nhanes_data</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="mi">102951</span><span class="p">,</span> <span class="mi">102955</span><span class="p">,</span> <span class="mi">93707</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;GeneralHealthCondition&#39;</span><span class="p">,</span> <span class="s1">&#39;Gender&#39;</span><span class="p">,</span> <span class="s1">&#39;AgeInYearsAtScreening&#39;</span><span class="p">]]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">my_subset</span> <span class="o">=</span> <span class="n">nhanes_data</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="mi">102951</span><span class="p">,</span> <span class="mi">102955</span><span class="p">,</span> <span class="mi">93707</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;GeneralHealthCondition&#39;</span><span class="p">,</span> <span class="s1">&#39;Gender&#39;</span><span class="p">,</span> <span class="s1">&#39;AgeInYearsAtScreening&#39;</span><span class="p">]]</span>
 <span class="n">my_subset</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -654,13 +756,13 @@ Name: 93707.0, dtype: object
   </thead>
   <tbody>
     <tr>
-      <th>102955</th>
+      <th>102955.0</th>
       <td>Very good</td>
       <td>Female</td>
       <td>14.0</td>
     </tr>
     <tr>
-      <th>93707</th>
+      <th>93707.0</th>
       <td>Good</td>
       <td>Male</td>
       <td>13.0</td>
@@ -670,19 +772,19 @@ Name: 93707.0, dtype: object
 </div></div></div>
 </div>
 <p>This operator removes any rows that have missing values for any of the variables in the data frame.</p>
-</div>
-<div class="section" id="selecting-rows-by-value">
-<h3>Selecting rows by value<a class="headerlink" href="#selecting-rows-by-value" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="selecting-rows-by-value">
+<h3>Selecting rows by value<a class="headerlink" href="#selecting-rows-by-value" title="Link to this heading">#</a></h3>
 <p>Let’s say that we want to analyze NHANES data, but only for those individuals who are over 50 years of age.  We can use the <code class="docutils literal notranslate"><span class="pre">query</span></code> operator on a data frame to find rows that match particular conditions:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">over_50_df</span> <span class="o">=</span> <span class="n">nhanes_data</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;AgeInYearsAtScreening &gt;= 50&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">over_50_df</span> <span class="o">=</span> <span class="n">nhanes_data</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;AgeInYearsAtScreening &gt;= 50&#39;</span><span class="p">)</span>
 <span class="n">over_50_df</span><span class="o">.</span><span class="n">shape</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>(2898, 197)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(2898, 197)
 </pre></div>
 </div>
 </div>
@@ -690,25 +792,25 @@ Name: 93707.0, dtype: object
 <p>This shows that there were 2898 observations that matched our criterion.  We can also search for specific values: For example, let’s say that we want to find anyone who reported that their general health condition was “Good”.  This one is a bit tricky, because we are searching for a string of text, which we have to embed in our query, which is also a string of text.  Fortunately, there are two different quotation marks that we can use (<code class="docutils literal notranslate"><span class="pre">'</span></code> or <code class="docutils literal notranslate"><span class="pre">&quot;</span></code>) and Python treats them as distinct operators, so we can surround our text within double quotes, inside a string surrounded by single quotes:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">good_health_df</span> <span class="o">=</span> <span class="n">nhanes_data</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;GeneralHealthCondition == &quot;Good&quot;&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">good_health_df</span> <span class="o">=</span> <span class="n">nhanes_data</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;GeneralHealthCondition == &quot;Good&quot;&#39;</span><span class="p">)</span>
 <span class="n">good_health_df</span><span class="o">.</span><span class="n">shape</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>(2454, 197)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(2454, 197)
 </pre></div>
 </div>
 </div>
 </div>
-</div>
-</div>
-<div class="section" id="creating-new-variables">
-<h2>Creating new variables<a class="headerlink" href="#creating-new-variables" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="creating-new-variables">
+<h2>Creating new variables<a class="headerlink" href="#creating-new-variables" title="Link to this heading">#</a></h2>
 <p>We can add a new variable to a data frame easily, by simply giving it a new name. Let’s say that we wanted to convert the weight value in NHANES (stored in the <code class="docutils literal notranslate"><span class="pre">WeightKg</span></code> variable) from kilograms to pounds.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">nhanes_data</span><span class="p">[</span><span class="s1">&#39;WeightLbs&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">nhanes_data</span><span class="p">[</span><span class="s1">&#39;WeightKg&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="mf">2.205</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nhanes_data</span><span class="p">[</span><span class="s1">&#39;WeightLbs&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">nhanes_data</span><span class="p">[</span><span class="s1">&#39;WeightKg&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="mf">2.205</span>
 </pre></div>
 </div>
 </div>
@@ -716,12 +818,12 @@ Name: 93707.0, dtype: object
 <p>This shows another way to refer to a particular variable in a dataframe: simply put its name in square brackets.  Pandas also has the ability to replace particular values in a variable.  First, let’s look at the values of the <code class="docutils literal notranslate"><span class="pre">Gender</span></code> variable in the data frame, to see what values it takes. We can see all of the unique values of a variable using the <code class="docutils literal notranslate"><span class="pre">.unique()</span></code> operator:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">nhanes_data</span><span class="p">[</span><span class="s1">&#39;Gender&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nhanes_data</span><span class="p">[</span><span class="s1">&#39;Gender&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>array([&#39;Female&#39;, &#39;Male&#39;], dtype=object)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([&#39;Female&#39;, &#39;Male&#39;], dtype=object)
 </pre></div>
 </div>
 </div>
@@ -729,47 +831,48 @@ Name: 93707.0, dtype: object
 <p>Now let’s say that we wanted to recode the <code class="docutils literal notranslate"><span class="pre">Gender</span></code> variable so that instead of “Female” and “Male” its values were “F” and “M”.  One way to do this would be to use the <code class="docutils literal notranslate"><span class="pre">.rename()</span></code> operator on the data frame:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">nhanes_data</span><span class="p">[</span><span class="s1">&#39;GenderMF&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">nhanes_data</span><span class="p">[</span><span class="s1">&#39;Gender&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">({</span><span class="s1">&#39;Female&#39;</span><span class="p">:</span> <span class="s1">&#39;F&#39;</span><span class="p">,</span> <span class="s1">&#39;Male&#39;</span><span class="p">:</span> <span class="s1">&#39;M&#39;</span><span class="p">})</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nhanes_data</span><span class="p">[</span><span class="s1">&#39;GenderMF&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">nhanes_data</span><span class="p">[</span><span class="s1">&#39;Gender&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">({</span><span class="s1">&#39;Female&#39;</span><span class="p">:</span> <span class="s1">&#39;F&#39;</span><span class="p">,</span> <span class="s1">&#39;Male&#39;</span><span class="p">:</span> <span class="s1">&#39;M&#39;</span><span class="p">})</span>
 <span class="n">nhanes_data</span><span class="p">[</span><span class="s1">&#39;GenderMF&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>array([&#39;F&#39;, &#39;M&#39;], dtype=object)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([&#39;F&#39;, &#39;M&#39;], dtype=object)
 </pre></div>
 </div>
 </div>
 </div>
-<div class="section" id="understanding-your-data">
-<h3>Understanding your data<a class="headerlink" href="#understanding-your-data" title="Permalink to this headline">¶</a></h3>
+<section id="understanding-your-data">
+<h3>Understanding your data<a class="headerlink" href="#understanding-your-data" title="Link to this heading">#</a></h3>
 <p>Let’s say that we want to learn more about the variable labeled <code class="docutils literal notranslate"><span class="pre">GeneralHealthCondition</span></code> in the dataset.  We can load some information about that variable using the <code class="docutils literal notranslate"><span class="pre">open_variable_page()</span></code> function from the <code class="docutils literal notranslate"><span class="pre">nhanes</span></code> package:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">nhanes.load</span> <span class="kn">import</span> <span class="n">open_variable_page</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">nhanes.load</span> <span class="kn">import</span> <span class="n">open_variable_page</span>
 <span class="n">open_variable_page</span><span class="p">(</span><span class="s1">&#39;GeneralHealthCondition&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <p>This shows us the question that was asked (“Would you say {your/SP’s} health in general is…”).</p>
-</div>
-</div>
-<div class="section" id="summarizing-data-using-a-frequency-distribution">
-<h2>Summarizing data using a frequency distribution<a class="headerlink" href="#summarizing-data-using-a-frequency-distribution" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="summarizing-data-using-a-frequency-distribution">
+<h2>Summarizing data using a frequency distribution<a class="headerlink" href="#summarizing-data-using-a-frequency-distribution" title="Link to this heading">#</a></h2>
 <p>Let’s say that we want to know the frequencies of all of the different answers to the GeneralHealthCondition question.  We can do this using the <code class="docutils literal notranslate"><span class="pre">.value_counts()</span></code> method of the data frame:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">nhanes_data</span><span class="p">[</span><span class="s1">&#39;GeneralHealthCondition&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nhanes_data</span><span class="p">[</span><span class="s1">&#39;GeneralHealthCondition&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>Good         2454
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>GeneralHealthCondition
+Good         2454
 Very good    1544
 Fair or      1175
 Excellent     619
 Poor?         172
-Name: GeneralHealthCondition, dtype: int64
+Name: count, dtype: int64
 </pre></div>
 </div>
 </div>
@@ -777,34 +880,35 @@ Name: GeneralHealthCondition, dtype: int64
 <p>It’s usually more helpful to present a <em>relative frequency distribution</em>, which shows proportions rather than counts.  We can obtain that by simply dividing the frequency distribution by the total number of cases, which we can obtain using the <code class="docutils literal notranslate"><span class="pre">.sum()</span></code> operator:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">GeneralHealthCondition_frequency_dist</span> <span class="o">=</span> <span class="n">nhanes_data</span><span class="p">[</span><span class="s1">&#39;GeneralHealthCondition&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">GeneralHealthCondition_frequency_dist</span> <span class="o">=</span> <span class="n">nhanes_data</span><span class="p">[</span><span class="s1">&#39;GeneralHealthCondition&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
 <span class="n">GeneralHealthCondition_frequency_dist</span> <span class="o">/</span> <span class="n">GeneralHealthCondition_frequency_dist</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>Good         0.411469
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>GeneralHealthCondition
+Good         0.411469
 Very good    0.258887
 Fair or      0.197015
 Excellent    0.103789
 Poor?        0.028840
-Name: GeneralHealthCondition, dtype: float64
+Name: count, dtype: float64
 </pre></div>
 </div>
 </div>
 </div>
-<div class="section" id="data-cleaning">
-<h3>Data Cleaning<a class="headerlink" href="#data-cleaning" title="Permalink to this headline">¶</a></h3>
+<section id="data-cleaning">
+<h3>Data Cleaning<a class="headerlink" href="#data-cleaning" title="Link to this heading">#</a></h3>
 <p>When we work with real data, they often have problems that we have to fix before we can analyze them properly.  An example is the <code class="docutils literal notranslate"><span class="pre">GeneralHealthCondition</span></code> variable that we worked with in the previous example. You may have noticed that the values of the variable had some extranous information, which were held over from the way that the question is worded (including “Fair or” and “Poor?”).  We can clean these up by replacing the problematic values using the <code class="docutils literal notranslate"><span class="pre">.replace()</span></code> method:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">nhanes_data</span><span class="p">[</span><span class="s1">&#39;GeneralHealthConditionFixed&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">nhanes_data</span><span class="p">[</span><span class="s1">&#39;GeneralHealthCondition&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">({</span><span class="s1">&#39;Fair or&#39;</span><span class="p">:</span> <span class="s1">&#39;Fair&#39;</span><span class="p">,</span> <span class="s1">&#39;Poor?&#39;</span><span class="p">:</span> <span class="s1">&#39;Poor&#39;</span><span class="p">})</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nhanes_data</span><span class="p">[</span><span class="s1">&#39;GeneralHealthConditionFixed&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">nhanes_data</span><span class="p">[</span><span class="s1">&#39;GeneralHealthCondition&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">({</span><span class="s1">&#39;Fair or&#39;</span><span class="p">:</span> <span class="s1">&#39;Fair&#39;</span><span class="p">,</span> <span class="s1">&#39;Poor?&#39;</span><span class="p">:</span> <span class="s1">&#39;Poor&#39;</span><span class="p">})</span>
 <span class="n">nhanes_data</span><span class="p">[</span><span class="s1">&#39;GeneralHealthConditionFixed&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>array([nan, &#39;Good&#39;, &#39;Very good&#39;, &#39;Fair&#39;, &#39;Excellent&#39;, &#39;Poor&#39;],
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([nan, &#39;Good&#39;, &#39;Very good&#39;, &#39;Fair&#39;, &#39;Excellent&#39;, &#39;Poor&#39;],
       dtype=object)
 </pre></div>
 </div>
@@ -813,29 +917,31 @@ Name: GeneralHealthCondition, dtype: float64
 <p>Now let’s look at a more complex example.  Let’s say that we want to know who is currently a smokker in the NHANES sample.  If we look more closely at the <a class="reference external" href="https://wwwn.cdc.gov/Nchs/Nhanes/2017-2018/SMQ_J.htm">details of the smoking questionnaire</a>, we will see that not all individuals got the same questions; for example, if a person said that they had not smoked more than 100 cigarettes in their life (recorded in the <code class="docutils literal notranslate"><span class="pre">SmokedAtLeast100CigarettesInLife</span></code> variable), then they were not asked the question about whether they currently smoked cigarettes (stored as <code class="docutils literal notranslate"><span class="pre">DoYouNowSmokeCigarettes</span></code>).  We can see this in the number of respondents to each question:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">nhanes_data</span><span class="p">[</span><span class="s1">&#39;SmokedAtLeast100CigarettesInLife&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">())</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">nhanes_data</span><span class="p">[</span><span class="s1">&#39;SmokedAtLeast100CigarettesInLife&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">())</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>0.0    3301
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>SmokedAtLeast100CigarettesInLife
+0.0    3301
 1.0    2232
-Name: SmokedAtLeast100CigarettesInLife, dtype: int64
+Name: count, dtype: int64
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">nhanes_data</span><span class="p">[</span><span class="s1">&#39;DoYouNowSmokeCigarettes&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nhanes_data</span><span class="p">[</span><span class="s1">&#39;DoYouNowSmokeCigarettes&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>Not at all    1260
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DoYouNowSmokeCigarettes
+Not at all    1260
 Every day      763
 Some days      209
-Name: DoYouNowSmokeCigarettes, dtype: int64
+Name: count, dtype: int64
 </pre></div>
 </div>
 </div>
@@ -843,7 +949,7 @@ Name: DoYouNowSmokeCigarettes, dtype: int64
 <p>Looking at these two variables, it’s plain to see that there are many more values included in the first question than in the second. Let’s look at bit more closely at the data to see what’s going on:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">nhanes_data</span><span class="p">[[</span><span class="s1">&#39;SmokedAtLeast100CigarettesInLife&#39;</span><span class="p">,</span> <span class="s1">&#39;DoYouNowSmokeCigarettes&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nhanes_data</span><span class="p">[[</span><span class="s1">&#39;SmokedAtLeast100CigarettesInLife&#39;</span><span class="p">,</span> <span class="s1">&#39;DoYouNowSmokeCigarettes&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -933,13 +1039,13 @@ Name: DoYouNowSmokeCigarettes, dtype: int64
 <p>Here we can see that anyone who said No to the question about having smoked at least 100 cigarettes in their life (which is coded as zero) has a missing value for the question about current smoking (since that question wasn’t asked to these individuals).  To clean up these data, we need to do two things. First, we need to remove the individuals who have NaN for both questions, then we need to recode the NaN’s for the second question for those people who said no on the first question.  To do this, let’s first create a new data frame that contains just the variables we are interested in:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">smoking_df</span> <span class="o">=</span> <span class="n">nhanes_data</span><span class="p">[[</span><span class="s1">&#39;SmokedAtLeast100CigarettesInLife&#39;</span><span class="p">,</span> <span class="s1">&#39;DoYouNowSmokeCigarettes&#39;</span><span class="p">]]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">smoking_df</span> <span class="o">=</span> <span class="n">nhanes_data</span><span class="p">[[</span><span class="s1">&#39;SmokedAtLeast100CigarettesInLife&#39;</span><span class="p">,</span> <span class="s1">&#39;DoYouNowSmokeCigarettes&#39;</span><span class="p">]]</span>
 <span class="n">smoking_df</span><span class="o">.</span><span class="n">shape</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>(8366, 2)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(8366, 2)
 </pre></div>
 </div>
 </div>
@@ -947,13 +1053,13 @@ Name: DoYouNowSmokeCigarettes, dtype: int64
 <p>First let’s remove any rows that have NaN in both columns. We can do this using the <code class="docutils literal notranslate"><span class="pre">.dropna()</span></code> method, which has an option that allows us to specify that we only drop rows that are all NaN (by setting <code class="docutils literal notranslate"><span class="pre">how='all'</span></code>):</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">smoking_df</span> <span class="o">=</span> <span class="n">smoking_df</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">how</span><span class="o">=</span><span class="s1">&#39;all&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">smoking_df</span> <span class="o">=</span> <span class="n">smoking_df</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">how</span><span class="o">=</span><span class="s1">&#39;all&#39;</span><span class="p">)</span>
 <span class="n">smoking_df</span><span class="o">.</span><span class="n">shape</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>(5533, 2)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(5533, 2)
 </pre></div>
 </div>
 </div>
@@ -961,7 +1067,7 @@ Name: DoYouNowSmokeCigarettes, dtype: int64
 <p>Next we need to recode the NaN values for the second question, for those individuals who said no to the first question.  We will replace them with the answer ‘Not at all’.  To do this, we can use the <code class="docutils literal notranslate"><span class="pre">.loc</span></code> operator with a test for the value of the first column:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">smoking_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">smoking_df</span><span class="p">[</span><span class="s1">&#39;SmokedAtLeast100CigarettesInLife&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;DoYouNowSmokeCigarettes&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Not at all&#39;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">smoking_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">smoking_df</span><span class="p">[</span><span class="s1">&#39;SmokedAtLeast100CigarettesInLife&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;DoYouNowSmokeCigarettes&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Not at all&#39;</span>
 <span class="n">smoking_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -1027,54 +1133,155 @@ Name: DoYouNowSmokeCigarettes, dtype: int64
 <p>This replaced the NaN values in the second question, but only for those individuals who said no to the first question.  Now we can summarize the frequency of smoking across the entire group:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">smoking_df</span><span class="p">[</span><span class="s1">&#39;DoYouNowSmokeCigarettes&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span> <span class="o">/</span> <span class="n">smoking_df</span><span class="p">[</span><span class="s1">&#39;DoYouNowSmokeCigarettes&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">smoking_df</span><span class="p">[</span><span class="s1">&#39;DoYouNowSmokeCigarettes&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span> <span class="o">/</span> <span class="n">smoking_df</span><span class="p">[</span><span class="s1">&#39;DoYouNowSmokeCigarettes&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>Not at all    0.824327
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DoYouNowSmokeCigarettes
+Not at all    0.824327
 Every day     0.137900
 Some days     0.037773
-Name: DoYouNowSmokeCigarettes, dtype: float64
+Name: count, dtype: float64
 </pre></div>
 </div>
 </div>
 </div>
 <p>In the next chapter you will learn how to visualize data like these using statistical graphs.</p>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
 
-              </div>
+                </article>
               
-        </div>
-    </div>
-    
-    
-    <div class='prev-next-bottom'>
-        
-    <a class='left-prev' id="prev-link" href="01-IntroductionToPython.html" title="previous page">Introduction to Python</a>
-    <a class='right-next' id="next-link" href="03-DataVisualization.html" title="next page">Data Visualization</a>
 
-    </div>
-    <footer class="footer mt-5 mt-md-0">
-    <div class="container">
-      <p>
-        
-          By Russell A. Poldrack<br/>
-        
-            &copy; Copyright 2020.<br/>
-      </p>
-    </div>
-  </footer>
-</main>
-
-
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="01-IntroductionToPython.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Introduction to Python</p>
       </div>
-    </div>
+    </a>
+    <a class="right-next"
+       href="03-DataVisualization.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Data Visualization</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
-    <script src="_static/js/index.js"></script>
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-data-frames">Working with data frames</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#selecting-rows-observations-and-columns-variables">Selecting rows (observations) and columns (variables)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#missing-values">Missing values</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#selecting-rows-by-value">Selecting rows by value</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-new-variables">Creating new variables</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#understanding-your-data">Understanding your data</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summarizing-data-using-a-frequency-distribution">Summarizing data using a frequency distribution</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-cleaning">Data Cleaning</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
     
+<p class="component-author">
+By Russell A. Poldrack
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>

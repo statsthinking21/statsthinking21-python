@@ -1,245 +1,355 @@
 
-
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+
+<html lang="en" data-content_root="./" >
+
   <head>
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
     <title>Data Visualization &#8212; Python Companion to Statistical Thinking in the 21st Century</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
-    <link href="_static/css/index.css" rel="stylesheet">
-    <link rel="stylesheet" href="_static/sphinx-book-theme.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
-    <link rel="stylesheet" type="text/css" href="_static/jupyter-sphinx.css" />
-    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-    <script src="_static/sphinx-book-theme.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/language_data.js"></script>
-    <script src="_static/togglebutton.js"></script>
-    <script src="_static/clipboard.min.js"></script>
-    <script src="_static/copybutton.js"></script>
-    <script src="_static/mystnb.js"></script>
-    <script src="_static/sphinx-book-theme.js"></script>
-    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '03-DataVisualization';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Fitting simple models" href="04-FittingSimpleModels.html" />
     <link rel="prev" title="Summarizing Data" href="02-SummarizingData.html" />
-
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="docsearch:language" content="en">
-
-
-
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
-    
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
-    <div class="container-xl">
-      <div class="row">
-          
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
     
-        <div class="navbar-brand-box">
-<a class="navbar-brand text-wrap" href="index.html">
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="index.html">
   
   
-  <h1 class="site-logo" id="site-title">Python Companion to Statistical Thinking in the 21st Century</h1>
   
+  
+  
+  
+    <p class="title logo__title">Python Companion to Statistical Thinking in the 21st Century</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="01-IntroductionToPython.html">Introduction to Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02-SummarizingData.html">Summarizing Data</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Data Visualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04-FittingSimpleModels.html">Fitting simple models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="05-Probability.html">Probability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="06-Sampling.html">Sampling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="07-ResamplingAndSimulation.html">Resampling and simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="08-HypothesisTesting.html">Hypothesis testing in Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="09-StatisticalPower.html">Statistical Power Analysis in Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="10-BayesianStatistics.html">Bayesian Statistics in Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="11-ModelingCategoricalRelationships.html">Modeling categorical relationships in Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="13-GeneralLinearModel.html">The General Linear Model</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/03-DataVisualization.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
 </a>
-</div>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
 
-<form class="bd-search d-flex align-items-center" action="search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form>
-
-<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
-  <ul class="current nav sidenav_l1">
- <li class="toctree-l1">
-  <a class="reference internal" href="01-IntroductionToPython.html">
-   Introduction to Python
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="02-SummarizingData.html">
-   Summarizing Data
-  </a>
- </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   Data Visualization
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="04-FittingSimpleModels.html">
-   Fitting simple models
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="05-Probability.html">
-   Probability
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="06-Sampling.html">
-   Sampling
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="07-ResamplingAndSimulation.html">
-   Resampling and simulation
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="08-HypothesisTesting.html">
-   Hypothesis testing in Python
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="09-StatisticalPower.html">
-   Statistical Power Analysis in Python
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="10-BayesianStatistics.html">
-   Bayesian Statistics in Python
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="11-ModelingCategoricalRelationships.html">
-   Modeling categorical relationships in Python
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="13-GeneralLinearModel.html">
-   The General Linear Model
-  </a>
- </li>
-</ul>
-
-</nav>
-
- <!-- To handle the deprecated key -->
-
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
 </div>
 
 
-          
 
 
-          
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
-    
-    <div class="row topbar fixed-top container-xl">
-    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
     </div>
-    <div class="col pl-2 topbar-main">
-        
-        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-            <i class="fas fa-bars"></i>
-            <i class="fas fa-arrow-left"></i>
-            <i class="fas fa-arrow-up"></i>
-        </button>
-        
-        <div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
-
-    
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
-        
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="_sources/03-DataVisualization.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.ipynb</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
-    </div>
-    
+  
 </div>
-        <!-- Source interaction buttons -->
+</div>
+              
+              
 
-
-        <!-- Full screen (wrap in <a> to have style consistency -->
-        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-                data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i
-                    class="fas fa-expand"></i></button></a>
-
-        <!-- Launch buttons -->
-
-    </div>
-
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Data Visualization</h1>
     <!-- Table of contents -->
-    <div class="d-none d-md-block col-md-2 bd-toc show">
-        <div class="tocsection onthispage pt-5 pb-3">
-            <i class="fas fa-list"></i> On this page
-        </div>
-        <nav id="bd-toc-nav">
-            <ul class="nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#let-s-think-through-a-visualization">
-   Let’s think through a visualization
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#plotting-the-distribution-of-a-single-variable">
-   Plotting the distribution of a single variable
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#bar-vs-line-plots">
-     Bar vs. line plots
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#plots-with-two-variables">
-   Plots with two variables
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#plotting-dispersion">
-   Plotting dispersion
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#scatter-plot">
-     Scatter plot
-    </a>
-   </li>
-  </ul>
- </li>
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#let-s-think-through-a-visualization">Let’s think through a visualization</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-the-distribution-of-a-single-variable">Plotting the distribution of a single variable</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bar-vs-line-plots">Bar vs. line plots</a></li>
 </ul>
-
-        </nav>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plots-with-two-variables">Plots with two variables</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-dispersion">Plotting dispersion</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scatter-plot">Scatter plot</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
     </div>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
-              <div>
+
+              
                 
-  <div class="section" id="data-visualization">
-<h1>Data Visualization<a class="headerlink" href="#data-visualization" title="Permalink to this headline">¶</a></h1>
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="data-visualization">
+<h1>Data Visualization<a class="headerlink" href="#data-visualization" title="Link to this heading">#</a></h1>
 <p>There are two main packages that we will use for visualization in Python: <a class="reference external" href="https://matplotlib.org/">matplotlib</a> and <a class="reference external" href="https://seaborn.pydata.org/">seaborn</a>, which is based on matplotlib.  First, let’s import these.  It is customary to import the pyplot module from matplotlib, since it contains most of the important plotting functions:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -247,8 +357,8 @@
 </div>
 </div>
 </div>
-<div class="section" id="let-s-think-through-a-visualization">
-<h2>Let’s think through a visualization<a class="headerlink" href="#let-s-think-through-a-visualization" title="Permalink to this headline">¶</a></h2>
+<section id="let-s-think-through-a-visualization">
+<h2>Let’s think through a visualization<a class="headerlink" href="#let-s-think-through-a-visualization" title="Link to this heading">#</a></h2>
 <p>Principles we want to keep in mind:</p>
 <ul class="simple">
 <li><p>Show the data without distortion</p></li>
@@ -261,13 +371,13 @@
 <li><p>What comparison do I want to make salient for the viewer (possibly myself)?</p></li>
 </ul>
 <p>Figuring out <em>how</em> to highlight a comparison and include relevant variables usually benefits from sketching the plot out first.</p>
-</div>
-<div class="section" id="plotting-the-distribution-of-a-single-variable">
-<h2>Plotting the distribution of a single variable<a class="headerlink" href="#plotting-the-distribution-of-a-single-variable" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="plotting-the-distribution-of-a-single-variable">
+<h2>Plotting the distribution of a single variable<a class="headerlink" href="#plotting-the-distribution-of-a-single-variable" title="Link to this heading">#</a></h2>
 <p>One of the most common uses of plotting is to plot the <em>distribution</em> of the data — which you can think of as the <em>shape</em> of the data.  There are various ways to do this, but one of the most common is known as a <em>histogram</em>, which plots the number of observations that fall into specific bins. We can plot a histogram using the <code class="docutils literal notranslate"><span class="pre">plt.hist()</span></code> function from matplotlib.  As an example, let’s look at the distribution of ages in the NHANES dataset.  First we need to load the data:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">nhanes.load</span> <span class="kn">import</span> <span class="n">load_NHANES_data</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">nhanes.load</span> <span class="kn">import</span> <span class="n">load_NHANES_data</span>
 <span class="n">nhanes_data</span> <span class="o">=</span> <span class="n">load_NHANES_data</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -276,78 +386,91 @@
 <p>Then we can plot the histogram:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">age_histogram</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">nhanes_data</span><span class="p">[</span><span class="s1">&#39;AgeInYearsAtScreening&#39;</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">age_histogram</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">nhanes_data</span><span class="p">[</span><span class="s1">&#39;AgeInYearsAtScreening&#39;</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/03-DataVisualization_7_0.png" src="_images/03-DataVisualization_7_0.png" />
+<img alt="_images/009548cab95ffa8a7e6e72674a984879b409cf5b162b4f47c3c9743f353493b2.png" src="_images/009548cab95ffa8a7e6e72674a984879b409cf5b162b4f47c3c9743f353493b2.png" />
 </div>
 </div>
 <p>You can see from this plot that the <code class="docutils literal notranslate"><span class="pre">plt.hist()</span></code> function has binned together individuals across several years; That’s because we let it automatically determine the size of the bins. Let’s say that instead we want to bin each year separately.  We can do this using the <code class="docutils literal notranslate"><span class="pre">bins</span></code> argument to <code class="docutils literal notranslate"><span class="pre">plt.hist</span></code>. Because this argument takes a list of bins, we need to create a list that spans from the youngest to the oldest age.  We can do this using the <code class="docutils literal notranslate"><span class="pre">np.arange()</span></code> function from numpy, which generates a list of numbers that span a particular range. In this case, we need to span from the youngest to the oldest value, which are equivalent to the minimum and maximum values which we can obtain using the <code class="docutils literal notranslate"><span class="pre">.min()</span></code> and <code class="docutils literal notranslate"><span class="pre">.max()</span></code> operators; because Python starts at zero, we need to add one to the maximum in order to get the bins to cover the entire range:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bins</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">nhanes_data</span><span class="p">[</span><span class="s1">&#39;AgeInYearsAtScreening&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">nhanes_data</span><span class="p">[</span><span class="s1">&#39;AgeInYearsAtScreening&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bins</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">nhanes_data</span><span class="p">[</span><span class="s1">&#39;AgeInYearsAtScreening&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">nhanes_data</span><span class="p">[</span><span class="s1">&#39;AgeInYearsAtScreening&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
 <span class="n">age_histogram_1year_bins</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">nhanes_data</span><span class="p">[</span><span class="s1">&#39;AgeInYearsAtScreening&#39;</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="n">bins</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/03-DataVisualization_9_0.png" src="_images/03-DataVisualization_9_0.png" />
+<img alt="_images/d5a215e21518ff12eeed427ee06627e2ce32b3c90fcbb06fcb0b625a4f27830c.png" src="_images/d5a215e21518ff12eeed427ee06627e2ce32b3c90fcbb06fcb0b625a4f27830c.png" />
 </div>
 </div>
 <p>Sometimes it’s more useful to look at the density rather than the counts, which we can do by setting <code class="docutils literal notranslate"><span class="pre">density=True</span></code> in our call to the histogram function:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">age_density_1year_bins</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">nhanes_data</span><span class="p">[</span><span class="s1">&#39;AgeInYearsAtScreening&#39;</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="n">bins</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">age_density_1year_bins</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">nhanes_data</span><span class="p">[</span><span class="s1">&#39;AgeInYearsAtScreening&#39;</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="n">bins</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/03-DataVisualization_11_0.png" src="_images/03-DataVisualization_11_0.png" />
+<img alt="_images/89322a4dd57c9d3d1a7bad9acee2f404fb77c1300ad0573d470f2a3e1e211813.png" src="_images/89322a4dd57c9d3d1a7bad9acee2f404fb77c1300ad0573d470f2a3e1e211813.png" />
 </div>
 </div>
 <p>Now we see the proportion of individuals that fall into each age bin.  Why do you think there are so many eighty-year-olds in the dataset?  Have a look at the <a class="reference external" href="https://wwwn.cdc.gov/Nchs/Nhanes/2017-2018/DEMO_J.htm#RIDAGEYR">documentation for the Age question</a> and see if you can figure it out.</p>
-<div class="section" id="bar-vs-line-plots">
-<h3>Bar vs. line plots<a class="headerlink" href="#bar-vs-line-plots" title="Permalink to this headline">¶</a></h3>
+<section id="bar-vs-line-plots">
+<h3>Bar vs. line plots<a class="headerlink" href="#bar-vs-line-plots" title="Link to this heading">#</a></h3>
 <p>The histograms above are an example of <em>bar plots</em> where each number is represented by a bar. We could also plot the distribution using a line instead.  One reason to do this is that we can make the line a bit <em>smoother</em> than the actual data.  For example, here are the histogram data from above, plotted as a line:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">age_density_1year_bins</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">:],</span> <span class="n">age_density_1year_bins</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">age_density_1year_bins</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">:],</span> <span class="n">age_density_1year_bins</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fd04ebd0340&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fecc7e126f0&gt;]
 </pre></div>
 </div>
-<img alt="_images/03-DataVisualization_14_1.png" src="_images/03-DataVisualization_14_1.png" />
+<img alt="_images/90f4869aee8f2f3f01101280efc2010e41175b9237e9445902fd100dd33f0ccb.png" src="_images/90f4869aee8f2f3f01101280efc2010e41175b9237e9445902fd100dd33f0ccb.png" />
 </div>
 </div>
 <p>Here we have taken advantage of the fact that the output of our histogram command above contains both the bins (in its [1] position) and the histogram values (in its [0]) position.  Why do we include <code class="docutils literal notranslate"><span class="pre">[1:]</span></code> after the bins variable?  This is because the bins include both the upper and lower edges of the bin, which means that there is one more bin value than there are average values.  Adding <code class="docutils literal notranslate"><span class="pre">[1:]</span></code> is equivalent to saying “start with the second bin” which is equivalent to using the top edges of each bin for our X axis.</p>
 <p>Now let’s plot a smoothed version of the histogram, using the <code class="docutils literal notranslate"><span class="pre">sns.distplot()</span></code> function from the seaborn library.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">distplot</span><span class="p">(</span><span class="n">nhanes_data</span><span class="p">[</span><span class="s1">&#39;AgeInYearsAtScreening&#39;</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="n">bins</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">distplot</span><span class="p">(</span><span class="n">nhanes_data</span><span class="p">[</span><span class="s1">&#39;AgeInYearsAtScreening&#39;</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="n">bins</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fd04eb7d160&gt;
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_161/3685571357.py:1: UserWarning: 
+
+`distplot` is a deprecated function and will be removed in seaborn v0.14.0.
+
+Please adapt your code to use either `displot` (a figure-level function with
+similar flexibility) or `histplot` (an axes-level function for histograms).
+
+For a guide to updating your code to use the new functions, please see
+https://gist.github.com/mwaskom/de44147ed2974457ad6372750bbe5751
+
+  sns.distplot(nhanes_data[&#39;AgeInYearsAtScreening&#39;], bins=bins)
 </pre></div>
 </div>
-<img alt="_images/03-DataVisualization_16_1.png" src="_images/03-DataVisualization_16_1.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel=&#39;AgeInYearsAtScreening&#39;, ylabel=&#39;Density&#39;&gt;
+</pre></div>
+</div>
+<img alt="_images/4829581befa89ac7cab1c71a89b2313d7f79284539d1170582309e29119fe8c8.png" src="_images/4829581befa89ac7cab1c71a89b2313d7f79284539d1170582309e29119fe8c8.png" />
 </div>
 </div>
 <p>You can see that the line is now much smoother (less bumpy) than the one above.  It generally follows the overall shape of the data pretty closely, but you can also see that it mostly hides the large bump at 80 years.  It’s always important to keep in mind that anything we do to the data has the potential to distort their message.</p>
-</div>
-</div>
-<div class="section" id="plots-with-two-variables">
-<h2>Plots with two variables<a class="headerlink" href="#plots-with-two-variables" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="plots-with-two-variables">
+<h2>Plots with two variables<a class="headerlink" href="#plots-with-two-variables" title="Link to this heading">#</a></h2>
 <p>Another common use of visualization is to examine the relationship betwen two variables.  For example, let’s say that we wanted to plot average height as a function of age in the NHANES dataset.  We would first summarize the data to obtain the average height for each age:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mean_height_by_age</span> <span class="o">=</span> <span class="n">nhanes_data</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;AgeInYearsAtScreening&#39;</span><span class="p">)[</span><span class="s1">&#39;StandingHeightCm&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mean_height_by_age</span> <span class="o">=</span> <span class="n">nhanes_data</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;AgeInYearsAtScreening&#39;</span><span class="p">)[</span><span class="s1">&#39;StandingHeightCm&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -355,75 +478,74 @@
 <p>Here we use a method called <code class="docutils literal notranslate"><span class="pre">.groupby()</span></code> along with a builtin in method for computing the average of a variable in a dataframe (<code class="docutils literal notranslate"><span class="pre">.mean()</span></code>).  This returns a single average height value for all of the individuals in each age group, which we can then plot.  While we are at it, we will add descriptive labels to the X and Y axes, which is always a good idea:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">mean_height_by_age</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">mean_height_by_age</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">mean_height_by_age</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">mean_height_by_age</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Age at screening&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Standing Height (cm)&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;Standing Height (cm)&#39;)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;Standing Height (cm)&#39;)
 </pre></div>
 </div>
-<img alt="_images/03-DataVisualization_21_1.png" src="_images/03-DataVisualization_21_1.png" />
+<img alt="_images/d1b614e98b251651e28b7b58745b9070c6af64b0c6678added1aeee7a437fe4f.png" src="_images/d1b614e98b251651e28b7b58745b9070c6af64b0c6678added1aeee7a437fe4f.png" />
 </div>
 </div>
 <p>As expected, people get taller up to about age 18, and then then slowly shrink over time.  Since we know that men and women differ in their height, we can also plot their average heights separately. We could do this using the matplot plotting function, but it’s actually easier to do using the <code class="docutils literal notranslate"><span class="pre">sns.lineplot()</span></code> function from the seaborn library that we imported above.  We simply give it the X and Y variables that we want to plot as well as the variable that we want to separate (using different colors), and it does the work for us:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">lineplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;AgeInYearsAtScreening&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;StandingHeightCm&#39;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;Gender&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">nhanes_data</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">lineplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;AgeInYearsAtScreening&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;StandingHeightCm&#39;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;Gender&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">nhanes_data</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fd04ea14a90&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel=&#39;AgeInYearsAtScreening&#39;, ylabel=&#39;StandingHeightCm&#39;&gt;
 </pre></div>
 </div>
-<img alt="_images/03-DataVisualization_23_1.png" src="_images/03-DataVisualization_23_1.png" />
+<img alt="_images/586a376aae2c4d957d2ce6788fd742e871b7b5cf5ca1c744e3dc3f4e399d3f6d.png" src="_images/586a376aae2c4d957d2ce6788fd742e871b7b5cf5ca1c744e3dc3f4e399d3f6d.png" />
 </div>
 </div>
 <p>You will notice that the lines have shaded areas around them; these are called <em>confidence intervals</em>, and you will learn about them later in the course.  They basically tell us something about the uncertainty around our estimates of the average.</p>
-</div>
-<div class="section" id="plotting-dispersion">
-<h2>Plotting dispersion<a class="headerlink" href="#plotting-dispersion" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="plotting-dispersion">
+<h2>Plotting dispersion<a class="headerlink" href="#plotting-dispersion" title="Link to this heading">#</a></h2>
 <p>An important job of statistical visualization is to show us the variability, or <em>dispersion</em>, of our data.  We have already see how to do this using histograms; now let’s look at how we can compare distributions.</p>
 <p>Let’s start with a simple example: Comparing the height of adult men and women in the NHANES sample.  One commonly used plot is the <em>box plot</em> (sometimes known as a <em>box and whiskers plot</em>).  This form of plot uses quartiles to give us a sense of spread. The thickest line, somewhere inside the box, represents the <em>median</em>. The upper and lower bounds of the box (the <em>hinges</em>) are the first and third quartiles (can you use them to approximate the interquartile range?). The lines extending from the hinges are the remaining data points, excluding <strong>outliers</strong>, which are plotted as individual points.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">adult_nhanes_data</span> <span class="o">=</span> <span class="n">nhanes_data</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;AgeInYearsAtScreening &gt; 17&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">adult_nhanes_data</span> <span class="o">=</span> <span class="n">nhanes_data</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;AgeInYearsAtScreening &gt; 17&#39;</span><span class="p">)</span>
 <span class="n">sns</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;Gender&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;StandingHeightCm&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">adult_nhanes_data</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fd04e8c2190&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel=&#39;Gender&#39;, ylabel=&#39;StandingHeightCm&#39;&gt;
 </pre></div>
 </div>
-<img alt="_images/03-DataVisualization_26_1.png" src="_images/03-DataVisualization_26_1.png" />
+<img alt="_images/faad66bcbd88fbcc81b22682b835a464d181c2a1a7b93b22313d310304cc6fe6.png" src="_images/faad66bcbd88fbcc81b22682b835a464d181c2a1a7b93b22313d310304cc6fe6.png" />
 </div>
 </div>
 <p>This tells us that the median male is taller than 75% of all of the females in the sample.</p>
 <p>Another type of plot that is commonly used is the <em>violin plot</em>, which shows the shape of the entire distribution:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
-<span class="n">sns</span><span class="o">.</span><span class="n">violinplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;Gender&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;StandingHeightCm&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">adult_nhanes_data</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">violinplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;Gender&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;StandingHeightCm&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">adult_nhanes_data</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fd047fd25e0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel=&#39;Gender&#39;, ylabel=&#39;StandingHeightCm&#39;&gt;
 </pre></div>
 </div>
-<img alt="_images/03-DataVisualization_28_1.png" src="_images/03-DataVisualization_28_1.png" />
+<img alt="_images/54dc2a5ae8fba2c89395490b69cf96c3aefab9abd7ce9143bab168a427fcbaad.png" src="_images/54dc2a5ae8fba2c89395490b69cf96c3aefab9abd7ce9143bab168a427fcbaad.png" />
 </div>
 </div>
-<div class="section" id="scatter-plot">
-<h3>Scatter plot<a class="headerlink" href="#scatter-plot" title="Permalink to this headline">¶</a></h3>
+<section id="scatter-plot">
+<h3>Scatter plot<a class="headerlink" href="#scatter-plot" title="Link to this heading">#</a></h3>
 <p>When we have multiple <em>continuous</em> variables, we can use points to plot each variable on an axis. This is known as a <strong>scatter plot</strong>. As an example, let’s look at the blood pressure readings taken in the NHANES study.  Each individual has their blood pressure taken three times. Here we will plot the first reading against the second reading, using a scatter plot. We will also add a line showing where the x axis is equal to the y axis, which makes it easier to see how the two variables are related to each other.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;SystolicBloodPres1StRdgMmHg&#39;</span><span class="p">,</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;SystolicBloodPres1StRdgMmHg&#39;</span><span class="p">,</span>
                 <span class="n">y</span><span class="o">=</span><span class="s1">&#39;SystolicBloodPres2NdRdgMmHg&#39;</span><span class="p">,</span>
                 <span class="n">data</span><span class="o">=</span><span class="n">adult_nhanes_data</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">adult_nhanes_data</span><span class="p">[</span><span class="s1">&#39;SystolicBloodPres1StRdgMmHg&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span>
@@ -437,18 +559,17 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;Systolic BP - Second reading&#39;)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;Systolic BP - Second reading&#39;)
 </pre></div>
 </div>
-<img alt="_images/03-DataVisualization_30_1.png" src="_images/03-DataVisualization_30_1.png" />
+<img alt="_images/28af6734dd1ae9f11e4a0102ba2d6ba12853ae81a263fba68d883ce266dd3206.png" src="_images/28af6734dd1ae9f11e4a0102ba2d6ba12853ae81a263fba68d883ce266dd3206.png" />
 </div>
 </div>
 <p>Here we can see that the two variables are closely related to one another.  We can also see that most of the blue points fall below the black line, which tells us that the second reading is generally somewhat lower than the first reading.</p>
 <p>In this section we will recreate a version of <a class="reference external" href="https://statsthinking21.github.io/statsthinking21-core-site/data-visualization.html#anatomy-of-a-plot">Figure 4.2</a> from Statistical Thinking in the 21st Century.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
-<span class="n">oring_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;https://raw.githubusercontent.com/statsthinking21/statsthinking21-python/master/notebooks/data/orings.csv&#39;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">oring_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;https://raw.githubusercontent.com/statsthinking21/statsthinking21-python/master/notebooks/data/orings.csv&#39;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 
 <span class="n">ax</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">lineplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;Temperature&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;DamageIndex&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">oring_data</span><span class="p">,</span> <span class="n">ci</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Temperature at time of launch&#39;</span><span class="p">)</span>
@@ -461,43 +582,146 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/03-DataVisualization_33_0.png" src="_images/03-DataVisualization_33_0.png" />
-</div>
-</div>
-</div>
-</div>
-</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_161/488923491.py:3: FutureWarning: 
 
+The `ci` parameter is deprecated. Use `errorbar=None` for the same effect.
 
-              </div>
+  ax = sns.lineplot(x=&#39;Temperature&#39;, y=&#39;DamageIndex&#39;, data=oring_data, ci=None)
+</pre></div>
+</div>
+<img alt="_images/4bbd8449718db0a3ae3bf9eef978713e8c7156b4e5bbe581682d7c11855e6a3d.png" src="_images/4bbd8449718db0a3ae3bf9eef978713e8c7156b4e5bbe581682d7c11855e6a3d.png" />
+</div>
+</div>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
               
-        </div>
-    </div>
-    
-    
-    <div class='prev-next-bottom'>
-        
-    <a class='left-prev' id="prev-link" href="02-SummarizingData.html" title="previous page">Summarizing Data</a>
-    <a class='right-next' id="next-link" href="04-FittingSimpleModels.html" title="next page">Fitting simple models</a>
 
-    </div>
-    <footer class="footer mt-5 mt-md-0">
-    <div class="container">
-      <p>
-        
-          By Russell A. Poldrack<br/>
-        
-            &copy; Copyright 2020.<br/>
-      </p>
-    </div>
-  </footer>
-</main>
-
-
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="02-SummarizingData.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Summarizing Data</p>
       </div>
-    </div>
+    </a>
+    <a class="right-next"
+       href="04-FittingSimpleModels.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Fitting simple models</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
-    <script src="_static/js/index.js"></script>
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#let-s-think-through-a-visualization">Let’s think through a visualization</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-the-distribution-of-a-single-variable">Plotting the distribution of a single variable</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bar-vs-line-plots">Bar vs. line plots</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plots-with-two-variables">Plots with two variables</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-dispersion">Plotting dispersion</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scatter-plot">Scatter plot</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
     
+<p class="component-author">
+By Russell A. Poldrack
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>
