@@ -6,7 +6,7 @@
 #       extension: .py
 #       format_name: percent
 #       format_version: '1.3'
-#       jupytext_version: 1.4.2
+#       jupytext_version: 1.15.2
 #   kernelspec:
 #     display_name: Python 3
 #     language: python
@@ -50,7 +50,7 @@ for run in range(num_runs):
 # %%
 import scipy.stats
 
-pvalue = 100 - scipy.stats.percentileofscore(flip_results_df, 0.7) 
+pvalue = 100 - scipy.stats.percentileofscore(flip_results_df, 70) 
 pvalue
 
 # %% [markdown]
@@ -99,7 +99,8 @@ sim_results_df = pd.DataFrame({'p_value': np.zeros(num_runs)})
 for run in range(num_runs):
     sim_results_df.loc[run, 'p_value'] = sample_ttest()
 
-p_error = sim_results_df.loc[sim_results_df['p_value'] < 0.05].mean(axis=0)
+p_error = sim_results_df['p_value'] < 0.05
+p_error = p_error.mean(axis=0)
 p_error
 
 # %% [markdown]

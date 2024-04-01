@@ -6,7 +6,7 @@
 #       extension: .py
 #       format_name: percent
 #       format_version: '1.3'
-#       jupytext_version: 1.4.2
+#       jupytext_version: 1.15.2
 #   kernelspec:
 #     display_name: Python 3
 #     language: python
@@ -83,7 +83,7 @@ for i in range(num_runs):
 
 
 # %% [markdown]
-# Now let's find the 99th percentile of the maximum distriibution.  There is a built-in function in the `scipy.stats` module, called `scoreatpercentile` that will do this for us:
+# Now let's find the 95th percentile of the maximum distriibution.  There is a built-in function in the `scipy.stats` module, called `scoreatpercentile` that will do this for us:
 #
 
 

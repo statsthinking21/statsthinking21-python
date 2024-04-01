@@ -6,7 +6,7 @@
 #       extension: .py
 #       format_name: percent
 #       format_version: '1.3'
-#       jupytext_version: 1.4.2
+#       jupytext_version: 1.15.2
 #   kernelspec:
 #     display_name: Python 3
 #     language: python
@@ -152,8 +152,8 @@ sns.scatterplot(x='SystolicBloodPres1StRdgMmHg',
                 data=adult_nhanes_data)
 plt.plot([adult_nhanes_data['SystolicBloodPres1StRdgMmHg'].min(),
           adult_nhanes_data['SystolicBloodPres1StRdgMmHg'].max()],
-          [adult_nhanes_data['SystolicBloodPres2NdRdgMmHg'].min(),
-          adult_nhanes_data['SystolicBloodPres2NdRdgMmHg'].max()],
+          [adult_nhanes_data['SystolicBloodPres1StRdgMmHg'].min(),
+          adult_nhanes_data['SystolicBloodPres1StRdgMmHg'].max()],
           color='k')
 plt.xlabel('Systolic BP - First reading')
 plt.ylabel('Systolic BP - Second reading')

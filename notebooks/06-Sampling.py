@@ -6,7 +6,7 @@
 #       extension: .py
 #       format_name: percent
 #       format_version: '1.3'
-#       jupytext_version: 1.4.2
+#       jupytext_version: 1.15.2
 #   kernelspec:
 #     display_name: Python 3
 #     language: python
@@ -62,7 +62,7 @@ hist = plt.hist(sampling_results['mean'], 100, density=True)
 # we need to use the maximum of those data to set
 # the height of the vertical line that shows the mean
 plt.axvline(x=adult_nhanes_data['Height'].mean(),
-            ymax=np.max(hist[0]), color='k')
+            ymax=1, color='k')
 
 # draw the normal distribution with same mean and standard deviation
 # as the sampling distribution

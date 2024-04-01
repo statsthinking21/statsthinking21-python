@@ -6,7 +6,7 @@
 #       extension: .py
 #       format_name: percent
 #       format_version: '1.3'
-#       jupytext_version: 1.4.2
+#       jupytext_version: 1.15.2
 #   kernelspec:
 #     display_name: Python 3
 #     language: python
@@ -14,7 +14,7 @@
 # ---
 
 # %% [markdown]
-# # The General Linear Model in R
+# # The General Linear Model
 # In this chapter we will explore how to fit general linear models in Python.  We will focus on the tools provided by the `statsmodels` package.
 
 # %%
@@ -95,7 +95,7 @@ ols_result.resid.std()
 import seaborn as sns
 import scipy.stats
 
-scipy.stats.probplot(ols_result.resid, plot=sns.mpl.pyplot)
+_ = scipy.stats.probplot(ols_result.resid, plot=sns.mpl.pyplot)
 
 # %% [markdown]
 # This looks pretty good, in the sense that the residual data points fall very close to the unit line.  This is not surprising, since we generated the data with normally distributed noise.  We should also plot the predicted (or *fitted*) values against the residuals, to make sure that the model does work systematically better for some predicted values versus others.

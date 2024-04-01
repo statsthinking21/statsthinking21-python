@@ -23,7 +23,7 @@ I apologize up front that the datasets are heavily US-centric.  This is primaril
 
 This book is meant to be a living document, which is why its source is available online at [https://github.com/statsthinking21/statsthinking21-python](https://github.com/statsthinking21/statsthinking21-python).  If you find any errors in the book or want to make a suggestion for how to improve it, please open an issue on the Github site. Even better, submit a pull request with your suggested change.  
 
-The book is licensed according to the [Creative Commons Attribution 2.0 Generic (CC BY 2.0) License](https://creativecommons.org/licenses/by/2.0/).  Please see the terms of that license for more details. 
+This book is licensed using the [Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)  License](https://creativecommons.org/licenses/by-nc/4.0/).  Please see the terms of that license for more details. 
 
 ## Acknowledgements
 
