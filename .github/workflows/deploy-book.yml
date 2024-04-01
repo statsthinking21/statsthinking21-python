@@ -10,20 +10,10 @@ on:
 jobs:
   deploy-book:
     runs-on: ubuntu-latest
-    container: poldrack/jupyter-python-r
+    container: poldrack/statsthinking21
 
     steps:
     - uses: actions/checkout@v2
-
-    # Install dependencies
-    - name: Set up Python 3.8
-      uses: actions/setup-python@v1
-      with:
-        python-version: 3.8
-
-    - name: Install dependencies
-      run: |
-        pip install -r requirements.txt
 
     # Build the book
     - name: Build the book
