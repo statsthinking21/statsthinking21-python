@@ -357,6 +357,27 @@ document.write(`
 In particular, we will use a dataset known as <a class="reference external" href="https://www.cdc.gov/nchs/nhanes/index.htm">NHANES</a> for several of our examples, so let’s load the library that provides us access to the data.
 This is a large dataset collected from a sample of individuals in the United States every two years, which measures many different aspects of their health and lifestyles.
 To access the data, we will use a Python package called <a class="reference external" href="https://github.com/poldrack/nhanes">nhanes</a> that contains a function to load a cleaned-up version of the dataset.</p>
+<p>First, we need to install the package. The escalation mark <code class="docutils literal notranslate"><span class="pre">!</span></code> means that we are running this command in the computer system, instead of within the python environment.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span><span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>nhanes
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Yellow">WARNING: The directory &#39;/github/home/.cache/pip&#39; or its parent directory is not owned or is not writable by the current user. The cache has been disabled. Check the permissions and owner of that directory. If executing pip with sudo, you should use sudo&#39;s -H flag.</span>
+
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: nhanes in /miniconda/lib/python3.12/site-packages (0.5.1)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Yellow">WARNING: Running pip as the &#39;root&#39; user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv</span>
+
+</pre></div>
+</div>
+</div>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">nhanes.load</span> <span class="kn">import</span> <span class="n">load_NHANES_data</span>
@@ -828,7 +849,7 @@ Name: 93707.0, dtype: object
 </div>
 </div>
 </div>
-<p>Now let’s say that we wanted to recode the <code class="docutils literal notranslate"><span class="pre">Gender</span></code> variable so that instead of “Female” and “Male” its values were “F” and “M”.  One way to do this would be to use the <code class="docutils literal notranslate"><span class="pre">.rename()</span></code> operator on the data frame:</p>
+<p>Now let’s say that we wanted to recode the <code class="docutils literal notranslate"><span class="pre">Gender</span></code> variable so that instead of “Female” and “Male” its values were “F” and “M”.  One way to do this would be to use the <code class="docutils literal notranslate"><span class="pre">.replace()</span></code> operator on the data frame:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nhanes_data</span><span class="p">[</span><span class="s1">&#39;GenderMF&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">nhanes_data</span><span class="p">[</span><span class="s1">&#39;Gender&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">({</span><span class="s1">&#39;Female&#39;</span><span class="p">:</span> <span class="s1">&#39;F&#39;</span><span class="p">,</span> <span class="s1">&#39;Male&#39;</span><span class="p">:</span> <span class="s1">&#39;M&#39;</span><span class="p">})</span>

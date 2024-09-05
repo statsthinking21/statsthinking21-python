@@ -377,6 +377,22 @@ document.write(`
 <p>One of the most common uses of plotting is to plot the <em>distribution</em> of the data — which you can think of as the <em>shape</em> of the data.  There are various ways to do this, but one of the most common is known as a <em>histogram</em>, which plots the number of observations that fall into specific bins. We can plot a histogram using the <code class="docutils literal notranslate"><span class="pre">plt.hist()</span></code> function from matplotlib.  As an example, let’s look at the distribution of ages in the NHANES dataset.  First we need to load the data:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span><span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>nhanes
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: nhanes in /miniconda/lib/python3.12/site-packages (0.5.1)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Yellow">WARNING: Running pip as the &#39;root&#39; user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv</span>
+
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">nhanes.load</span> <span class="kn">import</span> <span class="n">load_NHANES_data</span>
 <span class="n">nhanes_data</span> <span class="o">=</span> <span class="n">load_NHANES_data</span><span class="p">()</span>
 </pre></div>
@@ -394,16 +410,25 @@ document.write(`
 <img alt="_images/009548cab95ffa8a7e6e72674a984879b409cf5b162b4f47c3c9743f353493b2.png" src="_images/009548cab95ffa8a7e6e72674a984879b409cf5b162b4f47c3c9743f353493b2.png" />
 </div>
 </div>
-<p>You can see from this plot that the <code class="docutils literal notranslate"><span class="pre">plt.hist()</span></code> function has binned together individuals across several years; That’s because we let it automatically determine the size of the bins. Let’s say that instead we want to bin each year separately.  We can do this using the <code class="docutils literal notranslate"><span class="pre">bins</span></code> argument to <code class="docutils literal notranslate"><span class="pre">plt.hist</span></code>. Because this argument takes a list of bins, we need to create a list that spans from the youngest to the oldest age.  We can do this using the <code class="docutils literal notranslate"><span class="pre">np.arange()</span></code> function from numpy, which generates a list of numbers that span a particular range. In this case, we need to span from the youngest to the oldest value, which are equivalent to the minimum and maximum values which we can obtain using the <code class="docutils literal notranslate"><span class="pre">.min()</span></code> and <code class="docutils literal notranslate"><span class="pre">.max()</span></code> operators; because Python starts at zero, we need to add one to the maximum in order to get the bins to cover the entire range:</p>
+<p>You can see from this plot that the <code class="docutils literal notranslate"><span class="pre">plt.hist()</span></code> function has binned together individuals across several years; That’s because we let it automatically determine the size of the bins. Let’s say that instead we want to bin each year separately.  We can do this using the <code class="docutils literal notranslate"><span class="pre">bins</span></code> argument to <code class="docutils literal notranslate"><span class="pre">plt.hist</span></code>. Because this argument takes a list of bins, we need to create a list that spans from the youngest to the oldest age.  We can do this using the <code class="docutils literal notranslate"><span class="pre">np.arange()</span></code> function from numpy, which generates a list of numbers that span a particular range. In this case, we need to span from the youngest to the oldest value, which are equivalent to the minimum and maximum values which we can obtain using the <code class="docutils literal notranslate"><span class="pre">.min()</span></code> and <code class="docutils literal notranslate"><span class="pre">.max()</span></code> operators. The addition of 2 is to ensure that every age group is placed into one single bin (the reason is related to how <code class="docutils literal notranslate"><span class="pre">plt.hist</span></code> decide whether the values at the boundary of each bin is counted into that bin and how <code class="docutils literal notranslate"><span class="pre">np.arange()</span></code> defines the boundary, which go too much into details).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bins</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">nhanes_data</span><span class="p">[</span><span class="s1">&#39;AgeInYearsAtScreening&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">nhanes_data</span><span class="p">[</span><span class="s1">&#39;AgeInYearsAtScreening&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">nhanes_data</span><span class="p">[</span><span class="s1">&#39;AgeInYearsAtScreening&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()))</span>
+
+<span class="n">bins</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">nhanes_data</span><span class="p">[</span><span class="s1">&#39;AgeInYearsAtScreening&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">nhanes_data</span><span class="p">[</span><span class="s1">&#39;AgeInYearsAtScreening&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">+</span> <span class="mi">2</span><span class="p">)</span>
 <span class="n">age_histogram_1year_bins</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">nhanes_data</span><span class="p">[</span><span class="s1">&#39;AgeInYearsAtScreening&#39;</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="n">bins</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/d5a215e21518ff12eeed427ee06627e2ce32b3c90fcbb06fcb0b625a4f27830c.png" src="_images/d5a215e21518ff12eeed427ee06627e2ce32b3c90fcbb06fcb0b625a4f27830c.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[ 1.  2.  3.  4.  5.  6.  7.  8.  9. 10. 11. 12. 13. 14. 15. 16. 17. 18.
+ 19. 20. 21. 22. 23. 24. 25. 26. 27. 28. 29. 30. 31. 32. 33. 34. 35. 36.
+ 37. 38. 39. 40. 41. 42. 43. 44. 45. 46. 47. 48. 49. 50. 51. 52. 53. 54.
+ 55. 56. 57. 58. 59. 60. 61. 62. 63. 64. 65. 66. 67. 68. 69. 70. 71. 72.
+ 73. 74. 75. 76. 77. 78. 79. 80.]
+</pre></div>
+</div>
+<img alt="_images/e1d826ee9abd722afec2385f6580be8ad374079f66397092ac3117b0e42e79a2.png" src="_images/e1d826ee9abd722afec2385f6580be8ad374079f66397092ac3117b0e42e79a2.png" />
 </div>
 </div>
 <p>Sometimes it’s more useful to look at the density rather than the counts, which we can do by setting <code class="docutils literal notranslate"><span class="pre">density=True</span></code> in our call to the histogram function:</p>
@@ -414,7 +439,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/89322a4dd57c9d3d1a7bad9acee2f404fb77c1300ad0573d470f2a3e1e211813.png" src="_images/89322a4dd57c9d3d1a7bad9acee2f404fb77c1300ad0573d470f2a3e1e211813.png" />
+<img alt="_images/7c0a821fca0d4cdc422a5247a88d59902772b2ec9b47a035f692ffef6456ffb2.png" src="_images/7c0a821fca0d4cdc422a5247a88d59902772b2ec9b47a035f692ffef6456ffb2.png" />
 </div>
 </div>
 <p>Now we see the proportion of individuals that fall into each age bin.  Why do you think there are so many eighty-year-olds in the dataset?  Have a look at the <a class="reference external" href="https://wwwn.cdc.gov/Nchs/Nhanes/2017-2018/DEMO_J.htm#RIDAGEYR">documentation for the Age question</a> and see if you can figure it out.</p>
@@ -424,42 +449,27 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">age_density_1year_bins</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">:],</span> <span class="n">age_density_1year_bins</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fecc7e126f0&gt;]
-</pre></div>
-</div>
-<img alt="_images/90f4869aee8f2f3f01101280efc2010e41175b9237e9445902fd100dd33f0ccb.png" src="_images/90f4869aee8f2f3f01101280efc2010e41175b9237e9445902fd100dd33f0ccb.png" />
+<img alt="_images/f036b180fee1dbb1b1f477af302ed428ac75fb46fb5e69163e28289f47976754.png" src="_images/f036b180fee1dbb1b1f477af302ed428ac75fb46fb5e69163e28289f47976754.png" />
 </div>
 </div>
 <p>Here we have taken advantage of the fact that the output of our histogram command above contains both the bins (in its [1] position) and the histogram values (in its [0]) position.  Why do we include <code class="docutils literal notranslate"><span class="pre">[1:]</span></code> after the bins variable?  This is because the bins include both the upper and lower edges of the bin, which means that there is one more bin value than there are average values.  Adding <code class="docutils literal notranslate"><span class="pre">[1:]</span></code> is equivalent to saying “start with the second bin” which is equivalent to using the top edges of each bin for our X axis.</p>
-<p>Now let’s plot a smoothed version of the histogram, using the <code class="docutils literal notranslate"><span class="pre">sns.distplot()</span></code> function from the seaborn library.</p>
+<p>Now let’s plot a smoothed version of the histogram, using the <code class="docutils literal notranslate"><span class="pre">sns.histplot()</span></code> function from the seaborn library by including an argument of <code class="docutils literal notranslate"><span class="pre">kde=True</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">distplot</span><span class="p">(</span><span class="n">nhanes_data</span><span class="p">[</span><span class="s1">&#39;AgeInYearsAtScreening&#39;</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="n">bins</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">(</span><span class="n">nhanes_data</span><span class="p">[</span><span class="s1">&#39;AgeInYearsAtScreening&#39;</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="n">bins</span><span class="p">,</span> <span class="n">kde</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_161/3685571357.py:1: UserWarning: 
-
-`distplot` is a deprecated function and will be removed in seaborn v0.14.0.
-
-Please adapt your code to use either `displot` (a figure-level function with
-similar flexibility) or `histplot` (an axes-level function for histograms).
-
-For a guide to updating your code to use the new functions, please see
-https://gist.github.com/mwaskom/de44147ed2974457ad6372750bbe5751
-
-  sns.distplot(nhanes_data[&#39;AgeInYearsAtScreening&#39;], bins=bins)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel=&#39;AgeInYearsAtScreening&#39;, ylabel=&#39;Count&#39;&gt;
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel=&#39;AgeInYearsAtScreening&#39;, ylabel=&#39;Density&#39;&gt;
-</pre></div>
-</div>
-<img alt="_images/4829581befa89ac7cab1c71a89b2313d7f79284539d1170582309e29119fe8c8.png" src="_images/4829581befa89ac7cab1c71a89b2313d7f79284539d1170582309e29119fe8c8.png" />
+<img alt="_images/a5770ae8a302a8745dac09f20ce6963dcbd5cb5c49aaac1263307f4b1b935e91.png" src="_images/a5770ae8a302a8745dac09f20ce6963dcbd5cb5c49aaac1263307f4b1b935e91.png" />
 </div>
 </div>
 <p>You can see that the line is now much smoother (less bumpy) than the one above.  It generally follows the overall shape of the data pretty closely, but you can also see that it mostly hides the large bump at 80 years.  It’s always important to keep in mind that anything we do to the data has the potential to distort their message.</p>
@@ -471,6 +481,24 @@ https://gist.github.com/mwaskom/de44147ed2974457ad6372750bbe5751
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mean_height_by_age</span> <span class="o">=</span> <span class="n">nhanes_data</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;AgeInYearsAtScreening&#39;</span><span class="p">)[</span><span class="s1">&#39;StandingHeightCm&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mean_height_by_age</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>AgeInYearsAtScreening
+1.0            NaN
+2.0      90.620812
+3.0      98.802548
+4.0     105.900595
+5.0     113.342771
+           ...    
+76.0    164.926667
+77.0    162.929787
+78.0    163.507317
+79.0    164.380952
+80.0    163.012291
+Name: StandingHeightCm, Length: 80, dtype: float64
 </pre></div>
 </div>
 </div>
@@ -481,13 +509,11 @@ https://gist.github.com/mwaskom/de44147ed2974457ad6372750bbe5751
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">mean_height_by_age</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">mean_height_by_age</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Age at screening&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Standing Height (cm)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;Standing Height (cm)&#39;)
-</pre></div>
-</div>
 <img alt="_images/d1b614e98b251651e28b7b58745b9070c6af64b0c6678added1aeee7a437fe4f.png" src="_images/d1b614e98b251651e28b7b58745b9070c6af64b0c6678added1aeee7a437fe4f.png" />
 </div>
 </div>
@@ -502,7 +528,7 @@ https://gist.github.com/mwaskom/de44147ed2974457ad6372750bbe5751
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel=&#39;AgeInYearsAtScreening&#39;, ylabel=&#39;StandingHeightCm&#39;&gt;
 </pre></div>
 </div>
-<img alt="_images/586a376aae2c4d957d2ce6788fd742e871b7b5cf5ca1c744e3dc3f4e399d3f6d.png" src="_images/586a376aae2c4d957d2ce6788fd742e871b7b5cf5ca1c744e3dc3f4e399d3f6d.png" />
+<img alt="_images/5dddb3f24b43fac1138540d10fc8467671164629da393aa0fb6345e00968ae39.png" src="_images/5dddb3f24b43fac1138540d10fc8467671164629da393aa0fb6345e00968ae39.png" />
 </div>
 </div>
 <p>You will notice that the lines have shaded areas around them; these are called <em>confidence intervals</em>, and you will learn about them later in the course.  They basically tell us something about the uncertainty around our estimates of the average.</p>
@@ -574,7 +600,7 @@ https://gist.github.com/mwaskom/de44147ed2974457ad6372750bbe5751
 <span class="n">ax</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">lineplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;Temperature&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;DamageIndex&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">oring_data</span><span class="p">,</span> <span class="n">ci</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Temperature at time of launch&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Damage Index&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">fill_between</span><span class="p">([</span><span class="mi">26</span><span class="p">,</span> <span class="mi">29</span><span class="p">],</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> 
+<span class="n">ax</span><span class="o">.</span><span class="n">fill_between</span><span class="p">([</span><span class="mi">26</span><span class="p">,</span> <span class="mi">29</span><span class="p">],</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span>
                 <span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mi">27</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;Forecasted temperature on Jan 28&#39;</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">90</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
@@ -582,7 +608,7 @@ https://gist.github.com/mwaskom/de44147ed2974457ad6372750bbe5751
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_161/488923491.py:3: FutureWarning: 
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_166/1264630169.py:3: FutureWarning: 
 
 The `ci` parameter is deprecated. Use `errorbar=None` for the same effect.
 

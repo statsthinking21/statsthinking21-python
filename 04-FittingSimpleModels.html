@@ -347,9 +347,19 @@ document.write(`
 <p>In this chapter we will focus on how to compute the measures of central tendency and variability that were covered in the previous chapter.  Most of these can be computed using a built-in Python function, but we will show how to do them manually in order to give some intuition about how they work. First let’s load the NHANES data that we will use for our examples.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">nhanes.load</span> <span class="kn">import</span> <span class="n">load_NHANES_data</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span><span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>nhanes
+<span class="kn">from</span> <span class="nn">nhanes.load</span> <span class="kn">import</span> <span class="n">load_NHANES_data</span>
 <span class="n">nhanes_data</span> <span class="o">=</span> <span class="n">load_NHANES_data</span><span class="p">()</span>
 <span class="n">adult_nhanes_data</span> <span class="o">=</span> <span class="n">nhanes_data</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;AgeInYearsAtScreening &gt; 17&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: nhanes in /miniconda/lib/python3.12/site-packages (0.5.1)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Yellow">WARNING: Running pip as the &#39;root&#39; user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv</span>
+
 </pre></div>
 </div>
 </div>
@@ -384,12 +394,37 @@ Let’s say that we want to obtain the mean height for adults in the NHANES data
 <p>There is, of course, a built-in operator for the data frame called <code class="docutils literal notranslate"><span class="pre">.mean()</span></code> that will compute the mean.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">adult_nhanes_data</span><span class="p">[</span><span class="s1">&#39;Height&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mean</span> <span class="o">=</span> <span class="n">adult_nhanes_data</span><span class="p">[</span><span class="s1">&#39;Height&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can now see what is the sum of squared error (<code class="docutils literal notranslate"><span class="pre">SSE</span></code>) of all weight values from the mean we calculated.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="n">SSE_mean</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">((</span><span class="n">adult_nhanes_data</span><span class="p">[</span><span class="s1">&#39;Height&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">mean</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">SSE_mean</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>166.3623438648053
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>551603.540492285
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now what happens if we choose a different number to represent the central tendency of the data? For example, how about we use <code class="docutils literal notranslate"><span class="pre">mean+0.1</span></code>?</p>
+<p>Try a few different numbers, what do you find?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">SSE_new</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">((</span><span class="n">adult_nhanes_data</span><span class="p">[</span><span class="s1">&#39;Height&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="p">(</span><span class="n">mean</span> <span class="o">+</span> <span class="mf">0.1</span><span class="p">)</span> <span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">SSE_new</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>551657.9804922851
 </pre></div>
 </div>
 </div>
@@ -433,9 +468,9 @@ Let’s say that we want to obtain the mean height for adults in the NHANES data
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="k">if</span> <span class="n">height_length_mod_2</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span> 
+<span class="k">if</span> <span class="n">height_length_mod_2</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
     <span class="c1"># odd number values - take the single midpoint</span>
-    <span class="n">midpoint</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ceil</span><span class="p">(</span><span class="n">height_sorted</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">/</span> <span class="mi">2</span><span class="p">))</span>
+    <span class="n">midpoint</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="n">height_sorted</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">/</span> <span class="mi">2</span><span class="p">))</span>
     <span class="n">median</span> <span class="o">=</span> <span class="n">height_sorted</span><span class="p">[</span><span class="n">midpoint</span><span class="p">]</span>
 <span class="k">else</span><span class="p">:</span>
     <span class="c1"># even number of values - need to average the two middle points</span>
@@ -446,7 +481,7 @@ Let’s say that we want to obtain the mean height for adults in the NHANES data
 </div>
 </div>
 </div>
-<p>There is a lot going on there, so let’s unpack it.  The first line of the if statement asks whether the remainder is equal to one — if so, then it executes the lines that are indented below it. Python uses indentation as part of its syntax, so you always need to be very careful about indentation.  If the remainder is one, that means that the number of observations is odd, and thus that we can simply take the single middle point.  We determine this by dividing the number of observations by two, and then rounding up (which is what the <code class="docutils literal notranslate"><span class="pre">np.ceil()</span></code> function does).  Finally, we have to convert this number into an integer using the <code class="docutils literal notranslate"><span class="pre">int()</span></code> function, since we can only use integers to index a data frame.<br />
+<p>There is a lot going on there, so let’s unpack it.  The first line of the if statement asks whether the remainder is equal to one — if so, then it executes the lines that are indented below it. Python uses indentation as part of its syntax, so you always need to be very careful about indentation.  If the remainder is one, that means that the number of observations is odd, and thus that we can simply take the single middle point.  We determine this by dividing the number of observations by two, and then rounding up (which is what the <code class="docutils literal notranslate"><span class="pre">np.floor()</span></code> function does, it looks for the integer just below a value. We choose the one below because all indices start from 0).  Finally, we have to convert this number into an integer using the <code class="docutils literal notranslate"><span class="pre">int()</span></code> function, since we can only use integers to index a data frame.<br />
 If the first test is false — that is, if the remainder is zero — then, the second section of code (after the <code class="docutils literal notranslate"><span class="pre">else</span></code> statement) will be executed instead.  Here we need to find the two midpoints and average them, so we create a new list containing those two points, and then use that index our data and then take the mean.</p>
 </section>
 <section id="mode">
@@ -508,7 +543,7 @@ Name: count, dtype: int64
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">my_mode_function</span><span class="p">(</span><span class="nb">input</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    A function to compute the mode. </span>
+<span class="sd">    A function to compute the mode.</span>
 
 <span class="sd">    Inputs:</span>
 <span class="sd">    ------</span>
@@ -598,7 +633,7 @@ The final line tells Python to return the value of the mode when the function is
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>104.65181610738256
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>117.0055753914989
 </pre></div>
 </div>
 </div>
@@ -611,7 +646,7 @@ The final line tells Python to return the value of the mode when the function is
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>104.65181610738256
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>117.0055753914989
 </pre></div>
 </div>
 </div>
@@ -625,7 +660,7 @@ The final line tells Python to return the value of the mode when the function is
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>10.229947023684069
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>10.816911545884938
 </pre></div>
 </div>
 </div>
@@ -638,7 +673,7 @@ The final line tells Python to return the value of the mode when the function is
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>10.229947023684069
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>10.816911545884938
 </pre></div>
 </div>
 </div>
@@ -672,14 +707,14 @@ The final line tells Python to return the value of the mode when the function is
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(array([ 6.,  6., 17., 21., 24., 17., 23., 21.,  9.,  6.]),
- array([-2.2664829 , -1.8256204 , -1.3847579 , -0.94389541, -0.50303291,
-        -0.06217041,  0.37869209,  0.81955459,  1.26041708,  1.70127958,
-         2.14214208]),
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(array([ 2.,  3.,  9., 16., 27., 30., 18., 26., 10.,  9.]),
+ array([-2.78163194, -2.29165844, -1.80168494, -1.31171144, -0.82173795,
+        -0.33176445,  0.15820905,  0.64818255,  1.13815605,  1.62812955,
+         2.11810305]),
  &lt;BarContainer object of 10 artists&gt;)
 </pre></div>
 </div>
-<img alt="_images/4ea9130c18f6c9092edcfbfd3d9298a271eb7716b3050b7debeea5b60ab82636.png" src="_images/4ea9130c18f6c9092edcfbfd3d9298a271eb7716b3050b7debeea5b60ab82636.png" />
+<img alt="_images/ad6a1cc3f48217adb4d0f868383b1726a44fab4e78c2fd137aae5db430784385.png" src="_images/ad6a1cc3f48217adb4d0f868383b1726a44fab4e78c2fd137aae5db430784385.png" />
 </div>
 </div>
 <p>You will notice that the shapes of the histograms are exactly the same. We can also see this by plotting the two variables against one another in a scatterplot:</p>
@@ -690,10 +725,10 @@ The final line tells Python to return the value of the mode when the function is
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x7f17f4f6a3c0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x7fd7a1ca6b40&gt;
 </pre></div>
 </div>
-<img alt="_images/197c17745fd675ad2c79da9562e652d12b2b669e1ae154b52079c7fdfe293873.png" src="_images/197c17745fd675ad2c79da9562e652d12b2b669e1ae154b52079c7fdfe293873.png" />
+<img alt="_images/0aad6a4015f45cb248abf733f0fcf5354bef8a6f20f0d1e7b323a676c798f401.png" src="_images/0aad6a4015f45cb248abf733f0fcf5354bef8a6f20f0d1e7b323a676c798f401.png" />
 </div>
 </div>
 <p>You see here that they fall along a straight line, meaning that they are perfectly related to each other exactly — the only difference is where they are located on the number line.</p>
