@@ -326,6 +326,7 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simple-example-coin-flipping">Simple example: Coin-flipping</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#performing-t-test-with-python">Performing t-test with Python</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simulating-p-values">Simulating p-values</a></li>
 </ul>
             </nav>
@@ -344,13 +345,13 @@ document.write(`
 <section id="simple-example-coin-flipping">
 <h2>Simple example: Coin-flipping<a class="headerlink" href="#simple-example-coin-flipping" title="Link to this heading">#</a></h2>
 <p>Let’s say that we flipped 100 coins and observed 70 heads. We would like to use these data to test the hypothesis that the true probability is 0.5.
-First let’s generate our data, simulating 100,000 sets of 100 flips. We use such a large number because it turns out that it’s very rare to get 70 heads, so we need many attempts in order to get a reliable estimate of these probabilties.  This will take a couple of minutes to complete.</p>
+First let’s generate our data, simulating 200,000 sets of 100 flips. We use such a large number because it turns out that it’s very rare to get 70 heads, so we need many attempts in order to get a reliable estimate of these probabilties.  This will take a couple of minutes to complete.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 
-<span class="n">num_runs</span> <span class="o">=</span> <span class="mi">10000</span>
+<span class="n">num_runs</span> <span class="o">=</span> <span class="mi">200000</span>
 
 
 <span class="k">def</span> <span class="nf">toss_coins_and_count_heads</span><span class="p">(</span><span class="n">num_coins</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">p_heads</span><span class="o">=</span><span class="mf">0.5</span><span class="p">):</span>
@@ -361,7 +362,7 @@ First let’s generate our data, simulating 100,000 sets of 100 flips. We use su
     <span class="n">flips</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">num_coins</span><span class="p">)</span> <span class="o">&gt;</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">p_heads</span><span class="p">)</span>
     <span class="k">return</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">flips</span><span class="p">))</span>
 
-    
+
 <span class="n">flip_results_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;n_heads&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">num_runs</span><span class="p">)})</span>
 
 <span class="k">for</span> <span class="n">run</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_runs</span><span class="p">):</span>
@@ -370,18 +371,18 @@ First let’s generate our data, simulating 100,000 sets of 100 flips. We use su
 </div>
 </div>
 </div>
-<p>Now we can compute the proportion of samples from the distribution observed when the true proportion of heads is 0.5.</p>
+<p>Now we can compute the proportion of samples from the distribution observed that landed on head for at least 70 times, when the true probability of heads is 0.5.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">scipy.stats</span>
 
-<span class="n">pvalue</span> <span class="o">=</span> <span class="mi">100</span> <span class="o">-</span> <span class="n">scipy</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">percentileofscore</span><span class="p">(</span><span class="n">flip_results_df</span><span class="p">,</span> <span class="mi">70</span><span class="p">)</span> 
-<span class="n">pvalue</span>
+<span class="n">pvalue</span> <span class="o">=</span> <span class="mi">100</span> <span class="o">-</span> <span class="n">scipy</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">percentileofscore</span><span class="p">(</span><span class="n">flip_results_df</span><span class="p">[</span><span class="s1">&#39;n_heads&#39;</span><span class="p">],</span> <span class="mi">70</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pvalue</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([99.99, 99.99, 99.99, ..., 99.99, 99.99, 99.99])
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.002250000000003638
 </pre></div>
 </div>
 </div>
@@ -412,6 +413,82 @@ First let’s generate our data, simulating 100,000 sets of 100 flips. We use su
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.925069822796612e-05
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="performing-t-test-with-python">
+<h2>Performing t-test with Python<a class="headerlink" href="#performing-t-test-with-python" title="Link to this heading">#</a></h2>
+<p>Let’s draw a sample of 250 participants from the “population” who participated the NHANES study</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span><span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>nhanes
+<span class="kn">from</span> <span class="nn">nhanes.load</span> <span class="kn">import</span> <span class="n">load_NHANES_data</span>
+<span class="n">nhanes_data</span> <span class="o">=</span> <span class="n">load_NHANES_data</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: nhanes in /miniconda/lib/python3.12/site-packages (0.5.1)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Yellow">WARNING: Running pip as the &#39;root&#39; user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv</span>
+
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="n">sample_size</span> <span class="o">=</span> <span class="mi">250</span>
+<span class="n">nhanes_data</span><span class="p">[</span><span class="s1">&#39;PhysActive&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">logical_or</span><span class="p">(</span><span class="n">nhanes_data</span><span class="p">[</span><span class="s1">&#39;VigorousRecreationalActivities&#39;</span><span class="p">],</span> <span class="n">nhanes_data</span><span class="p">[</span><span class="s1">&#39;ModerateRecreationalActivities&#39;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Unique values in PhysActive:&#39;</span><span class="p">,</span><span class="n">nhanes_data</span><span class="p">[</span><span class="s1">&#39;PhysActive&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">())</span>
+
+<span class="n">sample</span> <span class="o">=</span> <span class="n">nhanes_data</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;PhysActive&#39;</span><span class="p">,</span> <span class="s1">&#39;BodyMassIndexKgm2&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">sample_size</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">sample</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;PhysActive&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;BodyMassIndexKgm2&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Unique values in PhysActive: [ True False]
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel=&#39;PhysActive&#39;, ylabel=&#39;BodyMassIndexKgm2&#39;&gt;
+</pre></div>
+</div>
+<img alt="_images/8aa3fc16ee5ef903889a004a7db4a3e92b969bd69b710611d7bd8ae21ce3594d.png" src="_images/8aa3fc16ee5ef903889a004a7db4a3e92b969bd69b710611d7bd8ae21ce3594d.png" />
+</div>
+</div>
+<p>We will use <code class="docutils literal notranslate"><span class="pre">scipy.stats.ttest_ind</span></code> to perform t-test between two independently drawn samples.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">ttest_ind</span>
+<span class="c1"># By default, ttest_ind assumes equal variance of the two samples</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;assuming equal variance of the two population:&#39;</span><span class="p">)</span>
+<span class="n">t</span><span class="p">,</span> <span class="n">p</span> <span class="o">=</span> <span class="n">ttest_ind</span><span class="p">(</span><span class="n">sample</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;PhysActive==1.0&#39;</span><span class="p">)[</span><span class="s1">&#39;BodyMassIndexKgm2&#39;</span><span class="p">],</span> <span class="n">sample</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;PhysActive==0.0&#39;</span><span class="p">)[</span><span class="s1">&#39;BodyMassIndexKgm2&#39;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;t-statistic:&#39;</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;p-value:&#39;</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span>
+
+<span class="c1"># If we don&#39;t make the assumption, the result may be slightly different:</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;without assuming equal variance of the two populations:&#39;</span><span class="p">)</span>
+<span class="n">t</span><span class="p">,</span> <span class="n">p</span> <span class="o">=</span> <span class="n">ttest_ind</span><span class="p">(</span><span class="n">sample</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;PhysActive==1.0&#39;</span><span class="p">)[</span><span class="s1">&#39;BodyMassIndexKgm2&#39;</span><span class="p">],</span> <span class="n">sample</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;PhysActive==0.0&#39;</span><span class="p">)[</span><span class="s1">&#39;BodyMassIndexKgm2&#39;</span><span class="p">],</span> <span class="n">equal_var</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;t-statistic:&#39;</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;p-value:&#39;</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>assuming equal variance of the two population:
+t-statistic: -5.316941860027617
+p-value: 2.354151901662167e-07
+without assuming equal variance of the two populations:
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>t-statistic: -5.2610355104492506
+p-value: 4.255126801088449e-07
 </pre></div>
 </div>
 </div>
@@ -450,7 +527,7 @@ First let’s generate our data, simulating 100,000 sets of 100 flips. We use su
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.0516
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.0456
 </pre></div>
 </div>
 </div>
@@ -524,6 +601,7 @@ First let’s generate our data, simulating 100,000 sets of 100 flips. We use su
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simple-example-coin-flipping">Simple example: Coin-flipping</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#performing-t-test-with-python">Performing t-test with Python</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simulating-p-values">Simulating p-values</a></li>
 </ul>
   </nav></div>

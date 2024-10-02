@@ -347,12 +347,12 @@ document.write(`
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="n">outcomes</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span>
-<span class="n">outcomes</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">outcomes</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([1, 2, 3, 4, 5, 6])
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1 2 3 4 5 6]
 </pre></div>
 </div>
 </div>
@@ -360,13 +360,13 @@ document.write(`
 <p>Now let’s create a vector of logical values based on whether the outcome in each position is equal to 1. Remember that <code class="docutils literal notranslate"><span class="pre">==</span></code> tests for equality of each element in a vector:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">outcome1isTrue</span> <span class="o">=</span> <span class="n">outcomes</span> <span class="o">==</span> <span class="mi">1</span> 
-<span class="n">outcome1isTrue</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">outcome1isTrue</span> <span class="o">=</span> <span class="n">outcomes</span> <span class="o">==</span> <span class="mi">1</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">outcome1isTrue</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ True, False, False, False, False, False])
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[ True False False False False False]
 </pre></div>
 </div>
 </div>
@@ -375,12 +375,12 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p1isTrue</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">outcome1isTrue</span><span class="p">)</span>
-<span class="n">p1isTrue</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">p1isTrue</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.16666666666666666
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.16666666666666666
 </pre></div>
 </div>
 </div>
@@ -396,213 +396,71 @@ document.write(`
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="n">SFrain</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;https://raw.githubusercontent.com/statsthinking21/statsthinking21-python/master/notebooks/data/SanFranciscoRain.csv&#39;</span><span class="p">)</span>
 
-<span class="c1"># we will remove the STATION and NAME variables </span>
+<span class="c1"># we will remove the STATION and NAME variables</span>
 <span class="c1"># since they are identical for all rows</span>
 
 <span class="n">SFrain</span> <span class="o">=</span> <span class="n">SFrain</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;STATION&#39;</span><span class="p">,</span> <span class="s1">&#39;NAME&#39;</span><span class="p">])</span>
-<span class="n">SFrain</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">SFrain</span><span class="p">)</span>
 <span class="c1">#-</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>           DATE  PRCP
+0    2017-01-01  0.05
+1    2017-01-02  0.10
+2    2017-01-03  0.40
+3    2017-01-04  0.89
+4    2017-01-05  0.01
+..          ...   ...
+360  2017-12-27  0.00
+361  2017-12-28  0.00
+362  2017-12-29  0.00
+363  2017-12-30  0.00
+364  2017-12-31  0.00
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>DATE</th>
-      <th>PRCP</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>2017-01-01</td>
-      <td>0.05</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>2017-01-02</td>
-      <td>0.10</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>2017-01-03</td>
-      <td>0.40</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>2017-01-04</td>
-      <td>0.89</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>2017-01-05</td>
-      <td>0.01</td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>360</th>
-      <td>2017-12-27</td>
-      <td>0.00</td>
-    </tr>
-    <tr>
-      <th>361</th>
-      <td>2017-12-28</td>
-      <td>0.00</td>
-    </tr>
-    <tr>
-      <th>362</th>
-      <td>2017-12-29</td>
-      <td>0.00</td>
-    </tr>
-    <tr>
-      <th>363</th>
-      <td>2017-12-30</td>
-      <td>0.00</td>
-    </tr>
-    <tr>
-      <th>364</th>
-      <td>2017-12-31</td>
-      <td>0.00</td>
-    </tr>
-  </tbody>
-</table>
-<p>365 rows × 2 columns</p>
-</div></div></div>
+[365 rows x 2 columns]
+</pre></div>
+</div>
+</div>
 </div>
 <p>We see that the data frame contains a variable called <code class="docutils literal notranslate"><span class="pre">PRCP</span></code> which denotes the amount of rain each day. Let’s create a new variable called <code class="docutils literal notranslate"><span class="pre">rainToday</span></code> that denotes whether the amount of precipitation was above zero:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">SFrain</span><span class="p">[</span><span class="s1">&#39;rainToday&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">SFrain</span><span class="p">[</span><span class="s1">&#39;PRCP&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span>
-<span class="n">SFrain</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">SFrain</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>           DATE  PRCP  rainToday
+0    2017-01-01  0.05       True
+1    2017-01-02  0.10       True
+2    2017-01-03  0.40       True
+3    2017-01-04  0.89       True
+4    2017-01-05  0.01       True
+..          ...   ...        ...
+360  2017-12-27  0.00      False
+361  2017-12-28  0.00      False
+362  2017-12-29  0.00      False
+363  2017-12-30  0.00      False
+364  2017-12-31  0.00      False
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>DATE</th>
-      <th>PRCP</th>
-      <th>rainToday</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>2017-01-01</td>
-      <td>0.05</td>
-      <td>True</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>2017-01-02</td>
-      <td>0.10</td>
-      <td>True</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>2017-01-03</td>
-      <td>0.40</td>
-      <td>True</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>2017-01-04</td>
-      <td>0.89</td>
-      <td>True</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>2017-01-05</td>
-      <td>0.01</td>
-      <td>True</td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>360</th>
-      <td>2017-12-27</td>
-      <td>0.00</td>
-      <td>False</td>
-    </tr>
-    <tr>
-      <th>361</th>
-      <td>2017-12-28</td>
-      <td>0.00</td>
-      <td>False</td>
-    </tr>
-    <tr>
-      <th>362</th>
-      <td>2017-12-29</td>
-      <td>0.00</td>
-      <td>False</td>
-    </tr>
-    <tr>
-      <th>363</th>
-      <td>2017-12-30</td>
-      <td>0.00</td>
-      <td>False</td>
-    </tr>
-    <tr>
-      <th>364</th>
-      <td>2017-12-31</td>
-      <td>0.00</td>
-      <td>False</td>
-    </tr>
-  </tbody>
-</table>
-<p>365 rows × 3 columns</p>
-</div></div></div>
+[365 rows x 3 columns]
+</pre></div>
+</div>
+</div>
 </div>
 <p>Now we will summarize the data to compute the probability of rain:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pRainInSF</span> <span class="o">=</span> <span class="n">SFrain</span><span class="p">[</span><span class="s1">&#39;rainToday&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
-<span class="n">pRainInSF</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pRainInSF</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.2
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.2
 </pre></div>
 </div>
 </div>
@@ -613,10 +471,20 @@ document.write(`
 <p>Let’s determine the conditional probability of someone having hearing problems, given that they are over 70 years of age, using the NHANES dataset.  First, let’s create a new variable called <code class="docutils literal notranslate"><span class="pre">Over70</span></code> that denotes whether each individual is over 70 or not.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">nhanes.load</span> <span class="kn">import</span> <span class="n">load_NHANES_data</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span><span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>nhanes
+<span class="kn">from</span> <span class="nn">nhanes.load</span> <span class="kn">import</span> <span class="n">load_NHANES_data</span>
 <span class="n">nhanes_data</span> <span class="o">=</span> <span class="n">load_NHANES_data</span><span class="p">()</span>
 
 <span class="n">nhanes_data</span><span class="p">[</span><span class="s1">&#39;Over70&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">nhanes_data</span><span class="p">[</span><span class="s1">&#39;AgeInYearsAtScreening&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">70</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: nhanes in /miniconda/lib/python3.12/site-packages (0.5.1)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Yellow">WARNING: Running pip as the &#39;root&#39; user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv</span>
+
 </pre></div>
 </div>
 </div>
@@ -625,109 +493,40 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hearing_data</span> <span class="o">=</span> <span class="n">nhanes_data</span><span class="p">[[</span><span class="s1">&#39;Over70&#39;</span><span class="p">,</span> <span class="s1">&#39;HaveSeriousDifficultyHearing&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
-<span class="n">hearing_data</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">hearing_data</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          Over70  HaveSeriousDifficultyHearing
+SEQN                                          
+93703.0    False                           0.0
+93704.0    False                           0.0
+93705.0    False                           0.0
+93706.0    False                           0.0
+93707.0    False                           0.0
+...          ...                           ...
+102952.0   False                           0.0
+102953.0   False                           0.0
+102954.0   False                           0.0
+102955.0   False                           0.0
+102956.0   False                           0.0
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>Over70</th>
-      <th>HaveSeriousDifficultyHearing</th>
-    </tr>
-    <tr>
-      <th>SEQN</th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>93703.0</th>
-      <td>False</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>93704.0</th>
-      <td>False</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>93705.0</th>
-      <td>False</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>93706.0</th>
-      <td>False</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>93707.0</th>
-      <td>False</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>102952.0</th>
-      <td>False</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>102953.0</th>
-      <td>False</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>102954.0</th>
-      <td>False</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>102955.0</th>
-      <td>False</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>102956.0</th>
-      <td>False</td>
-      <td>0.0</td>
-    </tr>
-  </tbody>
-</table>
-<p>8365 rows × 2 columns</p>
-</div></div></div>
+[8365 rows x 2 columns]
+</pre></div>
+</div>
+</div>
 </div>
 <p>First, what’s the probability of being over 70?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p_over_70</span> <span class="o">=</span> <span class="n">hearing_data</span><span class="p">[</span><span class="s1">&#39;Over70&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
-<span class="n">p_over_70</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">p_over_70</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.10531978481769277
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.10531978481769277
 </pre></div>
 </div>
 </div>
@@ -736,12 +535,12 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p_hearing_problem</span> <span class="o">=</span> <span class="n">hearing_data</span><span class="p">[</span><span class="s1">&#39;HaveSeriousDifficultyHearing&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
-<span class="n">p_hearing_problem</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">p_hearing_problem</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.06276150627615062
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.06276150627615062
 </pre></div>
 </div>
 </div>
@@ -749,64 +548,30 @@ document.write(`
 <p>What’s the probability for each combination of hearing problems/no problems and over 70/ not? We can create a table that finds the joint probability for each combination, using the <code class="docutils literal notranslate"><span class="pre">pd.crosstab()</span></code> function:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">joint_table</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">crosstab</span><span class="p">(</span><span class="n">hearing_data</span><span class="o">.</span><span class="n">Over70</span><span class="p">,</span> <span class="n">hearing_data</span><span class="p">[</span><span class="s1">&#39;HaveSeriousDifficultyHearing&#39;</span><span class="p">],</span> <span class="n">normalize</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">joint_table</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">joint_table</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">crosstab</span><span class="p">(</span><span class="n">hearing_data</span><span class="p">[</span><span class="s1">&#39;Over70&#39;</span><span class="p">],</span> <span class="n">hearing_data</span><span class="p">[</span><span class="s1">&#39;HaveSeriousDifficultyHearing&#39;</span><span class="p">],</span> <span class="n">normalize</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">joint_table</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th>HaveSeriousDifficultyHearing</th>
-      <th>0.0</th>
-      <th>1.0</th>
-    </tr>
-    <tr>
-      <th>Over70</th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>False</th>
-      <td>0.859653</td>
-      <td>0.035027</td>
-    </tr>
-    <tr>
-      <th>True</th>
-      <td>0.077585</td>
-      <td>0.027735</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>HaveSeriousDifficultyHearing       0.0       1.0
+Over70                                          
+False                         0.859653  0.035027
+True                          0.077585  0.027735
+</pre></div>
+</div>
+</div>
 </div>
 <p>Finally, what’s the probability of someone having hearing problems, given that they are over 70 years of age?  To do this, we limit the computation of the probability of having hearing problems to only include those people who are over 70:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p_hearingproblem_given_over_70</span> <span class="o">=</span> <span class="n">hearing_data</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;Over70 == True&#39;</span><span class="p">)[</span><span class="s1">&#39;HaveSeriousDifficultyHearing&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
-<span class="n">p_hearingproblem_given_over_70</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">p_hearingproblem_given_over_70</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.2633371169125993
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.2633371169125993
 </pre></div>
 </div>
 </div>
@@ -815,12 +580,12 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p_over_70_given_hearingproblem</span> <span class="o">=</span> <span class="n">hearing_data</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;HaveSeriousDifficultyHearing == True&#39;</span><span class="p">)[</span><span class="s1">&#39;Over70&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
-<span class="n">p_over_70_given_hearingproblem</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">p_over_70_given_hearingproblem</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.4419047619047619
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.4419047619047619
 </pre></div>
 </div>
 </div>

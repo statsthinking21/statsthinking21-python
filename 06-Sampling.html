@@ -345,10 +345,38 @@ document.write(`
 <p>Here we will repeatedly sample from the NHANES Height variable in order to obtain the sampling distribution of the mean. First let’s load the data and clean them up.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">nhanes.load</span> <span class="kn">import</span> <span class="n">load_NHANES_data</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span><span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>nhanes
+<span class="kn">from</span> <span class="nn">nhanes.load</span> <span class="kn">import</span> <span class="n">load_NHANES_data</span>
 <span class="n">nhanes_data</span> <span class="o">=</span> <span class="n">load_NHANES_data</span><span class="p">()</span>
 <span class="n">adult_nhanes_data</span> <span class="o">=</span> <span class="n">nhanes_data</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;AgeInYearsAtScreening &gt; 17&#39;</span><span class="p">)</span>
 <span class="n">adult_nhanes_data</span> <span class="o">=</span> <span class="n">adult_nhanes_data</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;StandingHeightCm&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;StandingHeightCm&#39;</span><span class="p">:</span> <span class="s1">&#39;Height&#39;</span><span class="p">})</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: nhanes in /miniconda/lib/python3.12/site-packages (0.5.1)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Yellow">WARNING: Running pip as the &#39;root&#39; user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv</span>
+
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now let’s draw a sample of 50 individuals from the dataset, and calculate its mean.
+Try to execude the next cell repeatedly. What do you see?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sample_size</span> <span class="o">=</span> <span class="mi">50</span>
+<span class="n">sample</span> <span class="o">=</span> <span class="n">adult_nhanes_data</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">sample_size</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Sample mean:&#39;</span><span class="p">,</span> <span class="n">sample</span><span class="p">[</span><span class="s1">&#39;Height&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Sample standard deviation:&#39;</span><span class="p">,</span> <span class="n">sample</span><span class="p">[</span><span class="s1">&#39;Height&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">std</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Sample mean: 166.674
+Sample standard deviation: 9.332515245973429
 </pre></div>
 </div>
 </div>
@@ -365,11 +393,50 @@ document.write(`
 
 <span class="c1"># set up a variable to store the result</span>
 <span class="n">sampling_results</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;mean&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">num_samples</span><span class="p">)})</span>
-
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;An empty data frame to be filled with sampling means:&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sampling_results</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">sample_num</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_samples</span><span class="p">):</span>
     <span class="n">sample</span> <span class="o">=</span> <span class="n">adult_nhanes_data</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">sample_size</span><span class="p">)</span>
     <span class="n">sampling_results</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">sample_num</span><span class="p">,</span> <span class="s1">&#39;mean&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">sample</span><span class="p">[</span><span class="s1">&#39;Height&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
 <span class="c1">#-</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Means of 5000 samples:&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sampling_results</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>An empty data frame to be filled with sampling means:
+      mean
+0      0.0
+1      0.0
+2      0.0
+3      0.0
+4      0.0
+...    ...
+4995   0.0
+4996   0.0
+4997   0.0
+4998   0.0
+4999   0.0
+
+[5000 rows x 1 columns]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Means of 5000 samples:
+         mean
+0     164.440
+1     166.154
+2     166.076
+3     167.790
+4     166.320
+...       ...
+4995  164.608
+4996  165.752
+4997  165.846
+4998  166.056
+4999  167.320
+
+[5000 rows x 1 columns]
 </pre></div>
 </div>
 </div>
@@ -402,16 +469,22 @@ document.write(`
     <span class="n">scale</span><span class="o">=</span><span class="n">sampling_results</span><span class="p">[</span><span class="s1">&#39;mean&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">std</span><span class="p">())</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_values</span><span class="p">,</span> <span class="n">normal_values</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
 <span class="c1">#+</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;standard deviation of the sample means:&#39;</span><span class="p">,</span> <span class="n">sampling_results</span><span class="p">[</span><span class="s1">&#39;mean&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">std</span><span class="p">())</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f15daac7da0&gt;]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>standard deviation of the sample means: 1.4263738968936954
 </pre></div>
 </div>
-<img alt="_images/2e98fc80a5f227bfd42d65d0d27f99b6ec3b5a14849b8551b1f1e1fbff799158.png" src="_images/2e98fc80a5f227bfd42d65d0d27f99b6ec3b5a14849b8551b1f1e1fbff799158.png" />
+<img alt="_images/c4ff37d69cd3072537920dc289f1a98e333d964eb177cf9bba84e1edc04c6a95.png" src="_images/c4ff37d69cd3072537920dc289f1a98e333d964eb177cf9bba84e1edc04c6a95.png" />
 </div>
 </div>
+<p>Now, can you redo the simulation of sampling above, but make the following changes each time?</p>
+<ul class="simple">
+<li><p>Changing the sample size to 5 or 500. What difference do you observe in the distribution of sample means?</p></li>
+<li><p>Changing the number of times to draw the samples to 50,000. Does the histogram appear closer to a normal distribution?</p></li>
+</ul>
 </section>
 <section id="central-limit-theorem">
 <h2>Central limit theorem<a class="headerlink" href="#central-limit-theorem" title="Link to this heading">#</a></h2>
@@ -419,23 +492,18 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">adult_nhanes_data</span><span class="p">[</span><span class="s1">&#39;AnnualFamilyIncome&#39;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(array([369., 626., 925., 541., 357., 302., 241.,   0., 463., 902.]),
- array([  2000.,  11800.,  21600.,  31400.,  41200.,  51000.,  60800.,
-         70600.,  80400.,  90200., 100000.]),
- &lt;BarContainer object of 10 artists&gt;)
-</pre></div>
-</div>
 <img alt="_images/ad5ee260a4412336e0b7fdb5e3ef108e2bd4eaa932b70d92084b08f6796d4b7d.png" src="_images/ad5ee260a4412336e0b7fdb5e3ef108e2bd4eaa932b70d92084b08f6796d4b7d.png" />
 </div>
 </div>
 <p>This odd distribution comes in part from the how the variable is coded, as shown <a class="reference external" href="https://wwwn.cdc.gov/Nchs/Nhanes/2017-2018/DEMO_J.htm#INDFMIN2">here</a>. Let’s resample this variable 5000 times, compute the mean, and examine the distribution.  To do this, we will create a function that resamples and returns the mean:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">sample_and_return_mean</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">variable_name</span><span class="p">,</span> 
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">sample_and_return_mean</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">variable_name</span><span class="p">,</span>
                            <span class="n">sample_size</span><span class="o">=</span><span class="mi">250</span><span class="p">,</span> <span class="n">num_samples</span><span class="o">=</span><span class="mi">5000</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    repeatedly take samples from a particular variable in a data frame</span>
@@ -467,14 +535,17 @@ document.write(`
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">adult_income_data</span> <span class="o">=</span> <span class="n">adult_nhanes_data</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;AnnualFamilyIncome&#39;</span><span class="p">])</span>
 <span class="n">family_income_sampling_dist</span> <span class="o">=</span> <span class="n">sample_and_return_mean</span><span class="p">(</span><span class="n">adult_income_data</span><span class="p">,</span> <span class="s1">&#39;AnnualFamilyIncome&#39;</span><span class="p">)</span>
 <span class="n">_</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">family_income_sampling_dist</span><span class="p">[</span><span class="s1">&#39;mean&#39;</span><span class="p">],</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/07557b5347fe39f397e2812ec7fe5483cafb50a6190a56ab726f4802d32e6266.png" src="_images/07557b5347fe39f397e2812ec7fe5483cafb50a6190a56ab726f4802d32e6266.png" />
+<img alt="_images/8989a078d5d08438bc3f2cb372ab372699dcd61924836297037ab5186410b0df.png" src="_images/8989a078d5d08438bc3f2cb372ab372699dcd61924836297037ab5186410b0df.png" />
 </div>
 </div>
-<p>This distribution looks nearly normal.  We can also use a quantile-quantile, or “Q-Q” plot, to examine this.  We will plot two Q-Q plots; on the left we plot one for the original data, and on the right we plot one for the sampling distribution of the mean.</p>
+<p>This distribution looks nearly normal.  We can also use a quantile-quantile, or “Q-Q” plot, to examine this.</p>
+<p>Quantile means the value below which certain percentage of all the scores are distributed. 5 percentile means 5% of the score is below this value. If two distributions are of the same shape, then their corresponding percentiles should form a linear relationship.</p>
+<p>We will plot two Q-Q plots; on the left we plot one for the original data, and on the right we plot one for the sampling distribution of the mean.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
@@ -492,7 +563,7 @@ document.write(`
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;Sampling distribution&#39;)
 </pre></div>
 </div>
-<img alt="_images/2b89fe31a6531791206ac6832278449ab79a8205ec0ff7df08da51b53d8570f0.png" src="_images/2b89fe31a6531791206ac6832278449ab79a8205ec0ff7df08da51b53d8570f0.png" />
+<img alt="_images/0422ff3e1be52a68a21f72644ca49b701933c1ae16979999b1b6e9dd67cbc912.png" src="_images/0422ff3e1be52a68a21f72644ca49b701933c1ae16979999b1b6e9dd67cbc912.png" />
 </div>
 </div>
 <p>We see that the raw data are highly non-normal, evidenced by the fact that the data values diverge greatly from the unit line.  On the other hand, the sampling distribution looks much more normally distributed.</p>
@@ -502,7 +573,7 @@ document.write(`
 <p>Remember that confidence intervals are intervals that will contain the population parameter in a certain proportion of samples from the population.  In this example we will walk through <a class="reference external" href="https://statsthinking21.github.io/statsthinking21-core-site/sampling.html#confidence-intervals">the simulation that was presented in the book</a> to show that this actually works properly.  To do this, let’s create a function that takes a sample from the NHANES population and returns the confidence interval for the mean of the <code class="docutils literal notranslate"><span class="pre">Height</span></code> variable within that sample.  We will use the t distribution to obtain our confidence intervals.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_confidence_interval</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">variable_name</span><span class="p">,</span> 
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_confidence_interval</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">variable_name</span><span class="p">,</span>
                             <span class="n">ci_percent</span><span class="o">=</span><span class="mi">95</span><span class="p">,</span>
                             <span class="n">sample_size</span><span class="o">=</span><span class="mi">50</span><span class="p">):</span>
     <span class="n">sample_df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">sample_size</span><span class="p">)</span>
@@ -545,7 +616,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.947
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.953
 </pre></div>
 </div>
 </div>

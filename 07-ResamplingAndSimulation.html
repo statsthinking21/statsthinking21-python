@@ -347,12 +347,12 @@ document.write(`
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">scipy.stats</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 
-<span class="n">num_samples</span> <span class="o">=</span> <span class="mi">10000</span>
+<span class="n">num_samples</span> <span class="o">=</span> <span class="mi">20000</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
 
 <span class="n">generators</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Uniform&#39;</span><span class="p">:</span> <span class="n">scipy</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">uniform</span><span class="p">,</span>
-              <span class="s1">&#39;Normal&#39;</span><span class="p">:</span> <span class="n">scipy</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">norm</span><span class="p">,</span> 
+              <span class="s1">&#39;Normal&#39;</span><span class="p">:</span> <span class="n">scipy</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">norm</span><span class="p">,</span>
               <span class="s1">&#39;Exponential&#39;</span><span class="p">:</span> <span class="n">scipy</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">expon</span><span class="p">,</span>
               <span class="s1">&#39;Chi-squared&#39;</span><span class="p">:</span> <span class="n">scipy</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">chi2</span><span class="p">}</span>
 
@@ -365,18 +365,19 @@ document.write(`
             <span class="n">generator_parameters</span><span class="p">[</span><span class="n">distribution</span><span class="p">],</span> <span class="n">size</span><span class="o">=</span><span class="n">num_samples</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="n">sample</span> <span class="o">=</span> <span class="n">generators</span><span class="p">[</span><span class="n">distribution</span><span class="p">]</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="n">num_samples</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">sample</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">sample</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="n">distribution</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Value&#39;</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Density&#39;</span><span class="p">)</span>
     <span class="c1"># the following function prevents the labels from overlapping</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
     <span class="n">panel_num</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/4deb5ddc158d8eec1877b4909ed16738b67a84840103111b3ea5be91db9fa60e.png" src="_images/4deb5ddc158d8eec1877b4909ed16738b67a84840103111b3ea5be91db9fa60e.png" />
+<img alt="_images/16a63c8514d96940332722f39dab6eb741ed3fcc673c613c6bc1495d56064bc0.png" src="_images/16a63c8514d96940332722f39dab6eb741ed3fcc673c613c6bc1495d56064bc0.png" />
 </div>
 </div>
 </section>
@@ -392,7 +393,7 @@ document.write(`
 <span class="n">sample_size</span> <span class="o">=</span> <span class="mi">150</span>
 
 
-<span class="k">def</span> <span class="nf">sample_and_return_max</span><span class="p">(</span><span class="n">sample_size</span><span class="p">,</span> 
+<span class="k">def</span> <span class="nf">sample_and_return_max</span><span class="p">(</span><span class="n">sample_size</span><span class="p">,</span>
                           <span class="n">distribution</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    function to sample from a distribution and return maximum</span>
@@ -401,7 +402,7 @@ document.write(`
     <span class="c1"># if distribution is not specified, then use the normal</span>
     <span class="k">if</span> <span class="n">distribution</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">distribution</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">norm</span>
-    
+
     <span class="n">sample</span> <span class="o">=</span> <span class="n">distribution</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="n">sample_size</span><span class="p">)</span>
     <span class="k">return</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">sample</span><span class="p">))</span>
 
@@ -409,15 +410,15 @@ document.write(`
 <span class="n">sample_max_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;max&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">num_runs</span><span class="p">)})</span>
 
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_runs</span><span class="p">):</span>
-    <span class="n">sample_max_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="s1">&#39;max&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">sample_and_return_max</span><span class="p">(</span><span class="n">sample_size</span><span class="p">)</span>
+    <span class="n">sample_max_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="s1">&#39;max&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">sample_and_return_max</span><span class="p">(</span><span class="n">sample_size</span><span class="p">,</span> <span class="n">distribution</span><span class="o">=</span><span class="n">scipy</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span><span class="n">scale</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>Now let’s find the 95th percentile of the maximum distriibution.  There is a built-in function in the <code class="docutils literal notranslate"><span class="pre">scipy.stats</span></code> module, called <code class="docutils literal notranslate"><span class="pre">scoreatpercentile</span></code> that will do this for us:</p>
+<p>Now let’s find the 99th percentile of the maximum distriibution.  There is a built-in function in the <code class="docutils literal notranslate"><span class="pre">scipy.stats</span></code> module, called <code class="docutils literal notranslate"><span class="pre">scoreatpercentile</span></code> that will do this for us:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cutoff</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">scoreatpercentile</span><span class="p">(</span><span class="n">sample_max_df</span><span class="p">[</span><span class="s1">&#39;max&#39;</span><span class="p">],</span> <span class="mi">95</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cutoff</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">scoreatpercentile</span><span class="p">(</span><span class="n">sample_max_df</span><span class="p">[</span><span class="s1">&#39;max&#39;</span><span class="p">],</span> <span class="mi">99</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -429,11 +430,12 @@ document.write(`
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Count&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Maximum value&#39;</span><span class="p">)</span>
 <span class="n">_</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">cutoff</span><span class="p">,</span> <span class="n">ymax</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">hist</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/8073f364f58c2dd0f491fe61d5fcd7017a9ff79e623ac42f2525097bd9ccd3b0.png" src="_images/8073f364f58c2dd0f491fe61d5fcd7017a9ff79e623ac42f2525097bd9ccd3b0.png" />
+<img alt="_images/a68066a0ff80f5a6ffdfe1be71e074a17dd279c0f204fc5b9e0b8c0c4cc36c15.png" src="_images/a68066a0ff80f5a6ffdfe1be71e074a17dd279c0f204fc5b9e0b8c0c4cc36c15.png" />
 </div>
 </div>
 </section>
@@ -443,6 +445,7 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#+</span>
+<span class="o">!</span><span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>nhanes
 <span class="kn">from</span> <span class="nn">nhanes.load</span> <span class="kn">import</span> <span class="n">load_NHANES_data</span>
 <span class="n">nhanes_data</span> <span class="o">=</span> <span class="n">load_NHANES_data</span><span class="p">()</span>
 <span class="n">adult_nhanes_data</span> <span class="o">=</span> <span class="n">nhanes_data</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;AgeInYearsAtScreening &gt; 17&#39;</span><span class="p">)</span>
@@ -472,25 +475,38 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: nhanes in /miniconda/lib/python3.12/site-packages (0.5.1)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Yellow">WARNING: Running pip as the &#39;root&#39; user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv</span>
+
+</pre></div>
+</div>
+</div>
 </div>
 <p>Let’s compare the bootstrap distribution to the sampling distribution that we would expect given the sample mean and standard deviation:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># hist = plt.hist(bootstrap_df[&#39;mean&#39;], 100, density=True)</span>
-<span class="c1">#</span>
-<span class="c1"># hist_bin_min = np.min(hist[1])</span>
-<span class="c1"># hist_bin_max = np.max(hist[1])</span>
-<span class="c1"># step_size = 0.01</span>
-<span class="c1"># x_values = np.arange(hist_bin_min, hist_bin_max, step_size)</span>
-<span class="c1"># normal_values = scipy.stats.norm.pdf(</span>
-<span class="c1">#     x_values,</span>
-<span class="c1">#     loc=nhanes_sample[&#39;Height&#39;].mean(),</span>
-<span class="c1">#     scale=nhanes_sample[&#39;Height&#39;].std()/np.sqrt(sample_size))</span>
-<span class="c1"># plt.plot(x_values, normal_values, color=&#39;r&#39;)</span>
-<span class="c1">#</span>
-<span class="c1">#</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hist</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">bootstrap_df</span><span class="p">[</span><span class="s1">&#39;mean&#39;</span><span class="p">],</span> <span class="mi">100</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">hist_bin_min</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">hist</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">hist_bin_max</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">hist</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">step_size</span> <span class="o">=</span> <span class="mf">0.01</span>
+<span class="n">x_values</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">hist_bin_min</span><span class="p">,</span> <span class="n">hist_bin_max</span><span class="p">,</span> <span class="n">step_size</span><span class="p">)</span>
+<span class="n">normal_values</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span>
+    <span class="n">x_values</span><span class="p">,</span>
+    <span class="n">loc</span><span class="o">=</span><span class="n">nhanes_sample</span><span class="p">[</span><span class="s1">&#39;Height&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span>
+    <span class="n">scale</span><span class="o">=</span><span class="n">nhanes_sample</span><span class="p">[</span><span class="s1">&#39;Height&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">std</span><span class="p">()</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">sample_size</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_values</span><span class="p">,</span> <span class="n">normal_values</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s1">&#39; Normal distribution based on sample mean and SEM&#39;</span><span class="p">,</span><span class="s1">&#39;Means of bootstrap samples&#39;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Height (cm)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/e6c5febbe536bfda9e8d711295656b6fe239292e86fa92dd695fc84027a60ac6.png" src="_images/e6c5febbe536bfda9e8d711295656b6fe239292e86fa92dd695fc84027a60ac6.png" />
 </div>
 </div>
 <p>This shows that the bootstrap sampling distrbution does a good job of recapitulating the theoretical sampling distribution in this case.</p>
